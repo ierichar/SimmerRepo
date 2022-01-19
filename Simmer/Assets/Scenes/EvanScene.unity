@@ -2439,10 +2439,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 641bbb659bd2d4cee8ff73fd41c506e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  accelRate: 5
-  deccelRate: 5
-  maxSpeed: 5
-  stopSpeed: 1
+  accelRate: 0.5
+  deccelRate: 0.5
+  maxSpeed: 2
+  stopSpeed: 0.01
 --- !u!114 &1839343917
 MonoBehaviour:
   m_ObjectHideFlags: 0
