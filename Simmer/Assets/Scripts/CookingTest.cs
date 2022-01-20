@@ -5,11 +5,13 @@ using UnityEngine;
 using Simmer.Appliance;
 using Simmer.FoodData;
 using Simmer.Items;
+using Simmer.TopdownPlayer;
 
 public class CookingTest : MonoBehaviour
 {
     [SerializeField] private CombineApplianceData _ovenTest;
     [SerializeField] private IngredientData _ingredientData;
+    [SerializeField] LayerMask _interactableLayerMask;
 
     private void Awake()
     {
@@ -39,5 +41,20 @@ public class CookingTest : MonoBehaviour
         }
 
         return null;
+    }
+
+    private void RaycastTest()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position
+            , transform.TransformDirection(Vector2.up), out hit
+            , 5, _interactableLayerMask))
+        {
+            if (hit.transform.gameObject.TryGetComponent
+                (out PlayerController playerController))
+            {
+                playerController.Construct();
+            }
+        }
     }
 }
