@@ -15,7 +15,7 @@ public class CookingTest : MonoBehaviour
     {
         FoodItem foodItem = new FoodItem(_ingredientData);
 
-        RecipeData foundRecipe = GetRecipe(foodItem.ingredientData);
+        RecipeData foundRecipe = FindRecipe(foodItem.ingredientData);
         if (foundRecipe)
         {
             print("difficultyLevel: " + foundRecipe.difficultyLevel);
@@ -28,7 +28,7 @@ public class CookingTest : MonoBehaviour
         }
     }
 
-    private RecipeData GetRecipe(IngredientData ingredientData)
+    private RecipeData FindRecipe(IngredientData ingredientData)
     {
         foreach(RecipeData recipe in _ovenTest.ingredientRecipeList)
         {

@@ -928,7 +928,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _ovenTest: {fileID: 11400000, guid: 98e362c19770a4422b5cefea2629900f, type: 2}
-  _ingredientData: {fileID: 11400000, guid: eeabe57d10fbe464296cf625b3fcf090, type: 2}
+  _ingredientData: {fileID: 11400000, guid: 7e07ba1a8f3d747eca4d4e4684d50e6e, type: 2}
 --- !u!1 &1216596374
 GameObject:
   m_ObjectHideFlags: 0
