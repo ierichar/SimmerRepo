@@ -9,6 +9,7 @@ namespace Simmer.TopdownPlayer
         private Rigidbody2D _rigidbody2D;
 
         [SerializeField] private float accelRate;
+        [Range(0, 1)]
         [SerializeField] private float deccelRate;
         [SerializeField] private float maxSpeed;
         [SerializeField] private float stopSpeed;
@@ -37,7 +38,7 @@ namespace Simmer.TopdownPlayer
                 Move();
             }
 
-            if (_currentVelocity.magnitude < maxSpeed)
+            if (_currentVelocity.magnitude < stopSpeed)
             {
                 _currentVelocity = Vector2.zero;
             }
@@ -51,7 +52,6 @@ namespace Simmer.TopdownPlayer
             _inputVector = new Vector2(Input.GetAxis("Horizontal")
                 , Input.GetAxis("Vertical"));
             _inputVector.Normalize();
-            print("_inputVector: " + _inputVector);
         }
 
         private void Move()
@@ -61,7 +61,7 @@ namespace Simmer.TopdownPlayer
 
         private void Decel()
         {
-            _currentVelocity -= _currentVelocity.normalized * deccelRate;
+            _currentVelocity *= deccelRate;
         }
     }
 }
