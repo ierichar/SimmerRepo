@@ -25,6 +25,8 @@ namespace Simmer.TopdownPlayer
         private void Update()
         {
             GetMoveInput();
+            RaycastInteract();
+            faceMouse();
         }
 
         private void FixedUpdate()
@@ -62,6 +64,28 @@ namespace Simmer.TopdownPlayer
         private void Decel()
         {
             _currentVelocity *= deccelRate;
+        }
+
+        private void RaycastInteract()
+        {
+            RaycastHit hit;
+            Debug.DrawRay(transform.position, transform.right, Color.blue, 0, false);
+
+            if (Physics.Raycast(transform.position, transform.right, out hit, 5, 1))
+            {
+                if (hit.transform.gameObject.TryGetComponent(out GenericAppliance app))
+                {
+                    OvenManager oven = (OvenManager)app;
+                    oven.ToggleOn();
+                }
+            }
+            
+        }
+        private void faceMouse() {
+            var mouseDir = Input.mousePosition - 
+            Camera.main.WorldToScreenPoint(transform.position);
+            var angle = Mathf.Atan2(mouseDir.y, mouseDir.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
     }
 }
