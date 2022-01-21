@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
+using Simmer.Player;
 using Simmer.Items;
 using Simmer.FoodData;
 
@@ -9,26 +11,60 @@ namespace Simmer.Inventory
 {
     public class PlayerInventory : MonoBehaviour
     {
-        private InventoryManager _inventoryManager;
+        private InventoryUIManager _inventoryUIManager;
+        private PlayerHeldItem _playerHeldItem;
 
-        [SerializeField] private List<IngredientData> startingIngredients
+        [SerializeField] private List<IngredientData> _startingIngredients
             = new List<IngredientData>();
-        [SerializeField] private int startingQuality;
-        [SerializeField] private int maxInventorySize;
+        [SerializeField] private int _startingQuality;
 
-        private Dictionary<int, FoodItem> foodItemDictionary
+        private Dictionary<int, FoodItem> _foodItemDictionary
             = new Dictionary<int, FoodItem>();
 
         private int nextToFillIndex = 0;
+        private int selectedItemIndex = 0;
 
-        public void Construct(InventoryManager inventoryManager)
+        public void Construct(PlayerManager playerManager)
         {
-            _inventoryManager = inventoryManager;
+            _inventoryUIManager = playerManager.inventoryUIManager;
+            _playerHeldItem = playerManager.playerHeldItem;
 
-            foreach(IngredientData ingredient in startingIngredients)
+            foreach (IngredientData ingredient in _startingIngredients)
             {
-                FoodItem newFoodItem = new FoodItem(ingredient, startingQuality);
+                FoodItem newFoodItem = new FoodItem(ingredient, _startingQuality);
                 AddFoodItem(newFoodItem);
+            }
+
+            playerManager.playerEventManager.OnSelectItem
+                .AddListener(OnSelectItemCallback);
+        }
+
+        private void OnSelectItemCallback(int index)
+        {
+            ItemSlotManager inventorySlot;
+            if (selectedItemIndex >= 0)
+            {
+                inventorySlot  = _inventoryUIManager.GetInventorySlot(selectedItemIndex);
+                inventorySlot.itemBackgroundManager.SetColor(Color.grey);
+                _playerHeldItem.SetSprite(null);
+            }
+
+            if(selectedItemIndex == index)
+            {
+                selectedItemIndex = -1;
+            }
+            else
+            {
+                selectedItemIndex = index;
+                inventorySlot = _inventoryUIManager.GetInventorySlot(index);
+                inventorySlot.itemBackgroundManager.SetColor(Color.yellow);
+
+                FoodItem thisFoodItem = GetSelectedItem();
+                if (thisFoodItem != null)
+                {
+                    _playerHeldItem.SetSprite(thisFoodItem
+                        .ingredientData.sprite);
+                }
             }
         }
 
@@ -42,10 +78,10 @@ namespace Simmer.Inventory
             }
             else
             {
-                foodItemDictionary.Add(nextToFillIndex, item);
+                _foodItemDictionary.Add(nextToFillIndex, item);
 
-                InventorySlotManager inventorySlot
-                    = _inventoryManager.GetInventorySlot(nextToFillIndex);
+                ItemSlotManager inventorySlot
+                    = _inventoryUIManager.GetInventorySlot(nextToFillIndex);
                 inventorySlot.inventoryImageManager
                     .SetSprite(item.ingredientData.sprite);
             } 
@@ -55,13 +91,13 @@ namespace Simmer.Inventory
         {
             FoodItem removedFoodItem = null;
 
-            if(foodItemDictionary.ContainsKey(index))
+            if(_foodItemDictionary.ContainsKey(index))
             {
-                removedFoodItem = foodItemDictionary[index];
-                foodItemDictionary.Remove(index);
+                removedFoodItem = _foodItemDictionary[index];
+                _foodItemDictionary.Remove(index);
 
-                InventorySlotManager inventorySlot
-                    = _inventoryManager.GetInventorySlot(index);
+                ItemSlotManager inventorySlot
+                    = _inventoryUIManager.GetInventorySlot(index);
                 inventorySlot.inventoryImageManager
                     .SetSprite(null);
             }
@@ -73,19 +109,26 @@ namespace Simmer.Inventory
             return removedFoodItem;
         }
 
+        public FoodItem GetSelectedItem()
+        {
+            if (_foodItemDictionary.ContainsKey(selectedItemIndex))
+            {
+                return _foodItemDictionary[selectedItemIndex];
+            }
+            return null;
+        }
+
         private int GetNextToFillIndex()
         {
             nextToFillIndex = 0;
-            for (int i = 0; i < maxInventorySize; ++i)
+            for (int i = 0; i < _inventoryUIManager.maxInventorySize; ++i)
             {
-                if (!foodItemDictionary.ContainsKey(i))
+                if (!_foodItemDictionary.ContainsKey(i))
                 {
                     return i;
                 }
             }
             return -1;
         }
-
-
     }
 }

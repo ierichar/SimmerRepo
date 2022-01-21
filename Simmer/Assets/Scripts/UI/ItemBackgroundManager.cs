@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace Simmer.Inventory
 {
-    public class InventoryImageManager : MonoBehaviour
+    public class ItemBackgroundManager : MonoBehaviour
     {
         public Image image { get; private set; }
 
@@ -14,9 +14,9 @@ namespace Simmer.Inventory
             image = GetComponent<Image>();
         }
 
-        public void SetSprite(Sprite sprite)
+        public void SetColor(Color color)
         {
-            image.sprite = sprite;
+            image.color = color;
         }
     }
 }
