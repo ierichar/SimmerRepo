@@ -17,7 +17,7 @@ namespace Simmer.Player
         private Vector2 _inputVector;
         private Vector2 _currentVelocity;
 
-        private bool _movementEnabled = false;
+        [SerializeField] private bool _movementEnabled = false;
 
         public void Construct()
         {

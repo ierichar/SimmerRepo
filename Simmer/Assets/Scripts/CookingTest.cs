@@ -5,7 +5,7 @@ using UnityEngine;
 using Simmer.Appliance;
 using Simmer.FoodData;
 using Simmer.Items;
-using Simmer.TopdownPlayer;
+using Simmer.Player;
 
 public class CookingTest : MonoBehaviour
 {
