@@ -114,10 +114,24 @@ namespace Simmer.Player
                         OvenManager oven = (OvenManager)app;
                         FoodItem selectedFoodItem = _playerManager
                             .playerInventory.GetSelectedItem();
-                        print("selectedFoodItem: " + selectedFoodItem.ingredientData);
-                        _playerInventory.RemoveFoodItem(
+
+                        if (selectedFoodItem.ingredientData
+                            .ContainsValidRecipe(oven.applianceData))
+                        {
+                            print("Successfully added item: "
+                                + selectedFoodItem.ingredientData + " to "
+                                + oven.applianceData);
+
+                            _playerInventory.RemoveFoodItem(
                             _playerInventory.selectedItemIndex);
-                        oven.AddItem(selectedFoodItem);
+                            oven.AddItem(selectedFoodItem);
+                        }
+                        else
+                        {
+                            print("Unsuccessfully added item: "
+                                + selectedFoodItem.ingredientData + " to "
+                                + oven.applianceData);
+                        }
                     }
                     else
                     {
