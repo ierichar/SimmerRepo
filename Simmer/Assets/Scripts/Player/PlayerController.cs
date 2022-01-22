@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Simmer.Items;
 
-namespace Simmer.TopdownPlayer
+namespace Simmer.Player
 {
     public class PlayerController : MonoBehaviour
     {
@@ -19,10 +19,13 @@ namespace Simmer.TopdownPlayer
         private Vector2 _currentVelocity;
         private FoodItem[] inventory;
 
+        private bool _movementEnabled = false;
+
         public void Construct()
         {
             _rigidbody2D = GetComponent<Rigidbody2D>();
             inventory = new FoodItem[MAX_INV_SIZE];
+            _movementEnabled = true;
         }
 
         private void Update()
@@ -35,22 +38,26 @@ namespace Simmer.TopdownPlayer
 
         private void FixedUpdate()
         {
-            if (_inputVector == Vector2.zero)
+            if(_movementEnabled)
             {
-                Decel();
-            }
-            else
-            {
-                Move();
-            }
+                if (_inputVector == Vector2.zero)
+                {
+                    Decel();
+                }
+                else
+                {
+                    Move();
+                }
 
-            if (_currentVelocity.magnitude < stopSpeed)
-            {
-                _currentVelocity = Vector2.zero;
-            }
+                if (_currentVelocity.magnitude < stopSpeed)
+                {
+                    _currentVelocity = Vector2.zero;
+                }
 
-            _currentVelocity = Vector2.ClampMagnitude(_currentVelocity, maxSpeed);
-            _rigidbody2D.velocity = _currentVelocity;
+                _currentVelocity = Vector2.ClampMagnitude(_currentVelocity, maxSpeed);
+                _rigidbody2D.velocity = _currentVelocity;
+            }
+            
         }
 
         private void GetMoveInput()
