@@ -229,7 +229,7 @@ GameObject:
   - component: {fileID: 440723941}
   - component: {fileID: 440723940}
   - component: {fileID: 440723939}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -326,7 +326,7 @@ GameObject:
   m_Component:
   - component: {fileID: 488745028}
   - component: {fileID: 488745029}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: PlayerSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
