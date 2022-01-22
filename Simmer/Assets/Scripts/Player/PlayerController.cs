@@ -115,8 +115,9 @@ namespace Simmer.Player
                         FoodItem selectedFoodItem = _playerManager
                             .playerInventory.GetSelectedItem();
 
+
                         if (selectedFoodItem.ingredientData
-                            .ContainsValidRecipe(oven.applianceData))
+                            .applianceRecipeDict.ContainsKey(oven.applianceData))
                         {
                             print("Successfully added item: "
                                 + selectedFoodItem.ingredientData + " to "
