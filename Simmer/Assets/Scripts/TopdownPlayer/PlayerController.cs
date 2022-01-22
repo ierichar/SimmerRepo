@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Simmer.Items;
 
 namespace Simmer.TopdownPlayer
 {
@@ -13,19 +14,22 @@ namespace Simmer.TopdownPlayer
         [SerializeField] private float deccelRate;
         [SerializeField] private float maxSpeed;
         [SerializeField] private float stopSpeed;
-
+        private int MAX_INV_SIZE = 10;
         private Vector2 _inputVector;
         private Vector2 _currentVelocity;
+        private FoodItem[] inventory;
 
         public void Construct()
         {
             _rigidbody2D = GetComponent<Rigidbody2D>();
+            inventory = new FoodItem[MAX_INV_SIZE];
         }
 
         private void Update()
         {
             GetMoveInput();
-            RaycastInteract();
+            primaryAction();
+            secondaryAction();
             faceMouse();
         }
 
@@ -66,21 +70,50 @@ namespace Simmer.TopdownPlayer
             _currentVelocity *= deccelRate;
         }
 
-        private void RaycastInteract()
+        private void primaryAction()
         {
-            RaycastHit hit;
             Debug.DrawRay(transform.position, transform.right, Color.blue, 0, false);
-
-            if (Physics.Raycast(transform.position, transform.right, out hit, 5, 1))
+            if(Input.GetKeyDown(KeyCode.F))
             {
-                if (hit.transform.gameObject.TryGetComponent(out GenericAppliance app))
-                {
-                    OvenManager oven = (OvenManager)app;
-                    oven.ToggleOn();
+                Debug.Log("Player pressed F");
+                RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, 1, 64);
+                Collider2D obj = hit.collider;
+                if(obj != null){
+                    Debug.Log("Got an object:"+ obj);
+                    if (hit.transform.gameObject.TryGetComponent(out GenericAppliance app))
+                    {
+                        OvenManager oven = (OvenManager)app;
+                        oven.ToggleOn();
+                    }else{
+                        Debug.Log("get Component failed");
+                    }
                 }
             }
-            
         }
+
+        private void secondaryAction(){
+            if(Input.GetKeyDown(KeyCode.E))
+            {
+                Debug.Log("Player pressed E");
+                RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, 1, 64);
+                Collider2D obj = hit.collider;
+                if(obj != null){
+                    Debug.Log("Got an object:"+ obj);
+                    if (hit.transform.gameObject.TryGetComponent(out GenericAppliance app))
+                    {
+                        OvenManager oven = (OvenManager)app;
+                        if(inventory.Length != 0) 
+                        {
+                            Debug.Log(inventory[0]);
+                            oven.AddItem(inventory[0]);
+                        }
+                    }else{
+                        Debug.Log("get Component failed");
+                    }
+                }
+            }
+        }
+
         private void faceMouse() {
             var mouseDir = Input.mousePosition - 
             Camera.main.WorldToScreenPoint(transform.position);
