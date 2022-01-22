@@ -8,11 +8,11 @@ using Simmer.Inventory;
 public class GameManager : MonoBehaviour
 {
     private PlayerManager _playerManager;
-    private InventoryManager _inventoryManager;
+    private InventoryUIManager _inventoryManager;
 
     private void Awake()
     {
-        _inventoryManager = FindObjectOfType<InventoryManager>();
+        _inventoryManager = FindObjectOfType<InventoryUIManager>();
         _inventoryManager.Construct();
 
         _playerManager = FindObjectOfType<PlayerManager>();

@@ -8,18 +8,30 @@ namespace Simmer.Player
 {
     public class PlayerManager : MonoBehaviour
     {
-        private PlayerController _playerController;
-        private PlayerInventory _playerInventory;
+        public InventoryUIManager inventoryUIManager { get; private set; }
 
-        public void Construct(InventoryManager _inventoryManager)
+        public PlayerEventManager playerEventManager { get; private set; }
+        public PlayerController playerController { get; private set; }
+        public PlayerInventory playerInventory { get; private set; }
+        public PlayerItemSelect playerItemSelect { get; private set; }
+        public PlayerHeldItem playerHeldItem { get; private set; }
+
+        public void Construct(InventoryUIManager inventoryUIManager)
         {
-            _playerController = GetComponent<PlayerController>();
-            _playerController.Construct();
+            this.inventoryUIManager = inventoryUIManager;
 
-            _playerInventory = GetComponent<PlayerInventory>();
-            _playerInventory.Construct(_inventoryManager);
+            playerEventManager = GetComponent<PlayerEventManager>();
+            playerController = GetComponent<PlayerController>();
+            playerInventory = GetComponent<PlayerInventory>();
+            playerHeldItem = GetComponentInChildren<PlayerHeldItem>();
+            playerItemSelect = GetComponent<PlayerItemSelect>();
+
+            playerEventManager.Construct(this);
+            playerController.Construct(this);
+            playerInventory.Construct(this);
+            playerHeldItem.Construct(this);
+            playerItemSelect.Construct(this);
         }
 
     }
-
 }

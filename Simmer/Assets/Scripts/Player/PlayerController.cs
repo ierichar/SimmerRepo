@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Simmer.Items;
+using Simmer.Inventory;
 
 namespace Simmer.Player
 {
     public class PlayerController : MonoBehaviour
     {
+        private PlayerManager _playerManager;
+        private PlayerInventory _playerInventory;
         private Rigidbody2D _rigidbody2D;
 
         [SerializeField] private float accelRate;
@@ -13,14 +17,16 @@ namespace Simmer.Player
         [SerializeField] private float deccelRate;
         [SerializeField] private float maxSpeed;
         [SerializeField] private float stopSpeed;
-
+        private int MAX_INV_SIZE = 10;
         private Vector2 _inputVector;
         private Vector2 _currentVelocity;
 
         [SerializeField] private bool _movementEnabled = false;
 
-        public void Construct()
+        public void Construct(PlayerManager playerManager)
         {
+            _playerManager = playerManager;
+            _playerInventory = _playerManager.playerInventory;
             _rigidbody2D = GetComponent<Rigidbody2D>();
             _movementEnabled = true;
         }
@@ -28,7 +34,8 @@ namespace Simmer.Player
         private void Update()
         {
             GetMoveInput();
-            RaycastInteract();
+            primaryAction();
+            secondaryAction();
             faceMouse();
         }
 
@@ -73,21 +80,67 @@ namespace Simmer.Player
             _currentVelocity *= deccelRate;
         }
 
-        private void RaycastInteract()
+        private void primaryAction()
         {
-            RaycastHit hit;
             Debug.DrawRay(transform.position, transform.right, Color.blue, 0, false);
-
-            if (Physics.Raycast(transform.position, transform.right, out hit, 5, 1))
+            if(Input.GetKeyDown(KeyCode.F))
             {
-                if (hit.transform.gameObject.TryGetComponent(out GenericAppliance app))
-                {
-                    OvenManager oven = (OvenManager)app;
-                    oven.ToggleOn();
+                Debug.Log("Player pressed F");
+                RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, 1, 64);
+                Collider2D obj = hit.collider;
+                if(obj != null){
+                    Debug.Log("Got an object:"+ obj);
+                    if (hit.transform.gameObject.TryGetComponent(out GenericAppliance app))
+                    {
+                        OvenManager oven = (OvenManager)app;
+                        oven.ToggleOn();
+                    }else{
+                        Debug.Log("get Component failed");
+                    }
                 }
             }
-            
         }
+
+        private void secondaryAction(){
+            if(Input.GetKeyDown(KeyCode.E))
+            {
+                Debug.Log("Player pressed E");
+                RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, 1, 64);
+                Collider2D obj = hit.collider;
+                if(obj != null){
+                    Debug.Log("Got an object:"+ obj);
+                    if (hit.transform.gameObject.TryGetComponent(out GenericAppliance app))
+                    {
+                        OvenManager oven = (OvenManager)app;
+                        FoodItem selectedFoodItem = _playerManager
+                            .playerInventory.GetSelectedItem();
+
+                        if (selectedFoodItem.ingredientData
+                            .ContainsValidRecipe(oven.applianceData))
+                        {
+                            print("Successfully added item: "
+                                + selectedFoodItem.ingredientData + " to "
+                                + oven.applianceData);
+
+                            _playerInventory.RemoveFoodItem(
+                            _playerInventory.selectedItemIndex);
+                            oven.AddItem(selectedFoodItem);
+                        }
+                        else
+                        {
+                            print("Unsuccessfully added item: "
+                                + selectedFoodItem.ingredientData + " to "
+                                + oven.applianceData);
+                        }
+                    }
+                    else
+                    {
+                        Debug.Log("get Component failed");
+                    }
+                }
+            }
+        }
+
         private void faceMouse() {
             var mouseDir = Input.mousePosition - 
             Camera.main.WorldToScreenPoint(transform.position);

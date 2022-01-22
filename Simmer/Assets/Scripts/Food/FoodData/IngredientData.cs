@@ -14,7 +14,20 @@ namespace Simmer.FoodData
         public Sprite sprite;
         public int baseValue;
 
-        public List<RecipeData> ingredientLinkList
+        public List<RecipeData> recipeEdgeList
             = new List<RecipeData>();
+
+        public bool ContainsValidRecipe(ApplianceData applianceData)
+        {
+            foreach(RecipeData recipeData in recipeEdgeList)
+            {
+                if (recipeData.appliance == applianceData)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
     }
 }
