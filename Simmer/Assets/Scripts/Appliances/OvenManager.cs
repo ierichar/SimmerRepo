@@ -30,6 +30,7 @@ public class OvenManager : GenericAppliance
         }
     }
     public void AddItem(FoodItem recipe){
+        print(this + " AddItem: " + recipe.ingredientData);
         //add code for player Script to interact with this object
         _toCook = recipe;
     }

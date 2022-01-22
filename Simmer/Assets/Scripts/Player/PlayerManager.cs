@@ -27,7 +27,7 @@ namespace Simmer.Player
             playerItemSelect = GetComponent<PlayerItemSelect>();
 
             playerEventManager.Construct(this);
-            playerController.Construct();
+            playerController.Construct(this);
             playerInventory.Construct(this);
             playerHeldItem.Construct(this);
             playerItemSelect.Construct(this);

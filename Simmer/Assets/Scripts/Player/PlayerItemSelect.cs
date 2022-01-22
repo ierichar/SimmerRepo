@@ -22,11 +22,11 @@ namespace Simmer.Inventory
         {
             if(selectionEnabled)
             {
-                if (Input.GetButtonDown("Drop"))
+                if (Input.GetKeyDown(KeyCode.J))
                 {
                     _playerEventManager.OnDropItem.Invoke();
                 }
-                if (Input.GetButtonDown("Interact"))
+                if (Input.GetKeyDown(KeyCode.K))
                 {
                     _playerEventManager.OnAddRandomItem.Invoke();
                 }

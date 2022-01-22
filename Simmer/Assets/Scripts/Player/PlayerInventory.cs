@@ -22,12 +22,14 @@ namespace Simmer.Inventory
             = new Dictionary<int, FoodItem>();
 
         private int nextToFillIndex = 0;
-        private int selectedItemIndex = 0;
+        public int selectedItemIndex { get; private set;}
 
         public void Construct(PlayerManager playerManager)
         {
             _inventoryUIManager = playerManager.inventoryUIManager;
             _playerHeldItem = playerManager.playerHeldItem;
+
+            selectedItemIndex = -1;
 
             foreach (IngredientData ingredient in _startingIngredients)
             {

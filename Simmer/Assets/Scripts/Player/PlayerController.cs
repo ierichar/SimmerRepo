@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Simmer.Items;
+using Simmer.Inventory;
 
 namespace Simmer.Player
 {
     public class PlayerController : MonoBehaviour
     {
+        private PlayerManager _playerManager;
+        private PlayerInventory _playerInventory;
         private Rigidbody2D _rigidbody2D;
 
         [SerializeField] private float accelRate;
@@ -17,14 +20,14 @@ namespace Simmer.Player
         private int MAX_INV_SIZE = 10;
         private Vector2 _inputVector;
         private Vector2 _currentVelocity;
-        private FoodItem[] inventory;
 
         private bool _movementEnabled = false;
 
-        public void Construct()
+        public void Construct(PlayerManager playerManager)
         {
+            _playerManager = playerManager;
+            _playerInventory = _playerManager.playerInventory;
             _rigidbody2D = GetComponent<Rigidbody2D>();
-            inventory = new FoodItem[MAX_INV_SIZE];
             _movementEnabled = true;
         }
 
@@ -109,12 +112,15 @@ namespace Simmer.Player
                     if (hit.transform.gameObject.TryGetComponent(out GenericAppliance app))
                     {
                         OvenManager oven = (OvenManager)app;
-                        if(inventory.Length != 0) 
-                        {
-                            Debug.Log(inventory[0]);
-                            oven.AddItem(inventory[0]);
-                        }
-                    }else{
+                        FoodItem selectedFoodItem = _playerManager
+                            .playerInventory.GetSelectedItem();
+                        print("selectedFoodItem: " + selectedFoodItem.ingredientData);
+                        _playerInventory.RemoveFoodItem(
+                            _playerInventory.selectedItemIndex);
+                        oven.AddItem(selectedFoodItem);
+                    }
+                    else
+                    {
                         Debug.Log("get Component failed");
                     }
                 }
