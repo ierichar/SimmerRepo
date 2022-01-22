@@ -22,7 +22,16 @@ namespace Simmer.Inventory
         {
             if(selectionEnabled)
             {
-                if(Input.GetButtonDown("HotbarSelect0"))
+                if (Input.GetButtonDown("Drop"))
+                {
+                    _playerEventManager.OnDropItem.Invoke();
+                }
+                if (Input.GetButtonDown("Interact"))
+                {
+                    _playerEventManager.OnAddRandomItem.Invoke();
+                }
+
+                if (Input.GetButtonDown("HotbarSelect0"))
                 {
                     _playerEventManager.OnSelectItem.Invoke(0);
                 }

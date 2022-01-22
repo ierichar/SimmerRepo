@@ -9,6 +9,10 @@ namespace Simmer.Player
     {
         public UnityEvent<int> OnSelectItem = new UnityEvent<int>();
 
+        public UnityEvent OnDropItem = new UnityEvent();
+
+        public UnityEvent OnAddRandomItem = new UnityEvent();
+
         public void Construct(PlayerManager playerManager)
         {
 

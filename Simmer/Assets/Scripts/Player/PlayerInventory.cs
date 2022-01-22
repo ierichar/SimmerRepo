@@ -37,6 +37,12 @@ namespace Simmer.Inventory
 
             playerManager.playerEventManager.OnSelectItem
                 .AddListener(OnSelectItemCallback);
+
+            playerManager.playerEventManager.OnDropItem
+                .AddListener(OnDropItemCallback);
+
+            playerManager.playerEventManager.OnAddRandomItem
+                .AddListener(OnAddRandomItemCallback);
         }
 
         private void OnSelectItemCallback(int index)
@@ -44,7 +50,7 @@ namespace Simmer.Inventory
             ItemSlotManager inventorySlot;
             if (selectedItemIndex >= 0)
             {
-                inventorySlot  = _inventoryUIManager.GetInventorySlot(selectedItemIndex);
+                inventorySlot = _inventoryUIManager.GetInventorySlot(selectedItemIndex);
                 inventorySlot.itemBackgroundManager.SetColor(Color.grey);
                 _playerHeldItem.SetSprite(null);
             }
@@ -66,6 +72,18 @@ namespace Simmer.Inventory
                         .ingredientData.sprite);
                 }
             }
+        }
+
+        private void OnDropItemCallback()
+        {
+            RemoveFoodItem(selectedItemIndex);
+        }
+
+        private void OnAddRandomItemCallback()
+        {
+            int randomIndex = Random.Range(0, _startingIngredients.Count);
+            FoodItem foodItem = new FoodItem(_startingIngredients[randomIndex]);
+            AddFoodItem(foodItem);
         }
 
         public void AddFoodItem(FoodItem item)
@@ -100,6 +118,11 @@ namespace Simmer.Inventory
                     = _inventoryUIManager.GetInventorySlot(index);
                 inventorySlot.inventoryImageManager
                     .SetSprite(null);
+
+                if(selectedItemIndex == index)
+                {
+                    OnSelectItemCallback(index);
+                }
             }
 
             if(removedFoodItem == null)
