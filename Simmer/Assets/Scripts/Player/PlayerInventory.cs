@@ -37,7 +37,7 @@ namespace Simmer.Inventory
                 AddFoodItem(newFoodItem);
             }
 
-            playerManager.playerEventManager.OnSelectItem
+            playerManager.gameEventManager.OnSelectItem
                 .AddListener(OnSelectItemCallback);
 
             playerManager.playerEventManager.OnDropItem
@@ -45,6 +45,9 @@ namespace Simmer.Inventory
 
             playerManager.playerEventManager.OnAddRandomItem
                 .AddListener(OnAddRandomItemCallback);
+
+            _inventoryUIManager.inventoryEventManager
+                .OnInventoryChange.AddListener(OnInventoryChangeCallback);
         }
 
         private void OnSelectItemCallback(int index)
@@ -69,13 +72,41 @@ namespace Simmer.Inventory
                     .inventorySlotsManager.GetInventorySlot(index);
                 inventorySlot.itemBackgroundManager.SetColor(Color.yellow);
 
-                FoodItem thisFoodItem = GetSelectedItem();
-                if (thisFoodItem != null)
-                {
-                    _playerHeldItem.SetSprite(thisFoodItem
-                        .ingredientData.sprite);
-                }
+                UpdateHeldItem();
             }
+        }
+
+        private void UpdateHeldItem()
+        {
+            FoodItem thisFoodItem = GetSelectedItem();
+            if (thisFoodItem != null)
+            {
+                _playerHeldItem.SetSprite(thisFoodItem
+                    .ingredientData.sprite);
+            }
+            else
+            {
+                _playerHeldItem.SetSprite(null);
+            }
+        }
+
+        private void OnInventoryChangeCallback(int index, ItemBehaviour itemBehaviour)
+        {
+            if (itemBehaviour == null)
+            {
+                _foodItemDictionary.Remove(index);
+            }
+            else if (_foodItemDictionary.ContainsKey(index))
+            {
+                //Debug.Log("Trying to change non empty inventory slot, this shouldn't happen");
+                // Happens when trying to drag and drop item back in slot it was just in
+            }
+            else
+            {
+                _foodItemDictionary.Add(index, itemBehaviour.foodItem);
+            }
+
+            UpdateHeldItem();
         }
 
         private void OnDropItemCallback()
@@ -104,7 +135,7 @@ namespace Simmer.Inventory
 
                 ItemSlotManager inventorySlot = _inventoryUIManager
                     .inventorySlotsManager.GetInventorySlot(nextToFillIndex);
-                inventorySlot.SetFoodItem(item);
+                inventorySlot.SpawnFoodItem(item);
             } 
         }
 
@@ -119,7 +150,7 @@ namespace Simmer.Inventory
 
                 ItemSlotManager inventorySlot = _inventoryUIManager
                     .inventorySlotsManager.GetInventorySlot(index);
-                inventorySlot.SetFoodItem(null);
+                inventorySlot.EmptySlot();
 
                 if (selectedItemIndex == index)
                 {

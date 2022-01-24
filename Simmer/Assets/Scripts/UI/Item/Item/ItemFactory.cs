@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using Simmer.UI;
+
 namespace Simmer.Items
 {
     public class ItemFactory : MonoBehaviour
     {
         [SerializeField] private GameObject templateItem;
 
-        private Canvas _playCanvas;
+        private PlayCanvasManager _playCanvasManager;
 
-        public void Construct(Canvas playCanvas)
+        public void Construct(PlayCanvasManager playCanvasManager)
         {
-            _playCanvas = playCanvas;
+            _playCanvasManager = playCanvasManager;
         }
 
         public ItemBehaviour ConstructItem(FoodItem foodItem, ItemSlotManager itemSlotManager)
@@ -20,7 +22,7 @@ namespace Simmer.Items
             GameObject newItem = Instantiate(templateItem
                 , Vector3.zero, Quaternion.identity, itemSlotManager.rectTransform);
             ItemBehaviour newItemBehaviour = newItem.GetComponent<ItemBehaviour>();
-            newItemBehaviour.Construct(_playCanvas, foodItem, itemSlotManager);
+            newItemBehaviour.Construct(_playCanvasManager, foodItem, itemSlotManager);
 
             return newItemBehaviour;
         }

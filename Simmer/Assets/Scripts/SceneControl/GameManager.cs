@@ -9,13 +9,16 @@ public class GameManager : MonoBehaviour
 {
     private PlayerManager _playerManager;
     private PlayCanvasManager _playCanvasManager;
+    private GameEventManager _gameEventManager;
 
     private void Awake()
     {
-        _playCanvasManager = FindObjectOfType<PlayCanvasManager>();
-        _playCanvasManager.Construct();
-
         _playerManager = FindObjectOfType<PlayerManager>();
-        _playerManager.Construct(_playCanvasManager.inventoryUIManager);
+        _playCanvasManager = FindObjectOfType<PlayCanvasManager>();
+        _gameEventManager = GetComponent<GameEventManager>();
+
+        _gameEventManager.Construct();
+        _playCanvasManager.Construct(_gameEventManager.OnSelectItem);
+        _playerManager.Construct(_gameEventManager, _playCanvasManager.inventoryUIManager);
     }
 }
