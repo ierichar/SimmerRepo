@@ -9,11 +9,13 @@ namespace Simmer.UI
     public class Clock : MonoBehaviour 
     {
         public Image fillBar;
+        private RectTransform _rectTransform;
 
-        void Start() 
+        void Awake() 
         {
             // This is bad
-            this.transform.SetParent(GameObject.Find("PlayCanvas").transform, false);
+            _rectTransform = gameObject.GetComponent<RectTransform>();
+            this.transform.SetParent(GameObject.Find("WorldCanvas").transform, false);
         }
 
         public IEnumerator SetTimer(float time, Action action) 
@@ -41,7 +43,7 @@ namespace Simmer.UI
 
         //only useful if we want to move the clock
         public void UpdatePosition(Transform target) {
-            //Vector2 canvasPos = Camera.main.WorldToScreenPoint(target.position);
+            _rectTransform.anchoredPosition = target.position;
         }
 
         public void HideClock() 
