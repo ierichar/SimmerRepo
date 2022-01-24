@@ -91,8 +91,7 @@ namespace Simmer.Player
                     Debug.Log("Got an object:"+ obj);
                     if (hit.transform.gameObject.TryGetComponent(out GenericAppliance app))
                     {
-                        OvenManager oven = (OvenManager)app;
-                        oven.ToggleOn();
+                        app.ToggleOn();
                     }else{
                         Debug.Log("get Component failed");
                     }
@@ -110,27 +109,28 @@ namespace Simmer.Player
                     Debug.Log("Got an object:"+ obj);
                     if (hit.transform.gameObject.TryGetComponent(out GenericAppliance app))
                     {
-                        OvenManager oven = (OvenManager)app;
                         FoodItem selectedFoodItem = _playerManager
                             .playerInventory.GetSelectedItem();
 
-
-                        if (selectedFoodItem.ingredientData
-                            .applianceRecipeDict.ContainsKey(oven.applianceData))
+                        if(selectedFoodItem!=null)
                         {
-                            print("Successfully added item: "
-                                + selectedFoodItem.ingredientData + " to "
-                                + oven.applianceData);
+                            if (selectedFoodItem.ingredientData
+                                .applianceRecipeDict.ContainsKey(app.applianceData))
+                            {
+                                print("Successfully added item: "
+                                    + selectedFoodItem.ingredientData + " to "
+                                    + app.applianceData);
 
-                            _playerInventory.RemoveFoodItem(
-                            _playerInventory.selectedItemIndex);
-                            oven.AddItem(selectedFoodItem);
-                        }
-                        else
-                        {
-                            print("Unsuccessfully added item: "
-                                + selectedFoodItem.ingredientData + " to "
-                                + oven.applianceData);
+                                _playerInventory.RemoveFoodItem(
+                                _playerInventory.selectedItemIndex);
+                                app.AddItem(selectedFoodItem);
+                            }
+                            else
+                            {
+                                print("Unsuccessfully added item: "
+                                    + selectedFoodItem.ingredientData + " to "
+                                    + app.applianceData);
+                            }
                         }
                     }
                     else
