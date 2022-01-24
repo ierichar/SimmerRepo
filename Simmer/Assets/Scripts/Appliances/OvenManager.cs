@@ -25,5 +25,16 @@ public class OvenManager : GenericAppliance
             _timeRunning = 0.0f;
         }
     }
+
+    public override FoodItem TakeItem(){
+        //code to take a finished product from the oven.
+        var curr = null;//curr should be a FoodItem to be returned
+        if(_toCook!=null && _finishedProcessing){
+            Debug.Log("Take Item: " + (FoodItem)curr);
+            //return new food item from recipes;
+        }
+        return null;
+
+    }
     
 }
