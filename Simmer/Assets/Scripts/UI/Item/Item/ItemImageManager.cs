@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Simmer.Inventory
+namespace Simmer.Items
 {
     public class ItemImageManager : MonoBehaviour
     {
