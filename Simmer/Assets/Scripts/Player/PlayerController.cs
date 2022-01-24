@@ -114,23 +114,25 @@ namespace Simmer.Player
                         FoodItem selectedFoodItem = _playerManager
                             .playerInventory.GetSelectedItem();
 
-
-                        if (selectedFoodItem.ingredientData
-                            .applianceRecipeDict.ContainsKey(oven.applianceData))
+                        if(selectedFoodItem!=null)
                         {
-                            print("Successfully added item: "
-                                + selectedFoodItem.ingredientData + " to "
-                                + oven.applianceData);
+                            if (selectedFoodItem.ingredientData
+                                .applianceRecipeDict.ContainsKey(oven.applianceData))
+                            {
+                                print("Successfully added item: "
+                                    + selectedFoodItem.ingredientData + " to "
+                                    + oven.applianceData);
 
-                            _playerInventory.RemoveFoodItem(
-                            _playerInventory.selectedItemIndex);
-                            oven.AddItem(selectedFoodItem);
-                        }
-                        else
-                        {
-                            print("Unsuccessfully added item: "
-                                + selectedFoodItem.ingredientData + " to "
-                                + oven.applianceData);
+                                _playerInventory.RemoveFoodItem(
+                                _playerInventory.selectedItemIndex);
+                                oven.AddItem(selectedFoodItem);
+                            }
+                            else
+                            {
+                                print("Unsuccessfully added item: "
+                                    + selectedFoodItem.ingredientData + " to "
+                                    + oven.applianceData);
+                            }
                         }
                     }
                     else

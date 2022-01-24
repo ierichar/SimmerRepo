@@ -7,14 +7,13 @@ public class OvenManager : GenericAppliance
 {
     private float _timeRunning;
     private FoodItem _toCook;
-    private bool _running;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         _timeRunning = 0.0f;
         _toCook = null;
-        _running = false;
     }
 
     // Update is called once per frame
@@ -34,17 +33,4 @@ public class OvenManager : GenericAppliance
         //add code for player Script to interact with this object
         _toCook = recipe;
     }
-
-    public void ToggleOn(){
-        if(!_running)
-        {
-            Debug.Log("Toggling on");
-            _running = true;
-        }else{
-            Debug.Log("Toggling off");
-            _running = false;
-        }
-    }
-
-
 }
