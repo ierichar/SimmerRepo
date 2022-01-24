@@ -8,17 +8,15 @@ namespace Simmer.UI
 {
     public class Clock : MonoBehaviour 
     {
-        //this is a temp variable, dont need total time after
-        public float totalTime;
         public Image fillBar;
-        public Camera cam;
 
         void Start() 
         {
-            StartCoroutine(setTimer(totalTime, timerFinished));
+            // This is bad
+            this.transform.SetParent(GameObject.Find("PlayCanvas").transform, false);
         }
 
-        public IEnumerator setTimer(float time, Action<float> action) 
+        public IEnumerator SetTimer(float time, Action action) 
         {
             float normTime = 0f;
             while(normTime <= 1f) {
@@ -26,22 +24,27 @@ namespace Simmer.UI
                 normTime += Time.deltaTime / time;
                 yield return null;
             }
-            action(time);
+            action();
         }
 
-        public void timerFinished(float time) 
-        {
-            Debug.Log(time + " seconds has passed!");
-            hideClock();
-            StartCoroutine(wait());
+        // public void timerFinished(float time) 
+        // {
+        //     Debug.Log(time + " seconds has passed!");
+        //     hideClock();
+        //     StartCoroutine(wait());
+        // }
+
+        public void SetUpTimer(Transform target) {
+            HideClock();
+            UpdatePosition(target);
         }
 
         //only useful if we want to move the clock
-        public void updatePosition(GameObject target) {
-            transform.position = cam.WorldToScreenPoint(target.transform.position);
+        public void UpdatePosition(Transform target) {
+            //Vector2 canvasPos = Camera.main.WorldToScreenPoint(target.position);
         }
 
-        private void hideClock() 
+        public void HideClock() 
         {
             Image[] clockImage = GetComponentsInChildren<Image>();
             foreach(Image img in clockImage) 
@@ -50,7 +53,7 @@ namespace Simmer.UI
             }
         }
 
-        private void showClock() 
+        public void ShowClock() 
         {
             Image[] clockImage = GetComponentsInChildren<Image>();
             foreach(Image img in clockImage) 
@@ -59,12 +62,12 @@ namespace Simmer.UI
             }
         }
 
-        //random functions that just re-enables the clock for testing
-        private IEnumerator wait() 
-        {
-            yield return new WaitForSeconds(2f);
-            showClock();
-            StartCoroutine(setTimer(10f, timerFinished));
-        }
+        // //random functions that just re-enables the clock for testing
+        // private IEnumerator wait() 
+        // {
+        //     yield return new WaitForSeconds(2f);
+        //     showClock();
+        //     StartCoroutine(setTimer(10f, timerFinished));
+        // }
     }
 }
