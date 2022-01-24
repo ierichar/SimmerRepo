@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 3180841743118145569, guid: d9cf1e27ca92e4ad7b73389798a3529d, type: 3}
   baseValue: 5
-  recipeEdgeList:
+  _recipeEdgeList:
   - {fileID: 11400000, guid: bb56e27414d6740b1b7246b20d123460, type: 2}

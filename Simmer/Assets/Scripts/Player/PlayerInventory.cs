@@ -52,7 +52,8 @@ namespace Simmer.Inventory
             ItemSlotManager inventorySlot;
             if (selectedItemIndex >= 0)
             {
-                inventorySlot = _inventoryUIManager.GetInventorySlot(selectedItemIndex);
+                inventorySlot = _inventoryUIManager
+                    .inventorySlotsManager.GetInventorySlot(selectedItemIndex);
                 inventorySlot.itemBackgroundManager.SetColor(Color.grey);
                 _playerHeldItem.SetSprite(null);
             }
@@ -64,7 +65,8 @@ namespace Simmer.Inventory
             else
             {
                 selectedItemIndex = index;
-                inventorySlot = _inventoryUIManager.GetInventorySlot(index);
+                inventorySlot = _inventoryUIManager
+                    .inventorySlotsManager.GetInventorySlot(index);
                 inventorySlot.itemBackgroundManager.SetColor(Color.yellow);
 
                 FoodItem thisFoodItem = GetSelectedItem();
@@ -100,10 +102,9 @@ namespace Simmer.Inventory
             {
                 _foodItemDictionary.Add(nextToFillIndex, item);
 
-                ItemSlotManager inventorySlot
-                    = _inventoryUIManager.GetInventorySlot(nextToFillIndex);
-                inventorySlot.inventoryImageManager
-                    .SetSprite(item.ingredientData.sprite);
+                ItemSlotManager inventorySlot = _inventoryUIManager
+                    .inventorySlotsManager.GetInventorySlot(nextToFillIndex);
+                inventorySlot.SetFoodItem(item);
             } 
         }
 
@@ -116,12 +117,11 @@ namespace Simmer.Inventory
                 removedFoodItem = _foodItemDictionary[index];
                 _foodItemDictionary.Remove(index);
 
-                ItemSlotManager inventorySlot
-                    = _inventoryUIManager.GetInventorySlot(index);
-                inventorySlot.inventoryImageManager
-                    .SetSprite(null);
+                ItemSlotManager inventorySlot = _inventoryUIManager
+                    .inventorySlotsManager.GetInventorySlot(index);
+                inventorySlot.SetFoodItem(null);
 
-                if(selectedItemIndex == index)
+                if (selectedItemIndex == index)
                 {
                     OnSelectItemCallback(index);
                 }
@@ -146,7 +146,8 @@ namespace Simmer.Inventory
         private int GetNextToFillIndex()
         {
             nextToFillIndex = 0;
-            for (int i = 0; i < _inventoryUIManager.maxInventorySize; ++i)
+            for (int i = 0; i < _inventoryUIManager
+                .inventorySlotsManager.maxInventorySize; ++i)
             {
                 if (!_foodItemDictionary.ContainsKey(i))
                 {

@@ -13,21 +13,30 @@ namespace Simmer.FoodData
     {
         public Sprite sprite;
         public int baseValue;
+        public bool isFinalProduct;
 
-        public List<RecipeData> recipeEdgeList
+        [SerializeField] List<RecipeData> _recipeEdgeList
             = new List<RecipeData>();
 
-        public bool ContainsValidRecipe(ApplianceData applianceData)
-        {
-            foreach(RecipeData recipeData in recipeEdgeList)
-            {
-                if (recipeData.appliance == applianceData)
-                {
-                    return true;
-                }
-            }
+        public Dictionary<ApplianceData, RecipeData> applianceRecipeDict
+            = new Dictionary<ApplianceData, RecipeData>();
 
-            return false;
+        private void OnValidate()
+        {
+            Construct();
         }
+
+        private void Construct()
+        {
+            applianceRecipeDict.Clear();
+            foreach (RecipeData recipe in _recipeEdgeList)
+            {
+                if(recipe != null && recipe.applianceData)
+                {
+                    applianceRecipeDict.Add(recipe.applianceData, recipe);
+                } 
+            }
+        }
+
     }
 }

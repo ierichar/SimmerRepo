@@ -14,7 +14,7 @@ namespace Simmer.FoodData
         public List<IngredientData> ingredientDataList
             = new List<IngredientData>();
 
-        public ApplianceData appliance;
+        public ApplianceData applianceData;
         public int difficultyLevel;
         public float baseActionTime;
         public IngredientData resultIngredient;

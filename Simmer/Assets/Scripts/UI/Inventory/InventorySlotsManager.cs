@@ -2,16 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using Simmer.Items;
+
 namespace Simmer.Inventory
 {
-    public class InventoryUIManager : MonoBehaviour
+    public class InventorySlotsManager : MonoBehaviour
     {
         private List<ItemSlotManager> _inventorySlotManagerList
             = new List<ItemSlotManager>();
 
         public int maxInventorySize { get; private set; }
 
-        public void Construct()
+        public void Construct(ItemFactory itemFactory)
         {
             // Will get them in order of Scene Hierarchy from top to bottom
             ItemSlotManager[] inventorySlotManagerArray
@@ -24,7 +26,7 @@ namespace Simmer.Inventory
                 ItemSlotManager thisSlot = inventorySlotManagerArray[i];
 
                 _inventorySlotManagerList.Add(thisSlot);
-                thisSlot.Construct(i);
+                thisSlot.Construct(itemFactory, i);
             }
         }
 

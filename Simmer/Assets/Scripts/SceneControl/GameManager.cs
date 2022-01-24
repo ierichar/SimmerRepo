@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using Simmer.Player;
-using Simmer.Inventory;
+using Simmer.UI;
 
 public class GameManager : MonoBehaviour
 {
     private PlayerManager _playerManager;
-    private InventoryUIManager _inventoryManager;
+    private PlayCanvasManager _playCanvasManager;
 
     private void Awake()
     {
-        _inventoryManager = FindObjectOfType<InventoryUIManager>();
-        _inventoryManager.Construct();
+        _playCanvasManager = FindObjectOfType<PlayCanvasManager>();
+        _playCanvasManager.Construct();
 
         _playerManager = FindObjectOfType<PlayerManager>();
-        _playerManager.Construct(_inventoryManager);
+        _playerManager.Construct(_playCanvasManager.inventoryUIManager);
     }
 }

@@ -19,7 +19,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 10062244df47e49868d8fa686cad5b65, type: 2}
   - {fileID: 11400000, guid: 6183ea7ebcbc84bff853e5eed138897f, type: 2}
   - {fileID: 11400000, guid: 659c2de493a0f48beaf2a77495faa19b, type: 2}
-  appliance: {fileID: 11400000, guid: 98e362c19770a4422b5cefea2629900f, type: 2}
+  applianceData: {fileID: 11400000, guid: 98e362c19770a4422b5cefea2629900f, type: 2}
   difficultyLevel: 1
   baseActionTime: 3
   resultIngredient: {fileID: 11400000, guid: 1c3717ce0a5c841bbb4dc7e348bbe5eb, type: 2}
