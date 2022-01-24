@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 100bfe8cc201b417887646b2755fd998, type: 3}
   m_Name: Egg
   m_EditorClassIdentifier: 
-  sprite: {fileID: -6758096511042335746, guid: d9cf1e27ca92e4ad7b73389798a3529d, type: 3}
+  sprite: {fileID: 21300000, guid: b3280b16c129e41a18c448939c7fde1a, type: 3}
   baseValue: 1
+  isFinalProduct: 0
   _recipeEdgeList:
   - {fileID: 11400000, guid: e1d0faecbce5d4d6ea549b13c68ba768, type: 2}

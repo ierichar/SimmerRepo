@@ -17,7 +17,6 @@ namespace Simmer.Player
         [SerializeField] private float deccelRate;
         [SerializeField] private float maxSpeed;
         [SerializeField] private float stopSpeed;
-        private int MAX_INV_SIZE = 10;
         private Vector2 _inputVector;
         private Vector2 _currentVelocity;
 

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-namespace Simmer.Inventory
+namespace Simmer.Items
 {
     public class ItemCornerTextManager : MonoBehaviour
     {
