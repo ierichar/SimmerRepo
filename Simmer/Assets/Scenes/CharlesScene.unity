@@ -1685,6 +1685,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   templateItem: {fileID: 5158968734794265727, guid: 533eeede1a39b464cb8ae11a7484e60e, type: 3}
+  moveEase: 0
+  minMoveDuration: 0
+  maxMoveDuration: 0
+  minMoveDistance: 0
+  maxMoveDistance: 0
 --- !u!114 &506468041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1911,9 +1916,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58f135833d09144538fdddf9f6881109, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnSelectItem:
-    m_PersistentCalls:
-      m_Calls: []
   OnDropItem:
     m_PersistentCalls:
       m_Calls: []
@@ -3176,6 +3178,7 @@ GameObject:
   - component: {fileID: 846848172}
   - component: {fileID: 846848173}
   - component: {fileID: 846848174}
+  - component: {fileID: 846848175}
   m_Layer: 0
   m_Name: GameManagerObject
   m_TagString: Untagged
@@ -3222,6 +3225,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 1411205829}
+--- !u!114 &846848175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846848171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9b5a728fd464401486d9da58f2f83bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnSelectItem:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!224 &1234213716 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8206856231496267629, guid: 16cbd80d0bdd84f7b844100d3ca6960a, type: 3}
@@ -3287,6 +3305,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 692946499699463523, guid: f4d93251c0ca94c3bbaf983e64a797af, type: 3}
+      propertyPath: timerPrefab
+      value: 
+      objectReference: {fileID: 7438676668410244986, guid: db1aa8dbc4c221d4bad63876567a9cd8, type: 3}
+    - target: {fileID: 692946499699463523, guid: f4d93251c0ca94c3bbaf983e64a797af, type: 3}
+      propertyPath: playerInventory
+      value: 
+      objectReference: {fileID: 570996630}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4d93251c0ca94c3bbaf983e64a797af, type: 3}
 --- !u!1 &1367160638
