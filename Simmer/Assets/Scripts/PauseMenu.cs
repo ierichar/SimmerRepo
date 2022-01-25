@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenu;
@@ -43,4 +43,10 @@ public class PauseMenu : MonoBehaviour
       Time.timeScale = 1f;
       isPaused = false;
     }
+
+    public void QuitGame()
+    {
+      Application.Quit();
+    }
+
 }

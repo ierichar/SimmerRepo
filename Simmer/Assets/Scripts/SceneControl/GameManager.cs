@@ -18,4 +18,9 @@ public class GameManager : MonoBehaviour
         _playerManager = FindObjectOfType<PlayerManager>();
         _playerManager.Construct(_playCanvasManager.inventoryUIManager);
     }
+
+    public void QuitGame()
+    {
+      Application.Quit();
+    }
 }
