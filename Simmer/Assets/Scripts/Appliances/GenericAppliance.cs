@@ -6,9 +6,14 @@ using UnityEngine.Events;
 using Simmer.Appliance;
 using Simmer.Items;
 using Simmer.UI;
+using Simmer.FoodData;
+using Simmer.Inventory;
 
 public abstract class GenericAppliance : MonoBehaviour
 {
+
+    [SerializeField] PlayerInventory playerInventory;
+
     [SerializeField] protected ApplianceData _applianceData;
     public ApplianceData applianceData
     {
@@ -22,6 +27,8 @@ public abstract class GenericAppliance : MonoBehaviour
     private Clock timer;
     public Clock timerPrefab;
 
+    private IngredientData resultIngredient;
+
     void Awake()
     {
         timer = Instantiate(timerPrefab, new Vector3(0, 0, 0), Quaternion.identity);
@@ -30,14 +37,28 @@ public abstract class GenericAppliance : MonoBehaviour
     }
 
     public void TryInteract(FoodItem item){
-        if(_toCook==null){
+
+        if(item != null)
+        {
+            if (!item.ingredientData.applianceRecipeDict
+            .ContainsKey(_applianceData)) return;
+        }
+
+        if (_toCook==null)
+        {
+            RecipeData recipeData = item.ingredientData
+                .applianceRecipeDict[_applianceData];
+            resultIngredient = recipeData.resultIngredient;
             //place item to be cooked
             AddItem(item);
-            ToggleOn(item.ingredientData.applianceRecipeDict._applianceData.baseAcionTime);
+            
+            ToggleOn(recipeData.baseActionTime);
         }else if(_finishedProcessing){
-            //take item back
-
-        }else{
+            FoodItem newFoodItem = new FoodItem(resultIngredient);
+            playerInventory.AddFoodItem(newFoodItem);
+            _toCook = null;
+        }
+        else{
             //do something with appliance while cooking
         }
     }
