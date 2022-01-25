@@ -13,7 +13,8 @@ namespace Simmer.Inventory
 
         public int maxInventorySize { get; private set; }
 
-        public void Construct(ItemFactory itemFactory)
+        public void Construct(ItemFactory itemFactory
+            , InventoryEventManager inventoryEventManager)
         {
             // Will get them in order of Scene Hierarchy from top to bottom
             ItemSlotManager[] inventorySlotManagerArray
@@ -26,7 +27,7 @@ namespace Simmer.Inventory
                 ItemSlotManager thisSlot = inventorySlotManagerArray[i];
 
                 _inventorySlotManagerList.Add(thisSlot);
-                thisSlot.Construct(itemFactory, i);
+                thisSlot.Construct(inventoryEventManager.OnInventoryChange, itemFactory, i);
             }
         }
 
