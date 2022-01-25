@@ -8,6 +8,7 @@ namespace Simmer.Player
 {
     public class PlayerManager : MonoBehaviour
     {
+        public GameEventManager gameEventManager { get; private set; }
         public InventoryUIManager inventoryUIManager { get; private set; }
 
         public PlayerEventManager playerEventManager { get; private set; }
@@ -16,8 +17,10 @@ namespace Simmer.Player
         public PlayerItemSelect playerItemSelect { get; private set; }
         public PlayerHeldItem playerHeldItem { get; private set; }
 
-        public void Construct(InventoryUIManager inventoryUIManager)
+        public void Construct(GameEventManager gameEventManager
+            , InventoryUIManager inventoryUIManager)
         {
+            this.gameEventManager = gameEventManager;
             this.inventoryUIManager = inventoryUIManager;
 
             playerEventManager = GetComponent<PlayerEventManager>();
