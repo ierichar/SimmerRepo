@@ -65,7 +65,7 @@ namespace Simmer.Items
             }
             else
             {
-                thisItem.ResetPositionToCurrentSlot();
+                thisItem.ResetPosition();
             }
         }
 
