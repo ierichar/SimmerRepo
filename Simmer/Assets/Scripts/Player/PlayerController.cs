@@ -91,7 +91,7 @@ namespace Simmer.Player
                     Debug.Log("Got an object:"+ obj);
                     if (hit.transform.gameObject.TryGetComponent(out GenericAppliance app))
                     {
-                        app.ToggleOn();
+                        app.TryInteract();
                     }else{
                         Debug.Log("get Component failed");
                     }
