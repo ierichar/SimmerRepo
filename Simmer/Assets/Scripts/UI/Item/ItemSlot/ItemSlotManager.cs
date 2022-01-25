@@ -8,19 +8,17 @@ namespace Simmer.Items
 {
     public class ItemSlotManager : MonoBehaviour, IDropHandler
     {
-        public RectTransform rectTransform { get; private set; }
+        public RectTransform rectTransform { get; protected set; }
 
-        public ItemBackgroundManager itemBackgroundManager { get; private set; }
-        private ItemFactory _itemFactory;
+        public ItemBackgroundManager itemBackgroundManager { get; protected set; }
+        protected ItemFactory _itemFactory;
 
-        private UnityEvent<int, ItemBehaviour> _OnChangeItem;
-        public int index { get; private set; }
-        public ItemBehaviour currentItem { get; private set; }
+        public int index { get; protected set; }
+        public ItemBehaviour currentItem { get; protected set; }
 
-        public virtual void Construct(UnityEvent<int, ItemBehaviour> OnChangeItem
-            , ItemFactory itemFactory, int index)
+        public virtual void Construct(ItemFactory itemFactory
+            , int index)
         {
-            _OnChangeItem = OnChangeItem;
             rectTransform = GetComponent<RectTransform>();
             this.index = index;
 
@@ -35,10 +33,9 @@ namespace Simmer.Items
             SetNewSlot(_itemFactory.ConstructItem(toSet, this));
         }
 
-        public void SetItem(ItemBehaviour item)
+        public virtual void SetItem(ItemBehaviour item)
         {
             currentItem = item;
-            _OnChangeItem.Invoke(index, currentItem);
         }
 
         public void EmptySlot()
@@ -68,7 +65,7 @@ namespace Simmer.Items
             }
             else
             {
-                thisItem.ResetPositionToCurrentSlot();
+                thisItem.ResetPosition();
             }
         }
 

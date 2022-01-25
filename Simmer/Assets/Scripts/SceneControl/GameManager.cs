@@ -21,4 +21,9 @@ public class GameManager : MonoBehaviour
         _playCanvasManager.Construct(_gameEventManager.OnSelectItem);
         _playerManager.Construct(_gameEventManager, _playCanvasManager.inventoryUIManager);
     }
+
+    public void QuitGame()
+    {
+      Application.Quit();
+    }
 }

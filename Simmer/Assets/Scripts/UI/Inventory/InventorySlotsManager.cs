@@ -17,14 +17,14 @@ namespace Simmer.Inventory
             , InventoryEventManager inventoryEventManager)
         {
             // Will get them in order of Scene Hierarchy from top to bottom
-            ItemSlotManager[] inventorySlotManagerArray
-                = GetComponentsInChildren<ItemSlotManager>();
+            InventorySlotManager[] inventorySlotManagerArray
+                = GetComponentsInChildren<InventorySlotManager>();
 
             maxInventorySize = inventorySlotManagerArray.Length;
 
             for (int i = 0; i < maxInventorySize; ++i)
             {
-                ItemSlotManager thisSlot = inventorySlotManagerArray[i];
+                InventorySlotManager thisSlot = inventorySlotManagerArray[i];
 
                 _inventorySlotManagerList.Add(thisSlot);
                 thisSlot.Construct(inventoryEventManager.OnInventoryChange, itemFactory, i);

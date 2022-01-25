@@ -3,6 +3,7 @@ using Simmer.UI;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using DG.Tweening;
 
 namespace Simmer.Items
 {
@@ -13,6 +14,7 @@ namespace Simmer.Items
         , IEndDragHandler
         , IDragHandler
     {
+        private ItemFactory _itemFactory;
         private PlayCanvasManager _playCanvasManager;
         private UnityEvent<int> OnSelectItem;
         private Canvas _playCanvas;
@@ -28,10 +30,14 @@ namespace Simmer.Items
         private bool _isChangeSlot;
         private bool _isSelected;
 
-        public void Construct(PlayCanvasManager playCanvasManager
+        private Tween activeMoveTween;
+
+        public void Construct(ItemFactory itemFactory
+            , PlayCanvasManager playCanvasManager
             , FoodItem foodItem
             , ItemSlotManager currentSlot)
         {
+            _itemFactory = itemFactory;
             this.foodItem = foodItem;
             this.currentSlot = currentSlot;
 
@@ -64,14 +70,32 @@ namespace Simmer.Items
             currentSlot = itemSlotManager;
 
             _rectTransform.SetParent(itemSlotManager.rectTransform);
-            _rectTransform.anchoredPosition = Vector2.zero;
+            ResetPosition();
 
             itemSlotManager.SetItem(this);
         }
 
-        public void ResetPositionToCurrentSlot()
+        public void ResetPosition()
         {
-            _rectTransform.anchoredPosition = Vector2.zero;
+            if (activeMoveTween != null)
+            {
+                activeMoveTween.Kill();
+            }
+            Vector2 oldPosition = _rectTransform.anchoredPosition;
+            float distance = Vector2.Distance(oldPosition, Vector2.zero);
+
+            //float newValue = MathUtil.Rescale(0, 10000
+            //    , _itemFactory.minMoveDistance
+            //    , _itemFactory.maxMoveDistance
+            //    , distance);
+
+            //print("newValue " + newValue);
+
+            //float thisDuration = 0f;
+
+            activeMoveTween = _rectTransform.DOAnchorPos
+                (Vector2.zero, _itemFactory.minMoveDuration)
+                .SetEase(_itemFactory.moveEase);
         }
 
         void IBeginDragHandler.OnBeginDrag(PointerEventData eventData)
@@ -97,7 +121,7 @@ namespace Simmer.Items
             }
             else
             {
-                ResetPositionToCurrentSlot();
+                ResetPosition();
             }
 
             _isChangeSlot = false;
@@ -108,6 +132,10 @@ namespace Simmer.Items
             if (!_isSelected)
             {
                 OnSelectItem.Invoke(currentSlot.index);
+            }
+            if (activeMoveTween != null)
+            {
+                activeMoveTween.Kill();
             }
         }
 

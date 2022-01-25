@@ -3696,6 +3696,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   templateItem: {fileID: 5158968734794265727, guid: 533eeede1a39b464cb8ae11a7484e60e, type: 3}
+  moveEase: 4
+  minMoveDuration: 0.1
+  maxMoveDuration: 0.5
+  minMoveDistance: 5
+  maxMoveDistance: 10
 --- !u!1 &1839343912
 GameObject:
   m_ObjectHideFlags: 0

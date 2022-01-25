@@ -8,15 +8,25 @@ namespace Simmer.Items
 {
     public class InventorySlotManager : ItemSlotManager
     {
+        private UnityEvent<int, ItemBehaviour> _OnChangeItem;
+
         public ItemCornerTextManager itemCornerTextManager { get; private set; }
 
-        public override void Construct(UnityEvent<int, ItemBehaviour> OnChangeItem
+        public void Construct(UnityEvent<int, ItemBehaviour> OnChangeItem
             , ItemFactory itemFactory, int index)
         {
-            base.Construct(OnChangeItem, itemFactory, index);
+            _OnChangeItem = OnChangeItem;
+            base.Construct(itemFactory, index);
 
             itemCornerTextManager = GetComponentInChildren<ItemCornerTextManager>();
             itemCornerTextManager.Construct(index);
+        }
+
+        public override void SetItem(ItemBehaviour item)
+        {
+            currentItem = item;
+            _OnChangeItem.Invoke(index, currentItem);
+
         }
     }
 }
