@@ -10,16 +10,14 @@ namespace Simmer.Items
     {
         public RectTransform rectTransform { get; private set; }
 
-        public ItemCornerTextManager itemCornerTextManager { get; private set; }
         public ItemBackgroundManager itemBackgroundManager { get; private set; }
         private ItemFactory _itemFactory;
-
 
         private UnityEvent<int, ItemBehaviour> _OnChangeItem;
         public int index { get; private set; }
         public ItemBehaviour currentItem { get; private set; }
 
-        public void Construct(UnityEvent<int, ItemBehaviour> OnChangeItem
+        public virtual void Construct(UnityEvent<int, ItemBehaviour> OnChangeItem
             , ItemFactory itemFactory, int index)
         {
             _OnChangeItem = OnChangeItem;
@@ -30,9 +28,6 @@ namespace Simmer.Items
 
             itemBackgroundManager = GetComponentInChildren<ItemBackgroundManager>();
             itemBackgroundManager.Construct();
-
-            itemCornerTextManager = GetComponentInChildren<ItemCornerTextManager>();
-            itemCornerTextManager.Construct(index);
         }
 
         public void SpawnFoodItem(FoodItem toSet)
