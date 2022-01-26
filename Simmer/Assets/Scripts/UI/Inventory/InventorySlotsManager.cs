@@ -8,9 +8,8 @@ namespace Simmer.Inventory
 {
     public class InventorySlotsManager : MonoBehaviour
     {
-        private List<InventorySlotManager> _inventorySlotManagerList
-            = new List<InventorySlotManager>();
-
+        public List<InventorySlotManager> inventorySlotList { get; private set; }
+        
         public int maxInventorySize { get; private set; }
 
         public void Construct(ItemFactory itemFactory
@@ -22,18 +21,20 @@ namespace Simmer.Inventory
 
             maxInventorySize = inventorySlotManagerArray.Length;
 
+            inventorySlotList = new List<InventorySlotManager>();
+
             for (int i = 0; i < maxInventorySize; ++i)
             {
                 InventorySlotManager thisSlot = inventorySlotManagerArray[i];
 
-                _inventorySlotManagerList.Add(thisSlot);
+                inventorySlotList.Add(thisSlot);
                 thisSlot.Construct(inventoryEventManager.OnInventoryChange, itemFactory, i);
             }
         }
 
         public InventorySlotManager GetInventorySlot(int index)
         {
-            return _inventorySlotManagerList[index];
+            return inventorySlotList[index];
         }
     }
 }

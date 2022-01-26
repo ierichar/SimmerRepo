@@ -457,6 +457,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58f135833d09144538fdddf9f6881109, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnSelectInventoryItem:
+    m_PersistentCalls:
+      m_Calls: []
   OnDropItem:
     m_PersistentCalls:
       m_Calls: []
@@ -491,7 +494,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1c3717ce0a5c841bbb4dc7e348bbe5eb, type: 2}
   - {fileID: 11400000, guid: 4484146648c7d4384a459681d258b86e, type: 2}
   - {fileID: 11400000, guid: 7e07ba1a8f3d747eca4d4e4684d50e6e, type: 2}
-  - {fileID: 11400000, guid: 7fe9c2db8c0af44ea9b48448929217dd, type: 2}
+  - {fileID: 11400000, guid: 4484146648c7d4384a459681d258b86e, type: 2}
   _startingQuality: 1
 --- !u!114 &365663355
 MonoBehaviour:

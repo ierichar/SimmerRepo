@@ -16,6 +16,8 @@ namespace Simmer.Items
         public int index { get; protected set; }
         public ItemBehaviour currentItem { get; protected set; }
 
+        private bool _isSelected;
+
         public virtual void Construct(ItemFactory itemFactory
             , int index)
         {
@@ -28,9 +30,24 @@ namespace Simmer.Items
             itemBackgroundManager.Construct();
         }
 
-        public void SpawnFoodItem(FoodItem toSet)
+        public ItemBehaviour SpawnFoodItem(FoodItem toSet)
         {
-            SetNewSlot(_itemFactory.ConstructItem(toSet, this));
+            ItemBehaviour newItem = _itemFactory.ConstructItem(toSet, this);
+            SetNewSlot(newItem);
+            return newItem;
+        }
+
+        public void SetSelected(bool selected)
+        {
+            if (selected)
+            {
+                itemBackgroundManager.SetColor(Color.yellow);
+            }
+            else
+            {
+                itemBackgroundManager.SetColor(Color.gray);
+            }
+            _isSelected = selected;
         }
 
         public virtual void SetItem(ItemBehaviour item)
@@ -72,7 +89,7 @@ namespace Simmer.Items
 
         private void SetNewSlot(ItemBehaviour thisItem)
         {
-            thisItem.currentSlot.SetItem(null);
+            if(thisItem.currentSlot == null ) thisItem.currentSlot.EmptySlot();
             thisItem.SetCurrentSlot(this);
         }
 

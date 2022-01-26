@@ -10,8 +10,8 @@ namespace Simmer.Inventory
     public class InventoryEventManager : MonoBehaviour
     {
         // First int is new index, ItemBehaviour is item before change
-        public UnityEvent<int, ItemBehaviour> OnInventoryChange
-            = new UnityEvent<int, ItemBehaviour>();
+        public UnityEvent<InventorySlotManager, ItemBehaviour> OnInventoryChange
+            = new UnityEvent<InventorySlotManager, ItemBehaviour>();
 
         public void Construct()
         {

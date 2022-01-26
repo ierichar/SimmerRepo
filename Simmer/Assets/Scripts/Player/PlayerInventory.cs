@@ -18,11 +18,10 @@ namespace Simmer.Inventory
             = new List<IngredientData>();
         [SerializeField] private int _startingQuality;
 
-        private Dictionary<int, FoodItem> _foodItemDictionary
-            = new Dictionary<int, FoodItem>();
+        private List<ItemBehaviour> _itemBehaviourList = new List<ItemBehaviour>();
 
-        private int nextToFillIndex = 0;
-        public int selectedItemIndex { get; private set;}
+        private List<InventorySlotManager> inventorySlotList;
+
         public ItemBehaviour selectedItemBehaviour { get; private set; }
 
         public void Construct(PlayerManager playerManager)
@@ -30,7 +29,8 @@ namespace Simmer.Inventory
             _inventoryUIManager = playerManager.inventoryUIManager;
             _playerHeldItem = playerManager.playerHeldItem;
 
-            selectedItemIndex = -1;
+            inventorySlotList = _inventoryUIManager
+                .inventorySlotsManager.inventorySlotList;
 
             foreach (IngredientData ingredient in _startingIngredients)
             {
@@ -114,20 +114,22 @@ namespace Simmer.Inventory
             }
         }
 
-        private void OnInventoryChangeCallback(int index, ItemBehaviour itemBehaviour)
+        private void OnInventoryChangeCallback(
+            InventorySlotManager inventorySlotManager
+            , ItemBehaviour itemBehaviour)
         {
             if (itemBehaviour == null)
             {
-                _foodItemDictionary.Remove(index);
+
             }
-            else if (_foodItemDictionary.ContainsKey(index))
+            else if (_itemBehaviourList.Contains(itemBehaviour))
             {
                 //Debug.Log("Trying to change non empty inventory slot, this shouldn't happen");
                 // Happens when trying to drag and drop item back in slot it was just in
             }
             else
             {
-                _foodItemDictionary.Add(index, itemBehaviour.foodItem);
+                _itemBehaviourList.Add(itemBehaviour);
             }
 
             UpdateHeldItem();
@@ -147,62 +149,35 @@ namespace Simmer.Inventory
 
         public void AddFoodItem(FoodItem item)
         {
-            nextToFillIndex = GetNextToFillIndex();
+            InventorySlotManager nextSlot = GetNextToFillIndex();
 
-            if (nextToFillIndex == -1)
+            if (nextSlot == null)
             {
                 print("Inventory is full");
             }
             else
             {
-                _foodItemDictionary.Add(nextToFillIndex, item);
-
-                ItemSlotManager inventorySlot = _inventoryUIManager
-                    .inventorySlotsManager.GetInventorySlot(nextToFillIndex);
-                inventorySlot.SpawnFoodItem(item);
-            } 
+                ItemBehaviour newItem = nextSlot.SpawnFoodItem(item);
+                _itemBehaviourList.Add(newItem);
+            }
         }
-
-        //public FoodItem RemoveFoodItem(int index)
-        //{
-        //    FoodItem removedFoodItem = null;
-
-        //    if(_foodItemDictionary.ContainsKey(index))
-        //    {
-        //        removedFoodItem = _foodItemDictionary[index];
-        //        _foodItemDictionary.Remove(index);
-
-        //        ItemSlotManager inventorySlot = _inventoryUIManager
-        //            .inventorySlotsManager.GetInventorySlot(index);
-        //        inventorySlot.EmptySlot();
-
-        //        if (selectedItemIndex == index)
-        //        {
-        //            OnSelectItemCallback(null);
-        //        }
-        //    }
-
-        //    if(removedFoodItem == null)
-        //    {
-        //        print(this + " Error: RemoveFoodItem index has no FoodItem");
-        //    }
-        //    return removedFoodItem;
-        //}
 
         public void RemoveSelectedFoodItem()
         {
             if (selectedItemBehaviour != null)
             {
+                _itemBehaviourList.Remove(selectedItemBehaviour);
                 if (selectedItemBehaviour.currentSlot != null)
                 {
-                    _foodItemDictionary.Remove(selectedItemIndex);
                     selectedItemBehaviour.currentSlot.EmptySlot();
+                    
                 }
                 else
                 {
                     Destroy(selectedItemBehaviour.gameObject);
-                    selectedItemBehaviour = null;
                 }
+                selectedItemBehaviour = null;
+                UpdateHeldItem();
             }
         }
 
@@ -213,18 +188,18 @@ namespace Simmer.Inventory
             return selectedItemBehaviour.foodItem;
         }
 
-        private int GetNextToFillIndex()
+        private InventorySlotManager GetNextToFillIndex()
         {
-            nextToFillIndex = 0;
+            InventorySlotManager nextSlot = null;
             for (int i = 0; i < _inventoryUIManager
                 .inventorySlotsManager.maxInventorySize; ++i)
             {
-                if (!_foodItemDictionary.ContainsKey(i))
+                if (inventorySlotList[i].currentItem == null)
                 {
-                    return i;
+                    return inventorySlotList[i];
                 }
             }
-            return -1;
+            return nextSlot;
         }
     }
 }

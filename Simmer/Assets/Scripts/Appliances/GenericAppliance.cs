@@ -67,6 +67,7 @@ public abstract class GenericAppliance : MonoBehaviour
         //add code for player Script to interact with this object
         _toCook = recipe;
     }
+
     private FoodItem TakeItem(){
         //code to take a finished product from the oven.
         FoodItem curr = null;//curr should be a FoodItem to be returned
@@ -80,7 +81,6 @@ public abstract class GenericAppliance : MonoBehaviour
     private void ToggleOn(float duration){
         if(!_running)
         {
-            Debug.Log("Toggling on");
             _running = true;
             _finishedProcessing = false;
             timer.ShowClock();
@@ -89,7 +89,6 @@ public abstract class GenericAppliance : MonoBehaviour
     }
 
     private void Finished() {
-        Debug.Log("Toggling off");
         _running = false;
         _finishedProcessing = true;
         timer.HideClock();
