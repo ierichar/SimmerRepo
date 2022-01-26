@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace Simmer.Items
 {
-    public class ItemBackgroundManager : MonoBehaviour
+    public class ImageManager : MonoBehaviour
     {
         public Image image { get; private set; }
 

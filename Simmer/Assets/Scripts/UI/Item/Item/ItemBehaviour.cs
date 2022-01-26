@@ -16,11 +16,12 @@ namespace Simmer.Items
     {
         private ItemFactory _itemFactory;
         private PlayCanvasManager _playCanvasManager;
-        private UnityEvent<int> OnSelectItem;
+        private UnityEvent<ItemBehaviour> OnSelectItem;
         private Canvas _playCanvas;
 
         private RectTransform _rectTransform;
-        private ItemImageManager _itemImageManager;
+        public ItemImageManager itemImageManager { get; private set; }
+        public ImageManager borderImageManager { get; private set; }
         private CanvasGroup _canvasGroup;
 
         public ItemSlotManager currentSlot { get; private set; }
@@ -28,7 +29,7 @@ namespace Simmer.Items
 
         public UnityEvent<bool> OnChangeSlot = new UnityEvent<bool>();
         private bool _isChangeSlot;
-        private bool _isSelected;
+        private bool _isSelected = false;
 
         private Tween activeMoveTween;
 
@@ -50,8 +51,11 @@ namespace Simmer.Items
 
             _canvasGroup = GetComponent<CanvasGroup>();
 
-            _itemImageManager = GetComponentInChildren<ItemImageManager>();
-            _itemImageManager.Construct();
+            borderImageManager = GetComponentInChildren<ImageManager>();
+            borderImageManager.Construct();
+
+            itemImageManager = GetComponentInChildren<ItemImageManager>();
+            itemImageManager.Construct();
 
             OnChangeSlot.AddListener(OnChangeSlotCallback);
 
@@ -61,8 +65,21 @@ namespace Simmer.Items
             }
             else
             {
-                _itemImageManager.SetSprite(foodItem.ingredientData.sprite);
+                itemImageManager.SetSprite(foodItem.ingredientData.sprite);
             }
+        }
+
+        public void SetSelected(bool selected)
+        {
+            if(selected)
+            {
+                borderImageManager.SetColor(Color.yellow);
+            }
+            else
+            {
+                borderImageManager.SetColor(Color.gray);
+            }
+            _isSelected = selected;
         }
 
         public void SetCurrentSlot(ItemSlotManager itemSlotManager)
@@ -81,8 +98,8 @@ namespace Simmer.Items
             {
                 activeMoveTween.Kill();
             }
-            Vector2 oldPosition = _rectTransform.anchoredPosition;
-            float distance = Vector2.Distance(oldPosition, Vector2.zero);
+            //Vector2 oldPosition = _rectTransform.anchoredPosition;
+            //float distance = Vector2.Distance(oldPosition, Vector2.zero);
 
             //float newValue = MathUtil.Rescale(0, 10000
             //    , _itemFactory.minMoveDistance
@@ -115,11 +132,7 @@ namespace Simmer.Items
             _canvasGroup.alpha = 1f;
             _canvasGroup.blocksRaycasts = true;
 
-            if(_isChangeSlot)
-            {
-                OnSelectItem.Invoke(currentSlot.index);
-            }
-            else
+            if(!_isChangeSlot)
             {
                 ResetPosition();
             }
@@ -131,7 +144,7 @@ namespace Simmer.Items
         {
             if (!_isSelected)
             {
-                OnSelectItem.Invoke(currentSlot.index);
+                OnSelectItem.Invoke(this);
             }
             if (activeMoveTween != null)
             {

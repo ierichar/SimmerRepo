@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+using Simmer.Items;
+
 public class GameEventManager : MonoBehaviour
 {
-    public UnityEvent<int> OnSelectItem = new UnityEvent<int>();
+    public UnityEvent<ItemBehaviour> OnSelectItem
+        = new UnityEvent<ItemBehaviour>();
 
     public void Construct()
     {

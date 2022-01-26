@@ -7,7 +7,7 @@ namespace Simmer.Player
 {
     public class PlayerEventManager : MonoBehaviour
     {
-        //public UnityEvent<int> OnSelectItem = new UnityEvent<int>();
+        public UnityEvent<int> OnSelectInventoryItem = new UnityEvent<int>();
 
         public UnityEvent OnDropItem = new UnityEvent();
 

@@ -18,5 +18,10 @@ namespace Simmer.Items
         {
             image.sprite = sprite;
         }
+
+        public void SetColor(Color color)
+        {
+            image.color = color;
+        }
     }
 }

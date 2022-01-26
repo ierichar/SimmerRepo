@@ -68,8 +68,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -734912135
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 6aab8ad2bbb69ca47824e980e0639167, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -153,5 +153,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb31509533477564a9a434a0c1e87f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInventory: {fileID: 0}
   _applianceData: {fileID: 11400000, guid: a0d4b5c0cfd7f4ec0a17eeda94c8db22, type: 2}
-  timerPrefab: {fileID: 0}
+  timerPrefab: {fileID: 7438676668410244986, guid: db1aa8dbc4c221d4bad63876567a9cd8, type: 3}

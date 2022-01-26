@@ -10,7 +10,7 @@ namespace Simmer.Items
     {
         public RectTransform rectTransform { get; protected set; }
 
-        public ItemBackgroundManager itemBackgroundManager { get; protected set; }
+        public ImageManager itemBackgroundManager { get; protected set; }
         protected ItemFactory _itemFactory;
 
         public int index { get; protected set; }
@@ -24,7 +24,7 @@ namespace Simmer.Items
 
             _itemFactory = itemFactory;
 
-            itemBackgroundManager = GetComponentInChildren<ItemBackgroundManager>();
+            itemBackgroundManager = GetComponentInChildren<ImageManager>();
             itemBackgroundManager.Construct();
         }
 
@@ -41,6 +41,7 @@ namespace Simmer.Items
         public void EmptySlot()
         {
             Destroy(currentItem.gameObject);
+            currentItem = null;
         }
 
         void IDropHandler.OnDrop(PointerEventData eventData)

@@ -99,8 +99,7 @@ namespace Simmer.Player
                                 + selected.ingredientData + " to "
                                 + app.applianceData);
 
-                            _playerInventory.RemoveFoodItem(
-                            _playerInventory.selectedItemIndex);
+                            _playerInventory.RemoveSelectedFoodItem();
                         }
 
                         app.TryInteract(selected);

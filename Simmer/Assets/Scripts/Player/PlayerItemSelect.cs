@@ -35,19 +35,19 @@ namespace Simmer.Inventory
 
                 if (Input.GetButtonDown("HotbarSelect0"))
                 {
-                    _playerManager.gameEventManager.OnSelectItem.Invoke(0);
+                    _playerEventManager.OnSelectInventoryItem.Invoke(0);
                 }
                 if (Input.GetButtonDown("HotbarSelect1"))
                 {
-                    _playerManager.gameEventManager.OnSelectItem.Invoke(1);
+                    _playerEventManager.OnSelectInventoryItem.Invoke(1);
                 }
                 if (Input.GetButtonDown("HotbarSelect2"))
                 {
-                    _playerManager.gameEventManager.OnSelectItem.Invoke(2);
+                    _playerEventManager.OnSelectInventoryItem.Invoke(2);
                 }
                 if (Input.GetButtonDown("HotbarSelect3"))
                 {
-                    _playerManager.gameEventManager.OnSelectItem.Invoke(3);
+                    _playerEventManager.OnSelectInventoryItem.Invoke(3);
                 }
             }
         }

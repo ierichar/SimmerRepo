@@ -15,9 +15,9 @@ namespace Simmer.UI
         public InventoryUIManager inventoryUIManager { get; private set; }
         public ItemFactory itemFactory { get; private set; }
 
-        public UnityEvent<int> OnSelectItem { get; private set; }
+        public UnityEvent<ItemBehaviour> OnSelectItem { get; private set; }
 
-        public void Construct(UnityEvent<int> OnSelectItem)
+        public void Construct(UnityEvent<ItemBehaviour> OnSelectItem)
         {
             this.OnSelectItem = OnSelectItem;
             playCanvas = GetComponent<Canvas>();
