@@ -41,6 +41,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Tilemap
+    uniqueID: 2621256695
+    locked: 0
+  - name: Appliances
+    uniqueID: 874241457
+    locked: 0
+  - name: Player
+    uniqueID: 2998459787
+    locked: 0
   - name: WorldUI
     uniqueID: 4167440717
     locked: 0
