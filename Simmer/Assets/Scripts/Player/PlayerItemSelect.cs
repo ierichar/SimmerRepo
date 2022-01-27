@@ -8,12 +8,14 @@ namespace Simmer.Inventory
 {
     public class PlayerItemSelect : MonoBehaviour
     {
+        private PlayerManager _playerManager;
         private PlayerEventManager _playerEventManager;
 
         private bool selectionEnabled = false;
 
         public void Construct(PlayerManager playerManager)
         {
+            _playerManager = playerManager;
             _playerEventManager = playerManager.playerEventManager;
             selectionEnabled = true;
         }
@@ -33,19 +35,19 @@ namespace Simmer.Inventory
 
                 if (Input.GetButtonDown("HotbarSelect0"))
                 {
-                    _playerEventManager.OnSelectItem.Invoke(0);
+                    _playerManager.gameEventManager.OnSelectItem.Invoke(0);
                 }
                 if (Input.GetButtonDown("HotbarSelect1"))
                 {
-                    _playerEventManager.OnSelectItem.Invoke(1);
+                    _playerManager.gameEventManager.OnSelectItem.Invoke(1);
                 }
                 if (Input.GetButtonDown("HotbarSelect2"))
                 {
-                    _playerEventManager.OnSelectItem.Invoke(2);
+                    _playerManager.gameEventManager.OnSelectItem.Invoke(2);
                 }
                 if (Input.GetButtonDown("HotbarSelect3"))
                 {
-                    _playerEventManager.OnSelectItem.Invoke(3);
+                    _playerManager.gameEventManager.OnSelectItem.Invoke(3);
                 }
             }
         }

@@ -1,24 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
-
-using Simmer.Items;
 
 namespace Simmer.Items
 {
     public class ItemSlotManager : MonoBehaviour, IDropHandler
     {
-        public RectTransform rectTransform { get; private set; }
+        public RectTransform rectTransform { get; protected set; }
 
-        public ItemCornerTextManager itemCornerTextManager { get; private set; }
-        public ItemBackgroundManager itemBackgroundManager { get; private set; }
-        private ItemFactory _itemFactory;
+        public ItemBackgroundManager itemBackgroundManager { get; protected set; }
+        protected ItemFactory _itemFactory;
 
-        public int index { get; private set; }
-        public ItemBehaviour currentItem { get; private set; }
+        public int index { get; protected set; }
+        public ItemBehaviour currentItem { get; protected set; }
 
-        public void Construct(ItemFactory itemFactory, int index)
+        public virtual void Construct(ItemFactory itemFactory
+            , int index)
         {
             rectTransform = GetComponent<RectTransform>();
             this.index = index;
@@ -27,26 +26,21 @@ namespace Simmer.Items
 
             itemBackgroundManager = GetComponentInChildren<ItemBackgroundManager>();
             itemBackgroundManager.Construct();
-
-            itemCornerTextManager = GetComponentInChildren<ItemCornerTextManager>();
-            itemCornerTextManager.Construct(index);
         }
 
-        public void SetFoodItem(FoodItem toSet)
+        public void SpawnFoodItem(FoodItem toSet)
         {
-            if (toSet == null)
-            {
-                Destroy(currentItem.gameObject);
-            }
-            else
-            {
-                currentItem = _itemFactory.ConstructItem(toSet, this);
-            }
+            SetNewSlot(_itemFactory.ConstructItem(toSet, this));
         }
 
-        public void SetCurrentItem(ItemBehaviour itemBehaviour)
+        public virtual void SetItem(ItemBehaviour item)
         {
-            this.currentItem = itemBehaviour;
+            currentItem = item;
+        }
+
+        public void EmptySlot()
+        {
+            Destroy(currentItem.gameObject);
         }
 
         void IDropHandler.OnDrop(PointerEventData eventData)
@@ -59,30 +53,36 @@ namespace Simmer.Items
             ItemBehaviour thisItem = eventData.pointerDrag
                 .GetComponent<ItemBehaviour>();
 
-
             if (currentItem == null)
             {
                 SetNewSlot(thisItem);
+                thisItem.OnChangeSlot.Invoke(true);
             }
             else if (thisItem.currentSlot != null)
             {
                 SwapSlots(thisItem);
+                thisItem.OnChangeSlot.Invoke(true);
             }
             else
             {
-                thisItem.ResetPositionToCurrentSlot();
+                thisItem.ResetPosition();
             }
         }
 
         private void SetNewSlot(ItemBehaviour thisItem)
         {
-            thisItem.currentSlot.SetCurrentItem(null);
+            thisItem.currentSlot.SetItem(null);
             thisItem.SetCurrentSlot(this);
         }
 
         private void SwapSlots(ItemBehaviour thisItem)
         {
-            currentItem.SetCurrentSlot(thisItem.currentSlot);
+            ItemBehaviour tempItem = currentItem;
+
+            tempItem.currentSlot.SetItem(null);
+            thisItem.currentSlot.SetItem(null);
+
+            tempItem.SetCurrentSlot(thisItem.currentSlot);
             thisItem.SetCurrentSlot(this);
         }
     }

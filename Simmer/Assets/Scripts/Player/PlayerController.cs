@@ -88,11 +88,24 @@ namespace Simmer.Player
                 RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, 1, 64);
                 Collider2D obj = hit.collider;
                 if(obj != null){
-                    Debug.Log("Got an object:"+ obj);
                     if (hit.transform.gameObject.TryGetComponent(out GenericAppliance app))
                     {
-                        app.ToggleOn();
-                    }else{
+                        FoodItem selected = _playerManager.playerInventory.GetSelectedItem();
+
+                        if (selected != null && selected.ingredientData
+                                .applianceRecipeDict.ContainsKey(app.applianceData))
+                        {
+                            print("Successfully added item: "
+                                + selected.ingredientData + " to "
+                                + app.applianceData);
+
+                            _playerInventory.RemoveFoodItem(
+                            _playerInventory.selectedItemIndex);
+                        }
+
+                        app.TryInteract(selected);
+                    }
+                    else{
                         Debug.Log("get Component failed");
                     }
                 }
@@ -112,26 +125,26 @@ namespace Simmer.Player
                         FoodItem selectedFoodItem = _playerManager
                             .playerInventory.GetSelectedItem();
 
-                        if(selectedFoodItem!=null)
-                        {
-                            if (selectedFoodItem.ingredientData
-                                .applianceRecipeDict.ContainsKey(app.applianceData))
-                            {
-                                print("Successfully added item: "
-                                    + selectedFoodItem.ingredientData + " to "
-                                    + app.applianceData);
+                        //if(selectedFoodItem!=null)
+                        //{
+                        //    if (selectedFoodItem.ingredientData
+                        //        .applianceRecipeDict.ContainsKey(app.applianceData))
+                        //    {
+                        //        print("Successfully added item: "
+                        //            + selectedFoodItem.ingredientData + " to "
+                        //            + app.applianceData);
 
-                                _playerInventory.RemoveFoodItem(
-                                _playerInventory.selectedItemIndex);
-                                app.AddItem(selectedFoodItem);
-                            }
-                            else
-                            {
-                                print("Unsuccessfully added item: "
-                                    + selectedFoodItem.ingredientData + " to "
-                                    + app.applianceData);
-                            }
-                        }
+                        //        _playerInventory.RemoveFoodItem(
+                        //        _playerInventory.selectedItemIndex);
+                        //        app.AddItem(selectedFoodItem);
+                        //    }
+                        //    else
+                        //    {
+                        //        print("Unsuccessfully added item: "
+                        //            + selectedFoodItem.ingredientData + " to "
+                        //            + app.applianceData);
+                        //    }
+                        //}
                     }
                     else
                     {
