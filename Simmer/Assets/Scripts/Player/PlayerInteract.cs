@@ -21,7 +21,7 @@ namespace Simmer.Player
         public void Update()
         {
             primaryAction();
-            secondaryAction();
+            //secondaryAction();
             faceMouse();
         }
 
