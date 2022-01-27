@@ -7,7 +7,7 @@ using Simmer.Inventory;
 
 namespace Simmer.Player
 {
-    public class PlayerInteract : MonoBehaviour
+    public class PlayerRayInteract : MonoBehaviour
     {
         private PlayerManager _playerManager;
         private PlayerInventory _playerInventory;

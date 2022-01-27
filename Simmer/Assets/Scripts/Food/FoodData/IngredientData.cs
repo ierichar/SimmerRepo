@@ -26,6 +26,11 @@ namespace Simmer.FoodData
             Construct();
         }
 
+        private void Awake()
+        {
+            Construct();
+        }
+
         private void Construct()
         {
             applianceRecipeDict.Clear();

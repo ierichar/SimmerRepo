@@ -16,7 +16,7 @@ namespace Simmer.Player
         public PlayerInventory playerInventory { get; private set; }
         public PlayerItemSelect playerItemSelect { get; private set; }
         public PlayerHeldItem playerHeldItem { get; private set; }
-        public PlayerInteract playerInteract { get; private set; }
+        public PlayerRayInteract playerInteract { get; private set; }
 
         public void Construct(GameEventManager gameEventManager
             , InventoryUIManager inventoryUIManager)
@@ -29,7 +29,7 @@ namespace Simmer.Player
             playerInventory = GetComponent<PlayerInventory>();
             playerItemSelect = GetComponent<PlayerItemSelect>();
             playerHeldItem = GetComponentInChildren<PlayerHeldItem>();
-            playerInteract = GetComponentInChildren<PlayerInteract>();
+            playerInteract = GetComponentInChildren<PlayerRayInteract>();
 
             playerEventManager.Construct(this);
             playerController.Construct(this);
