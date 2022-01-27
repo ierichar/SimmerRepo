@@ -33,8 +33,10 @@ namespace Simmer.Player
                 Debug.Log("Player pressed F");
                 RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, 1, 64);
                 Collider2D obj = hit.collider;
+                Debug.Log("obj: " + hit.collider);
                 if (obj != null)
                 {
+                    Debug.Log("obj != null");
                     if (hit.transform.gameObject.TryGetComponent(out GenericAppliance app))
                     {
                         FoodItem selected = _playerManager.playerInventory.GetSelectedItem();
