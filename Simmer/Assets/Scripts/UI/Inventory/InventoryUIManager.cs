@@ -8,7 +8,7 @@ namespace Simmer.Inventory
 {
     public class InventoryUIManager : MonoBehaviour
     {
-        public InventorySlotsManager inventorySlotsManager { get; private set; }
+        public InventorySlotGroupManager inventorySlotsManager { get; private set; }
 
         public InventoryEventManager inventoryEventManager { get; private set; }
 
@@ -17,7 +17,7 @@ namespace Simmer.Inventory
             inventoryEventManager = GetComponent<InventoryEventManager>();
             inventoryEventManager.Construct();
 
-            inventorySlotsManager = GetComponentInChildren<InventorySlotsManager>();
+            inventorySlotsManager = GetComponentInChildren<InventorySlotGroupManager>();
             inventorySlotsManager.Construct(itemFactory, inventoryEventManager);
         }
 

@@ -12,10 +12,11 @@ namespace Simmer.Player
         public InventoryUIManager inventoryUIManager { get; private set; }
 
         public PlayerEventManager playerEventManager { get; private set; }
-        public PlayerController playerController { get; private set; }
+        public PlayerMovement playerController { get; private set; }
         public PlayerInventory playerInventory { get; private set; }
         public PlayerItemSelect playerItemSelect { get; private set; }
         public PlayerHeldItem playerHeldItem { get; private set; }
+        public PlayerInteract playerInteract { get; private set; }
 
         public void Construct(GameEventManager gameEventManager
             , InventoryUIManager inventoryUIManager)
@@ -24,16 +25,18 @@ namespace Simmer.Player
             this.inventoryUIManager = inventoryUIManager;
 
             playerEventManager = GetComponent<PlayerEventManager>();
-            playerController = GetComponent<PlayerController>();
+            playerController = GetComponent<PlayerMovement>();
             playerInventory = GetComponent<PlayerInventory>();
-            playerHeldItem = GetComponentInChildren<PlayerHeldItem>();
             playerItemSelect = GetComponent<PlayerItemSelect>();
+            playerHeldItem = GetComponentInChildren<PlayerHeldItem>();
+            playerInteract = GetComponentInChildren<PlayerInteract>();
 
             playerEventManager.Construct(this);
             playerController.Construct(this);
             playerInventory.Construct(this);
-            playerHeldItem.Construct(this);
             playerItemSelect.Construct(this);
+            playerHeldItem.Construct(this);
+            playerInteract.Construct(this);
         }
 
     }
