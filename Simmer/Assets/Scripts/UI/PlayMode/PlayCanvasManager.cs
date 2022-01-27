@@ -27,6 +27,15 @@ namespace Simmer.UI
 
             inventoryUIManager = GetComponentInChildren<InventoryUIManager>();
             inventoryUIManager.Construct(itemFactory);
+
+
+            // TEMP TO TEST ITEMSLOTMANAGER
+            PantrySlotGroupManager pantrySlotGroupManager
+                = FindObjectOfType<PantrySlotGroupManager>();
+            if(pantrySlotGroupManager)
+            {
+                pantrySlotGroupManager.Construct(itemFactory);
+            }
         }
     }
 }

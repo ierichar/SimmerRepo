@@ -1,9 +1,12 @@
-using Simmer.Inventory;
-using Simmer.UI;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using DG.Tweening;
+
+
+using Simmer.Inventory;
+using Simmer.UI;
 
 namespace Simmer.Items
 {
@@ -115,7 +118,7 @@ namespace Simmer.Items
             _canvasGroup.alpha = 1f;
             _canvasGroup.blocksRaycasts = true;
 
-            if(_isChangeSlot)
+            if(_isChangeSlot && currentSlot.GetType() == typeof(InventorySlotManager))
             {
                 OnSelectItem.Invoke(currentSlot.index);
             }
@@ -129,7 +132,7 @@ namespace Simmer.Items
 
         void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
         {
-            if (!_isSelected)
+            if (!_isSelected && currentSlot.GetType() == typeof(InventorySlotManager))
             {
                 OnSelectItem.Invoke(currentSlot.index);
             }
