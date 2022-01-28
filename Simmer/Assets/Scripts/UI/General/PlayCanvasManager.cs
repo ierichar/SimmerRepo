@@ -12,8 +12,9 @@ namespace Simmer.UI
     {
         public Canvas playCanvas { get; set; }
 
-        public InventoryUIManager inventoryUIManager { get; private set; }
+        public TooltipBehaviour tooltipBehaviour { get; private set; }
         public ItemFactory itemFactory { get; private set; }
+        public InventoryUIManager inventoryUIManager { get; private set; }
 
         public UnityEvent<int> OnSelectItem { get; private set; }
 
@@ -22,12 +23,14 @@ namespace Simmer.UI
             this.OnSelectItem = OnSelectItem;
             playCanvas = GetComponent<Canvas>();
 
+            tooltipBehaviour = GetComponentInChildren<TooltipBehaviour>(true);
             itemFactory = GetComponent<ItemFactory>();
+            inventoryUIManager = GetComponentInChildren<InventoryUIManager>(true);
+
+            tooltipBehaviour.Construct();
             itemFactory.Construct(this);
-
-            inventoryUIManager = GetComponentInChildren<InventoryUIManager>();
             inventoryUIManager.Construct(itemFactory);
-
+            
 
             // TEMP TO TEST ITEMSLOTMANAGER
             PantrySlotGroupManager pantrySlotGroupManager
