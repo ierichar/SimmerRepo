@@ -10,6 +10,9 @@ namespace Simmer.UI.RecipeMap
     {
         [SerializeField] IngredientNode ingredientNodePrefab;
 
+        private List<IngredientNode> ingredientNodeList
+            = new List<IngredientNode>();
+
         public void Construct()
         {
 
@@ -22,8 +25,17 @@ namespace Simmer.UI.RecipeMap
             IngredientNode newNode = Instantiate(ingredientNodePrefab, transform);
 
             newNode.Construct(ingredient, position);
-
+            ingredientNodeList.Add(newNode);
             return newNode;
+        }
+
+        public void ClearAllNodes()
+        {
+            for (int i = 0; i < ingredientNodeList.Count; ++i)
+            {
+                Destroy(ingredientNodeList[i].gameObject);
+            }
+            ingredientNodeList.Clear();
         }
     }
 }

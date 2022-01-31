@@ -10,10 +10,10 @@ namespace Simmer.UI.RecipeMap
     {
         private RecipeMapManager _recipeMapManager;
         private IngredientNodeFactory _ingredientNodeFactory;
+        private EdgeLineFactory _edgeLineFactory;
         private TreeNodePositioning _treeNodePositioning;
         private AllFoodData _allFoodData;
 
-        [SerializeField] ImageManager linePrefab;
         [SerializeField] private IngredientData _apexIngredient;
         [SerializeField] private float verticalSpacing;
 
@@ -21,6 +21,7 @@ namespace Simmer.UI.RecipeMap
         {
             _recipeMapManager = recipeMapManager;
             _ingredientNodeFactory = recipeMapManager.ingredientNodeFactory;
+            _edgeLineFactory = recipeMapManager.edgeLineFactory;
             _treeNodePositioning = recipeMapManager.treeNodePositioning;
             _allFoodData = recipeMapManager.allFoodData;
         }
@@ -34,6 +35,13 @@ namespace Simmer.UI.RecipeMap
 
                 RenderTree(apexTree);
             }
+
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                _ingredientNodeFactory.ClearAllNodes();
+                _edgeLineFactory.ClearAllEdgeLines();
+            }
+
         }
 
         private void RenderTree(IngredientTree tree)
@@ -50,29 +58,11 @@ namespace Simmer.UI.RecipeMap
                 Vector2 childPosition = new Vector2(child.xPosition
                     , -child.yPosition * verticalSpacing);
 
-                ImageManager thisLine = RenderLine(thisPosition, childPosition);
                 Color thisColor = _allFoodData.recipeResultDict
                     [tree.ingredientData].applianceData.colorCode;
-                thisLine.SetColor(thisColor);
+                _edgeLineFactory.SpawnEdgeLine(thisPosition
+                    , childPosition, verticalSpacing, thisColor);
             }
-        }
-
-        private ImageManager RenderLine(Vector2 v1, Vector2 v2)
-        {
-            ImageManager thisLine = Instantiate(linePrefab, transform);
-            thisLine.Construct();
-            Vector2 dist = v1 - v2;
-            Vector2 halfDist = dist / 2;
-            thisLine.rectTransform.anchoredPosition
-                = v1 + halfDist + new Vector2(0, -verticalSpacing);
-            thisLine.rectTransform.rotation
-                = Quaternion.Euler(new Vector3(0, 0
-                , Mathf.Atan2(dist.x, dist.y) * Mathf.Rad2Deg));
-
-            thisLine.rectTransform.sizeDelta = new Vector2(
-                10, Vector2.Distance(v1, v2));
-
-            return thisLine;
         }
 
     }
