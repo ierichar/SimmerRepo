@@ -12,11 +12,11 @@ namespace Simmer.UI.RecipeMap
         private ImageManager _ingredientImageManager;
         private RectTransform _rectTransform;
 
-        private IngredientData _ingredient;
+        public IngredientData ingredientData { get; private set; }
 
         public void Construct(IngredientData ingredient, Vector2 position)
         {
-            _ingredient = ingredient;
+            this.ingredientData = ingredient;
 
             ImageManager[] ImageManagerArray
                 = GetComponentsInChildren<ImageManager>();
@@ -28,7 +28,7 @@ namespace Simmer.UI.RecipeMap
             _rectTransform = GetComponent<RectTransform>();
             _rectTransform.anchoredPosition = position;
 
-            _ingredientImageManager.SetSprite(_ingredient.sprite);
+            _ingredientImageManager.SetSprite(this.ingredientData.sprite);
         }
     }
 }

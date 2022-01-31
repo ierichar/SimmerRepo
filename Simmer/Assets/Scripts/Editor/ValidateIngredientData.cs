@@ -12,6 +12,11 @@ namespace Simmer.Editor
         [MenuItem("Tools/Validate FoodData/IngredientData %#i")]
         private static void NewNestedMenuOption()
         {
+            Validate();
+        }
+
+        public static bool Validate()
+        {
             Debug.Log("Begin ValidateFoodData ----------------------------");
             bool isValidated = true;
 
@@ -52,7 +57,7 @@ namespace Simmer.Editor
                 foreach (RecipeData recipeData in data
                     .applianceRecipeDict.Values)
                 {
-                    if(!recipeData.ingredientDataList.Contains(data))
+                    if (!recipeData.ingredientDataList.Contains(data))
                     {
                         Debug.LogError("IngredientData \""
                             + data.name + "\" on RecipeData \""
@@ -63,6 +68,7 @@ namespace Simmer.Editor
             }
 
             Debug.Log(isValidated + " ValidateIngredientData");
+            return isValidated;
         }
     }
 }

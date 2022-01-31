@@ -6,6 +6,6 @@ namespace Simmer.Appliance
 {
     public abstract class ApplianceData : ScriptableObject
     {
-        
+        public Color colorCode;
     }
 }
