@@ -176,15 +176,15 @@ namespace Simmer.Inventory
 
         private int GetNextToFillIndex()
         {
-            nextToFillIndex = 0;
-            for (int i = 0; i < _inventoryUIManager
-                .inventorySlotsManager.maxInventorySize; ++i)
-            {
-                if (!_foodItemDictionary.ContainsKey(i))
-                {
-                    return i;
-                }
-            }
+            // nextToFillIndex = 0;
+            // for (int i = 0; i < _inventoryUIManager
+            //     .inventorySlotsManager.maxInventorySize; ++i)
+            // {
+            //     if (!_foodItemDictionary.ContainsKey(i))
+            //     {
+            //         return i;
+            //     }
+            // }
             return -1;
         }
     }

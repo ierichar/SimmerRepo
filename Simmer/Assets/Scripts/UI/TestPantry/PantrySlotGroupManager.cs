@@ -7,7 +7,8 @@ using Simmer.FoodData;
 
 public class PantrySlotGroupManager : MonoBehaviour
 {
-    [SerializeField] IngredientData ingredient;
+    [SerializeField] private List<IngredientData> _startingIngredients
+            = new List<IngredientData>();
 
     private List<ItemSlotManager> _inventorySlotManagerList
             = new List<ItemSlotManager>();
@@ -22,14 +23,14 @@ public class PantrySlotGroupManager : MonoBehaviour
 
         pantrySize = itemSlotManagerArray.Length;
 
-        for (int i = 0; i < pantrySize; ++i)
+        for (int i = 0; i < 7; ++i)
         {
             ItemSlotManager thisSlot = itemSlotManagerArray[i];
 
             _inventorySlotManagerList.Add(thisSlot);
             thisSlot.Construct(itemFactory, i);
 
-            FoodItem newFoodItem = new FoodItem(ingredient);
+            FoodItem newFoodItem = new FoodItem(_startingIngredients[i]);
             thisSlot.SpawnFoodItem(newFoodItem);
         }
     }
