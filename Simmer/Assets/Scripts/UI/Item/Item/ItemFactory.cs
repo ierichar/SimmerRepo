@@ -29,7 +29,7 @@ namespace Simmer.Items
             GameObject newItem = Instantiate(templateItem
                 , Vector3.zero, Quaternion.identity, itemSlotManager.rectTransform);
             ItemBehaviour newItemBehaviour = newItem.GetComponent<ItemBehaviour>();
-            newItemBehaviour.Construct(this, _playCanvasManager, foodItem, itemSlotManager);
+            newItemBehaviour.Construct(_playCanvasManager, foodItem, itemSlotManager);
 
             return newItemBehaviour;
         }

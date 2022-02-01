@@ -6,7 +6,7 @@ using Simmer.Items;
 
 namespace Simmer.Inventory
 {
-    public class InventorySlotsManager : MonoBehaviour
+    public class InventorySlotGroupManager : MonoBehaviour
     {
         private List<ItemSlotManager> _inventorySlotManagerList
             = new List<ItemSlotManager>();

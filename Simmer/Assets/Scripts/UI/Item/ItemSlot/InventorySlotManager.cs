@@ -4,13 +4,15 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
+using Simmer.UI;
+
 namespace Simmer.Items
 {
     public class InventorySlotManager : ItemSlotManager
     {
         private UnityEvent<int, ItemBehaviour> _OnChangeItem;
 
-        public ItemCornerTextManager itemCornerTextManager { get; private set; }
+        public UITextManager cornerTextManager { get; private set; }
 
         public void Construct(UnityEvent<int, ItemBehaviour> OnChangeItem
             , ItemFactory itemFactory, int index)
@@ -18,15 +20,15 @@ namespace Simmer.Items
             _OnChangeItem = OnChangeItem;
             base.Construct(itemFactory, index);
 
-            itemCornerTextManager = GetComponentInChildren<ItemCornerTextManager>();
-            itemCornerTextManager.Construct(index);
+            cornerTextManager = GetComponentInChildren<UITextManager>();
+            cornerTextManager.Construct();
+            cornerTextManager.SetText((index + 1).ToString());
         }
 
         public override void SetItem(ItemBehaviour item)
         {
             currentItem = item;
             _OnChangeItem.Invoke(index, currentItem);
-
         }
     }
 }

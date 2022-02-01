@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 757efa895a4d444219a9ca35d873b3ab, type: 3}
   m_Name: Oven
   m_EditorClassIdentifier: 
+  colorCode: {r: 1, g: 0.5, b: 0, a: 1}
