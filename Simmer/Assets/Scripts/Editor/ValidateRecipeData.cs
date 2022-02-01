@@ -9,9 +9,13 @@ namespace Simmer.Editor
 {
     public class ValidateRecipeData : MonoBehaviour
     {
-
         [MenuItem("Tools/Validate FoodData/RecipeData %#o")]
         private static void NewMenuOption()
+        {
+            Validate();
+        }
+
+        public static bool Validate()
         {
             Debug.Log("Begin ValidateRecipeData ----------------------------");
             bool isValidated = true;
@@ -60,6 +64,7 @@ namespace Simmer.Editor
             }
 
             Debug.Log(isValidated + " ValidateRecipeData");
+            return isValidated;
         }
     }
 }

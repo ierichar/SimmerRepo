@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aebb86fdc19ee46958709afc5085132b, type: 3}
   m_Name: Plate
   m_EditorClassIdentifier: 
+  colorCode: {r: 1, g: 1, b: 1, a: 1}
   ingredientRecipeList:
   - {fileID: 11400000, guid: 1a9767e03df094770a1c2cd4017fc714, type: 2}

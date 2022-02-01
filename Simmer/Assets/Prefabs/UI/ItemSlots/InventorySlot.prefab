@@ -233,7 +233,7 @@ GameObject:
   - component: {fileID: 8206856230609667817}
   - component: {fileID: 8206856230609667822}
   - component: {fileID: 8206856230609667823}
-  - component: {fileID: 8206856230609667816}
+  - component: {fileID: 5577199248272452593}
   m_Layer: 5
   m_Name: SlotBackground
   m_TagString: Untagged
@@ -298,7 +298,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8206856230609667816
+--- !u!114 &5577199248272452593
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -307,7 +307,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8206856230609667818}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20e530b05410a4b859ed336e49636d43, type: 3}
+  m_Script: {fileID: 11500000, guid: 73f8ce93a1c414aebb52d4c439bd88a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8206856231496267630
