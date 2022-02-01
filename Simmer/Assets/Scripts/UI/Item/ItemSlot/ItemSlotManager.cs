@@ -4,13 +4,15 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
+using Simmer.UI;
+
 namespace Simmer.Items
 {
     public class ItemSlotManager : MonoBehaviour, IDropHandler
     {
         public RectTransform rectTransform { get; protected set; }
 
-        public ItemBackgroundManager itemBackgroundManager { get; protected set; }
+        public ImageManager itemBackgroundManager { get; protected set; }
         protected ItemFactory _itemFactory;
 
         public int index { get; protected set; }
@@ -24,7 +26,7 @@ namespace Simmer.Items
 
             _itemFactory = itemFactory;
 
-            itemBackgroundManager = GetComponentInChildren<ItemBackgroundManager>();
+            itemBackgroundManager = GetComponentInChildren<ImageManager>();
             itemBackgroundManager.Construct();
         }
 
@@ -52,6 +54,7 @@ namespace Simmer.Items
 
             ItemBehaviour thisItem = eventData.pointerDrag
                 .GetComponent<ItemBehaviour>();
+            if (thisItem == null) return;
 
             if (currentItem == null)
             {

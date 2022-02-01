@@ -4,16 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-namespace Simmer.Items
+namespace Simmer.UI
 {
-    public class ItemCornerTextManager : MonoBehaviour
+    public class UITextManager : MonoBehaviour
     {
         public TextMeshProUGUI textMeshPro { get; private set; }
 
-        public void Construct(int index)
+        public void Construct()
         {
             textMeshPro = GetComponent<TextMeshProUGUI>();
-            SetText((index + 1).ToString());
         }
 
         public void SetText(string text)
