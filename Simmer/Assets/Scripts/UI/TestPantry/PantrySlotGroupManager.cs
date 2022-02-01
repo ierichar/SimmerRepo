@@ -23,7 +23,7 @@ public class PantrySlotGroupManager : MonoBehaviour
 
         pantrySize = itemSlotManagerArray.Length;
 
-        for (int i = 0; i < 7; ++i)
+        for (int i = 0; i < _startingIngredients.Count; ++i)
         {
             ItemSlotManager thisSlot = itemSlotManagerArray[i];
 
