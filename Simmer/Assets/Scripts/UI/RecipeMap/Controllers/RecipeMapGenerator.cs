@@ -8,6 +8,7 @@ namespace Simmer.UI.RecipeMap
 {
     public class RecipeMapGenerator : MonoBehaviour
     {
+        [SerializeField] private RectTransform apexPositionMarker;
         private RecipeMapManager _recipeMapManager;
         private IngredientNodeFactory _ingredientNodeFactory;
         private EdgeLineFactory _edgeLineFactory;
@@ -30,21 +31,46 @@ namespace Simmer.UI.RecipeMap
         {
             if(Input.GetKeyDown(KeyCode.S))
             {
-                IngredientTree apexTree =
-                _treeNodePositioning.SpawnTree(_apexIngredient);
-
-                RenderTree(apexTree);
+                RenderTree();
             }
 
             if (Input.GetKeyDown(KeyCode.C))
             {
-                _ingredientNodeFactory.ClearAllNodes();
-                _edgeLineFactory.ClearAllEdgeLines();
+                _ingredientNodeFactory.ClearAll();
+                _edgeLineFactory.ClearAll();
             }
 
         }
 
-        private void RenderTree(IngredientTree tree)
+        public void RenderTree()
+        {
+            _ingredientNodeFactory.ClearAll();
+            _edgeLineFactory.ClearAll();
+
+            IngredientTree apexTree =
+                    _treeNodePositioning.SpawnTree(_apexIngredient);
+
+            RenderTreeRecursive(apexTree);
+
+            // Center on apexPositionMarker
+            Vector2 oldApexPosition
+                = new Vector2(apexTree.xPosition, apexTree.yPosition);
+            Vector2 displacement = apexPositionMarker
+                .anchoredPosition - oldApexPosition;
+
+            // Center tree vertical midpoint on apexPositionMarker
+            float maxDepth = _treeNodePositioning
+                .GetLowestDepth(apexTree, 0);
+            float yDisplacement = (apexTree.yPosition - maxDepth)/2;
+            displacement += new Vector2(0, -yDisplacement * verticalSpacing);
+
+            _ingredientNodeFactory.SetPosition(Vector2.zero);
+            _edgeLineFactory.SetPosition(Vector2.zero);
+            _ingredientNodeFactory.Displace(displacement);
+            _edgeLineFactory.Displace(displacement);
+        }
+
+        private void RenderTreeRecursive(IngredientTree tree)
         {
             Vector2 thisPosition = new Vector2(tree.xPosition
                 , -tree.yPosition * verticalSpacing);
@@ -53,7 +79,7 @@ namespace Simmer.UI.RecipeMap
 
             foreach (IngredientTree child in tree.childrenTreeList)
             {
-                RenderTree(child);
+                RenderTreeRecursive(child);
 
                 Vector2 childPosition = new Vector2(child.xPosition
                     , -child.yPosition * verticalSpacing);

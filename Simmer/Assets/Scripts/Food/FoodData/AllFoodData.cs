@@ -25,6 +25,11 @@ namespace Simmer.FoodData
             {
                 recipeResultDict.Add(recipe.resultIngredient, recipe);
             }
+
+            if(recipeResultDict.Count == 0)
+            {
+                Debug.LogError("ConstructRecipeResultDict failed: empty");
+            }
         }
 
         public void Construct(

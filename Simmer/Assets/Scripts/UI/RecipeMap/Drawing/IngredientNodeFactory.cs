@@ -8,6 +8,8 @@ namespace Simmer.UI.RecipeMap
 {
     public class IngredientNodeFactory : MonoBehaviour
     {
+        private RectTransform _rectTransform;
+
         [SerializeField] IngredientNode ingredientNodePrefab;
 
         private List<IngredientNode> ingredientNodeList
@@ -15,7 +17,17 @@ namespace Simmer.UI.RecipeMap
 
         public void Construct()
         {
+            _rectTransform = GetComponent<RectTransform>();
+        }
 
+        public void SetPosition(Vector2 position)
+        {
+            _rectTransform.anchoredPosition = position;
+        }
+
+        public void Displace(Vector2 displacement)
+        {
+            _rectTransform.anchoredPosition += displacement;
         }
 
         public IngredientNode SpawnIngredientNode(
@@ -29,7 +41,7 @@ namespace Simmer.UI.RecipeMap
             return newNode;
         }
 
-        public void ClearAllNodes()
+        public void ClearAll()
         {
             for (int i = 0; i < ingredientNodeList.Count; ++i)
             {

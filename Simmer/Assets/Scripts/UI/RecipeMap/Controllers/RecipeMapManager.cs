@@ -15,7 +15,7 @@ namespace Simmer.UI.RecipeMap
 
         public AllFoodData allFoodData;
 
-        private void Awake()
+        public void Construct()
         {
             ingredientNodeFactory = GetComponentInChildren<IngredientNodeFactory>();
             edgeLineFactory = GetComponentInChildren<EdgeLineFactory>();
@@ -23,6 +23,7 @@ namespace Simmer.UI.RecipeMap
             treeNodePositioning = GetComponent<TreeNodePositioning>();
 
             allFoodData.ConstructRecipeResultDict();
+
             ingredientNodeFactory.Construct();
             edgeLineFactory.Construct();
             treeNodePositioning.Construct(this);

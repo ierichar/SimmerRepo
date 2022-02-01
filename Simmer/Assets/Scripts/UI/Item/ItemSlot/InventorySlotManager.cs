@@ -29,7 +29,6 @@ namespace Simmer.Items
         {
             currentItem = item;
             _OnChangeItem.Invoke(index, currentItem);
-
         }
     }
 }

@@ -25,6 +25,23 @@ namespace Simmer.UI.RecipeMap
             recipeResultDict = _recipeMapManager.allFoodData.recipeResultDict;
         }
 
+        public float GetLowestDepth(IngredientTree tree, float currentMin)
+        {
+            if (tree.IsLeaf())
+            {
+                return Mathf.Max(tree.yPosition, currentMin);
+            }
+
+            List<float> lowestYList = new List<float>();
+
+            foreach (var child in tree.childrenTreeList)
+            {
+                lowestYList.Add(GetLowestDepth(child, currentMin));
+            }
+
+            return Mathf.Max(lowestYList.ToArray());
+        }
+
         public IngredientTree SpawnTree(IngredientData apexIngredient)
         {
             IngredientTree apexTree = new IngredientTree(apexIngredient, null);
