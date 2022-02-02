@@ -55,19 +55,18 @@ public class OvenManager : GenericAppliance
             .ContainsKey(_applianceData)) return;
         }
 
-        if (_toCook==null)
+        if (_toCook[0]==null)
         {
             RecipeData recipeData = item.ingredientData
                 .applianceRecipeDict[_applianceData];
             _resultIngredient = recipeData.resultIngredient;
             //place item to be cooked
             AddItem(item);
-            
             ToggleOn(recipeData.baseActionTime);
         }else if(_finished){
             FoodItem newFoodItem = new FoodItem(_resultIngredient);
             playerInventory.AddFoodItem(newFoodItem);
-            _toCook = null;
+            _toCook[0] = null;
         }
         else{
             //do something with appliance while cooking
@@ -85,7 +84,7 @@ public class OvenManager : GenericAppliance
     public override FoodItem TakeItem(){
         //code to take a finished product from the oven.
         FoodItem curr = null;//curr should be a FoodItem to be returned
-        if(_toCook!=null && _running){
+        if(_toCook[0]!=null && _running){
             Debug.Log("Take Item: " + (FoodItem)curr);
             //return new food item from recipes;
         }
