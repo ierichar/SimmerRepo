@@ -43,6 +43,11 @@ namespace Simmer.UI
             {
                 pantrySlotGroupManager.Construct(itemFactory);
             }
+
+            MixerManager mixerManager = FindObjectOfType<MixerManager>();
+            if(mixerManager){
+                mixerManager.Construct(itemFactory);
+            }
         }
     }
 }

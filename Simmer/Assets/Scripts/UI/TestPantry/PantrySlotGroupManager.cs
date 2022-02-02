@@ -31,7 +31,9 @@ public class PantrySlotGroupManager : MonoBehaviour
             thisSlot.Construct(itemFactory, i);
 
             FoodItem newFoodItem = new FoodItem(_startingIngredients[i]);
-            thisSlot.SpawnFoodItem(newFoodItem);
+            if(newFoodItem != null){
+                thisSlot.SpawnFoodItem(newFoodItem);
+            }
         }
     }
 }
