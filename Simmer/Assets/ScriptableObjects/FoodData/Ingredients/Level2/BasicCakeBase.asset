@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 100bfe8cc201b417887646b2755fd998, type: 3}
   m_Name: BasicCakeBase
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: c12f529955d72461da1973259cc23669, type: 3}
+  sprite: {fileID: -3544471250109128698, guid: d9cf1e27ca92e4ad7b73389798a3529d, type: 3}
   baseValue: 10
   isFinalProduct: 0
   _recipeEdgeList:

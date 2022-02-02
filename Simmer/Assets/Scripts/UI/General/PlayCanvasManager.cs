@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 using Simmer.Inventory;
 using Simmer.Items;
+using Simmer.UI.RecipeMap;
 
 namespace Simmer.UI
 {
@@ -12,8 +13,10 @@ namespace Simmer.UI
     {
         public Canvas playCanvas { get; set; }
 
-        public InventoryUIManager inventoryUIManager { get; private set; }
+        public TooltipBehaviour tooltipBehaviour { get; private set; }
         public ItemFactory itemFactory { get; private set; }
+        public InventoryUIManager inventoryUIManager { get; private set; }
+        public RecipeMapWindow recipeMapWindow { get; private set; }
 
         public UnityEvent<int> OnSelectItem { get; private set; }
 
@@ -22,11 +25,15 @@ namespace Simmer.UI
             this.OnSelectItem = OnSelectItem;
             playCanvas = GetComponent<Canvas>();
 
+            tooltipBehaviour = GetComponentInChildren<TooltipBehaviour>(true);
             itemFactory = GetComponent<ItemFactory>();
-            itemFactory.Construct(this);
+            inventoryUIManager = GetComponentInChildren<InventoryUIManager>(true);
+            recipeMapWindow = GetComponentInChildren<RecipeMapWindow>(true);
 
-            inventoryUIManager = GetComponentInChildren<InventoryUIManager>();
+            tooltipBehaviour.Construct();
+            itemFactory.Construct(this);
             inventoryUIManager.Construct(itemFactory);
+            recipeMapWindow.Construct();
 
 
             // TEMP TO TEST ITEMSLOTMANAGER
@@ -35,6 +42,11 @@ namespace Simmer.UI
             if(pantrySlotGroupManager)
             {
                 pantrySlotGroupManager.Construct(itemFactory);
+            }
+
+            MixerManager mixerManager = FindObjectOfType<MixerManager>();
+            if(mixerManager){
+                mixerManager.Construct(itemFactory);
             }
         }
     }

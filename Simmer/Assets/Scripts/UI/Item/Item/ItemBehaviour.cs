@@ -4,7 +4,6 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using DG.Tweening;
 
-
 using Simmer.Inventory;
 using Simmer.UI;
 
@@ -13,17 +12,20 @@ namespace Simmer.Items
     public class ItemBehaviour : MonoBehaviour
         , IPointerDownHandler
         , IPointerUpHandler
+        , IPointerEnterHandler
+        , IPointerExitHandler
         , IBeginDragHandler
         , IEndDragHandler
         , IDragHandler
     {
-        private ItemFactory _itemFactory;
         private PlayCanvasManager _playCanvasManager;
-        private UnityEvent<int> OnSelectItem;
+        private ItemFactory _itemFactory;
+        private TooltipBehaviour _tooltipBehaviour;
         private Canvas _playCanvas;
+        private UnityEvent<int> OnSelectItem;
 
         private RectTransform _rectTransform;
-        private ItemImageManager _itemImageManager;
+        private ImageManager _itemImageManager;
         private CanvasGroup _canvasGroup;
 
         public ItemSlotManager currentSlot { get; private set; }
@@ -35,16 +37,18 @@ namespace Simmer.Items
 
         private Tween activeMoveTween;
 
-        public void Construct(ItemFactory itemFactory
-            , PlayCanvasManager playCanvasManager
+        public void Construct(
+            PlayCanvasManager playCanvasManager
             , FoodItem foodItem
             , ItemSlotManager currentSlot)
         {
-            _itemFactory = itemFactory;
+            _playCanvasManager = playCanvasManager;
+            _itemFactory = playCanvasManager.itemFactory;
+            _tooltipBehaviour = playCanvasManager.tooltipBehaviour;
+
             this.foodItem = foodItem;
             this.currentSlot = currentSlot;
 
-            _playCanvasManager = playCanvasManager;
             OnSelectItem = _playCanvasManager.OnSelectItem;
             _playCanvas = _playCanvasManager.playCanvas;
 
@@ -53,7 +57,7 @@ namespace Simmer.Items
 
             _canvasGroup = GetComponent<CanvasGroup>();
 
-            _itemImageManager = GetComponentInChildren<ItemImageManager>();
+            _itemImageManager = GetComponentInChildren<ImageManager>();
             _itemImageManager.Construct();
 
             OnChangeSlot.AddListener(OnChangeSlotCallback);
@@ -99,6 +103,11 @@ namespace Simmer.Items
             activeMoveTween = _rectTransform.DOAnchorPos
                 (Vector2.zero, _itemFactory.minMoveDuration)
                 .SetEase(_itemFactory.moveEase);
+        }
+
+        private void OnChangeSlotCallback(bool changed)
+        {
+            _isChangeSlot = changed;
         }
 
         void IBeginDragHandler.OnBeginDrag(PointerEventData eventData)
@@ -147,9 +156,15 @@ namespace Simmer.Items
             //OnSelectItem.Invoke(currentSlot.index);
         }
 
-        private void OnChangeSlotCallback(bool changed)
+        void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
         {
-            _isChangeSlot = changed;
+            _tooltipBehaviour.SetPosition(transform);
+            _tooltipBehaviour.ShowTooltip(foodItem.ingredientData.name);
+        }
+
+        void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
+        {
+            _tooltipBehaviour.ShowTooltip("", false);
         }
     }
 

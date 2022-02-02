@@ -23,6 +23,7 @@ namespace Simmer.Inventory
 
         private int nextToFillIndex = 0;
         public int selectedItemIndex { get; private set;}
+        private Color defaultColor = new Color(204.0f, 204.0f, 204.0f, 255.0f);
 
         public void Construct(PlayerManager playerManager)
         {
@@ -57,7 +58,7 @@ namespace Simmer.Inventory
             {
                 inventorySlot = _inventoryUIManager
                     .inventorySlotsManager.GetInventorySlot(selectedItemIndex);
-                inventorySlot.itemBackgroundManager.SetColor(Color.grey);
+                inventorySlot.itemBackgroundManager.SetColor(defaultColor);
                 _playerHeldItem.SetSprite(null);
             }
 
@@ -176,16 +177,25 @@ namespace Simmer.Inventory
 
         private int GetNextToFillIndex()
         {
-            // nextToFillIndex = 0;
-            // for (int i = 0; i < _inventoryUIManager
-            //     .inventorySlotsManager.maxInventorySize; ++i)
-            // {
-            //     if (!_foodItemDictionary.ContainsKey(i))
-            //     {
-            //         return i;
-            //     }
-            // }
+            nextToFillIndex = 0;
+            for (int i = 0; i < _inventoryUIManager
+                .inventorySlotsManager.maxInventorySize; ++i)
+            {
+                if (!_foodItemDictionary.ContainsKey(i))
+                {
+                    return i;
+                }
+            }
             return -1;
+        }
+
+        public bool IsFull() 
+        {
+            if(nextToFillIndex == -1)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

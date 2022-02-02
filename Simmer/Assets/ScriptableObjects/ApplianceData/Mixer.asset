@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aebb86fdc19ee46958709afc5085132b, type: 3}
   m_Name: Mixer
   m_EditorClassIdentifier: 
+  colorCode: {r: 1, g: 1, b: 0, a: 1}
   ingredientRecipeList:
   - {fileID: 11400000, guid: e1d0faecbce5d4d6ea549b13c68ba768, type: 2}
