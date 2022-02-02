@@ -23,6 +23,7 @@ namespace Simmer.Inventory
 
         private int nextToFillIndex = 0;
         public int selectedItemIndex { get; private set;}
+        private Color defaultColor = new Color(204.0f, 204.0f, 204.0f, 255.0f);
 
         public void Construct(PlayerManager playerManager)
         {
@@ -57,7 +58,7 @@ namespace Simmer.Inventory
             {
                 inventorySlot = _inventoryUIManager
                     .inventorySlotsManager.GetInventorySlot(selectedItemIndex);
-                inventorySlot.itemBackgroundManager.SetColor(Color.grey);
+                inventorySlot.itemBackgroundManager.SetColor(defaultColor);
                 _playerHeldItem.SetSprite(null);
             }
 

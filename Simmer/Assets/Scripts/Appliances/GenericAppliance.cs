@@ -23,12 +23,14 @@ public abstract class GenericAppliance : MonoBehaviour
 
     //invSize should be defined by each individual applaince
     protected int _invSize;
+    protected bool invOpen = false;
     protected int _currentNumItems = 0;
     protected float _cookingTimeMultiplier = 1.0f;
-    [SerializeField] protected FoodItem[] _toCook;
+    protected List<FoodItem> _toCook = new List<FoodItem>();
+    //protected FoodItem[]_toCook;
     protected float _timeRunning = 0.0f;
 
-    protected bool _idle;
+    //protected bool _idle;
     protected bool _running;
     protected bool _finished;
     
@@ -38,7 +40,7 @@ public abstract class GenericAppliance : MonoBehaviour
 
     //-----------------------------------------------------------
     //inherited methods
-    public abstract void ToggleInventory(bool UIOpen);
+    public abstract void ToggleInventory();
     public abstract void TryInteract(FoodItem item);
     public abstract void AddItem(FoodItem recipe);
     public abstract FoodItem TakeItem();

@@ -17,9 +17,9 @@ public class OvenManager : GenericAppliance
         _timer.SetUpTimer(this.transform);
 
         _invSize = 1;
-        _toCook = new FoodItem[_invSize];
+        //_toCook = new FoodItem[1];
 
-        _idle = true;
+        //_idle = true;
         _running = false;
         _finished = false;
 
@@ -34,28 +34,27 @@ public class OvenManager : GenericAppliance
             _timeRunning += Time.deltaTime;
             //Debug.Log("Time: " + _timeRunning);
             
-        }if(_idle){
+        }if(_finished){
             _timeRunning = 0.0f;
         }
     }
 
-    public override void ToggleInventory(bool UIOpen){
-        if(UIOpen){
-            //pop up interactable UI window here
+    public override void ToggleInventory(){
+        if(!invOpen){
+            invOpen = true;
         }else{
-            //close pop up interactable UI window here
+            invOpen = false;
         }
     }
 
     public override void TryInteract(FoodItem item){
-
         if(item != null)
         {
             if (!item.ingredientData.applianceRecipeDict
             .ContainsKey(_applianceData)) return;
         }
 
-        if (_toCook[0]==null)
+        if (_toCook.Count==0)
         {
             RecipeData recipeData = item.ingredientData
                 .applianceRecipeDict[_applianceData];
@@ -66,7 +65,7 @@ public class OvenManager : GenericAppliance
         }else if(_finished){
             FoodItem newFoodItem = new FoodItem(_resultIngredient);
             playerInventory.AddFoodItem(newFoodItem);
-            _toCook[0] = null;
+            _toCook.Clear();
         }
         else{
             //do something with appliance while cooking
@@ -78,13 +77,13 @@ public class OvenManager : GenericAppliance
         //add code for player Script to interact with this object
 
         //FIX THIS HARD CODE INDCIE TO BE VARIABLE ADDRESSING DESIRED INV SLOT TO FILL
-        _toCook[0] = recipe;
+        _toCook.Add(recipe);
     }
 
     public override FoodItem TakeItem(){
         //code to take a finished product from the oven.
         FoodItem curr = null;//curr should be a FoodItem to be returned
-        if(_toCook[0]!=null && _running){
+        if(_toCook.Count>0 && _running){
             Debug.Log("Take Item: " + (FoodItem)curr);
             //return new food item from recipes;
         }
