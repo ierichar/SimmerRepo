@@ -18,21 +18,6 @@ public class MixerManager : GenericAppliance
 
     public void Construct(ItemFactory itemFactory)
     {
-        // Will get them in order of Scene Hierarchy from top to bottom
-        ItemSlotManager[] itemSlotArray
-            = mixerSlots.GetComponentsInChildren<ItemSlotManager>();
-
-        for (int i = 0; i < _invSize; ++i)
-        {
-            ItemSlotManager thisSlot = itemSlotArray[i];
-
-            _inventorySlotManagerList.Add(thisSlot);
-            thisSlot.Construct(itemFactory, i);
-        }
-    }
-
-    void Awake()
-    {
         _timer = Instantiate(_timerPrefab, new Vector3(0, 0, 0), Quaternion.identity);
         _timer.SetUpTimer(this.transform);
 
@@ -47,8 +32,20 @@ public class MixerManager : GenericAppliance
         _finished = false;
 
         _timeRunning = 0.0f;
-    }
 
+        // Will get them in order of Scene Hierarchy from top to bottom
+        ItemSlotManager[] itemSlotArray
+            = mixerSlots.GetComponentsInChildren<ItemSlotManager>();
+
+        for (int i = 0; i < _invSize; ++i)
+        {
+            ItemSlotManager thisSlot = itemSlotArray[i];
+
+            _inventorySlotManagerList.Add(thisSlot);
+            thisSlot.Construct(itemFactory, i);
+        }
+    }
+    
     void FixedUpdate()
     {
         //update time running
