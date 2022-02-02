@@ -92,6 +92,7 @@ public abstract class GenericAppliance : MonoBehaviour
         Debug.Log("Toggling off");
         _running = false;
         _finishedProcessing = true;
+        //show the food is done and may be burning after x amount of time
         timer.HideClock();
     }
 }

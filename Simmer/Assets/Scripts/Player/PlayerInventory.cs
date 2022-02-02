@@ -187,5 +187,14 @@ namespace Simmer.Inventory
             }
             return -1;
         }
+
+        public bool IsFull() 
+        {
+            if(nextToFillIndex == -1)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }
