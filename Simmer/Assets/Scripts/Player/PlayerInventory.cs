@@ -191,7 +191,7 @@ namespace Simmer.Inventory
 
         public bool IsFull() 
         {
-            if(nextToFillIndex == -1)
+            if(GetNextToFillIndex() == -1)
             {
                 return true;
             }
