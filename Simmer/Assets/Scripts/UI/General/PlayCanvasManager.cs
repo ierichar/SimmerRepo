@@ -30,7 +30,7 @@ namespace Simmer.UI
             inventoryUIManager = GetComponentInChildren<InventoryUIManager>(true);
             recipeMapWindow = GetComponentInChildren<RecipeMapWindow>(true);
 
-            tooltipBehaviour.Construct();
+            tooltipBehaviour.Construct(transform);
             itemFactory.Construct(this);
             inventoryUIManager.Construct(itemFactory);
             recipeMapWindow.Construct();

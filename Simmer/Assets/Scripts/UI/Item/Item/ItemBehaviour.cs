@@ -9,7 +9,7 @@ using Simmer.UI;
 
 namespace Simmer.Items
 {
-    public class ItemBehaviour : MonoBehaviour
+    public class ItemBehaviour : MonoBehaviour, ITooltipable
         , IPointerDownHandler
         , IPointerUpHandler
         , IPointerEnterHandler
@@ -34,6 +34,8 @@ namespace Simmer.Items
         public UnityEvent<bool> OnChangeSlot = new UnityEvent<bool>();
         private bool _isChangeSlot;
         private bool _isSelected;
+
+        private bool isTooltipActive;
 
         private Tween activeMoveTween;
 
@@ -158,14 +160,30 @@ namespace Simmer.Items
 
         void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
         {
-            _tooltipBehaviour.SetPosition(transform);
-            _tooltipBehaviour.ShowTooltip(foodItem.ingredientData.name);
+            ((ITooltipable)this).SetParent(this, true);
         }
 
         void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
         {
-            _tooltipBehaviour.ShowTooltip("", false);
+            ((ITooltipable)this).SetParent(this, false);
+        }
+
+        void ITooltipable.SetParent(ITooltipable reference, bool isTarget)
+        {
+            _tooltipBehaviour.SetTarget(transform, this, isTarget);
+            if(isTarget)
+            {
+                _tooltipBehaviour.ShowTooltip(foodItem.ingredientData.name);
+            }
+            else
+            {
+                _tooltipBehaviour.ShowTooltip("", false);
+            }
+        }
+
+        private void OnDisable()
+        {
+            ((ITooltipable)this).SetParent(this, false);
         }
     }
-
 }
