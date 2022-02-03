@@ -5,7 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Master Scenes/KitchenScene.unity
-    guid: 78353e88686a44e4790e40b7f47cc5e2
+    guid: 215f8b84c1f0f4a019d1772a99929463
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/EvanScene.unity
+    guid: 502783c35fb9044acba83fc6f500d534
   m_configObjects: {}

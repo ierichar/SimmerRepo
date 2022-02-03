@@ -23,3 +23,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1c3717ce0a5c841bbb4dc7e348bbe5eb, type: 2}
   - {fileID: 11400000, guid: cb52c8d08c91d4c9ab15a324bbe2b7a0, type: 2}
   - {fileID: 11400000, guid: 7fe9c2db8c0af44ea9b48448929217dd, type: 2}
+  allRecipeDataList:
+  - {fileID: 11400000, guid: e1d0faecbce5d4d6ea549b13c68ba768, type: 2}
+  - {fileID: 11400000, guid: bb56e27414d6740b1b7246b20d123460, type: 2}
+  - {fileID: 11400000, guid: 1a9767e03df094770a1c2cd4017fc714, type: 2}

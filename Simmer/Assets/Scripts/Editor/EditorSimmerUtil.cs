@@ -3,7 +3,7 @@ using UnityEditor;
 
 namespace Simmer.Editor
 {
-    public class EditorUtility : MonoBehaviour
+    public class EditorSimmerUtil : MonoBehaviour
     {
         public static T[] GetAllInstances<T>() where T : ScriptableObject
         {
@@ -16,6 +16,13 @@ namespace Simmer.Editor
             }
 
             return a;
+        }
+
+        public static void SaveAsset(Object asset)
+        {
+            EditorUtility.SetDirty(asset);
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
         }
     }
 }
