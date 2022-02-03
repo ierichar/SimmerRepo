@@ -27,7 +27,7 @@ public class MixerManager : GenericAppliance
             ItemSlotManager thisSlot = itemSlotArray[i];
 
             _inventorySlotManagerList.Add(thisSlot);
-            thisSlot.Construct(itemFactory, i);
+            thisSlot.Construct(i);
         }
     }
 

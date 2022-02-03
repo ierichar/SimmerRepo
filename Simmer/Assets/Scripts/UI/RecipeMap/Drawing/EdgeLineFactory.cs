@@ -30,12 +30,14 @@ namespace Simmer.UI.RecipeMap
         public EdgeLine SpawnEdgeLine(Vector2 v1
             , Vector2 v2
             , float verticalSpacing
+            , float verticalLineGap
             , Color thisColor)
         {
             EdgeLine thisLine = Instantiate(edgeLinePrefab, transform);
             thisLine.Construct(v1
                 , v2
                 , verticalSpacing
+                , verticalLineGap
                 , thisColor);
 
             edgeLineList.Add(thisLine);

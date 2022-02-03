@@ -10,29 +10,33 @@ public class PantrySlotGroupManager : MonoBehaviour
     [SerializeField] private List<IngredientData> _startingIngredients
             = new List<IngredientData>();
 
-    private List<ItemSlotManager> _inventorySlotManagerList
-            = new List<ItemSlotManager>();
+    private List<SpawningSlotManager> _inventorySlotManagerList
+            = new List<SpawningSlotManager>();
 
     public int pantrySize { get; private set; }
 
     public void Construct(ItemFactory itemFactory)
     {
         // Will get them in order of Scene Hierarchy from top to bottom
-        ItemSlotManager[] itemSlotManagerArray
-            = GetComponentsInChildren<ItemSlotManager>();
+        SpawningSlotManager[] itemSlotManagerArray
+            = GetComponentsInChildren<SpawningSlotManager>();
 
         pantrySize = itemSlotManagerArray.Length;
 
-        for (int i = 0; i < _startingIngredients.Count; ++i)
+        for (int i = 0; i < pantrySize; ++i)
         {
-            ItemSlotManager thisSlot = itemSlotManagerArray[i];
+            SpawningSlotManager thisSlot = itemSlotManagerArray[i];
 
             _inventorySlotManagerList.Add(thisSlot);
             thisSlot.Construct(itemFactory, i);
 
-            FoodItem newFoodItem = new FoodItem(_startingIngredients[i]);
-            if(newFoodItem != null){
-                thisSlot.SpawnFoodItem(newFoodItem);
+            if(i < _startingIngredients.Count)
+            {
+                FoodItem newFoodItem = new FoodItem(_startingIngredients[i]);
+                if (newFoodItem != null)
+                {
+                    thisSlot.SpawnFoodItem(newFoodItem);
+                }
             }
         }
     }

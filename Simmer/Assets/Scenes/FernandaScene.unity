@@ -1959,6 +1959,7 @@ MonoBehaviour:
   apexPositionMarker: {fileID: 360675756}
   _apexIngredient: {fileID: 11400000, guid: 7fe9c2db8c0af44ea9b48448929217dd, type: 2}
   verticalSpacing: 300
+  verticalLineGap: 0
 --- !u!114 &330664529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1986,6 +1987,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cce49ac0db21040a0a50f918fdb632cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  apexRecipeSlot: {fileID: 0}
   allFoodData: {fileID: 11400000, guid: 05f30738b897a4f9883d29e9da799118, type: 2}
 --- !u!114 &330664531
 MonoBehaviour:
