@@ -46,7 +46,7 @@ namespace Simmer.UI
 
             MixerManager mixerManager = FindObjectOfType<MixerManager>();
             if(mixerManager){
-                mixerManager.Construct(itemFactory);
+                mixerManager.Construct();
             }
         }
     }
