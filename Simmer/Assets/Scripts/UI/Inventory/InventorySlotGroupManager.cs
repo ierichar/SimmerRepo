@@ -8,8 +8,8 @@ namespace Simmer.Inventory
 {
     public class InventorySlotGroupManager : MonoBehaviour
     {
-        private List<ItemSlotManager> _inventorySlotManagerList
-            = new List<ItemSlotManager>();
+        private List<InventorySlotManager> _inventorySlotManagerList
+            = new List<InventorySlotManager>();
 
         public int maxInventorySize { get; private set; }
 
@@ -31,7 +31,7 @@ namespace Simmer.Inventory
             }
         }
 
-        public ItemSlotManager GetInventorySlot(int index)
+        public InventorySlotManager GetInventorySlot(int index)
         {
             return _inventorySlotManagerList[index];
         }

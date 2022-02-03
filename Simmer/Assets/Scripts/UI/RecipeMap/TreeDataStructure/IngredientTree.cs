@@ -85,6 +85,15 @@ namespace Simmer.UI.RecipeMap
             return childrenTreeList[childrenTreeList.Count - 1];
         }
 
+        public float GetMiddleChildXPosition()
+        {
+            if (childrenTreeList.Count <= 2) return xPosition;
+
+            float midpoint = (GetRightMostChild().xPosition
+                - GetLeftMostChild().xPosition) / 2;
+            return midpoint;
+        }
+
         public override string ToString()
         {
             return ingredientData.name;

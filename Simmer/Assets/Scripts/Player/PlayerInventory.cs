@@ -134,7 +134,7 @@ namespace Simmer.Inventory
             {
                 _foodItemDictionary.Add(nextToFillIndex, item);
 
-                ItemSlotManager inventorySlot = _inventoryUIManager
+                InventorySlotManager inventorySlot = _inventoryUIManager
                     .inventorySlotsManager.GetInventorySlot(nextToFillIndex);
                 inventorySlot.SpawnFoodItem(item);
             } 
