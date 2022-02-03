@@ -32,7 +32,7 @@ namespace Simmer.Editor
         {
             Debug.Log("Begin Update AllFoodData ----------------------------");
 
-            AllFoodData[] allFoodDataArray = EditorUtility
+            AllFoodData[] allFoodDataArray = EditorSimmerUtil
                 .GetAllInstances<AllFoodData>();
 
             if(allFoodDataArray.Length != 1)
@@ -43,13 +43,15 @@ namespace Simmer.Editor
 
             AllFoodData allFoodData = allFoodDataArray[0];
 
-            IngredientData[] ingredientArray = EditorUtility
+            IngredientData[] ingredientArray = EditorSimmerUtil
                 .GetAllInstances<IngredientData>();
 
-            RecipeData[] recipeArray = EditorUtility
+            RecipeData[] recipeArray = EditorSimmerUtil
                 .GetAllInstances<RecipeData>();
 
             allFoodData.Construct(ingredientArray, recipeArray);
+            EditorSimmerUtil.SaveAsset(allFoodData);
+
             Debug.Log("End Update AllFoodData ----------------------------");
         }
     }

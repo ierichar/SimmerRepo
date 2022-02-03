@@ -20,7 +20,7 @@ namespace Simmer.Editor
             Debug.Log("Begin ValidateFoodData ----------------------------");
             bool isValidated = true;
 
-            IngredientData[] dataArray = EditorUtility
+            IngredientData[] dataArray = EditorSimmerUtil
                 .GetAllInstances<IngredientData>();
 
             foreach (IngredientData data in dataArray)
