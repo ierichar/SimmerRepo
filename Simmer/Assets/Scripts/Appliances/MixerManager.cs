@@ -16,7 +16,7 @@ public class MixerManager : GenericAppliance
     private GameObject myInv;
     private GameObject mixerSlots;
 
-    public void Construct(ItemFactory itemFactory)
+    public void Construct()
     {
         _timer = Instantiate(_timerPrefab, new Vector3(0, 0, 0), Quaternion.identity);
         _timer.SetUpTimer(this.transform);
@@ -42,7 +42,7 @@ public class MixerManager : GenericAppliance
             ItemSlotManager thisSlot = itemSlotArray[i];
 
             _inventorySlotManagerList.Add(thisSlot);
-            thisSlot.Construct(itemFactory, i);
+            thisSlot.Construct(i);
         }
     }
     

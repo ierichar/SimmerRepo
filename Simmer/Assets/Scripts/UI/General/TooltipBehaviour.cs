@@ -9,11 +9,16 @@ namespace Simmer.UI
         private UITextManager _textManager;
         private ImageManager _imageManager;
         private RectTransform _rectTransform;
+        private Transform _fallbackTransform;
 
         [SerializeField] private float _textPadding;
 
-        public void Construct()
+        private ITooltipable currentTarget;
+
+        public void Construct(Transform fallbackTransform)
         {
+            _fallbackTransform = fallbackTransform;
+
             _textManager = GetComponentInChildren<UITextManager>();
             _textManager.Construct();
 
@@ -44,10 +49,23 @@ namespace Simmer.UI
             ShowTooltip(text, true);
         }
 
-        public void SetPosition(Transform newParent)
+        public void SetTarget(Transform newParent
+            , ITooltipable target
+            , bool isTarget)
         {
-            transform.SetParent(newParent);
-            _rectTransform.anchoredPosition = Vector2.zero;
+            if (isTarget)
+            {
+                transform.SetParent(newParent);
+                currentTarget = target;
+                _rectTransform.anchoredPosition = Vector2.zero;
+            }
+            else
+            {
+                transform.SetParent(_fallbackTransform);
+                _rectTransform.anchoredPosition = Vector2.zero;
+                currentTarget = null;
+            }
+            
         }
 
         private void SetText(string text)

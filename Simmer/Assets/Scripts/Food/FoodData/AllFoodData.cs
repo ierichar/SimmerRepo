@@ -47,6 +47,8 @@ namespace Simmer.FoodData
             {
                 allRecipeDataList.Add(recipe);
             }
+
+            ConstructRecipeResultDict();
         }
     }
 }

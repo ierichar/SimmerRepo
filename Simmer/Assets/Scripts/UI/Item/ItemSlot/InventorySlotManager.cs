@@ -8,7 +8,7 @@ using Simmer.UI;
 
 namespace Simmer.Items
 {
-    public class InventorySlotManager : ItemSlotManager
+    public class InventorySlotManager : SpawningSlotManager
     {
         private UnityEvent<int, ItemBehaviour> _OnChangeItem;
 
