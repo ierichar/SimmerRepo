@@ -45,9 +45,10 @@ namespace Simmer.UI
             }
 
             MixerManager mixerManager = FindObjectOfType<MixerManager>();
-            if(mixerManager){
-                mixerManager.Construct();
-            }
+            if(mixerManager) mixerManager.Construct();
+
+            OvenManager ovenManager = FindObjectOfType<OvenManager>();
+            if(ovenManager) ovenManager.Construct();
         }
     }
 }

@@ -10,11 +10,13 @@ using Simmer.Inventory;
 
 public class MixerManager : GenericAppliance
 {
-    private List<ItemSlotManager> _inventorySlotManagerList
+    private List<ItemSlotManager> _mixerSlotManager
             = new List<ItemSlotManager>();
     
     private GameObject myInv;
     private GameObject mixerSlots;
+
+    private List<IngredientData> currentIngredientList = new List<IngredientData>();
 
     public void Construct()
     {
@@ -41,7 +43,7 @@ public class MixerManager : GenericAppliance
         {
             ItemSlotManager thisSlot = itemSlotArray[i];
 
-            _inventorySlotManagerList.Add(thisSlot);
+            _mixerSlotManager.Add(thisSlot);
             thisSlot.Construct(i);
         }
     }
@@ -56,15 +58,18 @@ public class MixerManager : GenericAppliance
         }if(!_running){
             _timeRunning = 0.0f;
         }
+
     }
 
     public override void ToggleInventory(){
-        if(!invOpen){
+        if(!invOpen && !UI_OPEN){
             myInv.SetActive(true);
             invOpen = true;
-        }else{
+            UI_OPEN = true;
+        }else if(invOpen && UI_OPEN){
             myInv.SetActive(false);
             invOpen = false;
+            UI_OPEN = false;
         }
     }
     public override void TryInteract(FoodItem item){
@@ -77,9 +82,26 @@ public class MixerManager : GenericAppliance
         return null;
     }
     public override void ToggleOn(float duration){
+        if(!_running) _running = true;
+
+        IngredientData firstIgredientData = _mixerSlotManager[0].currentItem.foodItem.ingredientData;
+
+        RecipeData possibleRecipes = firstIgredientData.applianceRecipeDict[this._applianceData];
+
+
+        //PICK UP RECIPE VALIDATION HERE
 
     }
     protected override void Finished(){
 
+    }
+
+    private void UpdateCurrentIngredientList(){
+        currentIngredientList.Clear();
+        foreach(ItemSlotManager peekItem in _mixerSlotManager){
+            if(peekItem.currentItem != null){
+                currentIngredientList.Add(peekItem.currentItem.foodItem.ingredientData);
+            }
+        }
     }
 }

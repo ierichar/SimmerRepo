@@ -10,23 +10,42 @@ using Simmer.Inventory;
 
 public class OvenManager : GenericAppliance
 {
-    //private float _timeRunning;
-    void Awake()
+    private List<ItemSlotManager> _inventorySlotManagerList
+            = new List<ItemSlotManager>();
+    
+    private GameObject myInv;
+    private GameObject ovenSlots;
+
+    public void Construct()
     {
         _timer = Instantiate(_timerPrefab, new Vector3(0, 0, 0), Quaternion.identity);
         _timer.SetUpTimer(this.transform);
 
         _invSize = 1;
-        //_toCook = new FoodItem[1];
+        myInv = GameObject.Find("OvenInventory");
+        ovenSlots = GameObject.Find("OvenSlots");
+        myInv.SetActive(false);
+        
 
         //_idle = true;
         _running = false;
         _finished = false;
 
         _timeRunning = 0.0f;
-    }
 
-    // Update is called once per frame
+        // Will get them in order of Scene Hierarchy from top to bottom
+        ItemSlotManager[] itemSlotArray
+            = ovenSlots.GetComponentsInChildren<ItemSlotManager>();
+
+        for (int i = 0; i < _invSize; ++i)
+        {
+            ItemSlotManager thisSlot = itemSlotArray[i];
+
+            _inventorySlotManagerList.Add(thisSlot);
+            thisSlot.Construct(i);
+        }
+    }
+    
     void FixedUpdate()
     {
         //update time running
@@ -34,16 +53,20 @@ public class OvenManager : GenericAppliance
             _timeRunning += Time.deltaTime;
             //Debug.Log("Time: " + _timeRunning);
             
-        }if(_finished){
+        }if(!_running){
             _timeRunning = 0.0f;
         }
     }
 
     public override void ToggleInventory(){
-        if(!invOpen){
+        if(!invOpen && !UI_OPEN){
+            myInv.SetActive(true);
             invOpen = true;
-        }else{
+            UI_OPEN = true;
+        }else if(invOpen && UI_OPEN){
+            myInv.SetActive(false);
             invOpen = false;
+            UI_OPEN = false;
         }
     }
 

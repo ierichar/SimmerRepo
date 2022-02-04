@@ -15,6 +15,8 @@ public abstract class GenericAppliance : MonoBehaviour
     [SerializeField] protected PlayerInventory playerInventory;
 
     [SerializeField] protected ApplianceData _applianceData;
+
+    protected static bool UI_OPEN = false;
     public ApplianceData applianceData
     {
         get { return _applianceData; }

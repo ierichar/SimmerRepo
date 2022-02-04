@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/EvanScene.unity
     guid: 502783c35fb9044acba83fc6f500d534
   m_configObjects: {}
