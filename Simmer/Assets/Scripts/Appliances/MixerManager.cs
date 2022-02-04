@@ -10,11 +10,12 @@ using Simmer.Inventory;
 
 public class MixerManager : GenericAppliance
 {
-    private List<ItemSlotManager> _mixerSlotManager
-            = new List<ItemSlotManager>();
+    private List<SpawningSlotManager> _mixerSlotManager
+            = new List<SpawningSlotManager>();
     
     private GameObject myInv;
     private GameObject mixerSlots;
+    private ItemFactory _itemFactory;
 
     private List<IngredientData> currentIngredientList = new List<IngredientData>();
 
@@ -26,6 +27,7 @@ public class MixerManager : GenericAppliance
         _invSize = 6;
         myInv = GameObject.Find("MixerInventory");
         mixerSlots = GameObject.Find("MixerSlots");
+        _itemFactory = FindObjectOfType<ItemFactory>();
         myInv.SetActive(false);
         
 
@@ -36,15 +38,15 @@ public class MixerManager : GenericAppliance
         _timeRunning = 0.0f;
 
         // Will get them in order of Scene Hierarchy from top to bottom
-        ItemSlotManager[] itemSlotArray
-            = mixerSlots.GetComponentsInChildren<ItemSlotManager>();
+        SpawningSlotManager[] itemSlotArray
+            = mixerSlots.GetComponentsInChildren<SpawningSlotManager>();
 
         for (int i = 0; i < _invSize; ++i)
         {
-            ItemSlotManager thisSlot = itemSlotArray[i];
+            SpawningSlotManager thisSlot = itemSlotArray[i];
 
             _mixerSlotManager.Add(thisSlot);
-            thisSlot.Construct(i);
+            thisSlot.Construct(_itemFactory, i);
         }
     }
     
@@ -85,12 +87,53 @@ public class MixerManager : GenericAppliance
         if(!_running) _running = true;
 
         IngredientData firstIgredientData = _mixerSlotManager[0].currentItem.foodItem.ingredientData;
+        RecipeData possibleRecipe = firstIgredientData.applianceRecipeDict[this._applianceData];
+        //int ingredientCounter = 0;
+        UpdateCurrentIngredientList();
 
-        RecipeData possibleRecipes = firstIgredientData.applianceRecipeDict[this._applianceData];
+        if(possibleRecipe.ingredientDataList.Count < currentIngredientList.Count){
+            Debug.Log("not enough ingredient for the only possible recipe");
+            //recipe cant be made, not enough ingredient for the only possible recipe
+        }
+        
+        //For loop over all food items in mixerSlots
+        foreach(IngredientData currFoodItem in currentIngredientList){
+            //for loop over all ingredients required for the recipe
+            bool wasIngredientFound = false;
+            foreach(IngredientData currRecipeIngredientData in possibleRecipe.ingredientDataList){
+                if(currFoodItem == currRecipeIngredientData){
+                    wasIngredientFound = true;
+                    //ingredientCounter++;
+                    break;
+                }
+            }
+            if(!wasIngredientFound){
+                Debug.Log("Ingredient " + currFoodItem.name + " not in the recipe " + possibleRecipe.name);
+                return;
+            }
+        }
+        if(currentIngredientList.Count != possibleRecipe.ingredientDataList.Count){
+            Debug.Log("Not all ingredient present");
+            return;
+        }
 
+        //if we get here the ingredients are valid for the recipe
+        Debug.Log("THE RECIPE WAS VALID AND WE ARE CLEARING THE MIXER_SLOTS_LIST");
+        foreach(ItemSlotManager slot in _mixerSlotManager){
+            if(slot !=null) slot.EmptySlot();
+        }
+        FoodItem resultItem = new FoodItem(possibleRecipe.resultIngredient);
+        //if(_timeRunning >= possibleRecipe.baseActionTime){
 
-        //PICK UP RECIPE VALIDATION HERE
-
+        //FINISHED SHOULD BE SET BY THE TIMER CLASS
+        _finished = true;
+        _running = false;
+        
+        if(_finished){
+            //_mixerSlotManager[0].SetItem(new ItemBehaviour( , possibleRecipe.resultIngredient));
+            Debug.Log("Possible Recipe name: " + possibleRecipe.name);
+            _mixerSlotManager[0].SpawnFoodItem(resultItem);
+        }
     }
     protected override void Finished(){
 

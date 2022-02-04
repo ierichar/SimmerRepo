@@ -66,13 +66,13 @@ namespace Simmer.Player
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                Debug.Log("Player pressed E");
+                //Debug.Log("Player pressed E");
                 RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, 1.5f, 64);
                 Collider2D obj = hit.collider;
-                Debug.Log("Testing");
+                //Debug.Log("Testing");
                 if (obj != null)
                 {
-                    Debug.Log("Got an object:" + obj);
+                    //Debug.Log("Got an object:" + obj);
                     if (hit.transform.gameObject.TryGetComponent(out GenericAppliance app))
                     {
                         app.ToggleInventory();

@@ -105,9 +105,9 @@ public class OvenManager : GenericAppliance
 
     public override FoodItem TakeItem(){
         //code to take a finished product from the oven.
-        FoodItem curr = null;//curr should be a FoodItem to be returned
+        //FoodItem curr = null;//curr should be a FoodItem to be returned
         if(_toCook.Count>0 && _running){
-            Debug.Log("Take Item: " + (FoodItem)curr);
+            //Debug.Log("Take Item: " + (FoodItem)curr);
             //return new food item from recipes;
         }
         return null;
@@ -116,7 +116,7 @@ public class OvenManager : GenericAppliance
     public override void ToggleOn(float duration){
         if(!_running)
         {
-            Debug.Log("Toggling on");
+            //Debug.Log("Toggling on");
             _running = true;
             _finished = false;
             _timer.ShowClock();
@@ -125,7 +125,7 @@ public class OvenManager : GenericAppliance
     }
 
     protected override void Finished() {
-        Debug.Log("Toggling off");
+        //Debug.Log("Toggling off");
         _running = false;
         _finished = true;
         _timer.HideClock();
