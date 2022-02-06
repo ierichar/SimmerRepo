@@ -41,7 +41,7 @@ namespace Simmer.Player
                         FoodItem selected = _playerManager.playerInventory.GetSelectedItem();
 
                         if (selected != null && selected.ingredientData
-                                .applianceRecipeDict.ContainsKey(app.applianceData))
+                                .applianceRecipeListDict.ContainsKey(app.applianceData))
                         {
                             print("Successfully added item: "
                                 + selected.ingredientData + " to "

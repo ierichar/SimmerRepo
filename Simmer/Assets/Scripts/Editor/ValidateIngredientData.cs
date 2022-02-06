@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEditor;
 
 using Simmer.FoodData;
+using Simmer.Appliance;
 
 namespace Simmer.Editor
 {
@@ -45,7 +46,7 @@ namespace Simmer.Editor
 
                 // Test empty applianceRecipeDict
                 if (!data.isFinalProduct &&
-                    data.applianceRecipeDict.Count == 0)
+                    data.applianceRecipeListDict.Count == 0)
                 {
                     Debug.LogError("IngredientData \"" + data.name
                         + "\" has false isFinalProduct so " +
@@ -53,16 +54,34 @@ namespace Simmer.Editor
                     isValidated = false;
                 }
 
-                // Test applianceRecipeDict recipe missing ingredient 
-                foreach (RecipeData recipeData in data
-                    .applianceRecipeDict.Values)
+                
+                foreach (var pair in data
+                    .applianceRecipeListDict)
                 {
-                    if (!recipeData.ingredientDataList.Contains(data))
+                    // Test applianceRecipeDict of key SoloApplianceData
+                    // has only 1 RecipeData
+                    if (pair.Key.GetType() == typeof(SoloApplianceData))
                     {
-                        Debug.LogError("IngredientData \""
-                            + data.name + "\" on RecipeData \""
-                            + recipeData.name + "\" is missing");
-                        isValidated = false;
+                        if (pair.Value.Count > 1)
+                        {
+                            Debug.LogError("IngredientData \""
+                                + data.name + "\" applianceRecipeDict appliance \""
+                                + pair.Key.name + "\" is a SoloApplianceData and " +
+                                " cannot contain more than 1 RecipeData");
+                            isValidated = false;
+                        }
+                    }
+
+                    foreach (var recipeData in pair.Value)
+                    {
+                        // Test applianceRecipeDict recipe missing ingredient 
+                        if (!recipeData.ingredientDataList.Contains(data))
+                        {
+                            Debug.LogError("IngredientData \""
+                                + data.name + "\" on RecipeData \""
+                                + recipeData.name + "\" is missing");
+                            isValidated = false;
+                        }
                     }
                 }
             }

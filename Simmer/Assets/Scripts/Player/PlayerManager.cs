@@ -6,6 +6,10 @@ using Simmer.Inventory;
 
 namespace Simmer.Player
 {
+    /// <summary>
+    /// Find and Constructs all scripts on the Player GameObject
+    /// and holds public getters for them
+    /// </summary>
     public class PlayerManager : MonoBehaviour
     {
         public GameEventManager gameEventManager { get; private set; }
@@ -18,6 +22,15 @@ namespace Simmer.Player
         public PlayerHeldItem playerHeldItem { get; private set; }
         public PlayerRayInteract playerInteract { get; private set; }
 
+        /// <summary>
+        /// Constructs from the KitchenGameManager
+        /// </summary>
+        /// <param name="gameEventManager">
+        /// Needed by playerItemSelect to invoke events
+        /// </param>
+        /// <param name="inventoryUIManager">
+        /// Needed by playerInventory to reference inventory slots
+        /// </param>
         public void Construct(GameEventManager gameEventManager
             , InventoryUIManager inventoryUIManager)
         {

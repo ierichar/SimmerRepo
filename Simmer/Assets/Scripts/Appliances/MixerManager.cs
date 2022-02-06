@@ -87,7 +87,9 @@ public class MixerManager : GenericAppliance
         if(!_running) _running = true;
 
         IngredientData firstIgredientData = _mixerSlotManager[0].currentItem.foodItem.ingredientData;
-        RecipeData possibleRecipe = firstIgredientData.applianceRecipeDict[this._applianceData];
+        // TODO May not be 0 index, change check to all possible
+        RecipeData possibleRecipe = firstIgredientData
+            .applianceRecipeListDict[this._applianceData][0];
         //int ingredientCounter = 0;
         UpdateCurrentIngredientList();
 

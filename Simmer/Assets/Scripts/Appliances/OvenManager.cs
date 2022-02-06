@@ -73,14 +73,14 @@ public class OvenManager : GenericAppliance
     public override void TryInteract(FoodItem item){
         if(item != null)
         {
-            if (!item.ingredientData.applianceRecipeDict
+            if (!item.ingredientData.applianceRecipeListDict
             .ContainsKey(_applianceData)) return;
         }
 
         if (_toCook.Count==0)
         {
             RecipeData recipeData = item.ingredientData
-                .applianceRecipeDict[_applianceData];
+                .applianceRecipeListDict[_applianceData][0];
             _resultIngredient = recipeData.resultIngredient;
             //place item to be cooked
             AddItem(item);

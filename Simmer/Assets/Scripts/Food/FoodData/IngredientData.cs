@@ -18,8 +18,9 @@ namespace Simmer.FoodData
         [SerializeField] List<RecipeData> _recipeEdgeList
             = new List<RecipeData>();
 
-        public Dictionary<ApplianceData, RecipeData> applianceRecipeDict
-            = new Dictionary<ApplianceData, RecipeData>();
+        public Dictionary<ApplianceData, List<RecipeData>>
+            applianceRecipeListDict
+            = new Dictionary<ApplianceData, List<RecipeData>>();
 
         private void OnValidate()
         {
@@ -33,13 +34,23 @@ namespace Simmer.FoodData
 
         private void Construct()
         {
-            applianceRecipeDict.Clear();
+            applianceRecipeListDict.Clear();
             foreach (RecipeData recipe in _recipeEdgeList)
             {
-                if(recipe != null && recipe.applianceData)
+                ApplianceData thisAppliance = recipe.applianceData;
+                if (recipe != null && recipe.applianceData)
                 {
-                    applianceRecipeDict.Add(recipe.applianceData, recipe);
-                } 
+                    if (applianceRecipeListDict.ContainsKey(thisAppliance))
+                    {
+                        applianceRecipeListDict[thisAppliance].Add(recipe);
+                    }
+                    else
+                    {
+                        List<RecipeData> applianceRecipeList = new List<RecipeData>();
+                        applianceRecipeList.Add(recipe);
+                        applianceRecipeListDict.Add(recipe.applianceData, applianceRecipeList);
+                    }
+                }
             }
         }
 

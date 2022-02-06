@@ -51,7 +51,7 @@ namespace Simmer.Editor
 
                 foreach (IngredientData ingredient in recipe.ingredientDataList)
                 {
-                    if (!ingredient.applianceRecipeDict
+                    if (!ingredient.applianceRecipeListDict
                         .ContainsKey(recipe.applianceData))
                     {
                         Debug.LogError("RecipeData \"" + recipe

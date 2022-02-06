@@ -9,22 +9,42 @@ using Simmer.FoodData;
 
 namespace Simmer.Inventory
 {
+    /// <summary>
+    /// Controls and stores the player's current inventory data
+    /// while interacting with the InventoryUIManager
+    /// and PlayerHeldItem for visuals using UnityEvents
+    /// </summary>
     public class PlayerInventory : MonoBehaviour
     {
         private InventoryUIManager _inventoryUIManager;
         private PlayerHeldItem _playerHeldItem;
 
+        [Tooltip("Player will have these ingredients in their hotbar on start")]
         [SerializeField] private List<IngredientData> _startingIngredients
             = new List<IngredientData>();
+        [Tooltip("_startingIngredients will have their quality set to this")]
         [SerializeField] private int _startingQuality;
 
+        /// <summary>
+        /// Key: Inventory slot index, Value: FoodItem in the slot
+        /// </summary>
         private Dictionary<int, FoodItem> _foodItemDictionary
             = new Dictionary<int, FoodItem>();
 
-        private int nextToFillIndex = 0;
+        /// <summary>
+        /// Index of selected item visually indicated by outline and held item
+        /// </summary>
         public int selectedItemIndex { get; private set;}
         private Color defaultColor = new Color(204.0f, 204.0f, 204.0f, 255.0f);
 
+        /// <summary>
+        /// Constructs from the PlayerManager, adds starting ingredients
+        /// , add listeners for inventory UnityEvents
+        /// </summary>
+        /// <param name="playerManager">
+        /// PlayerManager passes InventoryUIManager, PlayerHeldItem
+        /// , and event managers
+        /// </param>
         public void Construct(PlayerManager playerManager)
         {
             _inventoryUIManager = playerManager.inventoryUIManager;
@@ -124,7 +144,7 @@ namespace Simmer.Inventory
 
         public void AddFoodItem(FoodItem item)
         {
-            nextToFillIndex = GetNextToFillIndex();
+            int nextToFillIndex = GetNextToFillIndex();
 
             if (nextToFillIndex == -1)
             {
@@ -177,7 +197,6 @@ namespace Simmer.Inventory
 
         private int GetNextToFillIndex()
         {
-            nextToFillIndex = 0;
             for (int i = 0; i < _inventoryUIManager
                 .inventorySlotsManager.maxInventorySize; ++i)
             {

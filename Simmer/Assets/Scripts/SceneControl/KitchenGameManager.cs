@@ -5,7 +5,10 @@ using UnityEngine;
 using Simmer.Player;
 using Simmer.UI;
 
-public class GameManager : MonoBehaviour
+/// <summary>
+/// 
+/// </summary>
+public class KitchenGameManager : MonoBehaviour
 {
     private PlayerManager _playerManager;
     private PlayCanvasManager _playCanvasManager;
