@@ -10,7 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5158968734794265726}
   - component: {fileID: 6468819337875827131}
+  - component: {fileID: 2462061829781231725}
   - component: {fileID: 5050337890544757834}
+  - component: {fileID: 5582080207461644454}
+  - component: {fileID: 5561063287169652206}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -51,6 +54,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0a33948f017f4abfb684c889d4480a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnChangeSlot:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &2462061829781231725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5158968734794265727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95892550f6ebd4721885561759af1bb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!225 &5050337890544757834
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -63,6 +81,44 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!223 &5582080207461644454
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5158968734794265727}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 1
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 500
+  m_TargetDisplay: 0
+--- !u!114 &5561063287169652206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5158968734794265727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &5158968735058443862
 GameObject:
   m_ObjectHideFlags: 0
@@ -75,6 +131,7 @@ GameObject:
   - component: {fileID: 5158968735058443866}
   - component: {fileID: 5158968735058443867}
   - component: {fileID: 5158968735058443864}
+  - component: {fileID: 5206767570763368018}
   m_Layer: 5
   m_Name: ItemImage
   m_TagString: Untagged
@@ -151,6 +208,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73f8ce93a1c414aebb52d4c439bd88a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!210 &5206767570763368018
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5158968735058443862}
+  m_Enabled: 1
+  m_SortingLayerID: 1209491717
+  m_SortingLayer: 5
+  m_SortingOrder: 1000
 --- !u!1 &5158968736032729737
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,6 +230,7 @@ GameObject:
   - component: {fileID: 5158968736032729736}
   - component: {fileID: 5158968736032729741}
   - component: {fileID: 5158968736032729738}
+  - component: {fileID: 2167535551137601023}
   m_Layer: 5
   m_Name: ItemBackground
   m_TagString: Untagged
@@ -226,3 +295,14 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!210 &2167535551137601023
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5158968736032729737}
+  m_Enabled: 1
+  m_SortingLayerID: 1209491717
+  m_SortingLayer: 5
+  m_SortingOrder: 1000

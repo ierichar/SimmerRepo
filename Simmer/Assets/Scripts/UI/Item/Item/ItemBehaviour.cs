@@ -6,23 +6,24 @@ using DG.Tweening;
 
 using Simmer.Inventory;
 using Simmer.UI;
+using Simmer.UI.Tooltips;
 
 namespace Simmer.Items
 {
-    public class ItemBehaviour : MonoBehaviour, ITooltipable
+    public class ItemBehaviour : MonoBehaviour
         , IPointerDownHandler
         , IPointerUpHandler
-        , IPointerEnterHandler
-        , IPointerExitHandler
         , IBeginDragHandler
         , IEndDragHandler
         , IDragHandler
     {
         private PlayCanvasManager _playCanvasManager;
         private ItemFactory _itemFactory;
-        private TooltipBehaviour _tooltipBehaviour;
+        private TooltipTrigger _tooltipTrigger;
         private Canvas _playCanvas;
         private UnityEvent<int> OnSelectItem;
+
+        private Canvas _itemCanvas;
 
         private RectTransform _rectTransform;
         private ImageManager _itemImageManager;
@@ -35,8 +36,6 @@ namespace Simmer.Items
         private bool _isChangeSlot;
         private bool _isSelected;
 
-        private bool isTooltipActive;
-
         private Tween activeMoveTween;
 
         public void Construct(
@@ -46,7 +45,6 @@ namespace Simmer.Items
         {
             _playCanvasManager = playCanvasManager;
             _itemFactory = playCanvasManager.itemFactory;
-            _tooltipBehaviour = playCanvasManager.tooltipBehaviour;
 
             this.foodItem = foodItem;
             this.currentSlot = currentSlot;
@@ -63,6 +61,13 @@ namespace Simmer.Items
             _itemImageManager.Construct();
 
             OnChangeSlot.AddListener(OnChangeSlotCallback);
+
+            _tooltipTrigger = GetComponentInChildren<TooltipTrigger>();
+            _tooltipTrigger.Construct(foodItem.ingredientData.name, "");
+
+
+            _itemCanvas = GetComponent<Canvas>();
+            _itemCanvas.sortingLayerName = "UI";
 
             if (foodItem == null)
             {
@@ -156,34 +161,6 @@ namespace Simmer.Items
         void IPointerUpHandler.OnPointerUp(PointerEventData eventData)
         {
             //OnSelectItem.Invoke(currentSlot.index);
-        }
-
-        void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
-        {
-            ((ITooltipable)this).SetParent(this, true);
-        }
-
-        void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
-        {
-            ((ITooltipable)this).SetParent(this, false);
-        }
-
-        void ITooltipable.SetParent(ITooltipable reference, bool isTarget)
-        {
-            _tooltipBehaviour.SetTarget(transform, this, isTarget);
-            if(isTarget)
-            {
-                _tooltipBehaviour.ShowTooltip(foodItem.ingredientData.name);
-            }
-            else
-            {
-                _tooltipBehaviour.ShowTooltip("", false);
-            }
-        }
-
-        private void OnDisable()
-        {
-            ((ITooltipable)this).SetParent(this, false);
         }
     }
 }
