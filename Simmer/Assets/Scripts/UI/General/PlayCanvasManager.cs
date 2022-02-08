@@ -47,6 +47,9 @@ namespace Simmer.UI
 
             OvenManager ovenManager = FindObjectOfType<OvenManager>();
             if(ovenManager) ovenManager.Construct();
+
+            PantryUI pantryManager = FindObjectOfType<PantryUI>();
+            if(pantryManager) pantryManager.Construct();
         }
     }
 }
