@@ -13,7 +13,7 @@ using Simmer.Interactable;
 
 public class PantryUI : GenericAppliance
 {
-    private GameObject myInv;
+    public GameObject myInv;
 
     // private GraphicRaycaster graphicRaycaster; 
     public void Construct()
@@ -24,7 +24,7 @@ public class PantryUI : GenericAppliance
 
        // graphicRaycaster = GetComponent<GraphicRaycaster>();
 
-       myInv = GameObject.Find("Pantry");
+        myInv = GameObject.Find("Pantry");
        myInv.SetActive(false);
        // graphicRaycaster.enabled = false;
     }
@@ -40,15 +40,6 @@ public class PantryUI : GenericAppliance
             invOpen = false;
             UI_OPEN = false;
         }
-    }
-    public override void TryInteract(FoodItem item){
-
-    }
-    public override void AddItem(FoodItem recipe){
-
-    }
-    public override FoodItem TakeItem(){
-        return null;
     }
     public override void ToggleOn(float duration){
 
