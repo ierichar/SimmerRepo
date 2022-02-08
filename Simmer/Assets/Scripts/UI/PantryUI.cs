@@ -24,7 +24,7 @@ public class PantryUI : GenericAppliance
 
        // graphicRaycaster = GetComponent<GraphicRaycaster>();
 
-        myInv = GameObject.Find("Pantry");
+       myInv = GameObject.Find("Pantry");
        myInv.SetActive(false);
        // graphicRaycaster.enabled = false;
     }

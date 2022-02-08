@@ -64,7 +64,6 @@ public class MixerManager : GenericAppliance
         }if(!_running){
             _timeRunning = 0.0f;
         }
-
     }
 
     public override void ToggleInventory(){

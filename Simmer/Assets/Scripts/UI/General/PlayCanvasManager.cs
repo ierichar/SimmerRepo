@@ -51,6 +51,9 @@ namespace Simmer.UI
             OvenManager ovenManager = FindObjectOfType<OvenManager>();
             if(ovenManager) ovenManager.Construct();
 
+            PlateManager plateManager = FindObjectOfType<PlateManager>();
+            if(plateManager) plateManager.Construct();
+
             
         }
     }
