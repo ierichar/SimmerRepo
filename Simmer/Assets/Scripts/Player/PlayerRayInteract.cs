@@ -13,66 +13,59 @@ namespace Simmer.Player
         private PlayerManager _playerManager;
         private PlayerInventory _playerInventory;
 
+        private GameObject _currentlyOpen;
+        private bool _isInvOpen;
+
         public void Construct(PlayerManager playerManager)
         {
             _playerManager = playerManager;
             _playerInventory = playerManager.playerInventory;
+            _isInvOpen = false;
         }
 
         public void Update()
         {
             primaryAction();
-            secondaryAction();
+            //secondaryAction();
             faceMouse();
         }
 
         private void primaryAction()
         {
             Debug.DrawRay(transform.position, transform.right, Color.blue, 0, false);
-            if (Input.GetKeyDown(KeyCode.F))
+
+            
+            if (Input.GetMouseButtonDown(1) && !_isInvOpen)
             {
-                //Debug.Log("Player pressed F");
                 RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, 1.5f, 64);
                 Collider2D obj = hit.collider;
-                //Debug.Log("obj: " + hit.collider);
                 if (obj != null)
                 {
-
+                    //store gameObject of collider that was hit with raycast
+                    _currentlyOpen = hit.transform.gameObject;
                     // TESTING INTERABLEBEHAVIOUR
-                    if (hit.transform.gameObject.TryGetComponent(
+                    if (_currentlyOpen.TryGetComponent(
                         out InteractableBehaviour interactable))
                     {
+                        _isInvOpen = true;
                         //if (Input.GetKeyDown(KeyCode.F))
                         //{
                         //interactable.Highlight();
                         interactable.Interact();
                         //}
                     }
-
-
-                        if (hit.transform.gameObject.TryGetComponent(out GenericAppliance app))
-                    {
-                        FoodItem selected = _playerManager.playerInventory.GetSelectedItem();
-
-                        if (selected != null && selected.ingredientData
-                                .applianceRecipeListDict.ContainsKey(app.applianceData))
-                        {
-                            print("Successfully added item: "
-                                + selected.ingredientData + " to "
-                                + app.applianceData);
-
-                            _playerInventory.RemoveFoodItem(
-                            _playerInventory.selectedItemIndex);
-                        }
-
-                        app.TryInteract(selected);
-                    }
-                    else
-                    {
-                        Debug.Log("get Component failed");
-                    }
                 }
             }
+            else if (Input.GetMouseButtonDown(1) && _isInvOpen)
+            {
+                if (_currentlyOpen.TryGetComponent(
+                    out InteractableBehaviour interactable))
+                {
+                    _isInvOpen = false;
+                    interactable.Interact();
+                }
+            }
+
         }
 
         private void secondaryAction()

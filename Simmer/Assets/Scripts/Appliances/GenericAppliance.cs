@@ -46,9 +46,11 @@ public abstract class GenericAppliance : MonoBehaviour
     //-----------------------------------------------------------
     //inherited methods
     public abstract void ToggleInventory();
-    public abstract void TryInteract(FoodItem item);
-    public abstract void AddItem(FoodItem recipe);
-    public abstract FoodItem TakeItem();
     public abstract void ToggleOn(float duration);
     protected abstract void Finished();
+
+    //Depreciated methods from converting appliances to UI system
+    //public abstract void TryInteract(FoodItem item);
+    //public abstract void AddItem(FoodItem recipe);
+    //public abstract FoodItem TakeItem();
 }

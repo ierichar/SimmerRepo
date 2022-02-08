@@ -7,23 +7,29 @@ using Simmer.Items;
 using Simmer.UI;
 using Simmer.FoodData;
 using Simmer.Inventory;
+using Simmer.Interactable;
 
 public class OvenManager : GenericAppliance
 {
-    private List<ItemSlotManager> _inventorySlotManagerList
-            = new List<ItemSlotManager>();
+    private List<SpawningSlotManager> _inventorySlotManagerList
+            = new List<SpawningSlotManager>();
     
     private GameObject myInv;
     private GameObject ovenSlots;
-
+    private ItemFactory _itemFactory;
     public void Construct()
     {
+        interactable = GetComponent<InteractableBehaviour>();
+        SpriteRenderer highlightTarget = GetComponentInChildren<SpriteRenderer>();
+        interactable.Construct(ToggleInventory, highlightTarget);
+
         _timer = Instantiate(_timerPrefab, new Vector3(0, 0, 0), Quaternion.identity);
         _timer.SetUpTimer(this.transform);
 
         _invSize = 1;
         myInv = GameObject.Find("OvenInventory");
         ovenSlots = GameObject.Find("OvenSlots");
+        _itemFactory = FindObjectOfType<ItemFactory>();
         myInv.SetActive(false);
         
 
@@ -34,15 +40,15 @@ public class OvenManager : GenericAppliance
         _timeRunning = 0.0f;
 
         // Will get them in order of Scene Hierarchy from top to bottom
-        ItemSlotManager[] itemSlotArray
-            = ovenSlots.GetComponentsInChildren<ItemSlotManager>();
+        SpawningSlotManager[] itemSlotArray
+            = ovenSlots.GetComponentsInChildren<SpawningSlotManager>();
 
         for (int i = 0; i < _invSize; ++i)
         {
-            ItemSlotManager thisSlot = itemSlotArray[i];
+            SpawningSlotManager thisSlot = itemSlotArray[i];
 
             _inventorySlotManagerList.Add(thisSlot);
-            thisSlot.Construct(i);
+            thisSlot.Construct(_itemFactory, i);
         }
     }
     
@@ -52,7 +58,6 @@ public class OvenManager : GenericAppliance
         if(_running){
             _timeRunning += Time.deltaTime;
             //Debug.Log("Time: " + _timeRunning);
-            
         }if(!_running){
             _timeRunning = 0.0f;
         }
@@ -69,66 +74,47 @@ public class OvenManager : GenericAppliance
             UI_OPEN = false;
         }
     }
-
-    public override void TryInteract(FoodItem item){
-        if(item != null)
-        {
-            if (!item.ingredientData.applianceRecipeListDict
-            .ContainsKey(_applianceData)) return;
-        }
-
-        if (_toCook.Count==0)
-        {
-            RecipeData recipeData = item.ingredientData
-                .applianceRecipeListDict[_applianceData][0];
-            _resultIngredient = recipeData.resultIngredient;
-            //place item to be cooked
-            AddItem(item);
-            ToggleOn(recipeData.baseActionTime);
-        }else if(_finished){
-            FoodItem newFoodItem = new FoodItem(_resultIngredient);
-            playerInventory.AddFoodItem(newFoodItem);
-            _toCook.Clear();
-        }
-        else{
-            //do something with appliance while cooking
-        }
-    }
-
-    public override void AddItem(FoodItem recipe){
-        print(this + " AddItem : " + recipe.ingredientData);
-        //add code for player Script to interact with this object
-
-        //FIX THIS HARD CODE INDCIE TO BE VARIABLE ADDRESSING DESIRED INV SLOT TO FILL
-        _toCook.Add(recipe);
-    }
-
-    public override FoodItem TakeItem(){
-        //code to take a finished product from the oven.
-        //FoodItem curr = null;//curr should be a FoodItem to be returned
-        if(_toCook.Count>0 && _running){
-            //Debug.Log("Take Item: " + (FoodItem)curr);
-            //return new food item from recipes;
-        }
-        return null;
-    }
     
     public override void ToggleOn(float duration){
-        if(!_running)
-        {
-            //Debug.Log("Toggling on");
-            _running = true;
-            _finished = false;
-            _timer.ShowClock();
-            StartCoroutine(_timer.SetTimer(duration, Finished));
+        SpawningSlotManager slot = _inventorySlotManagerList[0];
+        if(slot.currentItem == null){
+            return;
         }
+        if(!_running)
+            _running = true;
+        else
+            return;
+
+        IngredientData inputItem = slot.currentItem.foodItem.ingredientData;
+        //---------------------------------------------------------
+        //NOTE TEST IF NONE OVEN RECIPES ALSO GO THROUGH CONVERSION
+        //Ask Evan where to find applianceRecipeListDict in unity project
+        RecipeData possibleRecipe = inputItem.applianceRecipeListDict[this._applianceData][0];
+        if(slot !=null) slot.EmptySlot();
+        duration = possibleRecipe.baseActionTime;
+        
+        StartCoroutine(waitForActionTime(possibleRecipe, slot));
+
+        _timer.ShowClock();
+        StartCoroutine(_timer.SetTimer(duration, Finished));
+        
     }
 
     protected override void Finished() {
-        //Debug.Log("Toggling off");
-        _running = false;
-        _finished = true;
         _timer.HideClock();
+    }
+
+    IEnumerator waitForActionTime(RecipeData recipe, SpawningSlotManager slot){
+        while(_timeRunning <= recipe.baseActionTime){
+            Debug.Log("timeRunning is: " + _timeRunning);
+            yield return null;
+        }
+        Debug.Log("finished waiting for action time");
+        FoodItem resultItem = new FoodItem(recipe.resultIngredient);
+        slot.SpawnFoodItem(resultItem);
+        _finished = true;
+        //_running may need to stay true for burning of item
+        _running = false;
     }
     
 }
