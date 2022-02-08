@@ -61,7 +61,6 @@ public class MixerManager : GenericAppliance
         if(_running){
             _timeRunning += Time.deltaTime;
             //Debug.Log("Time: " + _timeRunning);
-            
         }if(!_running){
             _timeRunning = 0.0f;
         }
@@ -79,15 +78,7 @@ public class MixerManager : GenericAppliance
             UI_OPEN = false;
         }
     }
-    public override void TryInteract(FoodItem item){
 
-    }
-    public override void AddItem(FoodItem recipe){
-
-    }
-    public override FoodItem TakeItem(){
-        return null;
-    }
     public override void ToggleOn(float duration){
         if(!_running) _running = true;
 
@@ -95,7 +86,6 @@ public class MixerManager : GenericAppliance
         // TODO May not be 0 index, change check to all possible
         RecipeData possibleRecipe = firstIgredientData
             .applianceRecipeListDict[this._applianceData][0];
-        //int ingredientCounter = 0;
         UpdateCurrentIngredientList();
 
         if(possibleRecipe.ingredientDataList.Count < currentIngredientList.Count){
@@ -110,7 +100,6 @@ public class MixerManager : GenericAppliance
             foreach(IngredientData currRecipeIngredientData in possibleRecipe.ingredientDataList){
                 if(currFoodItem == currRecipeIngredientData){
                     wasIngredientFound = true;
-                    //ingredientCounter++;
                     break;
                 }
             }
@@ -135,6 +124,12 @@ public class MixerManager : GenericAppliance
         //FINISHED SHOULD BE SET BY THE TIMER CLASS
         _finished = true;
         _running = false;
+
+        //WARNING
+        //MIXER CURRENTLY DOES NOT WAIT TO PRODUCE OUTPUT
+        //HOWEVER CLOCK IS SHOWING FOR CONCEPT
+        _timer.ShowClock();
+        StartCoroutine(_timer.SetTimer(duration, Finished));
         
         if(_finished){
             //_mixerSlotManager[0].SetItem(new ItemBehaviour( , possibleRecipe.resultIngredient));
@@ -143,7 +138,7 @@ public class MixerManager : GenericAppliance
         }
     }
     protected override void Finished(){
-
+        _timer.HideClock();
     }
 
     private void UpdateCurrentIngredientList(){

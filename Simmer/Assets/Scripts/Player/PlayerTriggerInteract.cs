@@ -50,8 +50,8 @@ namespace Simmer.Player
                             _playerInventory.RemoveFoodItem(
                             _playerInventory.selectedItemIndex);
                         }
-
-                        app.TryInteract(selected);
+                        //BELOW LINE MAY BE NECCESSARY TO ADD BACK IN
+                        //app.TryInteract(selected);
                     }
                     else
                     {
