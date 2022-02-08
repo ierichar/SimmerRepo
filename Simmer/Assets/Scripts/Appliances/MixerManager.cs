@@ -7,6 +7,7 @@ using Simmer.Items;
 using Simmer.UI;
 using Simmer.FoodData;
 using Simmer.Inventory;
+using Simmer.Interactable;
 
 public class MixerManager : GenericAppliance
 {
@@ -21,6 +22,10 @@ public class MixerManager : GenericAppliance
 
     public void Construct()
     {
+        interactable = GetComponent<InteractableBehaviour>();
+        SpriteRenderer highlightTarget = GetComponentInChildren<SpriteRenderer>();
+        interactable.Construct(ToggleInventory, highlightTarget);
+
         _timer = Instantiate(_timerPrefab, new Vector3(0, 0, 0), Quaternion.identity);
         _timer.SetUpTimer(this.transform);
 

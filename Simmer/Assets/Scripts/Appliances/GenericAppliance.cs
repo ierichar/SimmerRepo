@@ -8,6 +8,7 @@ using Simmer.Items;
 using Simmer.UI;
 using Simmer.FoodData;
 using Simmer.Inventory;
+using Simmer.Interactable;
 
 public abstract class GenericAppliance : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public abstract class GenericAppliance : MonoBehaviour
     [SerializeField] protected PlayerInventory playerInventory;
 
     [SerializeField] protected ApplianceData _applianceData;
+
+    protected InteractableBehaviour interactable;
 
     protected static bool UI_OPEN = false;
     public ApplianceData applianceData

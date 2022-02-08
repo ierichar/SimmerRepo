@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 4670071100043768941}
   - component: {fileID: 692946499699463521}
   - component: {fileID: 692946499699463523}
+  - component: {fileID: 2892173718016881689}
   m_Layer: 6
   m_Name: OvenHitbox
   m_TagString: Untagged
@@ -178,3 +179,18 @@ MonoBehaviour:
   playerInventory: {fileID: 0}
   _applianceData: {fileID: 11400000, guid: a0d4b5c0cfd7f4ec0a17eeda94c8db22, type: 2}
   _timerPrefab: {fileID: 7438676668410244986, guid: db1aa8dbc4c221d4bad63876567a9cd8, type: 3}
+--- !u!114 &2892173718016881689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 692946499699463520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4a9a9ec78ece40c09dddf96886bf56a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls: []

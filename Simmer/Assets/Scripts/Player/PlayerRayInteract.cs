@@ -4,6 +4,7 @@ using UnityEngine;
 
 using Simmer.Items;
 using Simmer.Inventory;
+using Simmer.Interactable;
 
 namespace Simmer.Player
 {
@@ -36,8 +37,20 @@ namespace Simmer.Player
                 //Debug.Log("obj: " + hit.collider);
                 if (obj != null)
                 {
-                    //Debug.Log("obj != null");
-                    if (hit.transform.gameObject.TryGetComponent(out GenericAppliance app))
+
+                    // TESTING INTERABLEBEHAVIOUR
+                    if (hit.transform.gameObject.TryGetComponent(
+                        out InteractableBehaviour interactable))
+                    {
+                        //if (Input.GetKeyDown(KeyCode.F))
+                        //{
+                        //interactable.Highlight();
+                        interactable.Interact();
+                        //}
+                    }
+
+
+                        if (hit.transform.gameObject.TryGetComponent(out GenericAppliance app))
                     {
                         FoodItem selected = _playerManager.playerInventory.GetSelectedItem();
 

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4372884476665209166}
   - component: {fileID: 4372884476665209153}
   - component: {fileID: 4372884476665209152}
+  - component: {fileID: 6134685589373812442}
   m_Layer: 6
   m_Name: MixerHitbox
   m_TagString: Untagged
@@ -96,6 +97,21 @@ MonoBehaviour:
   playerInventory: {fileID: 0}
   _applianceData: {fileID: 11400000, guid: 98e362c19770a4422b5cefea2629900f, type: 2}
   _timerPrefab: {fileID: 7438676668410244986, guid: db1aa8dbc4c221d4bad63876567a9cd8, type: 3}
+--- !u!114 &6134685589373812442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4372884476665209155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4a9a9ec78ece40c09dddf96886bf56a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4372884477054043519
 GameObject:
   m_ObjectHideFlags: 0
