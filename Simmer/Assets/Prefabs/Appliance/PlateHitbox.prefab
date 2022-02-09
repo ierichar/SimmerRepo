@@ -178,6 +178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInventory: {fileID: 0}
   _applianceData: {fileID: 11400000, guid: 676ddc8865c8d41a4a7d3ee7d5e022fb, type: 2}
+  _UIManager: {fileID: 0}
   _timerPrefab: {fileID: 7438676668410244986, guid: db1aa8dbc4c221d4bad63876567a9cd8, type: 3}
 --- !u!114 &7316872862588008899
 MonoBehaviour:

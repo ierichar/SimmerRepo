@@ -96,6 +96,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInventory: {fileID: 0}
   _applianceData: {fileID: 11400000, guid: 98e362c19770a4422b5cefea2629900f, type: 2}
+  _UIManager: {fileID: 0}
   _timerPrefab: {fileID: 7438676668410244986, guid: db1aa8dbc4c221d4bad63876567a9cd8, type: 3}
 --- !u!114 &6134685589373812442
 MonoBehaviour:
@@ -138,7 +139,7 @@ Transform:
   m_GameObject: {fileID: 4372884477054043519}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.0121, y: 0.0304, z: 0}
-  m_LocalScale: {x: 1.7237647, y: 1.8030367, z: 1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1.5}
   m_Children: []
   m_Father: {fileID: 4372884476665209167}
   m_RootOrder: 0

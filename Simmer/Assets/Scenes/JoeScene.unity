@@ -1607,9 +1607,13 @@ Tilemap:
   m_TileAssetArray:
   - m_RefCount: 52
     m_Data: {fileID: 11400000, guid: 6a5f6928305474e7c89ae814c10fa87b, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileSpriteArray:
   - m_RefCount: 52
     m_Data: {fileID: 3180841743118145569, guid: d9cf1e27ca92e4ad7b73389798a3529d, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileMatrixArray:
   - m_RefCount: 52
     m_Data:
@@ -1631,14 +1635,14 @@ Tilemap:
       e33: 1
   m_TileColorArray:
   - m_RefCount: 0
-    m_Data: {r: 1, g: 1, b: 1, a: 1}
+    m_Data: {r: 2.4447e-41, g: 2.4447e-41, b: 2.4447e-41, a: 2.4447e-41}
   - m_RefCount: 52
     m_Data: {r: 0.8000001, g: 0.8000001, b: 0.8000001, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: -9, y: -6, z: 0}
-  m_Size: {x: 18, y: 11, z: 1}
+  m_Size: {x: 21, y: 11, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -2343,7 +2347,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 336358466}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -3322,73 +3326,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1481992370792929578, guid: 90f36ed2f5f154702825b3a954c3828d, type: 3}
-      propertyPath: m_Size.y
-      value: 1.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1481992370792929578, guid: 90f36ed2f5f154702825b3a954c3828d, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1.85
-      objectReference: {fileID: 0}
-    - target: {fileID: 3171032274776861311, guid: 90f36ed2f5f154702825b3a954c3828d, type: 3}
-      propertyPath: pantryUI
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3171032274776861311, guid: 90f36ed2f5f154702825b3a954c3828d, type: 3}
-      propertyPath: _UIManager
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3171032274776861311, guid: 90f36ed2f5f154702825b3a954c3828d, type: 3}
-      propertyPath: itemFactory
-      value: 
-      objectReference: {fileID: 2124723235}
     - target: {fileID: 3171032274776861311, guid: 90f36ed2f5f154702825b3a954c3828d, type: 3}
       propertyPath: UIGameObject
       value: 
       objectReference: {fileID: 251291412}
-    - target: {fileID: 3171032274776861311, guid: 90f36ed2f5f154702825b3a954c3828d, type: 3}
-      propertyPath: _timerPrefab
-      value: 
-      objectReference: {fileID: 7438676668410244986, guid: db1aa8dbc4c221d4bad63876567a9cd8, type: 3}
-    - target: {fileID: 3171032274776861311, guid: 90f36ed2f5f154702825b3a954c3828d, type: 3}
-      propertyPath: _applianceData
-      value: 
-      objectReference: {fileID: 11400000, guid: 355778dc4e9d4465b8885ec3ae1799fc, type: 2}
-    - target: {fileID: 3171032274776861311, guid: 90f36ed2f5f154702825b3a954c3828d, type: 3}
-      propertyPath: playerInventory
-      value: 
-      objectReference: {fileID: 1681163879}
     - target: {fileID: 6291387332926864264, guid: 90f36ed2f5f154702825b3a954c3828d, type: 3}
       propertyPath: m_Name
       value: PantryHitbox
       objectReference: {fileID: 0}
-    - target: {fileID: 6291387332926864264, guid: 90f36ed2f5f154702825b3a954c3828d, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 7237640828659357633, guid: 90f36ed2f5f154702825b3a954c3828d, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 0e120f4afbe3245b4b5052393c376af6, type: 3}
-    - target: {fileID: 7237640828659357633, guid: 90f36ed2f5f154702825b3a954c3828d, type: 3}
-      propertyPath: m_SortingLayer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7237640828659357633, guid: 90f36ed2f5f154702825b3a954c3828d, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 874241457
-      objectReference: {fileID: 0}
     - target: {fileID: 7240549181279506812, guid: 90f36ed2f5f154702825b3a954c3828d, type: 3}
       propertyPath: m_RootOrder
       value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7240549181279506812, guid: 90f36ed2f5f154702825b3a954c3828d, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7240549181279506812, guid: 90f36ed2f5f154702825b3a954c3828d, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7240549181279506812, guid: 90f36ed2f5f154702825b3a954c3828d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10921,7 +10869,7 @@ Transform:
   m_GameObject: {fileID: 1841572259}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.25, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1681163888}
   m_RootOrder: 0
