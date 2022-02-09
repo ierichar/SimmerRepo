@@ -34,17 +34,22 @@ namespace Simmer.UI
             recipeMapWindow.Construct();
 
 
+            
             // TEMP TO TEST ITEMSLOTMANAGER
-            PantrySlotGroupManager pantrySlotGroupManager
-                = FindObjectOfType<PantrySlotGroupManager>();
-            if(pantrySlotGroupManager)
+            PantryUI pantryUI
+                = FindObjectOfType<PantryUI>();
+            if(pantryUI)
             {
-                pantrySlotGroupManager.Construct(itemFactory);
+                pantryUI.Construct(itemFactory);
+            }
+            
+            
+            GenericAppliance[] applianceManager = FindObjectsOfType<GenericAppliance>();
+            foreach(GenericAppliance appliance in applianceManager){
+                appliance.Construct(itemFactory);
             }
 
-            MixerManager mixerManager = FindObjectOfType<MixerManager>();
-            if(mixerManager) mixerManager.Construct();
-
+            /*
             PantryUI pantryManager = FindObjectOfType<PantryUI>();
             if(pantryManager) pantryManager.Construct();
 
@@ -53,6 +58,8 @@ namespace Simmer.UI
 
             PlateManager plateManager = FindObjectOfType<PlateManager>();
             if(plateManager) plateManager.Construct();
+
+            */
 
             
         }

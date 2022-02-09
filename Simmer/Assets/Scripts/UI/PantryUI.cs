@@ -4,47 +4,36 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
-using Simmer.Appliance;
-using Simmer.Items;
-using Simmer.UI;
-using Simmer.FoodData;
-using Simmer.Inventory;
 using Simmer.Interactable;
+using Simmer.Items;
 
-public class PantryUI : GenericAppliance
+public class PantryUI : MonoBehaviour
 {
-    public GameObject myInv;
+    private InteractableBehaviour interactable;
+    private bool invOpen;
+    [SerializeField] private GameObject UIGameObject;
+    //[SerializeField] public ItemFactory itemFactory;
 
-    // private GraphicRaycaster graphicRaycaster; 
-    public void Construct()
-    {
+    public void Construct(ItemFactory itemFactory){
         interactable = GetComponent<InteractableBehaviour>();
         SpriteRenderer highlightTarget = GetComponentInChildren<SpriteRenderer>();
         interactable.Construct(ToggleInventory, highlightTarget);
 
-       // graphicRaycaster = GetComponent<GraphicRaycaster>();
+        PantrySlotGroupManager pantrySlots
+            = FindObjectOfType<PantrySlotGroupManager>();
+        pantrySlots.Construct(itemFactory);
 
-       myInv = GameObject.Find("Pantry");
-       myInv.SetActive(false);
-       // graphicRaycaster.enabled = false;
+        UIGameObject.SetActive(false);
+        invOpen = false;
     }
 
-     public override void ToggleInventory()
-    {
-        if(!invOpen && !UI_OPEN){
-            myInv.SetActive(true);
+    private void ToggleInventory(){
+        if(!invOpen){
+            UIGameObject.SetActive(true);
             invOpen = true;
-            UI_OPEN = true;
-        }else if(invOpen && UI_OPEN){
-            myInv.SetActive(false);
+        }else if(invOpen){
+            UIGameObject.SetActive(false);
             invOpen = false;
-            UI_OPEN = false;
         }
-    }
-    public override void ToggleOn(float duration){
-
-    }
-    protected override void Finished(){
-
     }
 }

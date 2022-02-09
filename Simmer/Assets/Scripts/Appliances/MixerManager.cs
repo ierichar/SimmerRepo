@@ -11,50 +11,6 @@ using Simmer.Interactable;
 
 public class MixerManager : GenericAppliance
 {
-    private List<SpawningSlotManager> _mixerSlotManager
-            = new List<SpawningSlotManager>();
-    
-    private GameObject myInv;
-    private GameObject mixerSlots;
-    private ItemFactory _itemFactory;
-
-    private List<IngredientData> currentIngredientList = new List<IngredientData>();
-
-    public void Construct()
-    {
-        interactable = GetComponent<InteractableBehaviour>();
-        SpriteRenderer highlightTarget = GetComponentInChildren<SpriteRenderer>();
-        interactable.Construct(ToggleInventory, highlightTarget);
-
-        _timer = Instantiate(_timerPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-        _timer.SetUpTimer(this.transform);
-
-        _invSize = 6;
-        myInv = GameObject.Find("MixerInventory");
-        mixerSlots = GameObject.Find("MixerSlots");
-        _itemFactory = FindObjectOfType<ItemFactory>();
-        myInv.SetActive(false);
-        
-
-        //_idle = true;
-        _running = false;
-        _finished = false;
-
-        _timeRunning = 0.0f;
-
-        // Will get them in order of Scene Hierarchy from top to bottom
-        SpawningSlotManager[] itemSlotArray
-            = mixerSlots.GetComponentsInChildren<SpawningSlotManager>();
-
-        for (int i = 0; i < _invSize; ++i)
-        {
-            SpawningSlotManager thisSlot = itemSlotArray[i];
-
-            _mixerSlotManager.Add(thisSlot);
-            thisSlot.Construct(_itemFactory, i);
-        }
-    }
-    
     void FixedUpdate()
     {
         //update time running
@@ -66,59 +22,65 @@ public class MixerManager : GenericAppliance
         }
     }
 
-    public override void ToggleInventory(){
-        if(!invOpen && !UI_OPEN){
-            myInv.SetActive(true);
-            invOpen = true;
-            UI_OPEN = true;
-        }else if(invOpen && UI_OPEN){
-            myInv.SetActive(false);
-            invOpen = false;
-            UI_OPEN = false;
+    public override void ToggleOn()
+    {
+        if(_applianceSlotManager[0].currentItem == null){
+            return;
         }
-    }
+    
+        IngredientData firstIgredientData = _applianceSlotManager[0].currentItem.foodItem.ingredientData;
+        if(firstIgredientData == null) return;
 
-    public override void ToggleOn(float duration){
-        if(!_running) _running = true;
+        bool keyExists = firstIgredientData
+            .applianceRecipeListDict.ContainsKey(this._applianceData);
+        if(!keyExists) return;
 
-        IngredientData firstIgredientData = _mixerSlotManager[0].currentItem.foodItem.ingredientData;
-        // TODO May not be 0 index, change check to all possible
-        RecipeData possibleRecipe = firstIgredientData
+        if(!_running)
+            _running = true;
+        else
+            return;
+
+        
+        _pendingTargetRecipe = firstIgredientData
             .applianceRecipeListDict[this._applianceData][0];
         UpdateCurrentIngredientList();
 
-        if(possibleRecipe.ingredientDataList.Count < currentIngredientList.Count){
+        /*
+        if(_pendingTargetRecipe.ingredientDataList.Count < currentIngredientList.Count){
             Debug.Log("not enough ingredient for the only possible recipe");
             //recipe cant be made, not enough ingredient for the only possible recipe
         }
-        
+        */
+
         //For loop over all food items in mixerSlots
         foreach(IngredientData currFoodItem in currentIngredientList){
             //for loop over all ingredients required for the recipe
             bool wasIngredientFound = false;
-            foreach(IngredientData currRecipeIngredientData in possibleRecipe.ingredientDataList){
+            foreach(IngredientData currRecipeIngredientData in _pendingTargetRecipe.ingredientDataList){
                 if(currFoodItem == currRecipeIngredientData){
                     wasIngredientFound = true;
                     break;
                 }
             }
             if(!wasIngredientFound){
-                Debug.Log("Ingredient " + currFoodItem.name + " not in the recipe " + possibleRecipe.name);
+                Debug.Log("Ingredient " + currFoodItem.name + " not in the recipe " + _pendingTargetRecipe.name);
                 return;
             }
         }
-        if(currentIngredientList.Count != possibleRecipe.ingredientDataList.Count){
+        if(currentIngredientList.Count != _pendingTargetRecipe.ingredientDataList.Count){
             Debug.Log("Not all ingredient present");
+            _running = false;
             return;
         }
 
         //if we get here the ingredients are valid for the recipe
         Debug.Log("THE RECIPE WAS VALID AND WE ARE CLEARING THE MIXER_SLOTS_LIST");
-        foreach(ItemSlotManager slot in _mixerSlotManager){
+        foreach(ItemSlotManager slot in _applianceSlotManager){
             if(slot !=null) slot.EmptySlot();
         }
-        FoodItem resultItem = new FoodItem(possibleRecipe.resultIngredient);
-        //if(_timeRunning >= possibleRecipe.baseActionTime){
+
+        float duration = _pendingTargetRecipe.baseActionTime;
+        //if(_timeRunning >= _pendingTargetRecipe.baseActionTime){
 
         //FINISHED SHOULD BE SET BY THE TIMER CLASS
         _finished = true;
@@ -130,22 +92,12 @@ public class MixerManager : GenericAppliance
         _timer.ShowClock();
         StartCoroutine(_timer.SetTimer(duration, Finished));
         
+        /*
         if(_finished){
-            //_mixerSlotManager[0].SetItem(new ItemBehaviour( , possibleRecipe.resultIngredient));
-            Debug.Log("Possible Recipe name: " + possibleRecipe.name);
-            _mixerSlotManager[0].SpawnFoodItem(resultItem);
+            //_applianceSlotManager[0].SetItem(new ItemBehaviour( , _pendingTargetRecipe.resultIngredient));
+            Debug.Log("Possible Recipe name: " + _pendingTargetRecipe.name);
+            _applianceSlotManager[0].SpawnFoodItem(resultItem);
         }
-    }
-    protected override void Finished(){
-        _timer.HideClock();
-    }
-
-    private void UpdateCurrentIngredientList(){
-        currentIngredientList.Clear();
-        foreach(ItemSlotManager peekItem in _mixerSlotManager){
-            if(peekItem.currentItem != null){
-                currentIngredientList.Add(peekItem.currentItem.foodItem.ingredientData);
-            }
-        }
+        */
     }
 }
