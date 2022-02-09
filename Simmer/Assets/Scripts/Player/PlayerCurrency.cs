@@ -5,7 +5,7 @@ using TMPro;
 
 namespace Simmer.Player
 {
-    class PlayerCurrency : MonoBehaviour
+    public class PlayerCurrency : MonoBehaviour
     {
         public TextMeshProUGUI moneyText;
         private int currencyAmt = 0;
