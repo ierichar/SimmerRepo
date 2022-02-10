@@ -1,4 +1,5 @@
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -113,38 +114,16 @@ public abstract class GenericAppliance : MonoBehaviour
         {
             OnValidate.Invoke(null); return;
         }
-        List<RecipeData>[] allRecipeLists = new List<RecipeData>[currentIngredientList.Count];
-        
-        for(int k=0; k<currentIngredientList.Count; k++){
-            IngredientData item = currentIngredientList[k];
-            //Check if item belongs to this appliance
-            bool keyExists = item.applianceRecipeListDict.ContainsKey(this._applianceData);
-            if(!keyExists){
-                Debug.Log("No bueno item in appliance");
-                OnValidate.Invoke(null); return;
-            }
-            List<RecipeData> possibleRecipesList = item.applianceRecipeListDict[this.applianceData];
-            allRecipeLists[k] = possibleRecipesList;
+        bool keyExists = currentIngredientList[0].applianceRecipeListDict
+            .ContainsKey(this._applianceData);
+        if(!keyExists){
+            Debug.Log("No bueno item in appliance");
+            OnValidate.Invoke(null); return;
         }
-
-        List<RecipeData> firstList = allRecipeLists[0];
-        List<RecipeData> potentialRecipes = new List<RecipeData>(firstList);
+        List<RecipeData> firstList = currentIngredientList[0]
+            .applianceRecipeListDict[this._applianceData];
 
 /*
-        parts.Sort(delegate(Part x, Part y)
-        {
-            if (x.PartName == null && y.PartName == null) return 0;
-            else if (x.PartName == null) return -1;
-            else if (y.PartName == null) return 1;
-            else return x.PartName.CompareTo(y.PartName);
-        });
-*/
-
-        //foreach(RecipeData recipe in firstList){
-        //    print(recipe.name + " : ");
-        //}
-        //print("Before");
-
         firstList.Sort(delegate(RecipeData x, RecipeData y){
             int xCount = x.ingredientDataList.Count;
             int yCount = y.ingredientDataList.Count;
@@ -157,48 +136,42 @@ public abstract class GenericAppliance : MonoBehaviour
                 return 1;
             }
         });
-
-        //foreach(RecipeData recipe in firstList){
-        //    print(recipe.name + " : ");
-        //}
-
-        print("STARTING PotentialRecipes: " + potentialRecipes.Count);
-
+*/
         foreach(RecipeData recipe in firstList){
-            foreach(List<RecipeData> list in allRecipeLists)
-            {
-                print("list contains " + recipe + ": " + list.Contains(recipe));
-                if(!list.Contains(recipe))
-                {
-                    if(!potentialRecipes.Contains(recipe)) break;
+            int recipeCount = recipe.ingredientDataList.Count;
+            bool[] RecipeCheckArray = new bool[recipe.ingredientDataList.Count];
 
-                    potentialRecipes.Remove(recipe);
-                    break;
-                }
-                foreach(RecipeData checkRecipe in list){
-                    print("recipe ingriedient count: " + recipe.ingredientDataList.Count +
-                    "checkRecipe ingriedient count: " + checkRecipe.ingredientDataList.Count);
-                    if(recipe.ingredientDataList.Count!=checkRecipe.ingredientDataList.Count){
-                        potentialRecipes.Remove(recipe);
-                        break;
-                    }
-                }
+            if(currentIngredientList.Count != recipe.ingredientDataList.Count){
+                print("NOT THE CORRECT NUM ITEMS FOR: " + recipe.name);
+                continue;
             }
-            print("PotentialRecipes" + potentialRecipes.Count);
-            if(potentialRecipes.Count == 1){
-                break;
+
+            for(int k=0; k<recipeCount; ++k){
+                IngredientData item = currentIngredientList[k];
+                RecipeCheckArray[k] = recipe.ingredientDataList.Contains(item);
+                //print(RecipeCheckArray[k]);
+            }
+            //print(RecipeCheckArray.ToString() + " ______________");
+
+            bool allTrue = Array.TrueForAll(RecipeCheckArray, (bool x)=>{
+                return x;
+            });
+
+            //print("AllTrue is: " + allTrue);
+
+            if(allTrue){
+                OnValidate.Invoke(recipe);
+                return;
+            }else{
+                continue;
             }
         }
-        print("PotentialRecipes: " + potentialRecipes.Count);
-        if(potentialRecipes.Count == 1){
-            OnValidate.Invoke(potentialRecipes[0]);
-        }
-        else{
-            OnValidate.Invoke(null);
-        }
+        print("NO RECIPES FOUND");
+        OnValidate.Invoke(null);
     }
     
     private void OnValidateCallback(RecipeData recipe){
+        print("INVOKED RECIPE: " + recipe);
         _pendingTargetRecipe = recipe;
     }
 
