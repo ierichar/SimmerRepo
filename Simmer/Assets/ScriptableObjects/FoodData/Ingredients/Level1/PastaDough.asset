@@ -10,12 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 100bfe8cc201b417887646b2755fd998, type: 3}
-  m_Name: Flour
+  m_Name: PastaDough
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: a634728be5ffd4e60b29234b69ee40b2, type: 3}
+  sprite: {fileID: -8120564751791856033, guid: d9cf1e27ca92e4ad7b73389798a3529d, type: 3}
   baseValue: 1
-  isFinalProduct: 0
-  _recipeEdgeList:
-  - {fileID: 11400000, guid: e1d0faecbce5d4d6ea549b13c68ba768, type: 2}
-  - {fileID: 11400000, guid: ba1e6d26aaa386b4cb4afc0a5876ea9c, type: 2}
-  - {fileID: 11400000, guid: 162f64f93eddee241865c3a6b3b8a910, type: 2}
+  isFinalProduct: 1
+  _recipeEdgeList: []

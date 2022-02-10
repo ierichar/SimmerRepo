@@ -1,4 +1,5 @@
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -49,6 +50,8 @@ public abstract class GenericAppliance : MonoBehaviour
     protected ItemFactory _itemFactory;
     protected GameObject _UIGameObject;
 
+    public UnityEvent<RecipeData> OnValidate = new UnityEvent<RecipeData>();
+
     //-----------------------------------------------------------
     //inherited methods
     public virtual void Construct(ItemFactory itemFactory){
@@ -56,6 +59,8 @@ public abstract class GenericAppliance : MonoBehaviour
         interactable = GetComponent<InteractableBehaviour>();
         SpriteRenderer highlightTarget = GetComponentInChildren<SpriteRenderer>();
         interactable.Construct(ToggleInventory, highlightTarget);
+
+        OnValidate.AddListener(OnValidateCallback);
 
         _timer = Instantiate(_timerPrefab, new Vector3(0, 0, 0), Quaternion.identity);
         _timer.SetUpTimer(this.transform);
@@ -82,7 +87,6 @@ public abstract class GenericAppliance : MonoBehaviour
             UI_OPEN = false;
         }
     }
-    public abstract void ToggleOn();
     protected virtual void Finished(){
         Debug.Log("finished waiting for action time");
         FoodItem resultItem = new FoodItem(_pendingTargetRecipe.resultIngredient);
@@ -100,5 +104,91 @@ public abstract class GenericAppliance : MonoBehaviour
                 currentIngredientList.Add(peekItem.currentItem.foodItem.ingredientData);
             }
         }
+    }
+
+    protected void Validation()
+    {
+        UpdateCurrentIngredientList();
+
+        if(currentIngredientList.Count == 0)
+        {
+            OnValidate.Invoke(null); return;
+        }
+        bool keyExists = currentIngredientList[0].applianceRecipeListDict
+            .ContainsKey(this._applianceData);
+        if(!keyExists){
+            Debug.Log("No bueno item in appliance");
+            OnValidate.Invoke(null); return;
+        }
+        List<RecipeData> firstList = currentIngredientList[0]
+            .applianceRecipeListDict[this._applianceData];
+
+/*
+        firstList.Sort(delegate(RecipeData x, RecipeData y){
+            int xCount = x.ingredientDataList.Count;
+            int yCount = y.ingredientDataList.Count;
+            if(xCount == yCount){
+                return 0;
+            }
+            if(xCount>yCount){
+                return -1;
+            }else{
+                return 1;
+            }
+        });
+*/
+        foreach(RecipeData recipe in firstList){
+            int recipeCount = recipe.ingredientDataList.Count;
+            bool[] RecipeCheckArray = new bool[recipe.ingredientDataList.Count];
+
+            if(currentIngredientList.Count != recipe.ingredientDataList.Count){
+                print("NOT THE CORRECT NUM ITEMS FOR: " + recipe.name);
+                continue;
+            }
+
+            for(int k=0; k<recipeCount; ++k){
+                IngredientData item = currentIngredientList[k];
+                RecipeCheckArray[k] = recipe.ingredientDataList.Contains(item);
+                //print(RecipeCheckArray[k]);
+            }
+            //print(RecipeCheckArray.ToString() + " ______________");
+
+            bool allTrue = Array.TrueForAll(RecipeCheckArray, (bool x)=>{
+                return x;
+            });
+
+            //print("AllTrue is: " + allTrue);
+
+            if(allTrue){
+                OnValidate.Invoke(recipe);
+                return;
+            }else{
+                continue;
+            }
+        }
+        print("NO RECIPES FOUND");
+        OnValidate.Invoke(null);
+    }
+    
+    private void OnValidateCallback(RecipeData recipe){
+        print("INVOKED RECIPE: " + recipe);
+        _pendingTargetRecipe = recipe;
+    }
+
+    public virtual void ToggleOn()
+    {
+        Validation();
+        if(_pendingTargetRecipe == null) return;
+        
+        //if we get here the ingredients are valid for the recipe
+        Debug.Log("THE RECIPE WAS VALID AND WE ARE CLEARING THE MIXER_SLOTS_LIST");
+        foreach(ItemSlotManager slot in _applianceSlotManager){
+            if(slot.currentItem != null) slot.EmptySlot();
+        }
+
+        float duration = _pendingTargetRecipe.baseActionTime;
+
+        _timer.ShowClock();
+        StartCoroutine(_timer.SetTimer(duration, Finished));
     }
 }
