@@ -17,6 +17,7 @@ public class OvenManager : GenericAppliance
             _timeRunning = 0.0f;
         }
     }
+    /*
     public override void ToggleOn(){
         SpawningSlotManager slot = _applianceSlotManager[0];
         if(slot.currentItem == null){
@@ -44,7 +45,7 @@ public class OvenManager : GenericAppliance
         //StartCoroutine(waitForActionTime(_pendingTargetRecipe, slot));
 
         _timer.ShowClock();
-        StartCoroutine(_timer.SetTimer(duration, Finished));
-        
+        StartCoroutine(_timer.SetTimer(duration, Finished));   
     }
+    */
 }

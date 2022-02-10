@@ -11,6 +11,7 @@ using Simmer.Interactable;
 
 public class PlateManager : GenericAppliance
 {
+    /*
     public override void ToggleOn()
     {
         if(_applianceSlotManager[0].currentItem == null){
@@ -24,10 +25,10 @@ public class PlateManager : GenericAppliance
             .applianceRecipeListDict.ContainsKey(this._applianceData);
         if(!keyExists) return;
 
-        //if(!_running)
-        //    _running = true;
-        //else
-        //    return;
+        if(!_running)
+            _running = true;
+        else
+            return;
 
         
         _pendingTargetRecipe = firstIgredientData
@@ -53,6 +54,7 @@ public class PlateManager : GenericAppliance
             }
             if(!wasIngredientFound){
                 Debug.Log("Ingredient " + currFoodItem.name + " not in the recipe " + _pendingTargetRecipe.name);
+                 _running = false;
                 return;
             }
         }
@@ -80,13 +82,6 @@ public class PlateManager : GenericAppliance
         //HOWEVER CLOCK IS SHOWING FOR CONCEPT
         _timer.ShowClock();
         StartCoroutine(_timer.SetTimer(duration, Finished));
-        
-        /*
-        if(_finished){
-            //_mixerSlotManager[0].SetItem(new ItemBehaviour( , _pendingTargetRecipe.resultIngredient));
-            Debug.Log("Possible Recipe name: " + _pendingTargetRecipe.name);
-            _applianceSlotManager[0].SpawnFoodItem(resultItem);
-        }
-        */
     }
+    */
 }

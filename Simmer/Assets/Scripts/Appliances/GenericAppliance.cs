@@ -49,6 +49,8 @@ public abstract class GenericAppliance : MonoBehaviour
     protected ItemFactory _itemFactory;
     protected GameObject _UIGameObject;
 
+    public UnityEvent<RecipeData> OnValidate = new UnityEvent<RecipeData>();
+
     //-----------------------------------------------------------
     //inherited methods
     public virtual void Construct(ItemFactory itemFactory){
@@ -56,6 +58,8 @@ public abstract class GenericAppliance : MonoBehaviour
         interactable = GetComponent<InteractableBehaviour>();
         SpriteRenderer highlightTarget = GetComponentInChildren<SpriteRenderer>();
         interactable.Construct(ToggleInventory, highlightTarget);
+
+        OnValidate.AddListener(OnValidateCallback);
 
         _timer = Instantiate(_timerPrefab, new Vector3(0, 0, 0), Quaternion.identity);
         _timer.SetUpTimer(this.transform);
@@ -82,7 +86,6 @@ public abstract class GenericAppliance : MonoBehaviour
             UI_OPEN = false;
         }
     }
-    public abstract void ToggleOn();
     protected virtual void Finished(){
         Debug.Log("finished waiting for action time");
         FoodItem resultItem = new FoodItem(_pendingTargetRecipe.resultIngredient);
@@ -100,5 +103,119 @@ public abstract class GenericAppliance : MonoBehaviour
                 currentIngredientList.Add(peekItem.currentItem.foodItem.ingredientData);
             }
         }
+    }
+
+    protected void Validation()
+    {
+        UpdateCurrentIngredientList();
+
+        if(currentIngredientList.Count == 0)
+        {
+            OnValidate.Invoke(null); return;
+        }
+        List<RecipeData>[] allRecipeLists = new List<RecipeData>[currentIngredientList.Count];
+        
+        for(int k=0; k<currentIngredientList.Count; k++){
+            IngredientData item = currentIngredientList[k];
+            //Check if item belongs to this appliance
+            bool keyExists = item.applianceRecipeListDict.ContainsKey(this._applianceData);
+            if(!keyExists){
+                Debug.Log("No bueno item in appliance");
+                OnValidate.Invoke(null); return;
+            }
+            List<RecipeData> possibleRecipesList = item.applianceRecipeListDict[this.applianceData];
+            allRecipeLists[k] = possibleRecipesList;
+        }
+
+        List<RecipeData> firstList = allRecipeLists[0];
+        List<RecipeData> potentialRecipes = new List<RecipeData>(firstList);
+
+/*
+        parts.Sort(delegate(Part x, Part y)
+        {
+            if (x.PartName == null && y.PartName == null) return 0;
+            else if (x.PartName == null) return -1;
+            else if (y.PartName == null) return 1;
+            else return x.PartName.CompareTo(y.PartName);
+        });
+*/
+
+        //foreach(RecipeData recipe in firstList){
+        //    print(recipe.name + " : ");
+        //}
+        //print("Before");
+
+        firstList.Sort(delegate(RecipeData x, RecipeData y){
+            int xCount = x.ingredientDataList.Count;
+            int yCount = y.ingredientDataList.Count;
+            if(xCount == yCount){
+                return 0;
+            }
+            if(xCount>yCount){
+                return -1;
+            }else{
+                return 1;
+            }
+        });
+
+        //foreach(RecipeData recipe in firstList){
+        //    print(recipe.name + " : ");
+        //}
+
+        print("STARTING PotentialRecipes: " + potentialRecipes.Count);
+
+        foreach(RecipeData recipe in firstList){
+            foreach(List<RecipeData> list in allRecipeLists)
+            {
+                print("list contains " + recipe + ": " + list.Contains(recipe));
+                if(!list.Contains(recipe))
+                {
+                    if(!potentialRecipes.Contains(recipe)) break;
+
+                    potentialRecipes.Remove(recipe);
+                    break;
+                }
+                foreach(RecipeData checkRecipe in list){
+                    print("recipe ingriedient count: " + recipe.ingredientDataList.Count +
+                    "checkRecipe ingriedient count: " + checkRecipe.ingredientDataList.Count);
+                    if(recipe.ingredientDataList.Count!=checkRecipe.ingredientDataList.Count){
+                        potentialRecipes.Remove(recipe);
+                        break;
+                    }
+                }
+            }
+            print("PotentialRecipes" + potentialRecipes.Count);
+            if(potentialRecipes.Count == 1){
+                break;
+            }
+        }
+        print("PotentialRecipes: " + potentialRecipes.Count);
+        if(potentialRecipes.Count == 1){
+            OnValidate.Invoke(potentialRecipes[0]);
+        }
+        else{
+            OnValidate.Invoke(null);
+        }
+    }
+    
+    private void OnValidateCallback(RecipeData recipe){
+        _pendingTargetRecipe = recipe;
+    }
+
+    public virtual void ToggleOn()
+    {
+        Validation();
+        if(_pendingTargetRecipe == null) return;
+        
+        //if we get here the ingredients are valid for the recipe
+        Debug.Log("THE RECIPE WAS VALID AND WE ARE CLEARING THE MIXER_SLOTS_LIST");
+        foreach(ItemSlotManager slot in _applianceSlotManager){
+            if(slot.currentItem != null) slot.EmptySlot();
+        }
+
+        float duration = _pendingTargetRecipe.baseActionTime;
+
+        _timer.ShowClock();
+        StartCoroutine(_timer.SetTimer(duration, Finished));
     }
 }

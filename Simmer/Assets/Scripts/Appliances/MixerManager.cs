@@ -22,6 +22,7 @@ public class MixerManager : GenericAppliance
         }
     }
 
+    /*
     public override void ToggleOn()
     {
         if(_applianceSlotManager[0].currentItem == null){
@@ -35,69 +36,55 @@ public class MixerManager : GenericAppliance
             .applianceRecipeListDict.ContainsKey(this._applianceData);
         if(!keyExists) return;
 
-        if(!_running)
-            _running = true;
-        else
-            return;
+        if(_pendingTargetRecipe != null) return;
 
-        
-        _pendingTargetRecipe = firstIgredientData
-            .applianceRecipeListDict[this._applianceData][0];
+
+
         UpdateCurrentIngredientList();
-
-        /*
-        if(_pendingTargetRecipe.ingredientDataList.Count < currentIngredientList.Count){
-            Debug.Log("not enough ingredient for the only possible recipe");
-            //recipe cant be made, not enough ingredient for the only possible recipe
-        }
-        */
-
-        //For loop over all food items in mixerSlots
-        foreach(IngredientData currFoodItem in currentIngredientList){
-            //for loop over all ingredients required for the recipe
-            bool wasIngredientFound = false;
-            foreach(IngredientData currRecipeIngredientData in _pendingTargetRecipe.ingredientDataList){
-                if(currFoodItem == currRecipeIngredientData){
-                    wasIngredientFound = true;
-                    break;
+        
+        //_pendingTargetRecipe = firstIgredientData
+        //    .applianceRecipeListDict[this._applianceData][0];
+        foreach(RecipeData recipe in firstIgredientData.applianceRecipeListDict[this._applianceData]){
+            //For loop over all food items in mixerSlots
+            _pendingTargetRecipe = recipe;
+            foreach(IngredientData currFoodItem in currentIngredientList){
+                //for loop over all ingredients required for the recipe
+                bool wasIngredientFound = false;
+                foreach(IngredientData currRecipeIngredientData in recipe.ingredientDataList){
+                    if(currFoodItem == currRecipeIngredientData){
+                        wasIngredientFound = true;
+                        break;
+                    }
+                }
+                if(!wasIngredientFound){
+                    Debug.Log("Ingredient " + currFoodItem.name + " not in the recipe " + recipe.name);
+                    _running = false;
+                    //return;
                 }
             }
-            if(!wasIngredientFound){
-                Debug.Log("Ingredient " + currFoodItem.name + " not in the recipe " + _pendingTargetRecipe.name);
-                return;
+            if(currentIngredientList.Count != recipe.ingredientDataList.Count){
+                Debug.Log("Not all ingredient present for: " + recipe.name);
+                _running = false;
+                //return;
             }
         }
-        if(currentIngredientList.Count != _pendingTargetRecipe.ingredientDataList.Count){
-            Debug.Log("Not all ingredient present");
-            _running = false;
-            return;
-        }
+        
 
         //if we get here the ingredients are valid for the recipe
         Debug.Log("THE RECIPE WAS VALID AND WE ARE CLEARING THE MIXER_SLOTS_LIST");
         foreach(ItemSlotManager slot in _applianceSlotManager){
-            if(slot !=null) slot.EmptySlot();
+            if(slot.currentItem != null) slot.EmptySlot();
+            Debug.Log("Did we make it here");
         }
 
         float duration = _pendingTargetRecipe.baseActionTime;
         //if(_timeRunning >= _pendingTargetRecipe.baseActionTime){
-
-        //FINISHED SHOULD BE SET BY THE TIMER CLASS
-        _finished = true;
-        _running = false;
 
         //WARNING
         //MIXER CURRENTLY DOES NOT WAIT TO PRODUCE OUTPUT
         //HOWEVER CLOCK IS SHOWING FOR CONCEPT
         _timer.ShowClock();
         StartCoroutine(_timer.SetTimer(duration, Finished));
-        
-        /*
-        if(_finished){
-            //_applianceSlotManager[0].SetItem(new ItemBehaviour( , _pendingTargetRecipe.resultIngredient));
-            Debug.Log("Possible Recipe name: " + _pendingTargetRecipe.name);
-            _applianceSlotManager[0].SpawnFoodItem(resultItem);
-        }
-        */
     }
+    */
 }
