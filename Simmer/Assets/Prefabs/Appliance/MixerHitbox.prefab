@@ -96,6 +96,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInventory: {fileID: 0}
   _applianceData: {fileID: 11400000, guid: 98e362c19770a4422b5cefea2629900f, type: 2}
+  _UIManager: {fileID: 0}
   _timerPrefab: {fileID: 7438676668410244986, guid: db1aa8dbc4c221d4bad63876567a9cd8, type: 3}
 --- !u!114 &6134685589373812442
 MonoBehaviour:
@@ -182,7 +183,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 874241457
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: a91ddaee17d3845898bf2c4b11d812cd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

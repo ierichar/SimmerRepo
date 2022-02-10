@@ -8,8 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4914560368874641483}
+  - component: {fileID: 2781759557828270110}
   - component: {fileID: 4914560368874641480}
+  - component: {fileID: 8366165637193278879}
   m_Layer: 6
   m_Name: sprite
   m_TagString: Untagged
@@ -17,8 +18,8 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4914560368874641483
-Transform:
+--- !u!224 &2781759557828270110
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -31,6 +32,11 @@ Transform:
   m_Father: {fileID: 4914560368920156344}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &4914560368874641480
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -82,6 +88,14 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!222 &8366165637193278879
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4914560368874641482}
+  m_CullTransparentMesh: 1
 --- !u!1 &4914560368920156346
 GameObject:
   m_ObjectHideFlags: 0
@@ -113,7 +127,7 @@ Transform:
   m_LocalPosition: {x: 2.5, y: 3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4914560368874641483}
+  - {fileID: 2781759557828270110}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -178,6 +192,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInventory: {fileID: 0}
   _applianceData: {fileID: 11400000, guid: 676ddc8865c8d41a4a7d3ee7d5e022fb, type: 2}
+  _UIManager: {fileID: 0}
   _timerPrefab: {fileID: 7438676668410244986, guid: db1aa8dbc4c221d4bad63876567a9cd8, type: 3}
 --- !u!114 &7316872862588008899
 MonoBehaviour:
