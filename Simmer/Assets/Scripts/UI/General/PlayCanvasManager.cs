@@ -20,7 +20,9 @@ namespace Simmer.UI
 
         public UnityEvent<int> OnSelectItem { get; private set; }
 
-        public void Construct(UnityEvent<int> OnSelectItem)
+        public ScreenBlockManager screenBlockManager { get; private set; }
+
+        public virtual void Construct(UnityEvent<int> OnSelectItem)
         {
             this.OnSelectItem = OnSelectItem;
             playCanvas = GetComponent<Canvas>();
@@ -28,40 +30,12 @@ namespace Simmer.UI
             itemFactory = GetComponent<ItemFactory>();
             inventoryUIManager = GetComponentInChildren<InventoryUIManager>(true);
             recipeMapWindow = GetComponentInChildren<RecipeMapWindow>(true);
+            screenBlockManager = GetComponentInChildren<ScreenBlockManager>();
 
             itemFactory.Construct(this);
             inventoryUIManager.Construct(itemFactory);
             recipeMapWindow.Construct();
-
-
-            
-            // TEMP TO TEST ITEMSLOTMANAGER
-            PantryUI pantryUI
-                = FindObjectOfType<PantryUI>();
-            if(pantryUI)
-            {
-                pantryUI.Construct(itemFactory);
-            }
-            
-            
-            GenericAppliance[] applianceManager = FindObjectsOfType<GenericAppliance>();
-            foreach(GenericAppliance appliance in applianceManager){
-                appliance.Construct(itemFactory);
-            }
-
-            /*
-            PantryUI pantryManager = FindObjectOfType<PantryUI>();
-            if(pantryManager) pantryManager.Construct();
-
-            OvenManager ovenManager = FindObjectOfType<OvenManager>();
-            if(ovenManager) ovenManager.Construct();
-
-            PlateManager plateManager = FindObjectOfType<PlateManager>();
-            if(plateManager) plateManager.Construct();
-
-            */
-
-            
+            screenBlockManager.Construct();
         }
     }
 }

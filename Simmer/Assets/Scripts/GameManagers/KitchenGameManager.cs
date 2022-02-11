@@ -4,6 +4,7 @@ using UnityEngine;
 
 using Simmer.Player;
 using Simmer.UI;
+using Simmer.SceneManagement;
 
 /// <summary>
 /// 
@@ -11,18 +12,22 @@ using Simmer.UI;
 public class KitchenGameManager : MonoBehaviour
 {
     private PlayerManager _playerManager;
-    private PlayCanvasManager _playCanvasManager;
+    private KitchenCanvasManager _kitchenCanvasManager;
     private GameEventManager _gameEventManager;
+
+    private SceneLoader _sceneLoader;
 
     private void Awake()
     {
         _playerManager = FindObjectOfType<PlayerManager>();
-        _playCanvasManager = FindObjectOfType<PlayCanvasManager>();
+        _kitchenCanvasManager = FindObjectOfType<KitchenCanvasManager>();
         _gameEventManager = GetComponent<GameEventManager>();
+        _sceneLoader = GetComponent<SceneLoader>();
 
         _gameEventManager.Construct();
-        _playCanvasManager.Construct(_gameEventManager.OnSelectItem);
-        _playerManager.Construct(_gameEventManager, _playCanvasManager.inventoryUIManager);
+        _kitchenCanvasManager.Construct(_gameEventManager.OnSelectItem);
+        _playerManager.Construct(_gameEventManager, _kitchenCanvasManager.inventoryUIManager);
+        _sceneLoader.Construct(_kitchenCanvasManager);
     }
 
     public void QuitGame()

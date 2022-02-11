@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+using DG.Tweening;
+
 namespace Simmer.UI
 {
     public class ImageManager : MonoBehaviour
@@ -10,7 +12,7 @@ namespace Simmer.UI
         public Image image { get; private set; }
         public RectTransform rectTransform { get; private set; }
 
-        public void Construct()
+        public virtual void Construct()
         {
             image = GetComponent<Image>();
             rectTransform = GetComponent<RectTransform>();
@@ -24,6 +26,12 @@ namespace Simmer.UI
         public void SetColor(Color color)
         {
             image.color = color;
+        }
+
+        public Tween Fade(float newAlpha, float duration, Ease ease)
+        {
+            return image.DOFade(newAlpha, duration)
+                .SetEase(ease);
         }
     }
 }
