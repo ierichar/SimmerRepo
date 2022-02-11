@@ -6,12 +6,15 @@ using UnityEngine.SceneManagement;
 using DG.Tweening;
 
 using Simmer.UI;
+using Simmer.Player;
+using Simmer.Inventory;
 
 namespace Simmer.SceneManagement
 {
     public class SceneLoader : MonoBehaviour
     {
         private ScreenBlockManager _screenBlockManager;
+        private PlayerInventory _playerInventory;
 
         private List<ExitDoorBehaviour> exitDoorList = new List<ExitDoorBehaviour>();
 
@@ -23,8 +26,10 @@ namespace Simmer.SceneManagement
 
         private bool isSceneLoading = false;
 
-        public void Construct(PlayCanvasManager playCanvasManager)
+        public void Construct(PlayerManager playerManager
+            , PlayCanvasManager playCanvasManager)
         {
+            _playerInventory = playerManager.playerInventory;
             _screenBlockManager = playCanvasManager.screenBlockManager;
 
             ExitDoorBehaviour[] sceneChangeArray = FindObjectsOfType<ExitDoorBehaviour>();
@@ -54,6 +59,10 @@ namespace Simmer.SceneManagement
         private IEnumerator LoadSceneSequence(SceneData sceneData)
         {
             isSceneLoading = true;
+
+            GlobalPlayerData.SaveInventoryDictionary
+                (_playerInventory.foodItemDictionary);
+
             Tween fadeTween = _screenBlockManager
                 .Fade(1, _fadeTime, _fadeEase);
             yield return fadeTween.WaitForCompletion();

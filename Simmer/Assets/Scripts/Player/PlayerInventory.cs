@@ -18,18 +18,28 @@ namespace Simmer.Inventory
     {
         private InventoryUIManager _inventoryUIManager;
         private PlayerHeldItem _playerHeldItem;
+        [SerializeField] private AllFoodData _allFoodData;
 
-        [Tooltip("Player will have these ingredients in their hotbar on start")]
-        [SerializeField] private List<IngredientData> _startingIngredients
-            = new List<IngredientData>();
-        [Tooltip("_startingIngredients will have their quality set to this")]
-        [SerializeField] private int _startingQuality;
+        //[Tooltip("Player will have these ingredients in their hotbar on start")]
+        //[SerializeField] private List<IngredientData> _startingIngredients
+        //    = new List<IngredientData>();
+        //[Tooltip("_startingIngredients will have their quality set to this")]
+        //[SerializeField] private int _startingQuality;
 
         /// <summary>
         /// Key: Inventory slot index, Value: FoodItem in the slot
         /// </summary>
         private Dictionary<int, FoodItem> _foodItemDictionary
             = new Dictionary<int, FoodItem>();
+
+        /// <summary>
+        /// Public property version of _foodItemDictionary
+        /// </summary>
+        public Dictionary<int, FoodItem> foodItemDictionary
+        {
+            get { return _foodItemDictionary; }
+            set { foodItemDictionary = _foodItemDictionary; }
+        }    
 
         /// <summary>
         /// Index of selected item visually indicated by outline and held item
@@ -52,11 +62,18 @@ namespace Simmer.Inventory
 
             selectedItemIndex = -1;
 
-            foreach (IngredientData ingredient in _startingIngredients)
+            // Load from global
+            foreach (var pair in GlobalPlayerData.foodItemDictionary)
             {
-                FoodItem newFoodItem = new FoodItem(ingredient, _startingQuality);
-                AddFoodItem(newFoodItem);
+                AddFoodItem(pair.Value, pair.Key);
             }
+
+            // Starting items old script
+            //foreach (IngredientData ingredient in _startingIngredients)
+            //{
+            //    FoodItem newFoodItem = new FoodItem(ingredient, _startingQuality);
+            //    AddFoodItem(newFoodItem);
+            //}
 
             playerManager.gameEventManager.OnSelectItem
                 .AddListener(OnSelectItemCallback);
@@ -137,9 +154,19 @@ namespace Simmer.Inventory
 
         private void OnAddRandomItemCallback()
         {
-            int randomIndex = Random.Range(0, _startingIngredients.Count);
-            FoodItem foodItem = new FoodItem(_startingIngredients[randomIndex]);
+            List<IngredientData> ingredients = _allFoodData.allIngredientDataList;
+            int randomIndex = Random.Range(0, ingredients.Count);
+            FoodItem foodItem = new FoodItem(ingredients[randomIndex]);
             AddFoodItem(foodItem);
+        }
+
+        public void AddFoodItem(FoodItem item, int index)
+        {
+            _foodItemDictionary.Add(index, item);
+
+            InventorySlotManager inventorySlot = _inventoryUIManager
+                .inventorySlotsManager.GetInventorySlot(index);
+            inventorySlot.SpawnFoodItem(item);
         }
 
         public void AddFoodItem(FoodItem item)
@@ -152,12 +179,8 @@ namespace Simmer.Inventory
             }
             else
             {
-                _foodItemDictionary.Add(nextToFillIndex, item);
-
-                InventorySlotManager inventorySlot = _inventoryUIManager
-                    .inventorySlotsManager.GetInventorySlot(nextToFillIndex);
-                inventorySlot.SpawnFoodItem(item);
-            } 
+                AddFoodItem(item, GetNextToFillIndex());
+            }
         }
 
         public FoodItem RemoveFoodItem(int index)

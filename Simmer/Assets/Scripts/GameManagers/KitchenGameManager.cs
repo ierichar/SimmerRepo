@@ -27,7 +27,7 @@ public class KitchenGameManager : MonoBehaviour
         _gameEventManager.Construct();
         _kitchenCanvasManager.Construct(_gameEventManager.OnSelectItem);
         _playerManager.Construct(_gameEventManager, _kitchenCanvasManager.inventoryUIManager);
-        _sceneLoader.Construct(_kitchenCanvasManager);
+        _sceneLoader.Construct(_playerManager, _kitchenCanvasManager);
     }
 
     public void QuitGame()

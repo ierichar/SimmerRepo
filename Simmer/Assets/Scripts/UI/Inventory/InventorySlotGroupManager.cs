@@ -33,7 +33,18 @@ namespace Simmer.Inventory
 
         public InventorySlotManager GetInventorySlot(int index)
         {
-            return _inventorySlotManagerList[index];
+            if(index < _inventorySlotManagerList.Count
+                && index >= 0)
+            {
+                return _inventorySlotManagerList[index];
+            }
+            else
+            {
+                Debug.LogError(this + " Error: Cannot GetInventorySlot " +
+                    "of index " + index);
+                return _inventorySlotManagerList[0];
+            }
+            
         }
     }
 }

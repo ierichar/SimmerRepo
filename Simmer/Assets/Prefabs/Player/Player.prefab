@@ -214,12 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd91d84bef84746e8a5a094a4cb04b9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startingIngredients:
-  - {fileID: 11400000, guid: 1c3717ce0a5c841bbb4dc7e348bbe5eb, type: 2}
-  - {fileID: 11400000, guid: 4484146648c7d4384a459681d258b86e, type: 2}
-  - {fileID: 11400000, guid: 7e07ba1a8f3d747eca4d4e4684d50e6e, type: 2}
-  - {fileID: 11400000, guid: 3a75ceb5df29f42f283f1700f0d3d73f, type: 2}
-  _startingQuality: 1
+  _allFoodData: {fileID: 11400000, guid: 05f30738b897a4f9883d29e9da799118, type: 2}
 --- !u!114 &8042035493373524652
 MonoBehaviour:
   m_ObjectHideFlags: 0
