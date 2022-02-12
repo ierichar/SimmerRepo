@@ -91,14 +91,14 @@ namespace Simmer.Inventory
 
             // TESTING VARIANT INGREDIENTS
 
-            List<IngredientData> layers = new List<IngredientData>();
-            layers.Add(variantCake);
-            layers.Add(variantCake.ingredientLayerList[0].ingredientData);
-            layers.Add(variantCake.ingredientLayerList[1].ingredientData);
+            //List<IngredientData> layers = new List<IngredientData>();
+            //layers.Add(variantCake);
+            //layers.Add(variantCake.ingredientLayerList[0].ingredientData);
+            //layers.Add(variantCake.ingredientLayerList[1].ingredientData);
 
-            FoodItem testCake = new FoodItem(variantCake, layers);
+            //FoodItem testCake = new FoodItem(variantCake, layers);
 
-            AddFoodItem(testCake);
+            //AddFoodItem(testCake);
         }
 
         private void OnSelectItemCallback(int index)
