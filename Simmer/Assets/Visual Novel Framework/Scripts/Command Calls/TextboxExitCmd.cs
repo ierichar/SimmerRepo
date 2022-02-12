@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TextboxExitCmd : MonoBehaviour, ICommandCall
+namespace Simmer.VN
 {
-    public IEnumerator Command(List<string> args)
+    public class TextboxExitCmd : MonoBehaviour, ICommandCall
     {
-        VN_Manager manager = VN_Util.manager;
-        TextboxData data = manager.textboxManager.data;
+        public IEnumerator Command(List<string> args)
+        {
+            VN_Manager manager = VN_Util.manager;
+            TextboxData data = manager.textboxManager.data;
 
-        yield return StartCoroutine(manager.textboxManager.HideTextbox(data));
+            yield return StartCoroutine(manager.textboxManager.HideTextbox(data));
+        }
     }
 }

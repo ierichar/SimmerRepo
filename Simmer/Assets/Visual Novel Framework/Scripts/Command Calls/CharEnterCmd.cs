@@ -2,19 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharEnterCmd : MonoBehaviour, ICommandCall
+namespace Simmer.VN
 {
-	public IEnumerator Command(List<string> args)
-	{
-        foreach(string arg in args)
+    public class CharEnterCmd : MonoBehaviour, ICommandCall
+    {
+        public IEnumerator Command(List<string> args)
         {
-            CharacterData data = VN_Util.FindCharacterData(arg);
-            VN_Character charObj = VN_Util.FindEmptyCharObj(data);
+            foreach (string arg in args)
+            {
+                CharacterData data = VN_Util.FindCharacterData(arg);
+                VN_Character charObj = VN_Util.FindEmptyCharObj(data);
 
-            charObj.SetData(data);
-            charObj.ChangeSprite(data.defaultSprite);
+                charObj.SetData(data);
+                charObj.ChangeSprite(data.defaultSprite);
 
-            yield return StartCoroutine(charObj.data.transition.Co_EnterScreen(charObj, charObj));
+                yield return StartCoroutine(charObj.data.transition.Co_EnterScreen(charObj, charObj));
+            }
         }
     }
 }

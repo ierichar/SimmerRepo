@@ -3,20 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using Ink.Runtime;
 
-public class UpdateInkVarCmd : MonoBehaviour, ICommandCall
+namespace Simmer.VN
 {
-    public IEnumerator Command(List<string> args)
+    public class UpdateInkVarCmd : MonoBehaviour, ICommandCall
     {
-        if(args.Count != 2)
+        public IEnumerator Command(List<string> args)
         {
-            Debug.LogError("Arg number error: " + this);
+            if (args.Count != 2)
+            {
+                Debug.LogError("Arg number error: " + this);
+                yield break;
+            }
+            Story Story = VN_Util.manager.Story;
+            VN_SharedVariables sharedVariables = VN_Util.manager.sharedVariables;
+
+            var newVal = sharedVariables.GetVariableValue(args[1]);
+            Story.variablesState[args[0]] = newVal;
             yield break;
         }
-        Story Story = VN_Util.manager.Story;
-        VN_SharedVariables sharedVariables = VN_Util.manager.sharedVariables;
-
-        var newVal = sharedVariables.GetVariableValue(args[1]);
-        Story.variablesState[args[0]] = newVal;
-        yield break;
     }
 }

@@ -12,9 +12,14 @@ namespace Simmer.UI
 {
     public class MarketCanvasManager : PlayCanvasManager
     {
+        public CanvasGroupManager canvasGroupManager { get; private set; }
+
         public override void Construct(UnityEvent<int> OnSelectItem)
         {
             base.Construct(OnSelectItem);
+
+            canvasGroupManager = GetComponent<CanvasGroupManager>();
+            canvasGroupManager.Construct();
         }
     }
 }

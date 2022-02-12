@@ -2,38 +2,41 @@
 using UnityEngine;
 using DG.Tweening;
 
-[CreateAssetMenu(fileName = "SlideTextboxTransition", menuName = "VN Framework/Textbox Transitions/SlideTextboxTransition")]
-public class SlideTextboxTransition : TextboxTransition
+namespace Simmer.VN
 {
-    public Ease enterEase;
-    public Ease exitEase;
-
-    public override IEnumerator Co_EnterScreen(VN_Manager manager, MonoBehaviour caller)
+    [CreateAssetMenu(fileName = "SlideTextboxTransition", menuName = "VN Framework/Textbox Transitions/SlideTextboxTransition")]
+    public class SlideTextboxTransition : TextboxTransition
     {
-        float offset = manager.textboxManager.data.activeOffset;
-        Vector2 endPosition = new Vector2(0, offset);
-        yield return caller.StartCoroutine(Co_Move(manager, endPosition, enterEase));
-    }
+        public Ease enterEase;
+        public Ease exitEase;
 
-    public override IEnumerator Co_ExitScreen(VN_Manager manager, MonoBehaviour caller)
-    {
-        RectTransform textbox = manager.textboxRectTransform;
-        float offset = manager.textboxManager.data.hiddenOffset;
-        Vector2 endPosition = new Vector2 (0, -(textbox.sizeDelta.y + offset));
-        yield return caller.StartCoroutine(Co_Move(manager, endPosition, exitEase));
-    }
+        public override IEnumerator Co_EnterScreen(VN_Manager manager, MonoBehaviour caller)
+        {
+            float offset = manager.textboxManager.data.activeOffset;
+            Vector2 endPosition = new Vector2(0, offset);
+            yield return caller.StartCoroutine(Co_Move(manager, endPosition, enterEase));
+        }
 
-    IEnumerator Co_Move(VN_Manager manager, Vector2 endPosition, Ease ease)
-    {
-        bool waitingForComplete = true;
+        public override IEnumerator Co_ExitScreen(VN_Manager manager, MonoBehaviour caller)
+        {
+            RectTransform textbox = manager.textboxRectTransform;
+            float offset = manager.textboxManager.data.hiddenOffset;
+            Vector2 endPosition = new Vector2(0, -(textbox.sizeDelta.y + offset));
+            yield return caller.StartCoroutine(Co_Move(manager, endPosition, exitEase));
+        }
 
-        TextboxData data = manager.textboxManager.data;
+        IEnumerator Co_Move(VN_Manager manager, Vector2 endPosition, Ease ease)
+        {
+            bool waitingForComplete = true;
 
-        RectTransform textbox = manager.textboxRectTransform;
-        textbox.DOAnchorPos(endPosition, data.textboxTransitionDuration)
-            .OnComplete(() => waitingForComplete = false)
-            .SetEase(ease);
+            TextboxData data = manager.textboxManager.data;
 
-        yield return new WaitUntil(() => waitingForComplete == false);
+            RectTransform textbox = manager.textboxRectTransform;
+            textbox.DOAnchorPos(endPosition, data.textboxTransitionDuration)
+                .OnComplete(() => waitingForComplete = false)
+                .SetEase(ease);
+
+            yield return new WaitUntil(() => waitingForComplete == false);
+        }
     }
 }

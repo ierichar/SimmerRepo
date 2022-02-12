@@ -2351,8 +2351,10 @@ GameObject:
   - component: {fileID: 948184398447186770}
   - component: {fileID: 948184398447186771}
   - component: {fileID: 948184398447186780}
+  - component: {fileID: 5371193947533195053}
   - component: {fileID: 6877292532382256535}
   - component: {fileID: 948184398447186782}
+  - component: {fileID: 3305126866067838256}
   m_Layer: 5
   m_Name: MarketCanvas
   m_TagString: Untagged
@@ -2448,6 +2450,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!225 &5371193947533195053
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 948184398447186776}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!114 &6877292532382256535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2478,6 +2492,18 @@ MonoBehaviour:
   maxMoveDuration: 0
   minMoveDistance: 0
   maxMoveDistance: 0
+--- !u!114 &3305126866067838256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 948184398447186776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7330c0a45e5e245eba357745299a5476, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &948184398465889895
 GameObject:
   m_ObjectHideFlags: 0

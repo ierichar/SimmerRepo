@@ -4,13 +4,17 @@ using UnityEngine;
 
 using Simmer.Player;
 using Simmer.UI;
+using Simmer.VN;
+using Simmer.NPC;
 using Simmer.SceneManagement;
 
 public class MarketGameManager : MonoBehaviour
 {
     private PlayerManager _playerManager;
-    private PlayCanvasManager _marketCanvasManager;
+    private MarketCanvasManager _marketCanvasManager;
     private GameEventManager _gameEventManager;
+    private NPC_Manager _NPC_Manager;
+    private VN_Manager _VN_Manager;
 
     private SceneLoader _sceneLoader;
 
@@ -18,6 +22,8 @@ public class MarketGameManager : MonoBehaviour
     {
         _playerManager = FindObjectOfType<PlayerManager>();
         _marketCanvasManager = FindObjectOfType<MarketCanvasManager>();
+        _NPC_Manager = FindObjectOfType<NPC_Manager>();
+        _VN_Manager = FindObjectOfType<VN_Manager>();
         _gameEventManager = GetComponent<GameEventManager>();
         _sceneLoader = GetComponent<SceneLoader>();
 
@@ -25,6 +31,10 @@ public class MarketGameManager : MonoBehaviour
         _marketCanvasManager.Construct(_gameEventManager.OnSelectItem);
         _playerManager.Construct(_gameEventManager, _marketCanvasManager.inventoryUIManager);
         _sceneLoader.Construct(_playerManager, _marketCanvasManager);
+
+        _VN_Manager.Construct();
+        _NPC_Manager.Construct(_VN_Manager
+            , _marketCanvasManager.canvasGroupManager);
     }
 
     public void QuitGame()

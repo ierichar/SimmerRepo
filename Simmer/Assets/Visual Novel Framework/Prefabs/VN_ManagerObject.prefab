@@ -995,7 +995,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.9764151, b: 0.9764151, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1539,7 +1539,7 @@ MonoBehaviour:
   minValue: 5
   maxValue: 60
   inkJSONAsset: {fileID: 4900000, guid: 37112d08629874850b01dab9db6755a7, type: 3}
-  DebugEnabled: 0
+  DebugEnabled: 1
   TextboxCanvas: {fileID: 7788690952007004722}
   textboxRectTransform: {fileID: 7788690952007004735}
   TextCanvas: {fileID: 7788690952764756129}

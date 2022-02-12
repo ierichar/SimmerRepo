@@ -1,0 +1,88 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Events;
+
+using DG.Tweening;
+
+using Simmer.VN;
+using Simmer.UI;
+
+namespace Simmer.NPC
+{
+    public class NPC_Manager : MonoBehaviour
+    {
+        public VN_Manager vn_manager { get; private set; }
+        private CanvasGroupManager _playCanvasGroupManager;
+
+        [SerializeField] private float _playCanvasFadeDuration;
+        [SerializeField] private Ease _playCanvasFadeEase;
+
+        private List<NPC_Behaviour> _allNPCList =
+            new List<NPC_Behaviour>();
+
+        public UnityEvent<TextAsset> OnNPCInteract
+            = new UnityEvent<TextAsset>();
+
+        public bool isInteractTransition;
+
+        public void Construct(VN_Manager VNmanager
+            , CanvasGroupManager playCanvasGroupManager)
+        {
+            vn_manager = VNmanager;
+            _playCanvasGroupManager = playCanvasGroupManager;
+
+            NPC_Behaviour[] npcArray = FindObjectsOfType<NPC_Behaviour>();
+            foreach(var npc in npcArray)
+            {
+                _allNPCList.Add(npc);
+                npc.Construct(this);
+            }
+
+            OnNPCInteract.AddListener(OnNPCInteractCallback);
+
+            vn_manager.OnEndStory.AddListener(OnStopNPCInteract);
+        }
+
+        private void OnNPCInteractCallback(TextAsset npcInkAsset)
+        {
+            if (!isInteractTransition
+                && vn_manager.state == VN_Manager.VN_State.end)
+            {
+                StartCoroutine(InteractSequence(npcInkAsset));
+            }
+        }
+
+        private IEnumerator InteractSequence(TextAsset npcInkAsset)
+        {
+            isInteractTransition = true;
+
+            Tween fadeTween = _playCanvasGroupManager.Fade(0,
+                _playCanvasFadeDuration, _playCanvasFadeEase);
+
+            yield return fadeTween.WaitForCompletion();
+
+            vn_manager.inkJSONAsset = npcInkAsset;
+            vn_manager.StartStory();
+
+            isInteractTransition = false;
+        }
+
+        private void OnStopNPCInteract()
+        {
+            StartCoroutine(StopInteractSequence());
+        }
+
+        private IEnumerator StopInteractSequence()
+        {
+            isInteractTransition = true;
+
+            Tween fadeTween = _playCanvasGroupManager.Fade(1,
+                _playCanvasFadeDuration, _playCanvasFadeEase);
+
+            yield return fadeTween.WaitForCompletion();
+
+            isInteractTransition = false;
+        }
+    }
+}
