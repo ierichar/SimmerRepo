@@ -32,7 +32,8 @@ public class PantrySlotGroupManager : MonoBehaviour
 
             if(i < _startingIngredients.Count)
             {
-                FoodItem newFoodItem = new FoodItem(_startingIngredients[i]);
+                FoodItem newFoodItem = new FoodItem(_startingIngredients[i]
+                    , null);
                 if (newFoodItem != null)
                 {
                     thisSlot.SpawnFoodItem(newFoodItem);

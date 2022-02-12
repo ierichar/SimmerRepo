@@ -87,6 +87,6 @@ public class Shop : MonoBehaviour
             return;
         }
         money.addMoney(-cost);
-        inventory.AddFoodItem(new FoodItem(ingredient));
+        inventory.AddFoodItem(new FoodItem(ingredient, null));
     }
 }

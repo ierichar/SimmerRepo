@@ -47,6 +47,8 @@ namespace Simmer.Inventory
         public int selectedItemIndex { get; private set;}
         private Color defaultColor = new Color(204.0f, 204.0f, 204.0f, 255.0f);
 
+        public IngredientData variantCake;
+
         /// <summary>
         /// Constructs from the PlayerManager, adds starting ingredients
         /// , add listeners for inventory UnityEvents
@@ -86,6 +88,17 @@ namespace Simmer.Inventory
 
             _inventoryUIManager.inventoryEventManager
                 .OnInventoryChange.AddListener(OnInventoryChangeCallback);
+
+            // TESTING VARIANT INGREDIENTS
+
+            List<IngredientData> layers = new List<IngredientData>();
+            layers.Add(variantCake);
+            layers.Add(variantCake.ingredientLayerList[0].ingredientData);
+            layers.Add(variantCake.ingredientLayerList[1].ingredientData);
+
+            FoodItem testCake = new FoodItem(variantCake, layers);
+
+            AddFoodItem(testCake);
         }
 
         private void OnSelectItemCallback(int index)
@@ -156,7 +169,7 @@ namespace Simmer.Inventory
         {
             List<IngredientData> ingredients = _allFoodData.allIngredientDataList;
             int randomIndex = Random.Range(0, ingredients.Count);
-            FoodItem foodItem = new FoodItem(ingredients[randomIndex]);
+            FoodItem foodItem = new FoodItem(ingredients[randomIndex], null);
             AddFoodItem(foodItem);
         }
 

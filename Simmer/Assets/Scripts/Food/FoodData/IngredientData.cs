@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,12 +16,34 @@ namespace Simmer.FoodData
         public int baseValue;
         public bool isFinalProduct;
 
-        [SerializeField] List<RecipeData> _recipeEdgeList
+        [SerializeField]
+        private List<RecipeData> _recipeEdgeList
             = new List<RecipeData>();
 
         public Dictionary<ApplianceData, List<RecipeData>>
             applianceRecipeListDict
             = new Dictionary<ApplianceData, List<RecipeData>>();
+
+        public enum CombineMode
+        {
+            Additive,
+            BaseOnly
+        }
+        public CombineMode combineMode;
+
+        [Serializable]
+        public class IngredientLayer
+        {
+            public IngredientData ingredientData;
+            public int layerNum;
+        }
+        public List<IngredientLayer> ingredientLayerList
+            = new List<IngredientLayer>();
+
+        public Dictionary<IngredientData, int>
+            ingredientLayerDict { get; private set; }
+
+        public int maxPerRecipe;
 
         private void OnValidate()
         {
@@ -51,6 +74,12 @@ namespace Simmer.FoodData
                         applianceRecipeListDict.Add(recipe.applianceData, applianceRecipeList);
                     }
                 }
+            }
+
+            ingredientLayerDict = new Dictionary<IngredientData, int>();
+            foreach (IngredientLayer item in ingredientLayerList)
+            {
+                ingredientLayerDict.Add(item.ingredientData, item.layerNum);
             }
         }
 

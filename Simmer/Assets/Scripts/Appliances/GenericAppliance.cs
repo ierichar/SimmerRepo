@@ -89,7 +89,8 @@ public abstract class GenericAppliance : MonoBehaviour
     }
     protected virtual void Finished(){
         Debug.Log("finished waiting for action time");
-        FoodItem resultItem = new FoodItem(_pendingTargetRecipe.resultIngredient);
+        FoodItem resultItem = new FoodItem(_pendingTargetRecipe.resultIngredient
+            , null);
         _applianceSlotManager[0].SpawnFoodItem(resultItem);
         _finished = true;
         //_running may need to stay true for burning of item

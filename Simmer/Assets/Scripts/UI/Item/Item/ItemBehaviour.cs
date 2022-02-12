@@ -63,19 +63,19 @@ namespace Simmer.Items
             OnChangeSlot.AddListener(OnChangeSlotCallback);
 
             _tooltipTrigger = GetComponentInChildren<TooltipTrigger>();
-            _tooltipTrigger.Construct(foodItem.ingredientData.name, "");
-
+            _tooltipTrigger.Construct(foodItem.itemName, "");
 
             _itemCanvas = GetComponent<Canvas>();
             _itemCanvas.sortingLayerName = "UI";
 
-            if (foodItem == null)
+            if (foodItem == null || foodItem.sprite == null)
             {
-                Debug.LogError(this + "Error: Cannot have null foodItem on Construct");
+                Debug.LogError(this + "Error: Cannot have null foodItem" +
+                    " or foodItem.sprite on Construct");
             }
             else
             {
-                _itemImageManager.SetSprite(foodItem.ingredientData.sprite);
+                _itemImageManager.SetSprite(foodItem.sprite);
             }
         }
 
