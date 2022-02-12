@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2792543f1b0a54dccbb3910190f8b1cd, type: 3}
+  m_Name: DefaultCharacter
+  m_EditorClassIdentifier: 
+  scenePosition: 0
+  screenEdgeDistance: 0
+  transition: {fileID: 11400000, guid: 3b8c7edcf2ae945a48152c552d124440, type: 2}
+  transitionDuration: 1
+  characterSpriteScale: 1
+  characterBoxScale: 1
+  defaultSprite: {fileID: 7284341000751922582, guid: d9cf1e27ca92e4ad7b73389798a3529d, type: 3}
+  characterBox: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  characterSprites:
+  - {fileID: 7284341000751922582, guid: d9cf1e27ca92e4ad7b73389798a3529d, type: 3}
