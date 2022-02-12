@@ -34,7 +34,7 @@ public class MarketGameManager : MonoBehaviour
 
         _VN_Manager.Construct();
         _NPC_Manager.Construct(_VN_Manager
-            , _marketCanvasManager.canvasGroupManager);
+            , _marketCanvasManager);
     }
 
     public void QuitGame()

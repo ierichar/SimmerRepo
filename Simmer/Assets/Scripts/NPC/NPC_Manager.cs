@@ -13,6 +13,7 @@ namespace Simmer.NPC
     public class NPC_Manager : MonoBehaviour
     {
         public VN_Manager vn_manager { get; private set; }
+        private MarketCanvasManager _marketCanvasManager;
         private CanvasGroupManager _playCanvasGroupManager;
 
         [SerializeField] private float _playCanvasFadeDuration;
@@ -27,10 +28,11 @@ namespace Simmer.NPC
         public bool isInteractTransition;
 
         public void Construct(VN_Manager VNmanager
-            , CanvasGroupManager playCanvasGroupManager)
+            , MarketCanvasManager marketCanvasManager)
         {
             vn_manager = VNmanager;
-            _playCanvasGroupManager = playCanvasGroupManager;
+            _marketCanvasManager = marketCanvasManager;
+            _playCanvasGroupManager = marketCanvasManager.canvasGroupManager;
 
             NPC_Behaviour[] npcArray = FindObjectsOfType<NPC_Behaviour>();
             foreach(var npc in npcArray)
@@ -62,6 +64,8 @@ namespace Simmer.NPC
 
             yield return fadeTween.WaitForCompletion();
 
+            _marketCanvasManager.gameObject.SetActive(false);
+
             vn_manager.inkJSONAsset = npcInkAsset;
             vn_manager.StartStory();
 
@@ -76,6 +80,8 @@ namespace Simmer.NPC
         private IEnumerator StopInteractSequence()
         {
             isInteractTransition = true;
+
+            _marketCanvasManager.gameObject.SetActive(true);
 
             Tween fadeTween = _playCanvasGroupManager.Fade(1,
                 _playCanvasFadeDuration, _playCanvasFadeEase);
