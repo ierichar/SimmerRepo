@@ -19,6 +19,8 @@ namespace Simmer.NPC
         [SerializeField] private float _playCanvasFadeDuration;
         [SerializeField] private Ease _playCanvasFadeEase;
 
+        [SerializeField] private GameObject _npcInterface;
+
         private List<NPC_Behaviour> _allNPCList =
             new List<NPC_Behaviour>();
 
@@ -87,6 +89,8 @@ namespace Simmer.NPC
                 _playCanvasFadeDuration, _playCanvasFadeEase);
 
             yield return fadeTween.WaitForCompletion();
+
+            _npcInterface.SetActive(true);
 
             isInteractTransition = false;
         }
