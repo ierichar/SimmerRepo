@@ -34,14 +34,24 @@ namespace Simmer.FoodData
         [Serializable]
         public class IngredientLayer
         {
+            public IngredientLayer(IngredientData ingredientData
+                ,Sprite layerSprite
+                ,int layerNum)
+            {
+                this.ingredientData = ingredientData;
+                this.layerSprite = layerSprite;
+                this.layerNum = layerNum;
+            }
+
             public IngredientData ingredientData;
+            public Sprite layerSprite;
             public int layerNum;
         }
         public List<IngredientLayer> ingredientLayerList
             = new List<IngredientLayer>();
 
-        public Dictionary<IngredientData, int>
-            ingredientLayerDict { get; private set; }
+        public Dictionary<IngredientData, IngredientLayer>
+            ingredientLayerDict = new Dictionary<IngredientData, IngredientLayer>();
 
         public int maxPerRecipe;
 
@@ -76,10 +86,27 @@ namespace Simmer.FoodData
                 }
             }
 
-            ingredientLayerDict = new Dictionary<IngredientData, int>();
+            ingredientLayerDict.Clear();
+
+            IngredientLayer baseIngredientLayer
+                = new IngredientLayer(this, null, 0);
+            ingredientLayerDict.Add(this, baseIngredientLayer);
+
             foreach (IngredientLayer item in ingredientLayerList)
             {
-                ingredientLayerDict.Add(item.ingredientData, item.layerNum);
+                RecursivePopulateLayerList(item);
+            }
+        }
+
+        private void RecursivePopulateLayerList(IngredientLayer ingredientLayer)
+        {
+            ingredientLayerDict.Add(ingredientLayer.ingredientData
+                , ingredientLayer);
+
+            foreach (IngredientLayer childLayer in ingredientLayer
+                .ingredientData.ingredientLayerList)
+            {
+                RecursivePopulateLayerList(childLayer);
             }
         }
 

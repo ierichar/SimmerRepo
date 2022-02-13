@@ -472,6 +472,14 @@ PrefabInstance:
       propertyPath: variantCake
       value: 
       objectReference: {fileID: 11400000, guid: f56b7e58d66cd497d8a4b11b9441ea22, type: 2}
+    - target: {fileID: 8042035493373524643, guid: 13fddecaeb8294b5b9585d0eb31b7d63, type: 3}
+      propertyPath: variantTopping1
+      value: 
+      objectReference: {fileID: 11400000, guid: 7e07ba1a8f3d747eca4d4e4684d50e6e, type: 2}
+    - target: {fileID: 8042035493373524643, guid: 13fddecaeb8294b5b9585d0eb31b7d63, type: 3}
+      propertyPath: variantTopping2
+      value: 
+      objectReference: {fileID: 11400000, guid: 57e649900f9914ede86ccf0979a675bc, type: 2}
     - target: {fileID: 8042035493373524646, guid: 13fddecaeb8294b5b9585d0eb31b7d63, type: 3}
       propertyPath: m_RootOrder
       value: 5

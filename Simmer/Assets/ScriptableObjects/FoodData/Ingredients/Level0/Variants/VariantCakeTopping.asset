@@ -20,7 +20,9 @@ MonoBehaviour:
   combineMode: 0
   ingredientLayerList:
   - ingredientData: {fileID: 11400000, guid: 7e07ba1a8f3d747eca4d4e4684d50e6e, type: 2}
+    layerSprite: {fileID: 21300000, guid: 78b96fac9ce460a46817baa4d90e1347, type: 3}
     layerNum: 1
   - ingredientData: {fileID: 11400000, guid: 57e649900f9914ede86ccf0979a675bc, type: 2}
+    layerSprite: {fileID: 0}
     layerNum: 2
   maxPerRecipe: 2

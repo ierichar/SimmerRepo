@@ -48,6 +48,8 @@ namespace Simmer.Inventory
         private Color defaultColor = new Color(204.0f, 204.0f, 204.0f, 255.0f);
 
         public IngredientData variantCake;
+        public IngredientData variantTopping1;
+        public IngredientData variantTopping2;
 
         /// <summary>
         /// Constructs from the PlayerManager, adds starting ingredients
@@ -88,17 +90,6 @@ namespace Simmer.Inventory
 
             _inventoryUIManager.inventoryEventManager
                 .OnInventoryChange.AddListener(OnInventoryChangeCallback);
-
-            // TESTING VARIANT INGREDIENTS
-
-            //List<IngredientData> layers = new List<IngredientData>();
-            //layers.Add(variantCake);
-            //layers.Add(variantCake.ingredientLayerList[0].ingredientData);
-            //layers.Add(variantCake.ingredientLayerList[1].ingredientData);
-
-            //FoodItem testCake = new FoodItem(variantCake, layers);
-
-            //AddFoodItem(testCake);
         }
 
         private void OnSelectItemCallback(int index)
@@ -132,8 +123,7 @@ namespace Simmer.Inventory
             FoodItem thisFoodItem = GetSelectedItem();
             if (thisFoodItem != null)
             {
-                _playerHeldItem.SetSprite(thisFoodItem
-                    .ingredientData.sprite);
+                _playerHeldItem.SetSprite(thisFoodItem.sprite);
             }
             else
             {
@@ -167,10 +157,20 @@ namespace Simmer.Inventory
 
         private void OnAddRandomItemCallback()
         {
-            List<IngredientData> ingredients = _allFoodData.allIngredientDataList;
-            int randomIndex = Random.Range(0, ingredients.Count);
-            FoodItem foodItem = new FoodItem(ingredients[randomIndex], null);
-            AddFoodItem(foodItem);
+            // TESTING VARIANT INGREDIENTS
+
+            List<IngredientData> layers = new List<IngredientData>();
+            layers.Add(variantTopping1);
+            layers.Add(variantTopping2);
+
+            FoodItem testCake = new FoodItem(variantCake, layers);
+
+            AddFoodItem(testCake);
+
+            //List<IngredientData> ingredients = _allFoodData.allIngredientDataList;
+            //int randomIndex = Random.Range(0, ingredients.Count);
+            //FoodItem foodItem = new FoodItem(ingredients[randomIndex], null);
+            //AddFoodItem(foodItem);
         }
 
         public void AddFoodItem(FoodItem item, int index)

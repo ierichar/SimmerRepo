@@ -38,14 +38,11 @@ public static class ExtensionMethods
             }
         }
 
-
-
         newTexture.Apply();
         Sprite finalSprite = Sprite.Create(newTexture, new Rect
             (0, 0, newTexture.width, newTexture.height)
             , new Vector2(0.5f, 0.5f));
 
-        spriteList.Reverse();
         string newName = "";
         foreach(Sprite sprite in spriteList)
         {
@@ -53,6 +50,8 @@ public static class ExtensionMethods
         }
         newName += "Sprite";
         finalSprite.name = newName;
+
+        //Debug.Log("finalSprite: " + finalSprite.name);
 
         return finalSprite;
     }

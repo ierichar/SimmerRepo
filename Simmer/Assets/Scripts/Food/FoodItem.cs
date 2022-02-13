@@ -25,7 +25,6 @@ namespace Simmer.Items
                 ingredientLayerList.Count == 0)
             {
                 SingleConstruct(ingredientData);
-                
             }
             else
             {
@@ -34,22 +33,32 @@ namespace Simmer.Items
             }
         }
 
-        private void VariantConstruct(IngredientData ingredientData
-            , List<IngredientData> ingredientLayerList)
+        private void VariantConstruct(IngredientData baseIngredient
+            , List<IngredientData> thisIngredientList)
         {
-            if (ingredientData.ingredientLayerDict.Count == 0)
+            if (baseIngredient.ingredientLayerDict.Count == 0)
             {
                 Debug.LogError("Cannot VariantConstruct on empty ingredientLayerList" +
-                    "of ingredientData \"" + ingredientData.name + "\"");
+                    "of ingredientData \"" + baseIngredient.name + "\"");
                 return;
             }
 
-            List<Sprite> toBeLayered = new List<Sprite>();
-
-            foreach(IngredientData ingredient in ingredientLayerList)
+            if(!thisIngredientList.Contains(baseIngredient))
             {
-                int thisLayer = ingredientData.ingredientLayerDict[ingredient];
-                ingredientLayerDict.Add(ingredientData, thisLayer);
+                thisIngredientList.Add(baseIngredient);
+            }
+
+            string combineName = "";
+
+            List<IngredientData.IngredientLayer> layerList
+                = new List<IngredientData.IngredientLayer>();
+
+            foreach (IngredientData ingredient in thisIngredientList)
+            {                
+                int thisLayer = baseIngredient.ingredientLayerDict
+                    [ingredient].layerNum;
+
+                ingredientLayerDict.Add(ingredient, thisLayer);
 
                 if (ingredient.sprite == null)
                 {
@@ -57,22 +66,51 @@ namespace Simmer.Items
                     continue;
                 }
 
-                toBeLayered.Add(ingredient.sprite);
+                layerList.Add(baseIngredient.ingredientLayerDict[ingredient]);
+
+                combineName += ingredient.name;
             }
 
-            itemName = ingredientData.name;
+            itemName = combineName;
+
+            List<Sprite> toBeLayered = new List<Sprite>();
+
+            layerList.Sort(delegate(IngredientData.IngredientLayer x,
+                IngredientData.IngredientLayer y)
+                {
+                    if(x.layerNum == y.layerNum)
+                    {
+                        return 0;
+                    }
+                    else if(x.layerNum > y.layerNum)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return -1;
+                    }
+                });
+
+            foreach(var item in layerList)
+            {
+                if (item.layerSprite == null)
+                    toBeLayered.Add(item.ingredientData.sprite);
+                else toBeLayered.Add(item.layerSprite);
+            }
+
             sprite = ExtensionMethods.LayerSprite(toBeLayered);
 
-            if(ingredientData.combineMode
+            if(baseIngredient.combineMode
                 == IngredientData.CombineMode.Additive)
             {
                 // Not implemented yet
-                value = ingredientData.baseValue;
+                value = baseIngredient.baseValue;
             }
-            if (ingredientData.combineMode
+            if (baseIngredient.combineMode
                 == IngredientData.CombineMode.BaseOnly)
             {
-                value = ingredientData.baseValue;
+                value = baseIngredient.baseValue;
             }
             quality = 1;
             
