@@ -75,7 +75,8 @@ namespace Simmer.Editor
                     foreach (var recipeData in pair.Value)
                     {
                         // Test applianceRecipeDict recipe missing ingredient 
-                        if (!recipeData.ingredientDataList.Contains(data))
+                        if (!recipeData.ingredientDataList.Contains(data)
+                            && !recipeData.expandedIngredientList.Contains(data))
                         {
                             Debug.LogError("IngredientData \""
                                 + data.name + "\" on RecipeData \""

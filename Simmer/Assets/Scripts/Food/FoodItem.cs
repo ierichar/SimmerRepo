@@ -13,7 +13,7 @@ namespace Simmer.Items
         public Sprite sprite { get; private set; }
         public int value { get; private set; } 
         public int quality { get; private set; }
-        public Dictionary<IngredientData, int> ingredientLayerDict
+        public Dictionary<IngredientData, int> ingredientCompDict
             = new Dictionary<IngredientData, int>();
 
         public FoodItem(IngredientData ingredientData
@@ -33,8 +33,17 @@ namespace Simmer.Items
             }
         }
 
+        private void SingleConstruct(IngredientData ingredientData)
+        {
+            itemName = ingredientData.name;
+            sprite = ingredientData.sprite;
+            value = ingredientData.baseValue;
+            quality = 1;
+            ingredientCompDict.Add(ingredientData, 0);
+        }
+
         private void VariantConstruct(IngredientData baseIngredient
-            , List<IngredientData> thisIngredientList)
+            , List<IngredientData> thisIngredientComp)
         {
             if (baseIngredient.ingredientLayerDict.Count == 0)
             {
@@ -43,23 +52,46 @@ namespace Simmer.Items
                 return;
             }
 
-            if(!thisIngredientList.Contains(baseIngredient))
+            // Base ingredient is implied in any thisIngredientComp
+            // to provide base properties
+            if (!thisIngredientComp.Contains(baseIngredient))
             {
-                thisIngredientList.Add(baseIngredient);
+                thisIngredientComp.Add(baseIngredient);
             }
 
-            string combineName = "";
+            ConstructCombineName(thisIngredientComp);
 
-            List<IngredientData.IngredientLayer> layerList
-                = new List<IngredientData.IngredientLayer>();
+            ConstructCombineSprite(baseIngredient, thisIngredientComp);
 
-            foreach (IngredientData ingredient in thisIngredientList)
-            {                
+            // Construct ingredientCompDict
+            foreach (IngredientData ingredient in thisIngredientComp)
+            {
+                if(!baseIngredient.ingredientLayerDict.ContainsKey(ingredient))
+                {
+                    Debug.LogError(this + " Error: Cannot find ingredient \""
+                        + ingredient.name + "\" in baseIngredient.ingredientLayerDict \""
+                        + baseIngredient.name + "\"");
+                    continue;
+                }
                 int thisLayer = baseIngredient.ingredientLayerDict
                     [ingredient].layerNum;
 
-                ingredientLayerDict.Add(ingredient, thisLayer);
+                ingredientCompDict.Add(ingredient, thisLayer);
+            }
 
+            ConstructCombineValue(baseIngredient);
+
+            quality = 1;
+        }
+
+        private void ConstructCombineSprite(IngredientData baseIngredient
+            , List<IngredientData> thisIngredientComp)
+        {
+            List<IngredientLayer> layerList
+                = new List<IngredientLayer>();
+            // Populate layerList
+            foreach (IngredientData ingredient in thisIngredientComp)
+            {
                 if (ingredient.sprite == null)
                 {
                     Debug.LogError("Cannot add sprite to toBeLayered");
@@ -67,41 +99,46 @@ namespace Simmer.Items
                 }
 
                 layerList.Add(baseIngredient.ingredientLayerDict[ingredient]);
-
-                combineName += ingredient.name;
             }
 
-            itemName = combineName;
+            // Sort layerList by layerNum with lower number first
+            layerList.Sort(delegate (IngredientLayer x,
+                IngredientLayer y)
+            {
+                if (x.layerNum == y.layerNum)       return 0;
+                else if (x.layerNum > y.layerNum)   return 1;
+                else                                return -1;
+            });
 
+            // Get sprites from layerList
             List<Sprite> toBeLayered = new List<Sprite>();
-
-            layerList.Sort(delegate(IngredientData.IngredientLayer x,
-                IngredientData.IngredientLayer y)
-                {
-                    if(x.layerNum == y.layerNum)
-                    {
-                        return 0;
-                    }
-                    else if(x.layerNum > y.layerNum)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return -1;
-                    }
-                });
-
-            foreach(var item in layerList)
+            foreach (var item in layerList)
             {
                 if (item.layerSprite == null)
                     toBeLayered.Add(item.ingredientData.sprite);
                 else toBeLayered.Add(item.layerSprite);
             }
 
+            // Generate and set sprite
             sprite = ExtensionMethods.LayerSprite(toBeLayered);
+        }
 
-            if(baseIngredient.combineMode
+        private void ConstructCombineName(
+            List<IngredientData> thisIngredientList)
+        {
+            string combineName = "";
+
+            foreach (IngredientData ingredient in thisIngredientList)
+            {
+                combineName += ingredient.name;
+            }
+
+            itemName = combineName;
+        }
+
+        private void ConstructCombineValue(IngredientData baseIngredient)
+        {
+            if (baseIngredient.combineMode
                 == IngredientData.CombineMode.Additive)
             {
                 // Not implemented yet
@@ -112,17 +149,6 @@ namespace Simmer.Items
             {
                 value = baseIngredient.baseValue;
             }
-            quality = 1;
-            
-        }
-
-        private void SingleConstruct(IngredientData ingredientData)
-        {
-            itemName = ingredientData.name;
-            sprite = ingredientData.sprite;
-            value = ingredientData.baseValue;
-            quality = 1;
-            ingredientLayerDict.Add(ingredientData, 0);
         }
     }
 }

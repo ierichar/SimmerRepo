@@ -31,22 +31,6 @@ namespace Simmer.FoodData
         }
         public CombineMode combineMode;
 
-        [Serializable]
-        public class IngredientLayer
-        {
-            public IngredientLayer(IngredientData ingredientData
-                ,Sprite layerSprite
-                ,int layerNum)
-            {
-                this.ingredientData = ingredientData;
-                this.layerSprite = layerSprite;
-                this.layerNum = layerNum;
-            }
-
-            public IngredientData ingredientData;
-            public Sprite layerSprite;
-            public int layerNum;
-        }
         public List<IngredientLayer> ingredientLayerList
             = new List<IngredientLayer>();
 
@@ -54,6 +38,8 @@ namespace Simmer.FoodData
             ingredientLayerDict = new Dictionary<IngredientData, IngredientLayer>();
 
         public int maxPerRecipe;
+
+        private string layerDictDebug = "";
 
         private void OnValidate()
         {
@@ -67,6 +53,8 @@ namespace Simmer.FoodData
 
         private void Construct()
         {
+            layerDictDebug = "";
+
             applianceRecipeListDict.Clear();
             foreach (RecipeData recipe in _recipeEdgeList)
             {
@@ -96,18 +84,26 @@ namespace Simmer.FoodData
             {
                 RecursivePopulateLayerList(item);
             }
+
+            //Debug.Log(this + " " + layerDictDebug);
         }
 
         private void RecursivePopulateLayerList(IngredientLayer ingredientLayer)
         {
-            ingredientLayerDict.Add(ingredientLayer.ingredientData
+            if(ingredientLayer.ingredientData.ingredientLayerList.Count == 0)
+            {
+                ingredientLayerDict.Add(ingredientLayer.ingredientData
                 , ingredientLayer);
+
+                layerDictDebug += ingredientLayer.ingredientData.name + " ";
+            }
 
             foreach (IngredientLayer childLayer in ingredientLayer
                 .ingredientData.ingredientLayerList)
             {
                 RecursivePopulateLayerList(childLayer);
             }
+
         }
 
     }
