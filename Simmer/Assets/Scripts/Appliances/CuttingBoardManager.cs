@@ -31,13 +31,14 @@ public class CuttingBoardManager : GenericAppliance
     public void chopping(){
         tryChop();
         if(!cuttingStarted) return;
-        
+
         if(numCuts >= _pendingTargetRecipe.baseActionTime * numCutsMultiplier){
             foreach(ItemSlotManager slot in _applianceSlotManager){
                 if(slot.currentItem != null) slot.EmptySlot();
             }
             Finished();
             _progressBar.reset();
+            cuttingStarted = false;
             numCuts = 0;
         }else{
             print("numCuts: " + numCuts);
