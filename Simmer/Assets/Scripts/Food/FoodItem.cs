@@ -45,19 +45,13 @@ namespace Simmer.Items
         private void VariantConstruct(IngredientData baseIngredient
             , List<IngredientData> thisIngredientComp)
         {
-            if (baseIngredient.ingredientLayerDict.Count == 0)
+            if (baseIngredient.expandLayerDict.Count == 0)
             {
                 Debug.LogError("Cannot VariantConstruct on empty ingredientLayerList" +
                     "of ingredientData \"" + baseIngredient.name + "\"");
                 return;
             }
 
-            // Base ingredient is implied in any thisIngredientComp
-            // to provide base properties
-            if (!thisIngredientComp.Contains(baseIngredient))
-            {
-                thisIngredientComp.Add(baseIngredient);
-            }
 
             ConstructCombineName(thisIngredientComp);
 
@@ -66,14 +60,14 @@ namespace Simmer.Items
             // Construct ingredientCompDict
             foreach (IngredientData ingredient in thisIngredientComp)
             {
-                if(!baseIngredient.ingredientLayerDict.ContainsKey(ingredient))
+                if(!baseIngredient.expandLayerDict.ContainsKey(ingredient))
                 {
                     Debug.LogError(this + " Error: Cannot find ingredient \""
                         + ingredient.name + "\" in baseIngredient.ingredientLayerDict \""
                         + baseIngredient.name + "\"");
                     continue;
                 }
-                int thisLayer = baseIngredient.ingredientLayerDict
+                int thisLayer = baseIngredient.expandLayerDict
                     [ingredient].layerNum;
 
                 ingredientCompDict.Add(ingredient, thisLayer);
@@ -98,12 +92,11 @@ namespace Simmer.Items
                     continue;
                 }
 
-                layerList.Add(baseIngredient.ingredientLayerDict[ingredient]);
+                layerList.Add(baseIngredient.expandLayerDict[ingredient]);
             }
 
             // Sort layerList by layerNum with lower number first
-            layerList.Sort(delegate (IngredientLayer x,
-                IngredientLayer y)
+            layerList.Sort(delegate (IngredientLayer x, IngredientLayer y)
             {
                 if (x.layerNum == y.layerNum)       return 0;
                 else if (x.layerNum > y.layerNum)   return 1;
@@ -128,6 +121,8 @@ namespace Simmer.Items
         {
             string combineName = "";
 
+            thisIngredientList.Reverse();
+
             foreach (IngredientData ingredient in thisIngredientList)
             {
                 combineName += ingredient.name;
@@ -138,14 +133,14 @@ namespace Simmer.Items
 
         private void ConstructCombineValue(IngredientData baseIngredient)
         {
-            if (baseIngredient.combineMode
-                == IngredientData.CombineMode.Additive)
+            if (baseIngredient.variantMode
+                == IngredientData.VariantMode.Additive)
             {
                 // Not implemented yet
                 value = baseIngredient.baseValue;
             }
-            if (baseIngredient.combineMode
-                == IngredientData.CombineMode.BaseOnly)
+            if (baseIngredient.variantMode
+                == IngredientData.VariantMode.BaseOnly)
             {
                 value = baseIngredient.baseValue;
             }

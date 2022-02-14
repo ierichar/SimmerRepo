@@ -12,6 +12,7 @@ namespace Simmer.FoodData
 
     public class IngredientData : ScriptableObject
     {
+        [Header("Base Variables")]
         public Sprite sprite;
         public int baseValue;
         public bool isFinalProduct;
@@ -24,20 +25,23 @@ namespace Simmer.FoodData
             applianceRecipeListDict
             = new Dictionary<ApplianceData, List<RecipeData>>();
 
-        public enum CombineMode
+        public enum VariantMode
         {
             Additive,
             BaseOnly
         }
-        public CombineMode combineMode;
+        [Header("Variant Variables")]
+        public VariantMode variantMode;
+        public int minVariants;
+        public int maxVariants;
 
         public List<IngredientLayer> ingredientLayerList
             = new List<IngredientLayer>();
 
         public Dictionary<IngredientData, IngredientLayer>
-            ingredientLayerDict = new Dictionary<IngredientData, IngredientLayer>();
+            expandLayerDict = new Dictionary<IngredientData, IngredientLayer>();
 
-        public int maxPerRecipe;
+        private int _leafCount;
 
         private string layerDictDebug = "";
 
@@ -74,37 +78,73 @@ namespace Simmer.FoodData
                 }
             }
 
-            ingredientLayerDict.Clear();
+            expandLayerDict.Clear();
 
             IngredientLayer baseIngredientLayer
                 = new IngredientLayer(this, null, 0);
-            ingredientLayerDict.Add(this, baseIngredientLayer);
-
-            foreach (IngredientLayer item in ingredientLayerList)
-            {
-                RecursivePopulateLayerList(item);
-            }
+            _leafCount = 0;
+            RecursivePopulateLayerList(baseIngredientLayer);
 
             //Debug.Log(this + " " + layerDictDebug);
         }
 
         private void RecursivePopulateLayerList(IngredientLayer ingredientLayer)
         {
-            if(ingredientLayer.ingredientData.ingredientLayerList.Count == 0)
+            List<IngredientLayer> parentLayerList = ingredientLayer
+                .ingredientData.ingredientLayerList;
+
+            if (parentLayerList.Count != 0)
             {
-                ingredientLayerDict.Add(ingredientLayer.ingredientData
-                , ingredientLayer);
+                List<IngredientLayer> childrenLayers
+                    = GetChildrenLayers(ingredientLayer);
 
-                layerDictDebug += ingredientLayer.ingredientData.name + " ";
+                for (int i = 0; i < childrenLayers.Count; ++i)
+                {
+                    IngredientLayer childLayer = childrenLayers[i];
+                    RecursivePopulateLayerList(childLayer);     
+                }
             }
-
-            foreach (IngredientLayer childLayer in ingredientLayer
-                .ingredientData.ingredientLayerList)
+            else
             {
-                RecursivePopulateLayerList(childLayer);
+                AddLayer(ingredientLayer);
             }
-
         }
 
+        private List<IngredientLayer> GetChildrenLayers(IngredientLayer ingredientLayer)
+        {
+            List<IngredientLayer> childrenLayers
+                    = ingredientLayer.ingredientData.ingredientLayerList;
+            int childrenNum = childrenLayers.Count;
+
+            childrenLayers.Sort(delegate (IngredientLayer x, IngredientLayer y)
+            {
+                if (x.layerNum == y.layerNum) return 0;
+                else if (x.layerNum > y.layerNum) return 1;
+                else return -1;
+            });
+
+            return childrenLayers;
+        }
+
+        private void AddLayer(IngredientLayer ingredientLayer)
+        {
+            IngredientLayer finalLayer = new IngredientLayer(
+                    ingredientLayer.ingredientData, ingredientLayer.layerSprite
+                    , _leafCount);
+            if (expandLayerDict.ContainsKey(finalLayer.ingredientData))
+            {
+                Debug.LogError(this.name + " Error: ingredientData key \""
+                    + finalLayer.ingredientData + "\" already in expandLayerDict");
+            }
+            else
+            {
+                expandLayerDict.Add(finalLayer.ingredientData, finalLayer);
+
+                layerDictDebug += ingredientLayer.ingredientData.name + " "
+                    + _leafCount + ", ";
+
+                _leafCount++;
+            }
+        }
     }
 }

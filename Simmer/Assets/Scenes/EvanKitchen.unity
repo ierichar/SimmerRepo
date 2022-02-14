@@ -469,6 +469,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 8042035493373524643, guid: 13fddecaeb8294b5b9585d0eb31b7d63, type: 3}
+      propertyPath: baseCake
+      value: 
+      objectReference: {fileID: 11400000, guid: cb52c8d08c91d4c9ab15a324bbe2b7a0, type: 2}
+    - target: {fileID: 8042035493373524643, guid: 13fddecaeb8294b5b9585d0eb31b7d63, type: 3}
       propertyPath: variantCake
       value: 
       objectReference: {fileID: 11400000, guid: f56b7e58d66cd497d8a4b11b9441ea22, type: 2}

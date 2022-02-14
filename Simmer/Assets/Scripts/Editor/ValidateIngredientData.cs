@@ -1,5 +1,6 @@
 using System;
 using System.Reflection;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
@@ -10,7 +11,7 @@ namespace Simmer.Editor
 {
     public class ValidateIngredientData
     {
-        [MenuItem("Tools/Validate FoodData/IngredientData %#i")]
+        [MenuItem("Tools/Validate FoodData/IngredientData %#.")]
         private static void NewNestedMenuOption()
         {
             Validate();
@@ -54,40 +55,99 @@ namespace Simmer.Editor
                     isValidated = false;
                 }
 
-                
-                foreach (var pair in data
-                    .applianceRecipeListDict)
-                {
-                    // Test applianceRecipeDict of key SoloApplianceData
-                    // has only 1 RecipeData
-                    if (pair.Key.GetType() == typeof(SoloApplianceData))
-                    {
-                        if (pair.Value.Count > 1)
-                        {
-                            Debug.LogError("IngredientData \""
-                                + data.name + "\" applianceRecipeDict appliance \""
-                                + pair.Key.name + "\" is a SoloApplianceData and " +
-                                " cannot contain more than 1 RecipeData");
-                            isValidated = false;
-                        }
-                    }
+                isValidated = TestApplianceRecipeListDict(data);
 
-                    foreach (var recipeData in pair.Value)
+                isValidated = TestIngredientLayerDict(data);
+            }
+
+            Debug.Log(isValidated + " ValidateIngredientData");
+            return isValidated;
+        }
+
+        private static bool TestApplianceRecipeListDict(IngredientData data)
+        {
+            bool isValidated = true;
+            foreach (var pair in data
+                    .applianceRecipeListDict)
+            {
+                // Test applianceRecipeDict of key SoloApplianceData
+                // has only 1 RecipeData
+                if (pair.Key.GetType() == typeof(SoloApplianceData))
+                {
+                    if (pair.Value.Count > 1)
                     {
-                        // Test applianceRecipeDict recipe missing ingredient 
-                        if (!recipeData.ingredientDataList.Contains(data)
-                            && !recipeData.expandedIngredientList.Contains(data))
-                        {
-                            Debug.LogError("IngredientData \""
-                                + data.name + "\" on RecipeData \""
-                                + recipeData.name + "\" is missing");
-                            isValidated = false;
-                        }
+                        Debug.LogError("IngredientData \""
+                            + data.name + "\" applianceRecipeDict appliance \""
+                            + pair.Key.name + "\" is a SoloApplianceData and " +
+                            " cannot contain more than 1 RecipeData");
+                        isValidated = false;
+                    }
+                }
+
+                foreach (var recipeData in pair.Value)
+                {
+                    // Test applianceRecipeDict recipe missing ingredient 
+                    if (!recipeData.ingredientDataList.Contains(data)
+                        && !recipeData.expandedIngredientList.Contains(data))
+                    {
+                        Debug.LogError("IngredientData \""
+                            + data.name + "\" on RecipeData \""
+                            + recipeData.name + "\" is missing");
+                        isValidated = false;
                     }
                 }
             }
 
-            Debug.Log(isValidated + " ValidateIngredientData");
+            return isValidated;
+        }
+
+        private static bool TestIngredientLayerDict(IngredientData data)
+        {
+            bool isValidated = true;
+
+            List<int> indexList = new List<int>();
+            foreach(var pair in data.expandLayerDict)
+            {
+                IngredientData ingredientData = pair.Key;
+                IngredientLayer layer = pair.Value;
+                int layerNum = layer.layerNum;
+
+                if (ingredientData == null)
+                {
+                    Debug.LogError("IngredientData \""
+                        + data.name + "\" ingredientLayerDict ingredientData"
+                        + " cannot be null");
+                    isValidated = false;
+                    continue;
+                }
+
+                if (layer == null)
+                {
+                    Debug.LogError("IngredientData \""
+                        + data.name + "\" ingredientLayerDict ingredientLayer"
+                        + " cannot be null");
+                    isValidated = false;
+                }
+
+                if (layer.ingredientData == null)
+                {
+                    Debug.LogError("IngredientData \""
+                        + data.name + "\" ingredientLayerDict" +
+                        " ingredientLayer.ingredientData cannot be null");
+                    isValidated = false;
+                }
+
+                if (indexList.Contains(layerNum))
+                {
+                    Debug.LogError("IngredientData \""
+                        + data.name + "\" ingredientLayerDict" +
+                        " ingredientLayer.layerNum cannot contain" +
+                        " duplicate number \"" + layerNum + "\"");
+                    isValidated = false;
+                }
+                indexList.Add(layerNum);
+            }
+
             return isValidated;
         }
     }

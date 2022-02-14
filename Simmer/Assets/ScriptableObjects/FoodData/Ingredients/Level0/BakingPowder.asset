@@ -7,7 +7,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 100bfe8cc201b417887646b2755fd998, type: 3}
   m_Name: BakingPowder
@@ -17,3 +17,6 @@ MonoBehaviour:
   isFinalProduct: 0
   _recipeEdgeList:
   - {fileID: 11400000, guid: e1d0faecbce5d4d6ea549b13c68ba768, type: 2}
+  combineMode: 0
+  ingredientLayerList: []
+  maxPerRecipe: 0

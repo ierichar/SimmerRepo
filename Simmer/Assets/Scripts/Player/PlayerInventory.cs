@@ -48,6 +48,7 @@ namespace Simmer.Inventory
         private Color defaultColor = new Color(204.0f, 204.0f, 204.0f, 255.0f);
 
         public IngredientData variantCake;
+        public IngredientData baseCake;
         public IngredientData variantTopping1;
         public IngredientData variantTopping2;
 
@@ -160,6 +161,7 @@ namespace Simmer.Inventory
             // TESTING VARIANT INGREDIENTS
 
             List<IngredientData> layers = new List<IngredientData>();
+            layers.Add(baseCake);
             layers.Add(variantTopping1);
             layers.Add(variantTopping2);
 

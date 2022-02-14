@@ -19,5 +19,18 @@ namespace Simmer.FoodData
         public IngredientData ingredientData;
         public Sprite layerSprite;
         public int layerNum;
+
+        public bool ContainsIngredient(
+            List<IngredientLayer> ingredientLayerList, IngredientData toFind)
+        {
+            var found = ingredientLayerList.Find(
+                delegate(IngredientLayer x)
+            {
+                return x.ingredientData == toFind;
+            });
+
+            if (found == null) return false;
+            return true;
+        }
     }
 }
