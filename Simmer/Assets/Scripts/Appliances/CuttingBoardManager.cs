@@ -14,25 +14,7 @@ public class CuttingBoardManager : GenericAppliance
 
     public override void Construct(ItemFactory itemFactory){
         print("Calling derived class constructor from cutting board");
-        interactable = GetComponent<InteractableBehaviour>();
-        SpriteRenderer highlightTarget = GetComponentInChildren<SpriteRenderer>();
-        interactable.Construct(ToggleInventory, highlightTarget);
-
-        OnValidate.AddListener(base.OnValidateCallback);
-
-        _timer = Instantiate(_timerPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-        _timer.SetUpTimer(this.transform);
-
-        _UIManager.Construct(itemFactory);
-        _UIGameObject = _UIManager.gameObject;
-
-        _UIGameObject.SetActive(false);
-
-        _running = false;
-        _finished = false;
-        _timeRunning = 0.0f;
-
-        _applianceSlotManager = _UIManager.slots.slots;
+        base.Construct(itemFactory);
 
         //derived class variable init
         cuttingStarted = false;
