@@ -170,7 +170,7 @@ public abstract class GenericAppliance : MonoBehaviour
         OnValidate.Invoke(null);
     }
     
-    private void OnValidateCallback(RecipeData recipe){
+    protected void OnValidateCallback(RecipeData recipe){
         print("INVOKED RECIPE: " + recipe);
         _pendingTargetRecipe = recipe;
     }
