@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events; 
 using Simmer.Player;
 using Simmer.FoodData;
 using Simmer.Items;
@@ -19,53 +20,55 @@ public class Shop : MonoBehaviour
     public PlayerInventory inventory;
     public PlayerCurrency money;
 
+    private InteractSlot sellSlot;
+
     //These are just things to enable and disable
     private GameObject canvas;
-    private GameObject text;
+    //private GameObject text;
     private Image fadeColor;
 
     //assgin all the variables
     void Awake()
     {
-        canvas = GameObject.Find("ShopSlotsCanvas");
-        text = GameObject.Find("ShopTitle");
+        canvas = GameObject.Find("ShopSlots");
+        //text = GameObject.Find("ShopTitle");
         fadeColor = gameObject.GetComponent<Image>();
-        buttonContainer = GameObject.Find("ShopSlotsCanvas").GetComponent<Transform>();
+        buttonContainer = GameObject.Find("ShopSlots").GetComponent<Transform>();
         allButtons = new List<ShopButton>();
+        sellSlot = FindObjectOfType<InteractSlot>();
+        sellSlot.Construct();
+        sellSlot.itemSlot.onItemDrop.AddListener(sellItem);
     }
 
     //make all the buttons
     void Start() {
-        for(int i = 0; i < 8; i++) {
+        for(int i = 0; i < 12; i++) {
             ShopButton button = Instantiate(buttonPrefab, buttonContainer);
             button.makeButton(allBasicFood[Random.Range(0, allBasicFood.Count)], GetComponent<Shop>());
             allButtons.Add(button);
         }
-        ToggleOff();
+        // ToggleOff();
     }
 
-    void Update()
-    {
-        if(Input.GetButtonDown("Shop")){
-            if(canvas.activeSelf) {
-                ToggleOff();
-            } else {
-                ToggleOn();
-            }
-        }
-    }
+    // void Update()
+    // {
+    //     if(Input.GetButtonDown("Shop")){
+    //         if(canvas.activeSelf) {
+    //             ToggleOff();
+    //         } else {
+    //             ToggleOn();
+    //         }
+    //     }
+    // }
 
     //toggles the shop
     public void ToggleOn() {
-        text.SetActive(true);
-        canvas.SetActive(true);
-        fadeColor.enabled = true;
         makeNewSelection();
     }
 
     //toggles the shop off
     public void ToggleOff() {
-        text.SetActive(false);
+        //text.SetActive(false);
         canvas.SetActive(false);
         fadeColor.enabled = false;
     }
@@ -88,5 +91,11 @@ public class Shop : MonoBehaviour
         }
         money.addMoney(-cost);
         inventory.AddFoodItem(new FoodItem(ingredient, null));
+    }
+
+    public void sellItem(ItemBehaviour item) {
+        Debug.Log("sold item: " + item.foodItem.ingredientData.name);
+        money.addMoney(item.foodItem.ingredientData.baseValue);
+        sellSlot.itemSlot.EmptySlot();
     }
 }
