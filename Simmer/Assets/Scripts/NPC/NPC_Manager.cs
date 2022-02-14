@@ -20,6 +20,7 @@ namespace Simmer.NPC
         [SerializeField] private Ease _playCanvasFadeEase;
 
         [SerializeField] private GameObject _npcInterface;
+        [SerializeField] private Shop shop;
 
         private List<NPC_Behaviour> _allNPCList =
             new List<NPC_Behaviour>();
@@ -93,6 +94,7 @@ namespace Simmer.NPC
             _npcInterface.SetActive(true);
 
             isInteractTransition = false;
+            shop.ToggleOn();
         }
     }
 }
