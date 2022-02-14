@@ -47,6 +47,7 @@ public abstract class GenericAppliance : MonoBehaviour
     protected RecipeData _pendingTargetRecipe;
     protected ItemFactory _itemFactory;
     protected GameObject _UIGameObject;
+    private static GameObject _blackout;
 
     public UnityEvent<RecipeData> OnValidate = new UnityEvent<RecipeData>();
 
@@ -65,8 +66,11 @@ public abstract class GenericAppliance : MonoBehaviour
 
         _UIManager.Construct(itemFactory);
         _UIGameObject = _UIManager.gameObject;
+        if(_blackout==null)
+            _blackout = GameObject.Find("Blackout");
 
         _UIGameObject.SetActive(false);
+        _blackout.SetActive(false);
 
         _running = false;
         _finished = false;
@@ -77,10 +81,12 @@ public abstract class GenericAppliance : MonoBehaviour
     public virtual void ToggleInventory(){
         if(!invOpen && !UI_OPEN){
             _UIGameObject.SetActive(true);
+            _blackout.SetActive(true);
             invOpen = true;
             UI_OPEN = true;
         }else if(invOpen && UI_OPEN){
             _UIGameObject.SetActive(false);
+            _blackout.SetActive(false);
             invOpen = false;
             UI_OPEN = false;
         }
