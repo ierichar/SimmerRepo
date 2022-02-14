@@ -13,8 +13,6 @@ using Simmer.Interactable;
 
 public abstract class GenericAppliance : MonoBehaviour
 {
-    [SerializeField] protected PlayerInventory playerInventory;
-
     [SerializeField] protected ApplianceData _applianceData;
 
     [SerializeField]  protected ApplianceUIManager _UIManager;

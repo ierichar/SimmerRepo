@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c9d50a780c2640c886552fca5bbac3d, type: 3}
+  m_Name: ChoppedCarrotRecipe
+  m_EditorClassIdentifier: 
+  ingredientDataList:
+  - {fileID: 11400000, guid: f2d64ff20b51169478c43d68964ce2f7, type: 2}
+  applianceData: {fileID: 11400000, guid: b8d33f9ac604d4f488e92997635d4a73, type: 2}
+  difficultyLevel: 1
+  baseActionTime: 1
+  resultIngredient: {fileID: 11400000, guid: 855ed4e5b19d9e64f8a15fc2baaf9c89, type: 2}
