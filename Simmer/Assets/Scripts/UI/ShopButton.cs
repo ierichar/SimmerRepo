@@ -31,8 +31,7 @@ namespace Simmer.UI
         public void updateButton(IngredientData ingredient) {
             currentIngredient = ingredient;
             shopImage.sprite = currentIngredient.sprite;
-            //currently no way to get how much an ingredient cost b/c cost is not coded into ingredient
-            cost = Random.Range(10,20);
+            cost = currentIngredient.baseValue;
             costText.text = "cost: " + cost;
         }
 
