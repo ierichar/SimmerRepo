@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c9d50a780c2640c886552fca5bbac3d, type: 3}
-  m_Name: CreamCakeRecipe
+  m_Name: UnbakedPizzaRecipe
   m_EditorClassIdentifier: 
   ingredientDataList:
-  - {fileID: 11400000, guid: cb52c8d08c91d4c9ab15a324bbe2b7a0, type: 2}
-  - {fileID: 11400000, guid: 7e07ba1a8f3d747eca4d4e4684d50e6e, type: 2}
+  - {fileID: 11400000, guid: f81b1c558c12d7a4ba7b4dfae66a6285, type: 2}
+  - {fileID: 11400000, guid: e48621f149cc57d469de740f86c1746e, type: 2}
+  - {fileID: 11400000, guid: 2565475710af2e449b9967c976e06689, type: 2}
   applianceData: {fileID: 11400000, guid: 676ddc8865c8d41a4a7d3ee7d5e022fb, type: 2}
-  difficultyLevel: 1
-  baseActionTime: 1
-  resultIngredient: {fileID: 11400000, guid: 7fe9c2db8c0af44ea9b48448929217dd, type: 2}
+  difficultyLevel: 2
+  baseActionTime: 7
+  resultIngredient: {fileID: 11400000, guid: cc96013a1269da543ae302e2fd2fbdbf, type: 2}

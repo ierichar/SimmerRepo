@@ -10,15 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 100bfe8cc201b417887646b2755fd998, type: 3}
-  m_Name: Egg
+  m_Name: Water
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: b3280b16c129e41a18c448939c7fde1a, type: 3}
-  baseValue: 1
+  sprite: {fileID: 0}
+  baseValue: 0
   isFinalProduct: 0
   _recipeEdgeList:
-  - {fileID: 11400000, guid: e1d0faecbce5d4d6ea549b13c68ba768, type: 2}
-  - {fileID: 11400000, guid: ba1e6d26aaa386b4cb4afc0a5876ea9c, type: 2}
-  - {fileID: 11400000, guid: 162f64f93eddee241865c3a6b3b8a910, type: 2}
+  - {fileID: 11400000, guid: 3ed2629cd81aa8a4c8d8b7a4d6a1b3da, type: 2}
   variantMode: 0
   minVariants: 0
   maxVariants: 0

@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c9d50a780c2640c886552fca5bbac3d, type: 3}
-  m_Name: CreamCakeRecipe
+  m_Name: BakedChickenRecipe
   m_EditorClassIdentifier: 
   ingredientDataList:
-  - {fileID: 11400000, guid: cb52c8d08c91d4c9ab15a324bbe2b7a0, type: 2}
-  - {fileID: 11400000, guid: 7e07ba1a8f3d747eca4d4e4684d50e6e, type: 2}
-  applianceData: {fileID: 11400000, guid: 676ddc8865c8d41a4a7d3ee7d5e022fb, type: 2}
+  - {fileID: 11400000, guid: ce9457c30fdd7d740af6f3ed4d366fa5, type: 2}
+  applianceData: {fileID: 11400000, guid: a0d4b5c0cfd7f4ec0a17eeda94c8db22, type: 2}
   difficultyLevel: 1
-  baseActionTime: 1
-  resultIngredient: {fileID: 11400000, guid: 7fe9c2db8c0af44ea9b48448929217dd, type: 2}
+  baseActionTime: 5
+  resultIngredient: {fileID: 11400000, guid: 65780dfcb24cbee4480c5c53e1d55710, type: 2}
