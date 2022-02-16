@@ -45,6 +45,7 @@ namespace Simmer.Items
 
         void IDropHandler.OnDrop(PointerEventData eventData)
         {
+          
             if (eventData.pointerDrag == null)
             {
                 return;
