@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.Events;
 using DG.Tweening;
 
 using Simmer.UI;
@@ -15,6 +15,7 @@ namespace Simmer.SceneManagement
     {
         private ScreenBlockManager _screenBlockManager;
         private PlayerInventory _playerInventory;
+        public UnityEvent<SceneData> OnSceneLoad = new UnityEvent<SceneData>();
 
         private List<ExitDoorBehaviour> exitDoorList = new List<ExitDoorBehaviour>();
 
@@ -29,6 +30,7 @@ namespace Simmer.SceneManagement
         public void Construct(PlayerManager playerManager
             , PlayCanvasManager playCanvasManager)
         {
+            OnSceneLoad.AddListener(OnSceneLoadCallback);
             _playerInventory = playerManager.playerInventory;
             _screenBlockManager = playCanvasManager.screenBlockManager;
 
