@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c9d50a780c2640c886552fca5bbac3d, type: 3}
+  m_Name: CheesePastaRecipe
+  m_EditorClassIdentifier: 
+  ingredientDataList:
+  - {fileID: 11400000, guid: 4de779f5ee8fac74894466672bb25b46, type: 2}
+  - {fileID: 11400000, guid: da66be970462f7c46a7f8f147c8ddf3f, type: 2}
+  applianceData: {fileID: 11400000, guid: 676ddc8865c8d41a4a7d3ee7d5e022fb, type: 2}
+  difficultyLevel: 1
+  baseActionTime: 4
+  resultIngredient: {fileID: 11400000, guid: a7fccb819fe62c641bf859d8cfaf954f, type: 2}
