@@ -2,15 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
+using Simmer.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenu;
 
     public static bool isPaused;
+
+    [SerializeField] SceneData mainMenu;
+
+    private SceneLoader _sceneLoader;
     // Start is called before the first frame update
 
-    void Start()
-    {
+    public void Construct(SceneLoader sceneLoader){
+      _sceneLoader = sceneLoader;
       pauseMenu.SetActive(false);
     }
 
@@ -46,7 +52,9 @@ public class PauseMenu : MonoBehaviour
 
     public void QuitGame()
     {
-      Application.Quit();
+      _sceneLoader.OnSceneLoad.Invoke(mainMenu);
+      ResumeGame();
+      //Application.Quit();
     }
 
 }
