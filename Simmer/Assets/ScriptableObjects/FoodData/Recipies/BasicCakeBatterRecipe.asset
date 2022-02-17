@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c9d50a780c2640c886552fca5bbac3d, type: 3}
+  m_Name: BasicCakeBatterRecipe
+  m_EditorClassIdentifier: 
+  ingredientDataList:
+  - {fileID: 11400000, guid: eeabe57d10fbe464296cf625b3fcf090, type: 2}
+  - {fileID: 11400000, guid: 4484146648c7d4384a459681d258b86e, type: 2}
+  - {fileID: 11400000, guid: 3a75ceb5df29f42f283f1700f0d3d73f, type: 2}
+  - {fileID: 11400000, guid: 10062244df47e49868d8fa686cad5b65, type: 2}
+  - {fileID: 11400000, guid: 6183ea7ebcbc84bff853e5eed138897f, type: 2}
+  - {fileID: 11400000, guid: 659c2de493a0f48beaf2a77495faa19b, type: 2}
+  applianceData: {fileID: 11400000, guid: 98e362c19770a4422b5cefea2629900f, type: 2}
+  difficultyLevel: 1
+  baseActionTime: 3
+  resultIngredient: {fileID: 11400000, guid: 1c3717ce0a5c841bbb4dc7e348bbe5eb, type: 2}
