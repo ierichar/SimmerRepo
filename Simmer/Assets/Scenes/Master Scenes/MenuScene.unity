@@ -1120,6 +1120,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1398670509}
   - component: {fileID: 1398670510}
+  - component: {fileID: 1398670511}
   m_Layer: 5
   m_Name: Buttons
   m_TagString: Untagged
@@ -1161,6 +1162,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c5ba93401769403382da2fad86cb073, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _kitchenScene: {fileID: 11400000, guid: 4f43b9f2f064e4461a54deed72d4ba19, type: 2}
+--- !u!114 &1398670511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398670508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d00ab53301e2f49bfb74e43a7d9875b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnSceneLoad:
+    m_PersistentCalls:
+      m_Calls: []
+  _fadeTime: 2
+  _loadDelay: 1
+  _fadeEase: 3
+  _fadeInOnLoad: 1
 --- !u!1 &1550269979
 GameObject:
   m_ObjectHideFlags: 0

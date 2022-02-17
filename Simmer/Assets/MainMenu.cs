@@ -5,11 +5,20 @@ using UnityEngine.SceneManagement;
 
 using Simmer.Interactable;
 using UnityEngine.Events;
+using Simmer.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    /*
+    [SerializeField] private SceneData _kitchenScene;
+    [SerializeField] private SceneLoader _sceneLoader;
+    //public void Awake(){
+    //    _sceneLoader = GetComponent<SceneLoader>();
+    //}
+    */
     public void PlayGame()
     {
-        SceneManager.LoadScene("EvanKitchen");
+        //_sceneLoader.OnSceneLoad.Invoke(_kitchenScene);
+        SceneManager.LoadScene("KitchenScene");
     }
 }
