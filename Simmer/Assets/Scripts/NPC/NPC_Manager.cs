@@ -35,7 +35,9 @@ namespace Simmer.NPC
         {
             vn_manager = VNmanager;
             _marketCanvasManager = marketCanvasManager;
-            _playCanvasGroupManager = marketCanvasManager.canvasGroupManager;
+            if (_marketCanvasManager!=null){ 
+                _playCanvasGroupManager = marketCanvasManager.canvasGroupManager;
+            }
 
             NPC_Behaviour[] npcArray = FindObjectsOfType<NPC_Behaviour>();
             foreach(var npc in npcArray)
@@ -67,7 +69,9 @@ namespace Simmer.NPC
 
             yield return fadeTween.WaitForCompletion();
 
-            _marketCanvasManager.gameObject.SetActive(false);
+            if (_marketCanvasManager!=null){
+                _marketCanvasManager.gameObject.SetActive(false);
+            }
 
             vn_manager.inkJSONAsset = npcInkAsset;
             vn_manager.StartStory();
@@ -83,8 +87,10 @@ namespace Simmer.NPC
         private IEnumerator StopInteractSequence()
         {
             isInteractTransition = true;
-
-            _marketCanvasManager.gameObject.SetActive(true);
+            if (_marketCanvasManager!=null) {
+                _marketCanvasManager.gameObject.SetActive(true);
+            }
+            
 
             Tween fadeTween = _playCanvasGroupManager.Fade(1,
                 _playCanvasFadeDuration, _playCanvasFadeEase);

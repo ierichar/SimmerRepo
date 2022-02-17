@@ -2,14 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
-using Simmer.Interactable;
 using UnityEngine.Events;
 
-public class MainMenu : MonoBehaviour
+using Ink.Runtime;
+
+using Simmer.Interactable;
+using Simmer.VN;
+using Simmer.Player;
+using Simmer.UI;
+using Simmer.NPC;
+
+namespace Simmer.NPC
 {
-    public void PlayGame()
+    public class MainMenu : MonoBehaviour
     {
-        SceneManager.LoadScene("EvanKitchen");
+        public NPC_Manager _npcManager;
+
+        [SerializeField] private TextAsset npcInkAsset;
+
+        public void Construct(NPC_Manager npcManager)
+        {
+            _npcManager = npcManager;
+        }
+
+        public void PlayGame()
+        {
+            SceneManager.LoadScene("EvanKitchen");
+        }
+
+        public void PlayTutorial()
+        {
+            _npcManager.OnNPCInteract.Invoke(npcInkAsset);
+        }
     }
 }
