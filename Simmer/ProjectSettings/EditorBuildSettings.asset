@@ -10,11 +10,8 @@ EditorBuildSettings:
     guid: a9209f14a9e9248ca9c14fad5afa2abd
   - enabled: 1
     path: Assets/Scenes/Master Scenes/KitchenScene.unity
-    guid: 215f8b84c1f0f4a019d1772a99929463
+    guid: d40454bfaface44d5a6eaec9ed063b1e
   - enabled: 1
-    path: Assets/Scenes/EvanKitchen.unity
-    guid: 37b938eff160c480994010881689682b
-  - enabled: 1
-    path: Assets/Scenes/EvanMarket.unity
-    guid: 3fed0a6240eae4e9482237e94e566969
+    path: Assets/Scenes/Master Scenes/MarketScene.unity
+    guid: ba894c4a8cc444f4f96d2ae84f0cb3be
   m_configObjects: {}
