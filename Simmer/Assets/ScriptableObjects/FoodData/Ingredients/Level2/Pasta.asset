@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 100bfe8cc201b417887646b2755fd998, type: 3}
   m_Name: Pasta
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 7ac33c962e761e541a9d9c44a34f7fc6, type: 3}
   baseValue: 5
   isFinalProduct: 0
   _recipeEdgeList:

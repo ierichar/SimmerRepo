@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 100bfe8cc201b417887646b2755fd998, type: 3}
   m_Name: UnbakedPizza
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: e67348e962369c84a8bb37d35679e36a, type: 3}
   baseValue: 6
   isFinalProduct: 0
   _recipeEdgeList:

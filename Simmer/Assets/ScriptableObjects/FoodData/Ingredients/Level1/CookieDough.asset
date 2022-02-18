@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 100bfe8cc201b417887646b2755fd998, type: 3}
   m_Name: CookieDough
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 4b9e0a6a77fe4f34c843d24751084dcd, type: 3}
+  sprite: {fileID: 21300000, guid: d02f06048d516594ea130758a625267c, type: 3}
   baseValue: 1
   isFinalProduct: 1
   _recipeEdgeList:

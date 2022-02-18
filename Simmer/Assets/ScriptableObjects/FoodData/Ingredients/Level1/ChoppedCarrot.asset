@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 100bfe8cc201b417887646b2755fd998, type: 3}
   m_Name: ChoppedCarrot
   m_EditorClassIdentifier: 
-  sprite: {fileID: 13522144924912943, guid: d9cf1e27ca92e4ad7b73389798a3529d, type: 3}
+  sprite: {fileID: 21300000, guid: 831ed6db353a8c34bbcb1c8cae1ff9b8, type: 3}
   baseValue: 6
   isFinalProduct: 1
   _recipeEdgeList: []
