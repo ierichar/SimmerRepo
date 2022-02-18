@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 757efa895a4d444219a9ca35d873b3ab, type: 3}
   m_Name: CuttingBoard
   m_EditorClassIdentifier: 
-  colorCode: {r: 0, g: 0, b: 0, a: 0}
+  colorCode: {r: 0, g: 1, b: 0, a: 1}

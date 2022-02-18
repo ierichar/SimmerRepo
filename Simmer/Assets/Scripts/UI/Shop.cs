@@ -37,7 +37,7 @@ public class Shop : MonoBehaviour
         allButtons = new List<ShopButton>();
         sellSlot = FindObjectOfType<InteractSlot>();
         sellSlot.Construct();
-        sellSlot.itemSlot.onItemDrop.AddListener(sellItem);
+        // sellSlot.itemSlot.onItemDrop.AddListener(sellItemWrapper);
     }
 
     //make all the buttons
@@ -91,6 +91,11 @@ public class Shop : MonoBehaviour
         }
         money.addMoney(-cost);
         inventory.AddFoodItem(new FoodItem(ingredient, null));
+    }
+
+    public void sellItemWrapper() {
+        if(sellSlot.itemSlot.currentItem == null) return;
+        sellItem(sellSlot.itemSlot.currentItem);
     }
 
     public void sellItem(ItemBehaviour item) {

@@ -2,21 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using Simmer.UI.Tooltips;
+using Simmer.Appliance;
+
 namespace Simmer.UI.RecipeMap
 {
     public class EdgeLine : MonoBehaviour
     {
         public ImageManager imageManager { get; private set; }
         private RectTransform _rectTransform;
+        private TooltipTrigger _tooltipTrigger;
 
         public void Construct(Vector2 v1
             , Vector2 v2
             , float verticalSpacing
             , float verticalLineGap
-            , Color thisColor)
+            , ApplianceData applianceData)
         {
             imageManager = GetComponent<ImageManager>();
             imageManager.Construct();
+
+            _tooltipTrigger = GetComponentInChildren<TooltipTrigger>();
+            _tooltipTrigger.Construct("Appliance: " + applianceData.name, "");
 
             _rectTransform = GetComponent<RectTransform>();
 
@@ -37,7 +44,7 @@ namespace Simmer.UI.RecipeMap
 
             //_rectTransform.sizeDelta -= new Vector2(0, verticalLineGap);
 
-            imageManager.SetColor(thisColor);
+            imageManager.SetColor(applianceData.colorCode);
         }
     }
 }

@@ -98,17 +98,27 @@ namespace Simmer.Items
             Vector2 oldPosition = _rectTransform.anchoredPosition;
             float distance = Vector2.Distance(oldPosition, Vector2.zero);
 
-            //float newValue = MathUtil.Rescale(0, 10000
-            //    , _itemFactory.minMoveDistance
-            //    , _itemFactory.maxMoveDistance
-            //    , distance);
-
-            //print("newValue " + newValue);
-
-            //float thisDuration = 0f;
+            float thisDuration = _itemFactory.minMoveDuration;
+            if (distance <= _itemFactory.minMoveDistance)
+            {
+                thisDuration = _itemFactory.minMoveDuration;
+            }
+            else if (distance >= _itemFactory.maxMoveDistance)
+            {
+                thisDuration = _itemFactory.maxMoveDuration;
+            }
+            else
+            {
+                thisDuration = MathUtil.Rescale(
+                    _itemFactory.minMoveDistance
+                    , _itemFactory.maxMoveDistance
+                    , _itemFactory.minMoveDuration
+                    , _itemFactory.maxMoveDuration
+                    , distance);
+            }
 
             activeMoveTween = _rectTransform.DOAnchorPos
-                (Vector2.zero, _itemFactory.minMoveDuration)
+                (Vector2.zero, thisDuration)
                 .SetEase(_itemFactory.moveEase);
         }
 

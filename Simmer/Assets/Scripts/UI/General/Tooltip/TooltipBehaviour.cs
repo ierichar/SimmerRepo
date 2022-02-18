@@ -14,6 +14,7 @@ namespace Simmer.UI.Tooltips
 
         [SerializeField] private UITextManager _headerTextManager;
         [SerializeField] private UITextManager _bodyTextManager;
+        private Camera _mainCamera;
         private ImageManager _backgroundImageManager;
         private RectTransform _rectTransform;
         private LayoutElement _layoutElement;
@@ -24,10 +25,14 @@ namespace Simmer.UI.Tooltips
         [SerializeField] private float _positionOffsetY;
         [SerializeField] private float _showDelay;
 
+        private Coroutine currentDelay = null;
+
         private void Awake()
         {
             if (instance != null) Destroy(instance.gameObject);
             instance = this;
+
+            _mainCamera = Camera.main;
 
             _layoutElement = GetComponentInChildren<LayoutElement>();
 
@@ -44,20 +49,27 @@ namespace Simmer.UI.Tooltips
             Hide();
         }
 
-        private void Update()
+        public void Show(RectTransform rectTransform
+            , string bodyText
+            , string headerText = "")
         {
-            UpdatePosition();
-        }
-
-        public void Show(string bodyText, string headerText = "")
-        {
-            SetText(bodyText, headerText);
-            gameObject.SetActive(true);
+            if (currentDelay != null) return;
+            currentDelay = StartCoroutine(Delay(() =>
+            {
+                SetText(bodyText, headerText);
+                UpdatePosition(rectTransform);
+                _backgroundImageManager.gameObject.SetActive(true);
+            }));
         }
 
         public void Hide()
         {
-            gameObject.SetActive(false);
+            if(currentDelay != null)
+            {
+                StopCoroutine(currentDelay);
+                currentDelay = null;
+            }
+            _backgroundImageManager.gameObject.SetActive(false);
         }
 
         public void SetText(string bodyText, string headerText = "")
@@ -80,37 +92,56 @@ namespace Simmer.UI.Tooltips
                 || bodyLength > _characterWrapLimit) ? true : false;
         }
 
-        private void UpdatePosition()
+        private void UpdatePosition(RectTransform rectTransform)
         {
-            _rectTransform.sizeDelta = _backgroundImageManager
-                .rectTransform.sizeDelta
-                + new Vector2(_positionOffsetX, _positionOffsetY);
+            RectTransform tooltipTransform = _backgroundImageManager.rectTransform;
+            //_rectTransform.sizeDelta = _backgroundImageManager
+            //    .rectTransform.sizeDelta;
+            //+new Vector2(_positionOffsetX, _positionOffsetY);
 
-            Vector2 mousePosition = Input.mousePosition;
+            //Vector2 targetPosition = Input.mousePosition;
 
-            float pivotX = Mathf.Round(mousePosition.x / Screen.width);
-            float pivotY = Mathf.Round(mousePosition.y / Screen.height);
+            Rect screenRect = RectTransformToScreenSpace(rectTransform);
+            Vector2 targetPosition = new Vector2(
+                screenRect.x
+                , screenRect.y);
 
-            _rectTransform.pivot = new Vector2(pivotX, pivotY);
-            _rectTransform.anchoredPosition = mousePosition;
+            //print("x: " + screenRect.x + " y: " + screenRect.y
+            //    + " width: " + screenRect.width + " height: " + screenRect.height);
+
+            float pivotX = targetPosition.x / Screen.width;
+            float pivotY = targetPosition.y / Screen.height;
+
+            tooltipTransform.pivot = new Vector2(pivotX, pivotY);
+            tooltipTransform.anchoredPosition = targetPosition;
 
             float thisXOffset;
             float thisYOffset;
 
-            if (pivotX < 0.5) thisXOffset = -(_positionOffsetX);
-            else thisXOffset = _positionOffsetX;
+            if (pivotX < 0.5) thisXOffset = -(screenRect.width / 2);
+            else thisXOffset = (screenRect.width / 2);
 
-            if (pivotY < 0.5) thisYOffset = -(_positionOffsetY);
-            else thisYOffset = _positionOffsetY;
+            if (pivotY < 0.5) thisYOffset = -(screenRect.height / 2);
+            else thisYOffset = (screenRect.height / 2);
 
-            //_rectTransform.anchoredPosition += new Vector2(
+            //tooltipTransform.anchoredPosition += new Vector2(
             //    thisXOffset, thisYOffset);
+
+
+            //tooltipTransform.anchoredPosition += new Vector2(
+            //    _positionOffsetX, _positionOffsetY);
         }
 
         private IEnumerator Delay(Action action)
         {
             yield return new WaitForSeconds(_showDelay);
             action();
+        }
+
+        private Rect RectTransformToScreenSpace(RectTransform transform)
+        {
+            Vector2 size = Vector2.Scale(transform.rect.size, transform.lossyScale);
+            return new Rect((Vector2)transform.position - (size * transform.pivot), size);
         }
     }
 }

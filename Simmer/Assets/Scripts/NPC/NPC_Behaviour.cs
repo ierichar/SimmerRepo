@@ -15,7 +15,7 @@ namespace Simmer.NPC
 
         private NPC_Manager _npcManager;
 
-        [SerializeField] private TextAsset npcInkAsset;
+        [SerializeField] private NPC_Data npcData;
 
         public void Construct(NPC_Manager npcManager)
         {
@@ -27,7 +27,7 @@ namespace Simmer.NPC
 
         private void OnInteractCallback()
         {
-            _npcManager.OnNPCInteract.Invoke(npcInkAsset);
+            _npcManager.OnNPCInteract.Invoke(npcData.npcInkAsset);
         }
     }
 }

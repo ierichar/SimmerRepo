@@ -3,6 +3,7 @@ using UnityEngine;
 
 using Simmer.FoodData;
 using Simmer.Items;
+using Simmer.Appliance;
 
 namespace Simmer.UI.RecipeMap
 {
@@ -93,11 +94,11 @@ namespace Simmer.UI.RecipeMap
             _ingredientNodeFactory.SpawnIngredientNode
                 (parent.ingredientData, parentPosition);
 
-            // Horizontal Lines
+            // Horizontal Lines            
             if (parent.childrenTreeList.Count > 1)
             {
-                Color thisColor = _allFoodData.recipeResultDict
-                    [parent.ingredientData].applianceData.colorCode;
+                ApplianceData thisAppliance = _allFoodData.recipeResultDict
+                       [parent.ingredientData].applianceData;
 
                 Vector2 leftPosition = new Vector2(
                     parent.GetLeftMostChild().xPosition
@@ -111,7 +112,7 @@ namespace Simmer.UI.RecipeMap
 
                 _edgeLineFactory.SpawnEdgeLine(leftPosition
                     , rightPosition, verticalSpacing
-                    , 0, thisColor);
+                    , 0, thisAppliance);
             }
 
             foreach (IngredientTree child in parent.childrenTreeList)
@@ -127,12 +128,12 @@ namespace Simmer.UI.RecipeMap
                     parent.GetMiddleChildXPosition()
                     , child.yPosition * verticalSpacing);
 
-                Color thisColor = _allFoodData.recipeResultDict
-                    [parent.ingredientData].applianceData.colorCode;
+                ApplianceData thisAppliance = _allFoodData.recipeResultDict
+                      [parent.ingredientData].applianceData;
 
                 _edgeLineFactory.SpawnEdgeLine(parentPosition
                     , childPosition, verticalSpacing
-                    , verticalLineGap, thisColor);
+                    , verticalLineGap, thisAppliance);
 
                 //IngredientTree nextSibling = child.GetNextSibling();
 
