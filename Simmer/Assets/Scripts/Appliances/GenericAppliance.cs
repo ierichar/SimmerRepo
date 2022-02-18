@@ -48,12 +48,14 @@ public abstract class GenericAppliance : MonoBehaviour
     protected ItemFactory _itemFactory;
     protected GameObject _UIGameObject;
     private static GameObject _blackout;
+    private UISoundManager _soundManager;
 
     public UnityEvent<RecipeData> OnValidate = new UnityEvent<RecipeData>();
 
     //-----------------------------------------------------------
     //inherited methods
-    public virtual void Construct(ItemFactory itemFactory){
+    public virtual void Construct(ItemFactory itemFactory, UISoundManager soundManager){
+        _soundManager = soundManager;
 
         interactable = GetComponent<InteractableBehaviour>();
         SpriteRenderer highlightTarget = GetComponentInChildren<SpriteRenderer>();
@@ -182,6 +184,7 @@ public abstract class GenericAppliance : MonoBehaviour
 
     public virtual void ToggleOn()
     {
+        _soundManager.PlayButtonSound();
         Validation();
         if(_pendingTargetRecipe == null) return;
         

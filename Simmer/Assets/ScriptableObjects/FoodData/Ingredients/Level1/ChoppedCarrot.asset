@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: ChoppedCarrot
   m_EditorClassIdentifier: 
   sprite: {fileID: 13522144924912943, guid: d9cf1e27ca92e4ad7b73389798a3529d, type: 3}
-  baseValue: 2
+  baseValue: 6
   isFinalProduct: 1
   _recipeEdgeList: []
-  combineMode: 0
+  variantMode: 0
+  minVariants: 0
+  maxVariants: 0
   ingredientLayerList: []
-  maxPerRecipe: 0

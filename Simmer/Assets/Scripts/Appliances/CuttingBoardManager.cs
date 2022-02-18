@@ -15,9 +15,9 @@ public class CuttingBoardManager : GenericAppliance
 
     [SerializeField] private int numCutsMultiplier;
 
-    public override void Construct(ItemFactory itemFactory){
+    public override void Construct(ItemFactory itemFactory, UISoundManager soundManager){
         print("Calling derived class constructor from cutting board");
-        base.Construct(itemFactory);
+        base.Construct(itemFactory, soundManager);
 
         //derived class variable init
         _progressBar = FindObjectOfType<ProgressBar>(true);

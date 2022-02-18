@@ -15,4 +15,9 @@ MonoBehaviour:
   sprite: {fileID: -8120564751791856033, guid: d9cf1e27ca92e4ad7b73389798a3529d, type: 3}
   baseValue: 1
   isFinalProduct: 1
-  _recipeEdgeList: []
+  _recipeEdgeList:
+  - {fileID: 11400000, guid: b9727ff47d43d37418c0827482a5dce5, type: 2}
+  variantMode: 0
+  minVariants: 0
+  maxVariants: 0
+  ingredientLayerList: []

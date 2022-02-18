@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 100bfe8cc201b417887646b2755fd998, type: 3}
   m_Name: WhippedCream
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 5be1b4a94263645789eba3b55a7f0456, type: 3}
+  sprite: {fileID: 21300000, guid: 4681316daf348c049875767def2736b6, type: 3}
   baseValue: 1
   isFinalProduct: 0
   _recipeEdgeList:
   - {fileID: 11400000, guid: 1a9767e03df094770a1c2cd4017fc714, type: 2}
   - {fileID: 11400000, guid: 2de499638a88e472a973dae29f908c5e, type: 2}
-  combineMode: 0
+  variantMode: 0
+  minVariants: 0
+  maxVariants: 0
   ingredientLayerList: []
-  maxPerRecipe: 0

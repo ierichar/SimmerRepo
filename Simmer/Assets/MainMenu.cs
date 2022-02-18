@@ -23,7 +23,8 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene("EvanKitchen");
+        //_sceneLoader.OnSceneLoad.Invoke(_kitchenScene);
+        SceneManager.LoadScene("KitchenScene");
     }
 
     public void PlayTutorial(TextAsset npcInkAsset)
