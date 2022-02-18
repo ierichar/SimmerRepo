@@ -8,31 +8,37 @@ using Ink.Runtime;
 
 using Simmer.Interactable;
 using Simmer.VN;
-using Simmer.Player;
 using Simmer.UI;
-using Simmer.NPC;
 
-namespace Simmer.NPC
+public class MainMenu : MonoBehaviour
 {
-    public class MainMenu : MonoBehaviour
+    public VN_Manager vn_manager { get; private set; }
+    [SerializeField] private TextAsset npcInkAsset;
+    [SerializeField] public GameObject menuCanvas;
+
+    public void Construct(VN_Manager VNmanager)
     {
-        public NPC_Manager _npcManager;
+        vn_manager = VNmanager;
+    }
 
-        [SerializeField] private TextAsset npcInkAsset;
+    public void PlayGame()
+    {
+        SceneManager.LoadScene("EvanKitchen");
+    }
 
-        public void Construct(NPC_Manager npcManager)
-        {
-            _npcManager = npcManager;
-        }
+    public void PlayTutorial(TextAsset npcInkAsset)
+    {
+        vn_manager.inkJSONAsset = npcInkAsset;
+        vn_manager.StartStory();
+        vn_manager.OnEndStory.AddListener(BackToMenu);
+    }
 
-        public void PlayGame()
-        {
-            SceneManager.LoadScene("EvanKitchen");
-        }
+    private void BackToMenu(){
+        menuCanvas.SetActive(true);
+    }
 
-        public void PlayTutorial()
-        {
-            _npcManager.OnNPCInteract.Invoke(npcInkAsset);
-        }
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }

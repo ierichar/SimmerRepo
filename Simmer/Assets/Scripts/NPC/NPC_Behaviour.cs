@@ -13,7 +13,7 @@ namespace Simmer.NPC
     {
         private InteractableBehaviour _interactableBehaviour;
 
-        public NPC_Manager _npcManager;
+        private NPC_Manager _npcManager;
 
         [SerializeField] private TextAsset npcInkAsset;
 

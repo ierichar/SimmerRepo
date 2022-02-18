@@ -12,20 +12,19 @@ public class MenuManager : MonoBehaviour
 {
    
     private GameEventManager _gameEventManager;
-    private NPC_Manager _NPC_Manager;
     private VN_Manager _VN_Manager;
+    private MainMenu _MainMenu;
 
 
     private void Awake()
     {
-        _NPC_Manager = FindObjectOfType<NPC_Manager>();
         _VN_Manager = FindObjectOfType<VN_Manager>();
         _gameEventManager = GetComponent<GameEventManager>();
+        _MainMenu = FindObjectOfType<MainMenu>();
 
         _gameEventManager.Construct();
         _VN_Manager.Construct();
-        _NPC_Manager.Construct(_VN_Manager
-            , null);
+        _MainMenu.Construct(_VN_Manager);
     }
 
     public void QuitGame()
