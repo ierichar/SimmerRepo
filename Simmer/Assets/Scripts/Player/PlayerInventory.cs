@@ -45,7 +45,6 @@ namespace Simmer.Inventory
         /// Index of selected item visually indicated by outline and held item
         /// </summary>
         public int selectedItemIndex { get; private set;}
-        private Color defaultColor = new Color(204.0f, 204.0f, 204.0f, 255.0f);
 
         public IngredientData variantCake;
         public IngredientData baseCake;
@@ -100,7 +99,9 @@ namespace Simmer.Inventory
             {
                 inventorySlot = _inventoryUIManager
                     .inventorySlotsManager.GetInventorySlot(selectedItemIndex);
-                inventorySlot.itemBackgroundManager.SetColor(defaultColor);
+
+                inventorySlot.itemBackgroundManager.SetColor(Color.clear);
+
                 _playerHeldItem.SetSprite(null);
             }
 
@@ -113,7 +114,7 @@ namespace Simmer.Inventory
                 selectedItemIndex = index;
                 inventorySlot = _inventoryUIManager
                     .inventorySlotsManager.GetInventorySlot(index);
-                inventorySlot.itemBackgroundManager.SetColor(Color.yellow);
+                inventorySlot.itemBackgroundManager.SetColor(Color.green);
 
                 UpdateHeldItem();
             }

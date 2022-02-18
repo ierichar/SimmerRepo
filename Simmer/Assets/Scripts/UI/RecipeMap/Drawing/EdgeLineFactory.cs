@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using Simmer.Appliance;
+
 namespace Simmer.UI.RecipeMap
 {
     public class EdgeLineFactory : MonoBehaviour
@@ -31,14 +33,14 @@ namespace Simmer.UI.RecipeMap
             , Vector2 v2
             , float verticalSpacing
             , float verticalLineGap
-            , Color thisColor)
+            , ApplianceData applianceData)
         {
             EdgeLine thisLine = Instantiate(edgeLinePrefab, transform);
             thisLine.Construct(v1
                 , v2
                 , verticalSpacing
                 , verticalLineGap
-                , thisColor);
+                , applianceData);
 
             edgeLineList.Add(thisLine);
 

@@ -100,7 +100,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 500
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!114 &5561063287169652206
 MonoBehaviour:
@@ -131,7 +131,6 @@ GameObject:
   - component: {fileID: 5158968735058443866}
   - component: {fileID: 5158968735058443867}
   - component: {fileID: 5158968735058443864}
-  - component: {fileID: 5206767570763368018}
   m_Layer: 5
   m_Name: ItemImage
   m_TagString: Untagged
@@ -208,17 +207,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73f8ce93a1c414aebb52d4c439bd88a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!210 &5206767570763368018
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5158968735058443862}
-  m_Enabled: 1
-  m_SortingLayerID: 1209491717
-  m_SortingLayer: 5
-  m_SortingOrder: 1000
 --- !u!1 &5158968736032729737
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,7 +218,6 @@ GameObject:
   - component: {fileID: 5158968736032729736}
   - component: {fileID: 5158968736032729741}
   - component: {fileID: 5158968736032729738}
-  - component: {fileID: 2167535551137601023}
   m_Layer: 5
   m_Name: ItemBackground
   m_TagString: Untagged
@@ -295,14 +282,3 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!210 &2167535551137601023
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5158968736032729737}
-  m_Enabled: 1
-  m_SortingLayerID: 1209491717
-  m_SortingLayer: 5
-  m_SortingOrder: 1000

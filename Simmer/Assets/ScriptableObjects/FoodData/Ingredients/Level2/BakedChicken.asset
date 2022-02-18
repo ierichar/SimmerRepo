@@ -7,7 +7,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 100bfe8cc201b417887646b2755fd998, type: 3}
   m_Name: BakedChicken
@@ -15,8 +15,7 @@ MonoBehaviour:
   sprite: {fileID: 0}
   baseValue: 0
   isFinalProduct: 1
-  _recipeEdgeList:
-  - {fileID: 0}
+  _recipeEdgeList: []
   variantMode: 0
   minVariants: 0
   maxVariants: 0

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using Simmer.UI.Tooltips;
 using Simmer.FoodData;
 
 namespace Simmer.UI.RecipeMap
@@ -11,6 +12,7 @@ namespace Simmer.UI.RecipeMap
         private ImageManager _borderImageManager;
         private ImageManager _ingredientImageManager;
         private RectTransform _rectTransform;
+        private TooltipTrigger _tooltipTrigger;
 
         public IngredientData ingredientData { get; private set; }
 
@@ -29,6 +31,9 @@ namespace Simmer.UI.RecipeMap
             _rectTransform.anchoredPosition = position;
 
             _ingredientImageManager.SetSprite(this.ingredientData.sprite);
+
+            _tooltipTrigger = GetComponentInChildren<TooltipTrigger>();
+            _tooltipTrigger.Construct("Ingredient: " + ingredientData.name, "");
         }
     }
 }
