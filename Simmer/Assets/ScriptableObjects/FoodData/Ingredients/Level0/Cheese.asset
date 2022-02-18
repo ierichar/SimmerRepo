@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 100bfe8cc201b417887646b2755fd998, type: 3}
   m_Name: Cheese
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 6255280cca855cb4c95fe0d1d920cf02, type: 3}
+  sprite: {fileID: 0}
   baseValue: 1
   isFinalProduct: 0
   _recipeEdgeList:

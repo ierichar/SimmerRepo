@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 100bfe8cc201b417887646b2755fd998, type: 3}
   m_Name: BolognesePasta
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 693687139a46f2245ae0dac48cb27bc0, type: 3}
+  sprite: {fileID: 0}
   baseValue: 15
   isFinalProduct: 1
   _recipeEdgeList: []
