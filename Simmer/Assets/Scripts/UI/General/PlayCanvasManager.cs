@@ -21,8 +21,9 @@ namespace Simmer.UI
         public UnityEvent<int> OnSelectItem { get; private set; }
 
         public ScreenBlockManager screenBlockManager { get; private set; }
+        public UISoundManager soundManager {get; private set; }
 
-        public virtual void Construct(UnityEvent<int> OnSelectItem)
+        public virtual void Construct(UnityEvent<int> OnSelectItem, UISoundManager soundManager)
         {
             this.OnSelectItem = OnSelectItem;
             playCanvas = GetComponent<Canvas>();
@@ -31,6 +32,7 @@ namespace Simmer.UI
             inventoryUIManager = GetComponentInChildren<InventoryUIManager>(true);
             recipeMapWindow = GetComponentInChildren<RecipeMapWindow>(true);
             screenBlockManager = GetComponentInChildren<ScreenBlockManager>();
+            this.soundManager = soundManager;
 
             itemFactory.Construct(this);
             inventoryUIManager.Construct(itemFactory);

@@ -17,6 +17,7 @@ public class MarketGameManager : MonoBehaviour
     private VN_Manager _VN_Manager;
 
     private SceneLoader _sceneLoader;
+    private UISoundManager _soundManager;
 
     private void Awake()
     {
@@ -26,9 +27,10 @@ public class MarketGameManager : MonoBehaviour
         _VN_Manager = FindObjectOfType<VN_Manager>();
         _gameEventManager = GetComponent<GameEventManager>();
         _sceneLoader = GetComponent<SceneLoader>();
+        _soundManager = FindObjectOfType<UISoundManager>();
 
         _gameEventManager.Construct();
-        _marketCanvasManager.Construct(_gameEventManager.OnSelectItem);
+        _marketCanvasManager.Construct(_gameEventManager.OnSelectItem, _soundManager);
         _playerManager.Construct(_gameEventManager, _marketCanvasManager.inventoryUIManager);
         _sceneLoader.Construct(_playerManager, _marketCanvasManager);
 
