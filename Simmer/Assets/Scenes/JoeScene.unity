@@ -698,6 +698,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e37c2e54965b14383a9daea3942df943, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &631786096 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2908600335904018086, guid: b76813dd9e9d54c6e87ea7833b711e8c, type: 3}
+  m_PrefabInstance: {fileID: 1161447393}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d1a97534154ae44a83597d45f8b2625, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &996196716
 GameObject:
   m_ObjectHideFlags: 0
@@ -1585,6 +1596,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1161447394}
+    - target: {fileID: 5839915439859620242, guid: 764f52048178c406c8ea7c53e215c62e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 631786096}
+    - target: {fileID: 5839915439859620242, guid: 764f52048178c406c8ea7c53e215c62e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleOn
+      objectReference: {fileID: 0}
+    - target: {fileID: 5839915439859620242, guid: 764f52048178c406c8ea7c53e215c62e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GenericAppliance, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 5904613347566740533, guid: 764f52048178c406c8ea7c53e215c62e, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
@@ -1605,6 +1628,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1161447395}
+    - target: {fileID: 6561506972654973305, guid: 764f52048178c406c8ea7c53e215c62e, type: 3}
+      propertyPath: _startingIngredients.Array.data[9]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9fd94f1c136b0ac4f85f790745393e4d, type: 2}
+    - target: {fileID: 6561506972654973305, guid: 764f52048178c406c8ea7c53e215c62e, type: 3}
+      propertyPath: _startingIngredients.Array.data[10]
+      value: 
+      objectReference: {fileID: 11400000, guid: d03dbba14ea5a424d85434ec61ed8063, type: 2}
     - target: {fileID: 6561506972695437340, guid: 764f52048178c406c8ea7c53e215c62e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
