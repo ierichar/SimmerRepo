@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 using Simmer.Items;
 using Simmer.Inventory;
@@ -15,18 +16,20 @@ namespace Simmer.Player
 
         private GameObject _currentlyOpen;
         private bool _isInvOpen;
+        public UnityEvent OnCloseInv = new UnityEvent();
 
         public void Construct(PlayerManager playerManager)
         {
             _playerManager = playerManager;
             _playerInventory = playerManager.playerInventory;
+            OnCloseInv.AddListener(CloseInv);
+
             _isInvOpen = false;
         }
 
         public void Update()
         {
             primaryAction();
-            //secondaryAction();
             faceMouse();
         }
 
@@ -48,11 +51,7 @@ namespace Simmer.Player
                         out InteractableBehaviour interactable))
                     {
                         _isInvOpen = true;
-                        //if (Input.GetKeyDown(KeyCode.F))
-                        //{
-                        //interactable.Highlight();
                         interactable.Interact();
-                        //}
                     }
                 }
             }
@@ -65,30 +64,6 @@ namespace Simmer.Player
                     interactable.Interact();
                 }
             }
-
-        }
-
-        private void secondaryAction()
-        {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                //Debug.Log("Player pressed E");
-                RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, 1.5f, 64);
-                Collider2D obj = hit.collider;
-                //Debug.Log("Testing");
-                if (obj != null)
-                {
-                    //Debug.Log("Got an object:" + obj);
-                    if (hit.transform.gameObject.TryGetComponent(out GenericAppliance app))
-                    {
-                        app.ToggleInventory();
-                    }
-                    else
-                    {
-                        Debug.Log("get Component failed");
-                    }
-                }
-            }
         }
 
         private void faceMouse()
@@ -97,6 +72,14 @@ namespace Simmer.Player
             Camera.main.WorldToScreenPoint(transform.position);
             var angle = Mathf.Atan2(mouseDir.y, mouseDir.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        }
+
+        private void CloseInv(){
+            //if(!_isInvOpen) return false;
+
+            _isInvOpen = false;
+            _currentlyOpen = null;
+            //return true;
         }
     }
 }

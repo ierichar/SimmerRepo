@@ -46,8 +46,6 @@ public class CuttingBoardManager : GenericAppliance
             _progressBar.incrementFill();
             ++numCuts;
         }
-        
-        
     }
 
     private void tryChop(){

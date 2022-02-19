@@ -130,20 +130,6 @@ public abstract class GenericAppliance : MonoBehaviour
         List<RecipeData> firstList = currentIngredientList[0]
             .applianceRecipeListDict[this._applianceData];
 
-/*
-        firstList.Sort(delegate(RecipeData x, RecipeData y){
-            int xCount = x.ingredientDataList.Count;
-            int yCount = y.ingredientDataList.Count;
-            if(xCount == yCount){
-                return 0;
-            }
-            if(xCount>yCount){
-                return -1;
-            }else{
-                return 1;
-            }
-        });
-*/
         foreach(RecipeData recipe in firstList){
             int recipeCount = recipe.ingredientDataList.Count;
             bool[] RecipeCheckArray = new bool[recipe.ingredientDataList.Count];
@@ -156,15 +142,11 @@ public abstract class GenericAppliance : MonoBehaviour
             for(int k=0; k<recipeCount; ++k){
                 IngredientData item = currentIngredientList[k];
                 RecipeCheckArray[k] = recipe.ingredientDataList.Contains(item);
-                //print(RecipeCheckArray[k]);
             }
-            //print(RecipeCheckArray.ToString() + " ______________");
 
             bool allTrue = Array.TrueForAll(RecipeCheckArray, (bool x)=>{
                 return x;
             });
-
-            //print("AllTrue is: " + allTrue);
 
             if(allTrue){
                 OnValidate.Invoke(recipe);

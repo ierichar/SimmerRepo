@@ -19,6 +19,10 @@ namespace  Simmer.Interactable
 
             _highlightTarget = highlightTarget;
         }
+        public void Construct(UnityAction OnInteractCallback){
+            OnInteract.AddListener(OnInteractCallback);
+            _highlightTarget = null;
+        }
 
         public void Interact()
         {

@@ -29,6 +29,8 @@ namespace Simmer.UI
             foreach(GenericAppliance appliance in applianceManager){
                 appliance.Construct(itemFactory, soundManager);
             }
+            SplitStoveOven spliter = FindObjectOfType<SplitStoveOven>();
+            spliter.Construct();
         }
     }
 }
