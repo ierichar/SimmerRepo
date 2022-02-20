@@ -1913,11 +1913,19 @@ PrefabInstance:
     - target: {fileID: 442092617823953456, guid: c28b88fb2c8fc41528eddda7d39cc2ac, type: 3}
       propertyPath: PlayerCharacterData
       value: 
-      objectReference: {fileID: 11400000, guid: ff781df954bc547dfaabe369c234a3df, type: 2}
+      objectReference: {fileID: 11400000, guid: afbc7ae5e26e1405b8928e3c571c6050, type: 2}
+    - target: {fileID: 442092617823953456, guid: c28b88fb2c8fc41528eddda7d39cc2ac, type: 3}
+      propertyPath: AllCharacterData.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 442092617823953456, guid: c28b88fb2c8fc41528eddda7d39cc2ac, type: 3}
       propertyPath: AllCharacterData.Array.data[1]
       value: 
       objectReference: {fileID: 11400000, guid: ff781df954bc547dfaabe369c234a3df, type: 2}
+    - target: {fileID: 442092617823953456, guid: c28b88fb2c8fc41528eddda7d39cc2ac, type: 3}
+      propertyPath: AllCharacterData.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 8a24d1fc22093412fb45f4c58474c4e5, type: 2}
     - target: {fileID: 652212847494750857, guid: c28b88fb2c8fc41528eddda7d39cc2ac, type: 3}
       propertyPath: testString
       value: Bob
@@ -2093,6 +2101,10 @@ PrefabInstance:
     - target: {fileID: 8722351777207893156, guid: c28b88fb2c8fc41528eddda7d39cc2ac, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8724586258983012957, guid: c28b88fb2c8fc41528eddda7d39cc2ac, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c28b88fb2c8fc41528eddda7d39cc2ac, type: 3}
