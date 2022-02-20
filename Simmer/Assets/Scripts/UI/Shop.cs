@@ -19,6 +19,7 @@ public class Shop : MonoBehaviour
 
     public PlayerInventory inventory;
     public PlayerCurrency money;
+    public GameObject shopSlots;
 
     private InteractSlot sellSlot;
 
@@ -28,25 +29,30 @@ public class Shop : MonoBehaviour
     private Image fadeColor;
 
     //assgin all the variables
-    void Awake()
+    public void Construct()
     {
-        canvas = GameObject.Find("ShopSlots");
+        //canvas = GameObject.Find("ShopSlots");
+        canvas = shopSlots;
         //text = GameObject.Find("ShopTitle");
         fadeColor = gameObject.GetComponent<Image>();
-        buttonContainer = GameObject.Find("ShopSlots").GetComponent<Transform>();
+        //buttonContainer = GameObject.Find("ShopSlots").GetComponent<Transform>();
+        buttonContainer = shopSlots.GetComponent<Transform>();
         allButtons = new List<ShopButton>();
-        sellSlot = FindObjectOfType<InteractSlot>();
+        sellSlot = FindObjectOfType<InteractSlot>(true);
         sellSlot.Construct();
         // sellSlot.itemSlot.onItemDrop.AddListener(sellItemWrapper);
-    }
 
-    //make all the buttons
-    void Start() {
-        for(int i = 0; i < 12; i++) {
+        for (int i = 0; i < 12; i++)
+        {
             ShopButton button = Instantiate(buttonPrefab, buttonContainer);
             button.makeButton(allBasicFood[Random.Range(0, allBasicFood.Count)], GetComponent<Shop>());
             allButtons.Add(button);
         }
+    }
+
+    //make all the buttons
+    void Start() {
+        
         // ToggleOff();
     }
 

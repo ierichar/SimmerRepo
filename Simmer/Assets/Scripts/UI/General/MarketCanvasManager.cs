@@ -13,6 +13,7 @@ namespace Simmer.UI
     public class MarketCanvasManager : PlayCanvasManager
     {
         public CanvasGroupManager canvasGroupManager { get; private set; }
+        public Shop _shop;
 
         public override void Construct(UnityEvent<int> OnSelectItem, UISoundManager soundManager)
         {
@@ -20,6 +21,9 @@ namespace Simmer.UI
 
             canvasGroupManager = GetComponent<CanvasGroupManager>();
             canvasGroupManager.Construct();
+
+            _shop = FindObjectOfType<Shop>(true);
+            _shop.Construct();
         }
     }
 }
