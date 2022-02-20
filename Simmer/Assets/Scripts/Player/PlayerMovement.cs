@@ -15,6 +15,9 @@ namespace Simmer.Player
         private PlayerManager _playerManager;
         private Rigidbody2D _rigidbody2D;
 
+        [SerializeField] private Animator _animator;
+        [SerializeField] private SpriteRenderer _renderer;
+
         [Tooltip("Rate of increase in velocity in direction" +
             " of input per FixedUpdate")]
         [SerializeField] private float accelRate;
@@ -34,6 +37,7 @@ namespace Simmer.Player
         /// Current rigidbody velocity
         /// </summary>
         private Vector2 _currentVelocity;
+        private int _cases;
 
         [Tooltip("True allows input to affect movement")]
         [SerializeField] private bool _movementEnabled = false;
@@ -43,11 +47,13 @@ namespace Simmer.Player
             _playerManager = playerManager;
             _rigidbody2D = GetComponent<Rigidbody2D>();
             _movementEnabled = true;
+            _cases = 0;
         }
 
         private void Update()
         {
             GetMoveInput();
+            CheckAnimation();
         }
 
         private void FixedUpdate()
@@ -89,6 +95,72 @@ namespace Simmer.Player
         private void Decel()
         {
             _currentVelocity *= deccelRate;
+        }
+
+        //Case 0: W pressed
+        //Case 1: A pressed
+        //Case 2: S pressed
+        //Case 3: D pressed
+        //Case 4: idle
+        private void UpdateAnimator(int state){
+            _cases = state;
+
+            if(_animator.IsInTransition(0)){
+                print("Returning");
+                return;
+            }
+
+            switch(_cases){
+                case 0:
+                    _renderer.flipX = false;
+                    _animator.SetBool("W", true);
+                    _animator.SetBool("A", false);
+                    _animator.SetBool("S", false);
+                    _animator.SetBool("D", false);
+                    break;
+                case 1:
+                    _renderer.flipX = true;
+                    _animator.SetBool("W", false);
+                    _animator.SetBool("A", true);
+                    _animator.SetBool("S", false);
+                    _animator.SetBool("D", false);
+                    break;
+                case 2:
+                    _renderer.flipX = false;
+                    _animator.SetBool("W", false);
+                    _animator.SetBool("A", false);
+                    _animator.SetBool("S", true);
+                    _animator.SetBool("D", false);
+                    break;
+                case 3:
+                    _renderer.flipX = false;
+                    _animator.SetBool("W", false);
+                    _animator.SetBool("A", false);
+                    _animator.SetBool("S", false);
+                    _animator.SetBool("D", true);
+                    break;
+                case 4:
+                    _animator.SetBool("W", false);
+                    _animator.SetBool("A", false);
+                    _animator.SetBool("S", false);
+                    _animator.SetBool("D", false);
+                    break;
+            }
+        }
+        private void CheckAnimation(){
+            const float lowestSpeed = 0.1f;
+            if(_inputVector.magnitude <= lowestSpeed){
+                UpdateAnimator(4);
+            }
+            if(_inputVector.x > lowestSpeed){
+                UpdateAnimator(3);
+            }else if(_inputVector.x <= -lowestSpeed){
+                UpdateAnimator(1);
+            }else if(_inputVector.y <= -lowestSpeed){
+                UpdateAnimator(2);
+            }else if(_inputVector.y > lowestSpeed){
+                UpdateAnimator(0);
+            }
         }
     }
 }
