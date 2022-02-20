@@ -16,6 +16,7 @@ public abstract class GenericAppliance : MonoBehaviour
     [SerializeField] protected ApplianceData _applianceData;
 
     [SerializeField]  protected ApplianceUIManager _UIManager;
+    protected ProgressBar _progressBar;
 
     protected InteractableBehaviour interactable;
 
@@ -68,6 +69,10 @@ public abstract class GenericAppliance : MonoBehaviour
 
         _UIManager.Construct(itemFactory);
         _UIGameObject = _UIManager.gameObject;
+
+        _progressBar = _UIManager.GetComponentInChildren<ProgressBar>();
+        _progressBar.Construct(10);
+
         if(_blackout==null)
             _blackout = GameObject.Find("Blackout");
 
@@ -79,6 +84,13 @@ public abstract class GenericAppliance : MonoBehaviour
         _timeRunning = 0.0f;
 
         _applianceSlotManager = _UIManager.slots.slots;
+    }
+
+    public virtual void FixedUpdate(){
+        if(_pendingTargetRecipe==null) return;
+
+        _progressBar.setMaxAmount(_pendingTargetRecipe.baseActionTime*50);
+        _progressBar.incrementFill();
     }
     public virtual void ToggleInventory(){
         if(!invOpen && !UI_OPEN){
@@ -98,10 +110,9 @@ public abstract class GenericAppliance : MonoBehaviour
         FoodItem resultItem = new FoodItem(_pendingTargetRecipe.resultIngredient
             , null);
         _applianceSlotManager[0].SpawnFoodItem(resultItem);
-        _finished = true;
-        //_running may need to stay true for burning of item
-        _running = false;
+        _pendingTargetRecipe = null;
         _timer.HideClock();
+        _progressBar.reset();
     }
 
     protected virtual void UpdateCurrentIngredientList(){

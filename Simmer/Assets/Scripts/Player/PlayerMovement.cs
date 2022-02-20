@@ -106,7 +106,7 @@ namespace Simmer.Player
             _cases = state;
 
             if(_animator.IsInTransition(0)){
-                print("Returning");
+                //print("Returning");
                 return;
             }
 
