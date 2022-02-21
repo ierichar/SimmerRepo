@@ -12,6 +12,7 @@ using Simmer.NPC;
 
 public class Shop : MonoBehaviour
 {
+    public NPC_Data npcData;
     public ShopButton buttonPrefab;
 
     public PlayerInventory inventory;
@@ -28,14 +29,17 @@ public class Shop : MonoBehaviour
         sellSlot = FindObjectOfType<InteractSlot>();
         sellSlot.Construct();
 
+        List<IngredientData> selection = npcData.selectRandom(12);
+
         for(int i = 0; i < 12; i++) {
             ShopButton button = Instantiate(buttonPrefab, buttonContainer);
+            button.makeButton(selection[i], GetComponent<Shop>());
             allButtons.Add(button);
         }
     }
 
     //randomize the selection in the shop
-    public void makeNewSelection(NPC_Data npcData) {
+    public void makeNewSelection() {
         List<IngredientData> selection = npcData.selectRandom(allButtons.Count);
         for(int i = 0; i < allButtons.Count; i++) {
             allButtons[i].updateButton(selection[i]);
@@ -64,5 +68,9 @@ public class Shop : MonoBehaviour
         Debug.Log("sold item: " + item.foodItem.ingredientData.name);
         money.addMoney(item.foodItem.ingredientData.baseValue);
         sellSlot.itemSlot.EmptySlot();
+    }
+
+    public void hi() {
+        Debug.Log("hi");
     }
 }

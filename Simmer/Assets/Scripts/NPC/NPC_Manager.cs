@@ -25,8 +25,8 @@ namespace Simmer.NPC
         private List<NPC_Behaviour> _allNPCList =
             new List<NPC_Behaviour>();
 
-        public UnityEvent<TextAsset> OnNPCInteract
-            = new UnityEvent<TextAsset>();
+        public UnityEvent<NPC_Data> OnNPCInteract
+            = new UnityEvent<NPC_Data>();
 
         public bool isInteractTransition;
 
@@ -49,12 +49,13 @@ namespace Simmer.NPC
             vn_manager.OnEndStory.AddListener(OnStopNPCInteract);
         }
 
-        private void OnNPCInteractCallback(TextAsset npcInkAsset)
+        private void OnNPCInteractCallback(NPC_Data npcData)
         {
             if (!isInteractTransition
                 && vn_manager.state == VN_Manager.VN_State.end)
             {
-                StartCoroutine(InteractSequence(npcInkAsset));
+                StartCoroutine(InteractSequence(npcData.npcInkAsset));
+                shop.npcData = npcData;
             }
         }
 
@@ -91,7 +92,7 @@ namespace Simmer.NPC
                 _playCanvasFadeDuration, _playCanvasFadeEase);
 
             yield return fadeTween.WaitForCompletion();
-
+            
             _npcInterface.SetActive(true);
 
             isInteractTransition = false;

@@ -27,11 +27,7 @@ namespace Simmer.NPC
 
         private void OnInteractCallback()
         {
-            _npcManager.OnNPCInteract.Invoke(npcData.npcInkAsset);
-        }
-
-        public NPC_Data getData() {
-            return npcData;
+            _npcManager.OnNPCInteract.Invoke(npcData);
         }
     }
 }

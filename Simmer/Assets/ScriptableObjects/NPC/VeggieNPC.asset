@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47e4b47f2fe904062bef40b01c6594c6, type: 3}
   m_Name: VeggieNPC
   m_EditorClassIdentifier: 
-  npcInkAsset: {fileID: 0}
-  characterData: {fileID: 0}
-  shopItemList: []
+  npcInkAsset: {fileID: 4900000, guid: 37112d08629874850b01dab9db6755a7, type: 3}
+  characterData: {fileID: 11400000, guid: 8a24d1fc22093412fb45f4c58474c4e5, type: 2}
+  shopItemList:
+  - {fileID: 11400000, guid: f2d64ff20b51169478c43d68964ce2f7, type: 2}
+  - {fileID: 11400000, guid: e48621f149cc57d469de740f86c1746e, type: 2}
+  - {fileID: 11400000, guid: 57e649900f9914ede86ccf0979a675bc, type: 2}

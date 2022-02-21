@@ -12,6 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47e4b47f2fe904062bef40b01c6594c6, type: 3}
   m_Name: MiscNPC
   m_EditorClassIdentifier: 
-  npcInkAsset: {fileID: 0}
-  characterData: {fileID: 0}
-  shopItemList: []
+  npcInkAsset: {fileID: 4900000, guid: 37112d08629874850b01dab9db6755a7, type: 3}
+  characterData: {fileID: 11400000, guid: 8a24d1fc22093412fb45f4c58474c4e5, type: 2}
+  shopItemList:
+  - {fileID: 11400000, guid: eeabe57d10fbe464296cf625b3fcf090, type: 2}
+  - {fileID: 11400000, guid: 10062244df47e49868d8fa686cad5b65, type: 2}
+  - {fileID: 11400000, guid: 2565475710af2e449b9967c976e06689, type: 2}
+  - {fileID: 11400000, guid: d03dbba14ea5a424d85434ec61ed8063, type: 2}
+  - {fileID: 11400000, guid: 659c2de493a0f48beaf2a77495faa19b, type: 2}
+  - {fileID: 11400000, guid: 4e0193f3ad8ac0249a9ed5009ccb98c7, type: 2}
+  - {fileID: 11400000, guid: fc406379e42192340b89e1ad2e8a19aa, type: 2}
+  - {fileID: 11400000, guid: 7e07ba1a8f3d747eca4d4e4684d50e6e, type: 2}
