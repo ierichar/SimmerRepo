@@ -94,7 +94,6 @@ namespace Simmer.NPC
             _npcInterface.SetActive(true);
 
             isInteractTransition = false;
-            shop.ToggleOn();
         }
     }
 }

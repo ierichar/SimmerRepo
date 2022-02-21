@@ -8,32 +8,18 @@ using Simmer.FoodData;
 using Simmer.Items;
 using Simmer.Inventory;
 using Simmer.UI;
+using Simmer.NPC;
 
 public class Shop : MonoBehaviour
 {
-    public List<IngredientData> allBasicFood;
     public ShopButton buttonPrefab;
-
-    private Transform buttonContainer;
-    private List<ShopButton> allButtons;
 
     public PlayerInventory inventory;
     public PlayerCurrency money;
 
+    private Transform buttonContainer;
+    private List<ShopButton> allButtons;
     private InteractSlot sellSlot;
-
-    //assgin all the variables
-    // void Awake()
-    // {
-    //     canvas = GameObject.Find("ShopSlots");
-    //     //text = GameObject.Find("ShopTitle");
-    //     fadeColor = gameObject.GetComponent<Image>();
-    //     buttonContainer = GameObject.Find("ShopSlots").GetComponent<Transform>();
-    //     allButtons = new List<ShopButton>();
-    //     sellSlot = FindObjectOfType<InteractSlot>();
-    //     sellSlot.Construct();
-    //     // sellSlot.itemSlot.onItemDrop.AddListener(sellItemWrapper);
-    // }
 
     //make all the buttons
     void Start() {
@@ -44,32 +30,15 @@ public class Shop : MonoBehaviour
 
         for(int i = 0; i < 12; i++) {
             ShopButton button = Instantiate(buttonPrefab, buttonContainer);
-            button.makeButton(allBasicFood[Random.Range(0, allBasicFood.Count)], GetComponent<Shop>());
             allButtons.Add(button);
         }
-        // ToggleOff();
-    }
-
-    // void Update()
-    // {
-    //     if(Input.GetButtonDown("Shop")){
-    //         if(canvas.activeSelf) {
-    //             ToggleOff();
-    //         } else {
-    //             ToggleOn();
-    //         }
-    //     }
-    // }
-
-    //toggles the shop
-    public void ToggleOn() {
-        makeNewSelection();
     }
 
     //randomize the selection in the shop
-    private void makeNewSelection() {
-        foreach(ShopButton button in allButtons) {
-            button.updateButton(allBasicFood[Random.Range(0, allBasicFood.Count)]);
+    public void makeNewSelection(NPC_Data npcData) {
+        List<IngredientData> selection = npcData.selectRandom(allButtons.Count);
+        for(int i = 0; i < allButtons.Count; i++) {
+            allButtons[i].updateButton(selection[i]);
         }
     }
 
