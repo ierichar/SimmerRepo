@@ -14,7 +14,6 @@ namespace Simmer.UI.RecipeMap
 
         [SerializeField] private bool _isUnknownHidden;
 
-
         private List<IngredientNode> ingredientNodeList
             = new List<IngredientNode>();
 
@@ -33,6 +32,13 @@ namespace Simmer.UI.RecipeMap
             _rectTransform.anchoredPosition += displacement;
         }
 
+        //public IngredientNode SpawnSpecialNode(
+        //    SpecialNodeData nodeData
+        //    , Vector2 position)
+        //{
+
+        //}
+
         public IngredientNode SpawnIngredientNode(
             IngredientData ingredient
             , Vector2 position)
@@ -43,7 +49,6 @@ namespace Simmer.UI.RecipeMap
                 .Contains(ingredient))
             {
                 newNode.Construct(null, position);
-
             }
             else
             {

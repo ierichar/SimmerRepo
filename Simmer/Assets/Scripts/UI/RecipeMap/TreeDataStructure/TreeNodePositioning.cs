@@ -19,6 +19,8 @@ namespace Simmer.UI.RecipeMap
 
         [SerializeField] private float nodeSize;
 
+        [SerializeField] private SpecialNodeData _genericShop;
+
         public void Construct(RecipeMapManager recipeMapManager)
         {
             _recipeMapManager = recipeMapManager;
@@ -29,7 +31,7 @@ namespace Simmer.UI.RecipeMap
         public IngredientTree SpawnRecipeMap(IngredientData apexIngredient)
         {
             IngredientTree apexTree =
-                new IngredientTree(apexIngredient, null, null);
+                new IngredientTree(apexIngredient, null, null, null);
 
             ConstructRecipeMapTree(apexTree);
             PositionNodes(apexTree);
@@ -40,7 +42,7 @@ namespace Simmer.UI.RecipeMap
         public IngredientTree SpawnUtilityMap(IngredientData apexIngredient)
         {
             IngredientTree apexTree =
-                new IngredientTree(apexIngredient, null, null);
+                new IngredientTree(apexIngredient, null, null, null);
 
             ConstructUtilityMapTree(apexTree);
             PositionNodes(apexTree);
@@ -71,7 +73,7 @@ namespace Simmer.UI.RecipeMap
                     in thisRecipe.ingredientDataList)
                 {
                     IngredientTree newChild
-                        = new IngredientTree(ingredient, parent, thisRecipe);
+                        = new IngredientTree(ingredient, parent, thisRecipe, null);
                     parent.childrenTreeList.Add(newChild);
 
                     ConstructRecipeMapTree(newChild);
@@ -85,14 +87,22 @@ namespace Simmer.UI.RecipeMap
                 applianceRecipeListDict = parent.ingredientData
                     .applianceRecipeListDict;
 
-            if (applianceRecipeListDict.Count == 0) return;
+            if (applianceRecipeListDict.Count == 0)
+            {
+                //// Add sell node to all leaves
+                //IngredientTree newChild = new IngredientTree
+                //        (null, parent, null, _genericShop);
+                //parent.childrenTreeList.Add(newChild);
+
+                return;
+            }
 
             foreach (var pair in applianceRecipeListDict)
             {
                 foreach(RecipeData recipeData in pair.Value)
                 {
                     IngredientTree newChild = new IngredientTree
-                        (recipeData.resultIngredient, parent, recipeData);
+                        (recipeData.resultIngredient, parent, recipeData, null);
                     parent.childrenTreeList.Add(newChild);
 
                     ConstructUtilityMapTree(newChild);

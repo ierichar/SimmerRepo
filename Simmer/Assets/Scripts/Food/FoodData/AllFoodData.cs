@@ -16,6 +16,9 @@ namespace Simmer.FoodData
         public List<IngredientData> allIngredientDataList
             = new List<IngredientData>();
 
+        Dictionary<string, IngredientData> ingredientNameDictionary
+            = new Dictionary<string, IngredientData>();
+
         public List<IngredientData> rawIngredientList
             = new List<IngredientData>();
 
@@ -55,6 +58,8 @@ namespace Simmer.FoodData
                 allRecipeDataList.Add(recipe);
             }
 
+            ConstructIngredientNameDictionary();
+
             ConstructRecipeResultDict();
 
             ConstructFilteredIngredientList(
@@ -80,6 +85,16 @@ namespace Simmer.FoodData
         private bool FinalPredicate(IngredientData item)
         {
             return item.isFinalProduct;
+        }
+
+        private void ConstructIngredientNameDictionary()
+        {
+            ingredientNameDictionary.Clear();
+
+            foreach (IngredientData ingredient in allIngredientDataList)
+            {
+                ingredientNameDictionary.Add(ingredient.name, ingredient);
+            }
         }
     }
 }

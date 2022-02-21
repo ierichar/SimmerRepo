@@ -13,7 +13,7 @@ namespace Simmer.UI.RecipeBook.Catalog
         public RecipeBookEventManager eventManager { get; private set; }
 
         public CatalogGrid catalogGrid { get; private set; }
-        public CatalogButtonManager catalogButtonManager { get; private set; }
+        public CatalogFilterManager catalogFilterManager { get; private set; }
 
         public AllFoodData allFoodData;
 
@@ -24,8 +24,8 @@ namespace Simmer.UI.RecipeBook.Catalog
             catalogGrid = GetComponentInChildren<CatalogGrid>(true);
             catalogGrid.Construct(this);
 
-            catalogButtonManager = GetComponent<CatalogButtonManager>();
-            catalogButtonManager.Construct(this);
+            catalogFilterManager = GetComponent<CatalogFilterManager>();
+            catalogFilterManager.Construct(this);
         }
 
         private void OnEnable()

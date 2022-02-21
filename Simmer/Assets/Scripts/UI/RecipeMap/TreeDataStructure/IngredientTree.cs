@@ -19,14 +19,17 @@ namespace Simmer.UI.RecipeMap
 
         public IngredientData ingredientData { get; set; }
         public RecipeData recipeDataEdge { get; set; }
+        public SpecialNodeData specialNodeData { get; set; }
 
         public IngredientTree(IngredientData item
             , IngredientTree parent
-            , RecipeData recipeDataEdge)
+            , RecipeData recipeDataEdge
+            , SpecialNodeData specialNodeData)
         {
             ingredientData = item;
             parentTree = parent;
             this.recipeDataEdge = recipeDataEdge;
+            this.specialNodeData = specialNodeData;
             childrenTreeList = new List<IngredientTree>();
         }
 
