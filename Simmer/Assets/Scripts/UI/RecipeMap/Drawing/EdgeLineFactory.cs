@@ -33,14 +33,16 @@ namespace Simmer.UI.RecipeMap
             , Vector2 v2
             , float verticalSpacing
             , float verticalLineGap
-            , ApplianceData applianceData)
+            , ApplianceData applianceData
+            , bool showArrow)
         {
             EdgeLine thisLine = Instantiate(edgeLinePrefab, transform);
             thisLine.Construct(v1
                 , v2
                 , verticalSpacing
                 , verticalLineGap
-                , applianceData);
+                , applianceData
+                , showArrow);
 
             edgeLineList.Add(thisLine);
 

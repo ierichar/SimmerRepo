@@ -17,8 +17,7 @@ public static class GlobalPlayerData
     private static Dictionary<int, FoodItem> _inventoryItemDictionary
         = new Dictionary<int, FoodItem>();
     
-    private static List<IngredientData> _knownIngredientList
-        = new List<IngredientData>();
+    public static List<IngredientData> knownIngredientList { get; private set; }
 
     private static bool isConstructed = false;
 
@@ -27,6 +26,8 @@ public static class GlobalPlayerData
         if (isConstructed) return;
 
         isConstructed = true;
+
+        knownIngredientList = new List<IngredientData>();
 
         if (startingSaveData == null)
         {
@@ -62,11 +63,14 @@ public static class GlobalPlayerData
         }
     }
 
-    public static void AddIngredientKnowledge(IngredientData ingredient)
+    public static bool AddIngredientKnowledge(IngredientData ingredient)
     {
-        if (!_knownIngredientList.Contains(ingredient))
+        if (!knownIngredientList.Contains(ingredient))
         {
-            _knownIngredientList.Add(ingredient);
+            knownIngredientList.Add(ingredient);
+            return true;
         }
+
+        return false;
     }
 }

@@ -9,6 +9,8 @@ namespace Simmer.UI.RecipeMap
 {
     public class EdgeLine : MonoBehaviour
     {
+        private ImageManager _arrowImageManager;
+
         public ImageManager imageManager { get; private set; }
         private RectTransform _rectTransform;
         private TooltipTrigger _tooltipTrigger;
@@ -17,8 +19,14 @@ namespace Simmer.UI.RecipeMap
             , Vector2 v2
             , float verticalSpacing
             , float verticalLineGap
-            , ApplianceData applianceData)
+            , ApplianceData applianceData
+            , bool showArrow)
         {
+            _arrowImageManager = gameObject.GetComponentsInChildren<ImageManager>()[1];
+            _arrowImageManager.Construct();
+
+            _arrowImageManager.SetActive(showArrow);
+
             imageManager = GetComponent<ImageManager>();
             imageManager.Construct();
 
@@ -44,6 +52,7 @@ namespace Simmer.UI.RecipeMap
 
             //_rectTransform.sizeDelta -= new Vector2(0, verticalLineGap);
 
+            _arrowImageManager.SetColor(applianceData.colorCode);
             imageManager.SetColor(applianceData.colorCode);
         }
     }

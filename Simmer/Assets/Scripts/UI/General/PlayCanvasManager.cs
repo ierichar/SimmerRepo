@@ -7,6 +7,7 @@ using Simmer.Inventory;
 using Simmer.Items;
 using Simmer.UI.Tooltips;
 using Simmer.UI.RecipeMap;
+using Simmer.UI.RecipeBook;
 
 namespace Simmer.UI
 {
@@ -17,6 +18,7 @@ namespace Simmer.UI
         public ItemFactory itemFactory { get; private set; }
         public InventoryUIManager inventoryUIManager { get; private set; }
         public RecipeMapWindow recipeMapWindow { get; private set; }
+        public RecipeBookManager recipeBookManager { get; private set; }
 
         public UnityEvent<int> OnSelectItem { get; private set; }
 
@@ -31,12 +33,14 @@ namespace Simmer.UI
             itemFactory = GetComponent<ItemFactory>();
             inventoryUIManager = GetComponentInChildren<InventoryUIManager>(true);
             recipeMapWindow = GetComponentInChildren<RecipeMapWindow>(true);
+            recipeBookManager = GetComponentInChildren<RecipeBookManager>(true);
             screenBlockManager = GetComponentInChildren<ScreenBlockManager>();
             this.soundManager = soundManager;
 
             itemFactory.Construct(this);
             inventoryUIManager.Construct(itemFactory);
             recipeMapWindow.Construct();
+            recipeBookManager.Construct();
             screenBlockManager.Construct();
         }
     }

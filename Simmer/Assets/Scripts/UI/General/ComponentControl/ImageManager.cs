@@ -33,5 +33,10 @@ namespace Simmer.UI
             return image.DOFade(newAlpha, duration)
                 .SetEase(ease);
         }
+
+        public void SetActive(bool isActive)
+        {
+            image.enabled = isActive;
+        }
     }
 }

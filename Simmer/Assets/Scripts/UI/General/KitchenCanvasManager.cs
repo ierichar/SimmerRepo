@@ -24,7 +24,6 @@ namespace Simmer.UI
                 pantryUI.Construct(itemFactory);
             }
 
-
             GenericAppliance[] applianceManager = FindObjectsOfType<GenericAppliance>();
             foreach(GenericAppliance appliance in applianceManager){
                 appliance.Construct(itemFactory, soundManager);

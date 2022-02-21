@@ -30,28 +30,13 @@ namespace Simmer.UI.RecipeMap
             _treeNodePositioning = recipeMapManager.treeNodePositioning;
             _allFoodData = recipeMapManager.allFoodData;
 
-            _recipeMapManager.apexRecipeSlot.onItemDrop
-                .AddListener(RenderTreeFromDrop);
+            _recipeMapManager.recipeMapEventManager
+                .OnUpdateMap.AddListener(OnUpdateMapCallback);
         }
 
-        private void Update()
+        private void OnUpdateMapCallback(IngredientData ingredientData)
         {
-            if(Input.GetKeyDown(KeyCode.S))
-            {
-                RenderTree(_apexIngredient);
-            }
-
-            if (Input.GetKeyDown(KeyCode.C))
-            {
-                _ingredientNodeFactory.ClearAll();
-                _edgeLineFactory.ClearAll();
-            }
-
-        }
-
-        private void RenderTreeFromDrop(ItemBehaviour itemBehaviour)
-        {
-            RenderTree(itemBehaviour.foodItem.ingredientData);
+            RenderTree(ingredientData);
         }
 
         public void RenderTree(IngredientData apexIngredient)
@@ -112,7 +97,7 @@ namespace Simmer.UI.RecipeMap
 
                 _edgeLineFactory.SpawnEdgeLine(leftPosition
                     , rightPosition, verticalSpacing
-                    , 0, thisAppliance);
+                    , 0, thisAppliance, false);
             }
 
             foreach (IngredientTree child in parent.childrenTreeList)
@@ -133,7 +118,7 @@ namespace Simmer.UI.RecipeMap
 
                 _edgeLineFactory.SpawnEdgeLine(parentPosition
                     , childPosition, verticalSpacing
-                    , verticalLineGap, thisAppliance);
+                    , verticalLineGap, thisAppliance, true);
 
                 //IngredientTree nextSibling = child.GetNextSibling();
 
