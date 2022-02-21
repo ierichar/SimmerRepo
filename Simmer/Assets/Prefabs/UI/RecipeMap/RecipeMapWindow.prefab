@@ -371,6 +371,7 @@ MonoBehaviour:
   siblingDistance: 80
   treeDistance: 120
   nodeSize: 100
+  _genericShop: {fileID: 0}
 --- !u!114 &871143271183923756
 MonoBehaviour:
   m_ObjectHideFlags: 0
