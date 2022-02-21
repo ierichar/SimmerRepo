@@ -414,7 +414,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6a3b9131f20646a49a0aa9b4a3380dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnUpdateMap:
+  OnShowRecipeMap:
+    m_PersistentCalls:
+      m_Calls: []
+  OnShowUtilityMap:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &871143271251499670
@@ -1244,7 +1247,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0453c702bcd2e4ed7957d2743107eb52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ingredientNodePrefab: {fileID: 4639616477426218427, guid: aa3413e0bdf864152869fac7accdba1d, type: 3}
+  _ingredientNodePrefab: {fileID: 4639616477426218427, guid: aa3413e0bdf864152869fac7accdba1d, type: 3}
+  _isUnknownHidden: 1
 --- !u!1 &871143272778218079
 GameObject:
   m_ObjectHideFlags: 0

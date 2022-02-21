@@ -4,27 +4,26 @@ using UnityEngine;
 
 using Simmer.FoodData;
 
-namespace Simmer.UI.RecipeBook.Catalogue
+namespace Simmer.UI.RecipeBook.Catalog
 {
-    public class CatalogueGrid : MonoBehaviour
+    public class CatalogGrid : MonoBehaviour
     {
         private RecipeBookEventManager _eventManager;
 
         private Transform _gridTransfrom;
 
-        [SerializeField] CatalogueItem catalogueItemPrefab;
+        [SerializeField] CatalogItem catalogItemPrefab;
 
-        private List<CatalogueItem> _catalogueItemList
-            = new List<CatalogueItem>();
+        private List<CatalogItem> _catalogItemList
+            = new List<CatalogItem>();
 
-        public void Construct(RecipeBookEventManager eventManager
-            , List<IngredientData> startIngredientList)
+        public void Construct(CatalogManager catalogManager)
         {
-            _eventManager = eventManager;
+            _eventManager = catalogManager.eventManager;
 
             _gridTransfrom = GetComponent<Transform>();
 
-            UpdateGrid(startIngredientList);
+            UpdateGrid(GlobalPlayerData.knownIngredientList);
         }
 
         public void UpdateGrid(List<IngredientData> ingredientList)
@@ -39,23 +38,23 @@ namespace Simmer.UI.RecipeBook.Catalogue
 
         private void AddNewItem(IngredientData ingredientData)
         {
-            CatalogueItem newItem = Instantiate(
-                catalogueItemPrefab, _gridTransfrom);
+            CatalogItem newItem = Instantiate(
+                catalogItemPrefab, _gridTransfrom);
 
             newItem.Construct(_eventManager, ingredientData);
 
-            _catalogueItemList.Add(newItem);
+            _catalogItemList.Add(newItem);
         }
 
         private void ClearItems()
         {
-            if (_catalogueItemList.Count != 0)
+            if (_catalogItemList.Count != 0)
             {
-                foreach (CatalogueItem item in _catalogueItemList)
+                foreach (CatalogItem item in _catalogItemList)
                 {
                     Destroy(item.gameObject);
                 }
-                _catalogueItemList.Clear();
+                _catalogItemList.Clear();
             }
         }
     }

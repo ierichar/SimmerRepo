@@ -19,6 +19,7 @@ namespace Simmer.UI
         public InventoryUIManager inventoryUIManager { get; private set; }
         public RecipeMapWindow recipeMapWindow { get; private set; }
         public RecipeBookManager recipeBookManager { get; private set; }
+        public MoneyUI moneyUI { get; private set; }
 
         public UnityEvent<int> OnSelectItem { get; private set; }
 
@@ -35,6 +36,8 @@ namespace Simmer.UI
             recipeMapWindow = GetComponentInChildren<RecipeMapWindow>(true);
             recipeBookManager = GetComponentInChildren<RecipeBookManager>(true);
             screenBlockManager = GetComponentInChildren<ScreenBlockManager>();
+            moneyUI = GetComponentInChildren<MoneyUI>(true);
+
             this.soundManager = soundManager;
 
             itemFactory.Construct(this);
@@ -42,6 +45,7 @@ namespace Simmer.UI
             recipeMapWindow.Construct();
             recipeBookManager.Construct();
             screenBlockManager.Construct();
+            moneyUI.Construct();
         }
     }
 }

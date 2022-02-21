@@ -9,7 +9,10 @@ namespace Simmer.UI.RecipeMap
 {
     public class RecipeMapEventManager : MonoBehaviour
     {
-        public UnityEvent<IngredientData> OnUpdateMap
+        public UnityEvent<IngredientData> OnShowRecipeMap
+            = new UnityEvent<IngredientData>();
+
+        public UnityEvent<IngredientData> OnShowUtilityMap
             = new UnityEvent<IngredientData>();
 
         public void Construct()

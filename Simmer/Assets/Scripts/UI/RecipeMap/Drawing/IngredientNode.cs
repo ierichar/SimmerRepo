@@ -16,7 +16,9 @@ namespace Simmer.UI.RecipeMap
 
         public IngredientData ingredientData { get; private set; }
 
-        public void Construct(IngredientData ingredient, Vector2 position)
+        public void Construct(
+            IngredientData ingredient
+            , Vector2 position)
         {
             this.ingredientData = ingredient;
 
@@ -30,10 +32,17 @@ namespace Simmer.UI.RecipeMap
             _rectTransform = GetComponent<RectTransform>();
             _rectTransform.anchoredPosition = position;
 
-            _ingredientImageManager.SetSprite(this.ingredientData.sprite);
-
             _tooltipTrigger = GetComponentInChildren<TooltipTrigger>();
-            _tooltipTrigger.Construct("Ingredient: " + ingredientData.name, "");
+
+            if (ingredient == null)
+            {
+                _tooltipTrigger.Construct("Unknown Item", "");
+            }
+            else
+            {
+                _ingredientImageManager.SetSprite(this.ingredientData.sprite);
+                _tooltipTrigger.Construct("Ingredient: " + ingredientData.name, "");
+            }
         }
     }
 }

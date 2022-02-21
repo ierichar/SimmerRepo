@@ -31,27 +31,27 @@ namespace Simmer.UI.RecipeMap
             imageManager.Construct();
 
             _tooltipTrigger = GetComponentInChildren<TooltipTrigger>();
-            _tooltipTrigger.Construct("Appliance: " + applianceData.name, "");
 
             _rectTransform = GetComponent<RectTransform>();
 
-            Vector2 dist = v1 - v2;
+            Vector2 dist = new Vector2(v2.x - v1.x, v2.y - v1.y);
             Vector2 halfDist = dist / 2;
             
-            _rectTransform.rotation
-                = Quaternion.Euler(new Vector3(0, 0
-                , Mathf.Atan2(dist.x, dist.y) * Mathf.Rad2Deg));
-
             _rectTransform.anchoredPosition
-                = v1
-                - halfDist;
-                //+ new Vector2(0, verticalSpacing);
+                = v1 + halfDist;
+            //+ new Vector2(0, verticalSpacing);
+
+            float zRotation = Vector2.SignedAngle(Vector2.up, dist);
+
+            _rectTransform.rotation
+                = Quaternion.Euler(new Vector3(0, 0 , zRotation));
 
             _rectTransform.sizeDelta = new Vector2(
-                10, Vector2.Distance(v1, v2));
+                10, dist.magnitude);
 
             //_rectTransform.sizeDelta -= new Vector2(0, verticalLineGap);
 
+            _tooltipTrigger.Construct("Appliance: " + applianceData.name, "");
             _arrowImageManager.SetColor(applianceData.colorCode);
             imageManager.SetColor(applianceData.colorCode);
         }

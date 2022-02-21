@@ -6,9 +6,9 @@ using UnityEngine.UI;
 using Simmer.UI;
 using Simmer.FoodData;
 
-namespace Simmer.UI.RecipeBook.Catalogue
+namespace Simmer.UI.RecipeBook.Catalog
 {
-    public class CatalogueItem : MonoBehaviour
+    public class CatalogItem : MonoBehaviour
     {
         private RecipeBookEventManager _eventManager;
 

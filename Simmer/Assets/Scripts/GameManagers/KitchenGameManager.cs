@@ -34,7 +34,7 @@ public class KitchenGameManager : MonoBehaviour
 
         _gameEventManager.Construct();
         _kitchenCanvasManager.Construct(_gameEventManager.OnSelectItem, soundManager);
-        _playerManager.Construct(_gameEventManager, _kitchenCanvasManager.inventoryUIManager);
+        _playerManager.Construct(_gameEventManager, _kitchenCanvasManager);
         _sceneLoader.Construct(_playerManager, _kitchenCanvasManager);
         _pauseMenu.Construct(_sceneLoader);
 

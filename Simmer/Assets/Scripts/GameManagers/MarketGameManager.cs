@@ -35,7 +35,7 @@ public class MarketGameManager : MonoBehaviour
 
         _gameEventManager.Construct();
         _marketCanvasManager.Construct(_gameEventManager.OnSelectItem, _soundManager);
-        _playerManager.Construct(_gameEventManager, _marketCanvasManager.inventoryUIManager);
+        _playerManager.Construct(_gameEventManager, _marketCanvasManager);
         _sceneLoader.Construct(_playerManager, _marketCanvasManager);
 
         _VN_Manager.Construct();

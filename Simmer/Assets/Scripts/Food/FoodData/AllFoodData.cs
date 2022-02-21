@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,12 @@ namespace Simmer.FoodData
             = new Dictionary<IngredientData, RecipeData>();
 
         public List<IngredientData> allIngredientDataList
+            = new List<IngredientData>();
+
+        public List<IngredientData> rawIngredientList
+            = new List<IngredientData>();
+
+        public List<IngredientData> finalIngredientList
             = new List<IngredientData>();
 
         public List<RecipeData> allRecipeDataList
@@ -49,6 +56,30 @@ namespace Simmer.FoodData
             }
 
             ConstructRecipeResultDict();
+
+            ConstructFilteredIngredientList(
+                ref rawIngredientList, RawPredicate);
+
+            ConstructFilteredIngredientList(
+                ref finalIngredientList, FinalPredicate);
+        }
+
+        private void ConstructFilteredIngredientList(
+            ref List<IngredientData> result, Predicate<IngredientData> predicate)
+        {
+            result = allIngredientDataList.FindAll(predicate);
+        }
+
+        private bool RawPredicate(IngredientData item)
+        {
+            // If the item isn't a result in any recipe
+            // it's a raw ingredient
+            return !recipeResultDict.ContainsKey(item);
+        }
+
+        private bool FinalPredicate(IngredientData item)
+        {
+            return item.isFinalProduct;
         }
     }
 }

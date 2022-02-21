@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using Simmer.UI;
 using Simmer.Inventory;
 
 namespace Simmer.Player
@@ -21,6 +22,7 @@ namespace Simmer.Player
         public PlayerItemSelect playerItemSelect { get; private set; }
         public PlayerHeldItem playerHeldItem { get; private set; }
         public PlayerRayInteract playerInteract { get; private set; }
+        public PlayerCurrency playerCurrency { get; private set; }
 
         /// <summary>
         /// Constructs from the KitchenGameManager
@@ -32,10 +34,10 @@ namespace Simmer.Player
         /// Needed by playerInventory to reference inventory slots
         /// </param>
         public void Construct(GameEventManager gameEventManager
-            , InventoryUIManager inventoryUIManager)
+            , PlayCanvasManager playCanvasManager)
         {
             this.gameEventManager = gameEventManager;
-            this.inventoryUIManager = inventoryUIManager;
+            inventoryUIManager = playCanvasManager.inventoryUIManager;
 
             playerEventManager = GetComponent<PlayerEventManager>();
             playerMovement = GetComponent<PlayerMovement>();
@@ -43,6 +45,7 @@ namespace Simmer.Player
             playerItemSelect = GetComponent<PlayerItemSelect>();
             playerHeldItem = GetComponentInChildren<PlayerHeldItem>();
             playerInteract = GetComponentInChildren<PlayerRayInteract>();
+            playerCurrency = GetComponent<PlayerCurrency>();
 
             playerEventManager.Construct(this);
             playerMovement.Construct(this);
@@ -50,6 +53,7 @@ namespace Simmer.Player
             playerItemSelect.Construct(this);
             playerHeldItem.Construct(this);
             playerInteract.Construct(this);
+            playerCurrency.Construct(playCanvasManager.moneyUI);
         }
 
     }

@@ -32,6 +32,7 @@ namespace Simmer.UI.RecipeBook.FoodInfo
             _foodImageManager.Construct();
 
             _recipeMapButton.onClick.AddListener(RecipeMapButtonOnClickCallback);
+            _utilityMapButton.onClick.AddListener(UtilityMapButtonOnClickCallback);
 
             _canvasGroup.alpha = 0;
         }
@@ -61,7 +62,14 @@ namespace Simmer.UI.RecipeBook.FoodInfo
         {
             _recipeMapManager.ToggleActive();
             _recipeMapManager.recipeMapEventManager
-                .OnUpdateMap.Invoke(ingredientData);
+                .OnShowRecipeMap.Invoke(ingredientData);
+        }
+
+        private void UtilityMapButtonOnClickCallback()
+        {
+            _recipeMapManager.ToggleActive();
+            _recipeMapManager.recipeMapEventManager
+                .OnShowUtilityMap.Invoke(ingredientData);
         }
     }
 }

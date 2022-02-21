@@ -13,11 +13,13 @@ public static class GlobalPlayerData
     {
         get { return _inventoryItemDictionary; }
         set { foodItemDictionary = _inventoryItemDictionary; }
-    } 
+    }
     private static Dictionary<int, FoodItem> _inventoryItemDictionary
         = new Dictionary<int, FoodItem>();
-    
+
     public static List<IngredientData> knownIngredientList { get; private set; }
+
+    public static int playerMoney { get; private set; }
 
     private static bool isConstructed = false;
 
@@ -72,5 +74,10 @@ public static class GlobalPlayerData
         }
 
         return false;
+    }
+
+    public static void SetMoney(int amount)
+    {
+        playerMoney = amount;
     }
 }
