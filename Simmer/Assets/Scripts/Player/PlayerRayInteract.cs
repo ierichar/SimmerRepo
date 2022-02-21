@@ -74,7 +74,7 @@ namespace Simmer.Player
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
 
-        private void CloseInv(){
+        public void CloseInv(){
             //if(!_isInvOpen) return false;
 
             _isInvOpen = false;

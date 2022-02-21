@@ -66,6 +66,7 @@ namespace Simmer.NPC
                 _playCanvasFadeDuration, _playCanvasFadeEase);
 
             yield return fadeTween.WaitForCompletion();
+            _npcInterface.SetActive(false);
 
             _marketCanvasManager.gameObject.SetActive(false);
 
