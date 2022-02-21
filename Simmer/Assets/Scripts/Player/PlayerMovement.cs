@@ -112,7 +112,7 @@ namespace Simmer.Player
 
             switch(_cases){
                 case 0:
-                    _renderer.flipX = false;
+                    //_renderer.flipX = false;
                     _animator.SetBool("W", true);
                     _animator.SetBool("A", false);
                     _animator.SetBool("S", false);
@@ -126,7 +126,7 @@ namespace Simmer.Player
                     _animator.SetBool("D", false);
                     break;
                 case 2:
-                    _renderer.flipX = false;
+                    //_renderer.flipX = false;
                     _animator.SetBool("W", false);
                     _animator.SetBool("A", false);
                     _animator.SetBool("S", true);
