@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: CuttingBoard
   m_EditorClassIdentifier: 
   colorCode: {r: 0, g: 1, b: 0, a: 1}
+  sprite: {fileID: 21300000, guid: 056eea53cefa9674b92c031a4124e0bd, type: 3}

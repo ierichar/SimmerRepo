@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Mixer
   m_EditorClassIdentifier: 
   colorCode: {r: 1, g: 1, b: 0, a: 1}
+  sprite: {fileID: 21300000, guid: a91ddaee17d3845898bf2c4b11d812cd, type: 3}
   ingredientRecipeList:
   - {fileID: 11400000, guid: e1d0faecbce5d4d6ea549b13c68ba768, type: 2}
