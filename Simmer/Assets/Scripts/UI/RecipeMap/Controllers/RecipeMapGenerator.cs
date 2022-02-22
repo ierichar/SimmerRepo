@@ -30,40 +30,50 @@ namespace Simmer.UI.RecipeMap
             _treeNodePositioning = recipeMapManager.treeNodePositioning;
             _allFoodData = recipeMapManager.allFoodData;
 
-            _recipeMapManager.apexRecipeSlot.onItemDrop
-                .AddListener(RenderTreeFromDrop);
+            _recipeMapManager.recipeMapEventManager
+                .OnShowRecipeMap.AddListener(OnShowRecipeMapCallback);
+            _recipeMapManager.recipeMapEventManager
+                .OnShowUtilityMap.AddListener(OnShowUtilityMapCallback);
         }
 
-        private void Update()
+        private void OnShowRecipeMapCallback(IngredientData ingredientData)
         {
-            if(Input.GetKeyDown(KeyCode.S))
-            {
-                RenderTree(_apexIngredient);
-            }
-
-            if (Input.GetKeyDown(KeyCode.C))
-            {
-                _ingredientNodeFactory.ClearAll();
-                _edgeLineFactory.ClearAll();
-            }
-
+            RenderRecipeMap(ingredientData);
         }
 
-        private void RenderTreeFromDrop(ItemBehaviour itemBehaviour)
+        private void OnShowUtilityMapCallback(IngredientData ingredientData)
         {
-            RenderTree(itemBehaviour.foodItem.ingredientData);
+            RenderUtilityMap(ingredientData);
         }
 
-        public void RenderTree(IngredientData apexIngredient)
+        public void RenderRecipeMap(IngredientData apexIngredient)
         {
             _ingredientNodeFactory.ClearAll();
             _edgeLineFactory.ClearAll();
 
             IngredientTree apexTree =
-                    _treeNodePositioning.SpawnTree(apexIngredient);
+                    _treeNodePositioning.SpawnRecipeMap(apexIngredient);
 
-            RenderTreeRecursive(apexTree);
+            RenderRecipeMapRecursive(apexTree);
 
+            CenterTree(apexTree, false);
+        }
+
+        public void RenderUtilityMap(IngredientData apexIngredient)
+        {
+            _ingredientNodeFactory.ClearAll();
+            _edgeLineFactory.ClearAll();
+
+            IngredientTree apexTree =
+                    _treeNodePositioning.SpawnUtilityMap(apexIngredient);
+
+            RenderUtilityMapRecursive(apexTree);
+
+            CenterTree(apexTree, true);
+        }
+
+        private void CenterTree(IngredientTree apexTree, bool isTopDown)
+        {
             // Center on apexPositionMarker
             Vector2 oldApexPosition
                 = new Vector2(apexTree.xPosition, apexTree.yPosition);
@@ -73,8 +83,16 @@ namespace Simmer.UI.RecipeMap
             // Center tree vertical midpoint on apexPositionMarker
             float maxDepth = _treeNodePositioning
                 .GetLowestDepth(apexTree, 0);
-            float yDisplacement = (apexTree.yPosition - maxDepth)/2;
-            displacement += new Vector2(0, yDisplacement * verticalSpacing);
+            float yDisplacement = (apexTree.yPosition - maxDepth) / 2;
+
+            if(isTopDown)
+            {
+                displacement -= new Vector2(0, yDisplacement * verticalSpacing);
+            }
+            else
+            {
+                displacement += new Vector2(0, yDisplacement * verticalSpacing);
+            }
 
             _ingredientNodeFactory.SetPosition(Vector2.zero);
             _ingredientNodeFactory.Displace(displacement);
@@ -86,7 +104,7 @@ namespace Simmer.UI.RecipeMap
             _textNodeFactory.Displace(displacement);
         }
 
-        private void RenderTreeRecursive(IngredientTree parent)
+        private void RenderRecipeMapRecursive(IngredientTree parent)
         {
             Vector2 parentPosition = new Vector2(parent.xPosition
                 , parent.yPosition * verticalSpacing);
@@ -110,14 +128,14 @@ namespace Simmer.UI.RecipeMap
                         , parent.GetRightMostChild().yPosition
                         * verticalSpacing);
 
-                _edgeLineFactory.SpawnEdgeLine(leftPosition
-                    , rightPosition, verticalSpacing
-                    , 0, thisAppliance);
+                _edgeLineFactory.SpawnEdgeLine(rightPosition
+                    , leftPosition , verticalSpacing
+                    , 0, thisAppliance, false);
             }
 
             foreach (IngredientTree child in parent.childrenTreeList)
             {
-                RenderTreeRecursive(child);
+                RenderRecipeMapRecursive(child);
 
                 // Edge line to each child
                 //Vector2 childPosition = new Vector2(child.xPosition
@@ -128,26 +146,44 @@ namespace Simmer.UI.RecipeMap
                     parent.GetMiddleChildXPosition()
                     , child.yPosition * verticalSpacing);
 
-                ApplianceData thisAppliance = _allFoodData.recipeResultDict
-                      [parent.ingredientData].applianceData;
+                //ApplianceData thisAppliance = _allFoodData.recipeResultDict
+                //      [parent.ingredientData].applianceData;
 
-                _edgeLineFactory.SpawnEdgeLine(parentPosition
-                    , childPosition, verticalSpacing
-                    , verticalLineGap, thisAppliance);
+                ApplianceData thisAppliance = child.recipeDataEdge.applianceData;
 
-                //IngredientTree nextSibling = child.GetNextSibling();
-
-                //if(nextSibling != null)
-                //{
-                //    float middleX = (nextSibling.xPosition
-                //        - child.xPosition) / 2;
-                //    Vector2 textPosition = new Vector2 (middleX
-                //        , -child.yPosition * verticalSpacing);
-
-                //    _textNodeFactory.SpawnNode("+", textPosition);
-                //}
+                _edgeLineFactory.SpawnEdgeLine(childPosition,
+                    parentPosition, verticalSpacing
+                    , verticalLineGap, thisAppliance, true);
             }
         }
 
+        private void RenderUtilityMapRecursive(IngredientTree parent)
+        {
+            Vector2 parentPosition = new Vector2(parent.xPosition
+                , -parent.yPosition * verticalSpacing);
+
+            _ingredientNodeFactory.SpawnIngredientNode
+                (parent.ingredientData, parentPosition);
+
+            foreach (IngredientTree child in parent.childrenTreeList)
+            {
+                RenderUtilityMapRecursive(child);
+
+                // Edge line to each child
+                Vector2 childPosition = new Vector2(child.xPosition
+                    , -child.yPosition * verticalSpacing);
+
+                // Vertical Lines
+                //Vector2 childPosition = new Vector2(
+                //    parent.GetMiddleChildXPosition()
+                //    , child.yPosition * verticalSpacing);
+
+                ApplianceData thisAppliance = child.recipeDataEdge.applianceData;
+
+                _edgeLineFactory.SpawnEdgeLine(parentPosition
+                    , childPosition, verticalSpacing
+                    , verticalLineGap, thisAppliance, true);
+            }
+        }
     }
 }

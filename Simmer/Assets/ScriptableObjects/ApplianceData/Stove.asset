@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Stove
   m_EditorClassIdentifier: 
   colorCode: {r: 0.90471417, g: 0.112362035, b: 0.9528302, a: 0}
+  sprite: {fileID: 21300000, guid: 6d501fdca7c8741f482257fe27e06ef0, type: 3}
   ingredientRecipeList: []

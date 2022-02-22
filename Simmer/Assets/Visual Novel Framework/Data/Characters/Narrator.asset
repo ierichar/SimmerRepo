@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scenePosition: 0
   screenEdgeDistance: 0
-  transition: {fileID: 0}
+  transition: {fileID: 11400000, guid: 3b8c7edcf2ae945a48152c552d124440, type: 2}
   transitionDuration: 0
   characterSpriteScale: 1
   characterBoxScale: 1

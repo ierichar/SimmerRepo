@@ -17,6 +17,7 @@ public class Shop : MonoBehaviour
 
     public PlayerInventory inventory;
     public PlayerCurrency money;
+    public GameObject shopSlots;
 
     private Transform buttonContainer;
     private List<ShopButton> allButtons;
@@ -25,17 +26,46 @@ public class Shop : MonoBehaviour
     //make all the buttons
     void Start() {
         buttonContainer = GameObject.Find("ShopSlots").GetComponent<Transform>();
+    }
+    //These are just things to enable and disable
+    private GameObject canvas;
+    //private GameObject text;
+    private Image fadeColor;
+
+    //assgin all the variables
+    public void Construct()
+    {
+        //canvas = GameObject.Find("ShopSlots");
+        canvas = shopSlots;
+        //text = GameObject.Find("ShopTitle");
+        fadeColor = gameObject.GetComponent<Image>();
+        //buttonContainer = GameObject.Find("ShopSlots").GetComponent<Transform>();
+        buttonContainer = shopSlots.GetComponent<Transform>();
         allButtons = new List<ShopButton>();
-        sellSlot = FindObjectOfType<InteractSlot>();
+        sellSlot = FindObjectOfType<InteractSlot>(true);
         sellSlot.Construct();
-
         List<IngredientData> selection = npcData.selectRandom(12);
+        // sellSlot.itemSlot.onItemDrop.AddListener(sellItemWrapper);
 
-        for(int i = 0; i < 12; i++) {
+        for (int i = 0; i < 12; i++)
+        {
             ShopButton button = Instantiate(buttonPrefab, buttonContainer);
             button.makeButton(selection[i], GetComponent<Shop>());
             allButtons.Add(button);
         }
+    }
+
+
+    //toggles the shop
+    public void ToggleOn() {
+        makeNewSelection();
+    }
+
+    //toggles the shop off
+    public void ToggleOff() {
+        //text.SetActive(false);
+        canvas.SetActive(false);
+        fadeColor.enabled = false;
     }
 
     //randomize the selection in the shop

@@ -19,8 +19,12 @@ public class KitchenGameManager : MonoBehaviour
     private PauseMenu _pauseMenu;
     public UISoundManager soundManager{get; private set;}
 
+    [SerializeField] private SaveData _startSaveData;
+
     private void Awake()
     {
+        GlobalPlayerData.Construct(_startSaveData);
+
         _playerManager = FindObjectOfType<PlayerManager>();
         _kitchenCanvasManager = FindObjectOfType<KitchenCanvasManager>();
         _gameEventManager = GetComponent<GameEventManager>();
@@ -30,7 +34,7 @@ public class KitchenGameManager : MonoBehaviour
 
         _gameEventManager.Construct();
         _kitchenCanvasManager.Construct(_gameEventManager.OnSelectItem, soundManager);
-        _playerManager.Construct(_gameEventManager, _kitchenCanvasManager.inventoryUIManager);
+        _playerManager.Construct(_gameEventManager, _kitchenCanvasManager);
         _sceneLoader.Construct(_playerManager, _kitchenCanvasManager);
         _pauseMenu.Construct(_sceneLoader);
 

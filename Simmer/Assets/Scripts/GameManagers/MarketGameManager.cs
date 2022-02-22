@@ -19,8 +19,12 @@ public class MarketGameManager : MonoBehaviour
     private SceneLoader _sceneLoader;
     private UISoundManager _soundManager;
 
+    [SerializeField] private SaveData _startSaveData;
+
     private void Awake()
     {
+        GlobalPlayerData.Construct(_startSaveData);
+
         _playerManager = FindObjectOfType<PlayerManager>();
         _marketCanvasManager = FindObjectOfType<MarketCanvasManager>();
         _NPC_Manager = FindObjectOfType<NPC_Manager>();
@@ -31,7 +35,7 @@ public class MarketGameManager : MonoBehaviour
 
         _gameEventManager.Construct();
         _marketCanvasManager.Construct(_gameEventManager.OnSelectItem, _soundManager);
-        _playerManager.Construct(_gameEventManager, _marketCanvasManager.inventoryUIManager);
+        _playerManager.Construct(_gameEventManager, _marketCanvasManager);
         _sceneLoader.Construct(_playerManager, _marketCanvasManager);
 
         _VN_Manager.Construct();

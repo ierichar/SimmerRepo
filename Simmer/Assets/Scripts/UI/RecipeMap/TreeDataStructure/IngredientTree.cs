@@ -18,12 +18,19 @@ namespace Simmer.UI.RecipeMap
         public int height { get; set; }
 
         public IngredientData ingredientData { get; set; }
+        public RecipeData recipeDataEdge { get; set; }
+        public SpecialNodeData specialNodeData { get; set; }
 
-        public IngredientTree(IngredientData item, IngredientTree parent)
+        public IngredientTree(IngredientData item
+            , IngredientTree parent
+            , RecipeData recipeDataEdge
+            , SpecialNodeData specialNodeData)
         {
             ingredientData = item;
             parentTree = parent;
-            childrenTreeList= new List<IngredientTree>();
+            this.recipeDataEdge = recipeDataEdge;
+            this.specialNodeData = specialNodeData;
+            childrenTreeList = new List<IngredientTree>();
         }
 
         public bool IsLeaf()

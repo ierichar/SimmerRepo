@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Oven
   m_EditorClassIdentifier: 
   colorCode: {r: 1, g: 0.5, b: 0, a: 1}
+  sprite: {fileID: 21300000, guid: 6d501fdca7c8741f482257fe27e06ef0, type: 3}

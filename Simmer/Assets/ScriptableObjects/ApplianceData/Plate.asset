@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Plate
   m_EditorClassIdentifier: 
   colorCode: {r: 1, g: 1, b: 1, a: 1}
+  sprite: {fileID: 21300000, guid: 6ef72c6b0a56e9345bce946bda9ddf68, type: 3}
   ingredientRecipeList:
   - {fileID: 11400000, guid: 1a9767e03df094770a1c2cd4017fc714, type: 2}

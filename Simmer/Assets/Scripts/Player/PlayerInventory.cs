@@ -6,6 +6,7 @@ using UnityEngine.Events;
 using Simmer.Player;
 using Simmer.Items;
 using Simmer.FoodData;
+using Simmer.SceneManagement;
 
 namespace Simmer.Inventory
 {
@@ -141,11 +142,15 @@ namespace Simmer.Inventory
             }
             else if (_foodItemDictionary.ContainsKey(index))
             {
-                //Debug.Log("Trying to change non empty inventory slot, this shouldn't happen");
+                Debug.Log("Trying to change non empty inventory slot, this shouldn't happen");
                 // Happens when trying to drag and drop item back in slot it was just in
             }
             else
             {
+                // TODO Add visual feedback for adding
+                // ingredientKnowledge successfully 
+                GlobalPlayerData.AddIngredientKnowledge(
+                    itemBehaviour.foodItem.ingredientData);
                 _foodItemDictionary.Add(index, itemBehaviour.foodItem);
             }
 

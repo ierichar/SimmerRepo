@@ -24,7 +24,7 @@ namespace Simmer.Items
             rectTransform = GetComponent<RectTransform>();
             this.index = index;
 
-            itemBackgroundManager = GetComponentInChildren<ImageManager>();
+            itemBackgroundManager = GetComponentInChildren<ImageManager>(true);
             itemBackgroundManager.Construct();
         }
 

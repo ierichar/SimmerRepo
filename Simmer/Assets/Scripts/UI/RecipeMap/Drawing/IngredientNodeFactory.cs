@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using Simmer.FoodData;
+using Simmer.SceneManagement;
 
 namespace Simmer.UI.RecipeMap
 {
     public class IngredientNodeFactory : MonoBehaviour
     {
         private RectTransform _rectTransform;
+        [SerializeField] private IngredientNode _ingredientNodePrefab;
 
-        [SerializeField] IngredientNode ingredientNodePrefab;
+        [SerializeField] private bool _isUnknownHidden;
 
         private List<IngredientNode> ingredientNodeList
             = new List<IngredientNode>();
@@ -30,13 +32,29 @@ namespace Simmer.UI.RecipeMap
             _rectTransform.anchoredPosition += displacement;
         }
 
+        //public IngredientNode SpawnSpecialNode(
+        //    SpecialNodeData nodeData
+        //    , Vector2 position)
+        //{
+
+        //}
+
         public IngredientNode SpawnIngredientNode(
             IngredientData ingredient
             , Vector2 position)
         {
-            IngredientNode newNode = Instantiate(ingredientNodePrefab, transform);
+            IngredientNode newNode = Instantiate(_ingredientNodePrefab, transform);
 
-            newNode.Construct(ingredient, position);
+            if(_isUnknownHidden && !GlobalPlayerData.knownIngredientList
+                .Contains(ingredient))
+            {
+                newNode.Construct(null, position);
+            }
+            else
+            {
+                newNode.Construct(ingredient, position);
+            }
+
             ingredientNodeList.Add(newNode);
             return newNode;
         }

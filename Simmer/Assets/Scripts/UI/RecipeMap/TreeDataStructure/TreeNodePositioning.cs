@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 
 using Simmer.FoodData;
+using Simmer.Appliance;
 
 namespace Simmer.UI.RecipeMap
 {
@@ -18,6 +19,8 @@ namespace Simmer.UI.RecipeMap
 
         [SerializeField] private float nodeSize;
 
+        [SerializeField] private SpecialNodeData _genericShop;
+
         public void Construct(RecipeMapManager recipeMapManager)
         {
             _recipeMapManager = recipeMapManager;
@@ -25,28 +28,30 @@ namespace Simmer.UI.RecipeMap
             recipeResultDict = _recipeMapManager.allFoodData.recipeResultDict;
         }
 
-        public float GetLowestDepth(IngredientTree tree, float currentMin)
+        public IngredientTree SpawnRecipeMap(IngredientData apexIngredient)
         {
-            if (tree.IsLeaf())
-            {
-                return Mathf.Max(tree.yPosition, currentMin);
-            }
+            IngredientTree apexTree =
+                new IngredientTree(apexIngredient, null, null, null);
 
-            List<float> lowestYList = new List<float>();
+            ConstructRecipeMapTree(apexTree);
+            PositionNodes(apexTree);
 
-            foreach (var child in tree.childrenTreeList)
-            {
-                lowestYList.Add(GetLowestDepth(child, currentMin));
-            }
-
-            return Mathf.Max(lowestYList.ToArray());
+            return apexTree;
         }
 
-        public IngredientTree SpawnTree(IngredientData apexIngredient)
+        public IngredientTree SpawnUtilityMap(IngredientData apexIngredient)
         {
-            IngredientTree apexTree = new IngredientTree(apexIngredient, null);
+            IngredientTree apexTree =
+                new IngredientTree(apexIngredient, null, null, null);
 
-            ConstructTree(apexTree);
+            ConstructUtilityMapTree(apexTree);
+            PositionNodes(apexTree);
+
+            return apexTree;
+        }
+
+        private void PositionNodes(IngredientTree apexTree)
+        {
             InitializeNodes(apexTree, 0);
 
             // assign initial X and Mod values for nodes
@@ -57,11 +62,9 @@ namespace Simmer.UI.RecipeMap
 
             // assign final X values to nodes
             CalculateFinalPositions(apexTree, 0);
-
-            return apexTree;
         }
 
-        private void ConstructTree(IngredientTree parent)
+        private void ConstructRecipeMapTree(IngredientTree parent)
         {
             if (recipeResultDict.ContainsKey(parent.ingredientData))
             {
@@ -70,10 +73,39 @@ namespace Simmer.UI.RecipeMap
                     in thisRecipe.ingredientDataList)
                 {
                     IngredientTree newChild
-                        = new IngredientTree(ingredient, parent);
+                        = new IngredientTree(ingredient, parent, thisRecipe, null);
                     parent.childrenTreeList.Add(newChild);
 
-                    ConstructTree(newChild);
+                    ConstructRecipeMapTree(newChild);
+                }
+            }
+        }
+
+        private void ConstructUtilityMapTree(IngredientTree parent)
+        {
+            Dictionary<ApplianceData, List<RecipeData>>
+                applianceRecipeListDict = parent.ingredientData
+                    .applianceRecipeListDict;
+
+            if (applianceRecipeListDict.Count == 0)
+            {
+                //// Add sell node to all leaves
+                //IngredientTree newChild = new IngredientTree
+                //        (null, parent, null, _genericShop);
+                //parent.childrenTreeList.Add(newChild);
+
+                return;
+            }
+
+            foreach (var pair in applianceRecipeListDict)
+            {
+                foreach(RecipeData recipeData in pair.Value)
+                {
+                    IngredientTree newChild = new IngredientTree
+                        (recipeData.resultIngredient, parent, recipeData, null);
+                    parent.childrenTreeList.Add(newChild);
+
+                    ConstructUtilityMapTree(newChild);
                 }
             }
         }
@@ -284,6 +316,23 @@ namespace Simmer.UI.RecipeMap
             {
                 GetRightContour(child, modSum, ref values);
             }
+        }
+
+        public float GetLowestDepth(IngredientTree tree, float currentMin)
+        {
+            if (tree.IsLeaf())
+            {
+                return Mathf.Max(tree.yPosition, currentMin);
+            }
+
+            List<float> lowestYList = new List<float>();
+
+            foreach (var child in tree.childrenTreeList)
+            {
+                lowestYList.Add(GetLowestDepth(child, currentMin));
+            }
+
+            return Mathf.Max(lowestYList.ToArray());
         }
     }
 }

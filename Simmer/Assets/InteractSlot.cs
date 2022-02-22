@@ -9,7 +9,7 @@ public class InteractSlot : MonoBehaviour
     // Start is called before the first frame update
     public void Construct()
     {
-        itemSlot = GetComponentInChildren<ItemSlotManager>();
+        itemSlot = GetComponentInChildren<ItemSlotManager>(true);
         itemSlot.Construct(0);
     }
 }

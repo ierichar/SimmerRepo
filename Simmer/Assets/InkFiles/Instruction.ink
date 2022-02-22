@@ -1,4 +1,4 @@
->>> !CharEnter(Narrator);
+// >>> !CharEnter(Narrator);
 >>> TextboxEnter(Default)
 
 Narrator: Hi, welcome to Simmer! Are you ready to start cooking?

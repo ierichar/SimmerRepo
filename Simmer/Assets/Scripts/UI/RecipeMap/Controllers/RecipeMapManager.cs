@@ -7,10 +7,11 @@ using Simmer.Items;
 
 namespace Simmer.UI.RecipeMap
 {
-    public class RecipeMapManager : MonoBehaviour
+    public class RecipeMapManager : MonoBehaviour, IControlUI
     {
-        public ItemSlotManager apexRecipeSlot;
+        private RecipeMapWindow _recipeMapWindow;
 
+        public RecipeMapEventManager recipeMapEventManager { get; private set; }
         public IngredientNodeFactory ingredientNodeFactory { get; private set; }
         public TextNodeFactory textNodeFactory { get; private set; }
         public EdgeLineFactory edgeLineFactory { get; private set; }
@@ -18,13 +19,13 @@ namespace Simmer.UI.RecipeMap
         public TreeNodePositioning treeNodePositioning { get; private set; }
         public RecipeMapZoom recipeMapZoom { get; private set; }
 
-
         public AllFoodData allFoodData;
 
         public void Construct()
         {
-            apexRecipeSlot.Construct(0);
+            _recipeMapWindow = FindObjectOfType<RecipeMapWindow>(true);
 
+            recipeMapEventManager = GetComponent<RecipeMapEventManager>();
             ingredientNodeFactory = GetComponentInChildren<IngredientNodeFactory>();
             textNodeFactory = GetComponentInChildren<TextNodeFactory>();
             edgeLineFactory = GetComponentInChildren<EdgeLineFactory>();
@@ -34,12 +35,18 @@ namespace Simmer.UI.RecipeMap
 
             allFoodData.ConstructRecipeResultDict();
 
+            recipeMapEventManager.Construct();
             ingredientNodeFactory.Construct();
             textNodeFactory.Construct();
             edgeLineFactory.Construct();
             treeNodePositioning.Construct(this);
             recipeMapGenerator.Construct(this);
             recipeMapZoom.Construct();
+        }
+
+        public void ToggleActive()
+        {
+            _recipeMapWindow.ToggleActive();
         }
     }
 }

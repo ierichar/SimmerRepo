@@ -119,7 +119,14 @@ namespace Simmer.Items
 
             activeMoveTween = _rectTransform.DOAnchorPos
                 (Vector2.zero, thisDuration)
-                .SetEase(_itemFactory.moveEase);
+                .SetEase(_itemFactory.moveEase)
+                .OnComplete(OnResetCallback);
+        }
+
+        private void OnResetCallback()
+        {
+            _canvasGroup.alpha = 1f;
+            _canvasGroup.blocksRaycasts = true;
         }
 
         private void OnChangeSlotCallback(bool changed)
@@ -141,8 +148,6 @@ namespace Simmer.Items
 
         void IEndDragHandler.OnEndDrag(PointerEventData eventData)
         {
-            _canvasGroup.alpha = 1f;
-            _canvasGroup.blocksRaycasts = true;
 
             if(_isChangeSlot && currentSlot.GetType() == typeof(InventorySlotManager))
             {
