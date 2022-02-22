@@ -55,7 +55,7 @@ namespace Simmer.NPC
                 && vn_manager.state == VN_Manager.VN_State.end)
             {
                 StartCoroutine(InteractSequence(npcData.npcInkAsset));
-                shop.npcData = npcData;
+                shop.ConstructShopButtons(npcData);
             }
         }
 

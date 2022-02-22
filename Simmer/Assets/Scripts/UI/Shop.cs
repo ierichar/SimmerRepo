@@ -44,7 +44,13 @@ public class Shop : MonoBehaviour
         allButtons = new List<ShopButton>();
         sellSlot = FindObjectOfType<InteractSlot>(true);
         sellSlot.Construct();
-        List<IngredientData> selection = npcData.selectRandom(12);
+
+    }
+
+    public void ConstructShopButtons(NPC_Data data)
+    {
+        npcData = data;
+        List<IngredientData> selection = data.selectRandom(12);
         // sellSlot.itemSlot.onItemDrop.AddListener(sellItemWrapper);
 
         for (int i = 0; i < 12; i++)
@@ -54,7 +60,6 @@ public class Shop : MonoBehaviour
             allButtons.Add(button);
         }
     }
-
 
     //toggles the shop
     public void ToggleOn() {
