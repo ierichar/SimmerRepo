@@ -106,8 +106,4 @@ public class Shop : MonoBehaviour
         money.addMoney(item.foodItem.ingredientData.baseValue);
         sellSlot.itemSlot.EmptySlot();
     }
-
-    public void hi() {
-        Debug.Log("hi");
-    }
 }
