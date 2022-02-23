@@ -362,12 +362,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playCanvasFadeDuration: 1
   _playCanvasFadeEase: 3
-  _npcInterface: {fileID: 0}
+  _npcShop: {fileID: 0}
+  _npcGift: {fileID: 0}
   shop: {fileID: 0}
   OnNPCInteract:
     m_PersistentCalls:
       m_Calls: []
-  isInteractTransition: 0
+  OnChooseShop:
+    m_PersistentCalls:
+      m_Calls: []
+  OnChooseGift:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &738760592613326927
 GameObject:
   m_ObjectHideFlags: 0

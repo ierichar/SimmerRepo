@@ -133,6 +133,7 @@ namespace Simmer.VN
 			OnEndStory.AddListener(() =>
 			{
 				state = VN_State.end;
+				print(this + " OnEndStory");
 			});
 
 			screenManager = GetComponent<VN_ScreenManager>();

@@ -55,4 +55,31 @@ public static class ExtensionMethods
 
         return finalSprite;
     }
+
+    public static T FindChildObject<T>(this GameObject target)
+    {
+        return RecursiveFindChild<T>(target.transform);
+    }
+
+    public static T RecursiveFindChild<T>(Transform parent)
+    {
+        foreach (Transform child in parent)
+        {
+            T tryGet = child.GetComponent<T>();
+
+            if (tryGet != null)
+            {
+                return tryGet;
+            }
+            else
+            {
+                T found = RecursiveFindChild<T>(child);
+                if (found != null)
+                {
+                    return found;
+                }
+            }
+        }
+        return default(T);
+    }
 }
