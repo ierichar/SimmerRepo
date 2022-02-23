@@ -49,7 +49,7 @@ public class PantrySlotGroupManager : MonoBehaviour
     public void SaveInventory(){
         GlobalPlayerData.PantryInventory.Clear();
         for(int i=0; i<_inventorySlotManagerList.Count; i++){
-            if(_inventorySlotManagerList[i].currentItem == null) return;
+            if(_inventorySlotManagerList[i].currentItem == null) continue;
             GlobalPlayerData.PantryInventory.Add(_inventorySlotManagerList[i].currentItem.foodItem);
         }
     
