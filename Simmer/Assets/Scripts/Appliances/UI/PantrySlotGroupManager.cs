@@ -30,6 +30,9 @@ public class PantrySlotGroupManager : MonoBehaviour
             _inventorySlotManagerList.Add(thisSlot);
             thisSlot.Construct(itemFactory, i);
 
+            if(i < GlobalPlayerData.PantryInventory.Count)
+                thisSlot.SpawnFoodItem(GlobalPlayerData.PantryInventory[i]);
+            /*
             if(i < _startingIngredients.Count)
             {
                 FoodItem newFoodItem = new FoodItem(_startingIngredients[i]
@@ -39,6 +42,17 @@ public class PantrySlotGroupManager : MonoBehaviour
                     thisSlot.SpawnFoodItem(newFoodItem);
                 }
             }
+            */
         }
     }
+
+    public void SaveInventory(){
+        GlobalPlayerData.PantryInventory.Clear();
+        for(int i=0; i<_inventorySlotManagerList.Count; i++){
+            if(_inventorySlotManagerList[i].currentItem == null) continue;
+            GlobalPlayerData.PantryInventory.Add(_inventorySlotManagerList[i].currentItem.foodItem);
+        }
+    
+    }
+
 }

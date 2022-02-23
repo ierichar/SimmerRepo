@@ -5,6 +5,8 @@ using UnityEngine;
 using Simmer.Inventory;
 using Simmer.FoodData;
 using Simmer.Items;
+using Simmer.Appliance;
+using Simmer.UI;
 
 public static class GlobalPlayerData
 {
@@ -16,6 +18,9 @@ public static class GlobalPlayerData
     }
     private static Dictionary<int, FoodItem> _inventoryItemDictionary
         = new Dictionary<int, FoodItem>();
+
+    public static Dictionary<ApplianceData, List<FoodItem>> AppInvSaveStruct = new Dictionary<ApplianceData, List<FoodItem>>();
+    public static List<FoodItem> PantryInventory = new List<FoodItem>();
 
     public static List<IngredientData> knownIngredientList { get; private set; }
 
@@ -37,6 +42,11 @@ public static class GlobalPlayerData
             return;
         }
 
+        for(int k=0; k<startingSaveData.startingPantry.Count; ++k){
+            FoodItem item = new FoodItem(startingSaveData.startingPantry[k], null);
+            PantryInventory.Add(item);
+        }
+
         for (int i = 0; i < startingSaveData.startInventoryList.Count; ++i)
         {
             IngredientData ingredient = startingSaveData.startInventoryList[i];
@@ -50,6 +60,8 @@ public static class GlobalPlayerData
         {
             AddIngredientKnowledge(ingredient);
         }
+
+
     }
 
     public static void SaveInventoryDictionary(
@@ -80,4 +92,14 @@ public static class GlobalPlayerData
     {
         playerMoney = amount;
     }
+
+/*
+    public static void SaveApplianceInv(){
+        if(_playCanvasManager.GetType() != typeof(KitchenCanvasManager)) return;
+
+        foreach(GenericAppliance appliance in _playCanvasManager.applianceManager){
+            AppInvSaveStruct.Add(appliance.GetInventoryItems());
+        }
+    }
+    */
 }
