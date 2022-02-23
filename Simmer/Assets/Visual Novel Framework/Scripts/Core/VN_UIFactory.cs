@@ -91,7 +91,7 @@ namespace Simmer.VN
 			choice.onClick.AddListener(delegate
 			{
 				//audioManager.PlayAudio(audioManager.buttonClick);
-
+				manager.OnEndStory.Invoke();
 				if (manager.transitionSceneOnEnd)
 				{
 					Debug.LogError(this + " Error:" +
@@ -101,7 +101,6 @@ namespace Simmer.VN
 				{
 					manager.ForceExitVN();
 				}
-				manager.OnEndStory.Invoke();
 			});
 		}
 

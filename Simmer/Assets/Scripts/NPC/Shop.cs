@@ -44,12 +44,14 @@ public class Shop : MonoBehaviour
         allButtons = new List<ShopButton>();
         sellSlot = FindObjectOfType<InteractSlot>(true);
         sellSlot.Construct();
-
     }
 
     public void ConstructShopButtons(NPC_Data data)
     {
         npcData = data;
+
+        foreach (var button in allButtons) Destroy(button.gameObject);
+        allButtons.Clear();
         List<IngredientData> selection = data.selectRandom(12);
         // sellSlot.itemSlot.onItemDrop.AddListener(sellItemWrapper);
 
