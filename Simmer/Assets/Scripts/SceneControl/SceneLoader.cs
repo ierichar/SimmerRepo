@@ -65,6 +65,13 @@ namespace Simmer.SceneManagement
             GlobalPlayerData.SaveInventoryDictionary
                 (_playerInventory.foodItemDictionary);
 
+            foreach(GenericAppliance app in FindObjectsOfType<GenericAppliance>()){
+                app.SaveInventory();
+            }
+            PantrySlotGroupManager obj = FindObjectOfType<PantrySlotGroupManager>(true);
+            if(obj!=null)
+                obj.SaveInventory();
+
             Tween fadeTween = _screenBlockManager
                 .Fade(1, _fadeTime, _fadeEase);
             yield return fadeTween.WaitForCompletion();

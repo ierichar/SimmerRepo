@@ -14,4 +14,7 @@ public class SaveData : ScriptableObject
 
     public List<IngredientData> startInventoryList
         = new List<IngredientData>();
+
+    public List<IngredientData> startingPantry
+        = new List<IngredientData>();
 }

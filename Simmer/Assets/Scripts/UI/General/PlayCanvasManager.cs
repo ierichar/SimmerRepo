@@ -25,6 +25,7 @@ namespace Simmer.UI
 
         public ScreenBlockManager screenBlockManager { get; private set; }
         public UISoundManager soundManager {get; private set; }
+        //public GenericAppliance[] applianceManager{ get; protected set;}
 
         public virtual void Construct(UnityEvent<int> OnSelectItem, UISoundManager soundManager)
         {

@@ -84,6 +84,16 @@ public abstract class GenericAppliance : MonoBehaviour
         _timeRunning = 0.0f;
 
         _applianceSlotManager = _UIManager.slots.slots;
+
+        if(GlobalPlayerData.AppInvSaveStruct.ContainsKey(applianceData)){
+            List<FoodItem> temp = GlobalPlayerData.AppInvSaveStruct[applianceData];
+
+            for(int k=0; k < temp.Count; ++k){
+                SpawningSlotManager slot = _applianceSlotManager[k];
+                slot.SpawnFoodItem(temp[k]);
+            }
+        }
+        
     }
 
     public virtual void FixedUpdate(){
@@ -192,4 +202,21 @@ public abstract class GenericAppliance : MonoBehaviour
         _timer.ShowClock();
         StartCoroutine(_timer.SetTimer(duration, Finished));
     }
+
+    public virtual List<FoodItem> GetInventoryItems(){
+        List<FoodItem> result = new List<FoodItem>();
+        
+        foreach(SpawningSlotManager inv in _applianceSlotManager){
+            if(inv != null && inv.currentItem !=null)
+                result.Add(inv.currentItem.foodItem);
+        }
+        return result;
+    }
+
+    public void SaveInventory(){
+        if(GlobalPlayerData.AppInvSaveStruct.ContainsKey(applianceData))
+            GlobalPlayerData.AppInvSaveStruct.Remove(applianceData);
+        GlobalPlayerData.AppInvSaveStruct.Add(applianceData, GetInventoryItems());
+    }
+    
 }
