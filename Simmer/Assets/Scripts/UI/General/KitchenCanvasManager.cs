@@ -12,6 +12,7 @@ namespace Simmer.UI
 {
     public class KitchenCanvasManager : PlayCanvasManager
     {
+        public GenericAppliance[] applianceManager{ get; protected set;}
         public override void Construct(UnityEvent<int> OnSelectItem, UISoundManager soundManager)
         {
             base.Construct(OnSelectItem, soundManager);
@@ -24,7 +25,7 @@ namespace Simmer.UI
                 pantryUI.Construct(itemFactory);
             }
 
-            GenericAppliance[] applianceManager = FindObjectsOfType<GenericAppliance>();
+            applianceManager = FindObjectsOfType<GenericAppliance>();
             foreach(GenericAppliance appliance in applianceManager){
                 appliance.Construct(itemFactory, soundManager);
             }
