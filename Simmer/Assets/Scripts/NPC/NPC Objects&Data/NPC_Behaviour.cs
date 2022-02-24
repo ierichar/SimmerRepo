@@ -27,7 +27,7 @@ namespace Simmer.NPC
 
         private void OnInteractCallback()
         {
-            _npcManager.OnNPCInteract.Invoke(npcData);
+            _npcManager.onNPCInteract.Invoke(npcData);
         }
     }
 }

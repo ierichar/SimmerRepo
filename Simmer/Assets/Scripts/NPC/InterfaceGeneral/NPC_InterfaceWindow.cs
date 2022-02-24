@@ -6,14 +6,14 @@ using UnityEngine.Events;
 using Simmer.NPC;
 using Simmer.VN;
 
-namespace Simmer.UI.NPC
+namespace Simmer.NPC
 {
     public abstract class NPC_InterfaceWindow : MonoBehaviour
     {
-        private NPC_Manager _npcManager;
+        protected NPC_Manager _npcManager;
 
-        private NPC_InterfaceExit _interfaceExit;
-        private NPC_InterfaceReturn _interfaceReturn;
+        protected NPC_InterfaceExit _interfaceExit;
+        protected NPC_InterfaceReturn _interfaceReturn;
 
         public UnityEvent OnChoose = new UnityEvent();
         public UnityEvent<NPC_Data> OnOpen = new UnityEvent<NPC_Data>();
@@ -64,7 +64,6 @@ namespace Simmer.UI.NPC
 
         protected virtual void OnCloseCallback()
         {
-            print("OnCloseCallback");
             _npcManager.vn_sharedVariables.isReturning = 0;
             _npcManager.StartCoroutine(_npcManager
                 .HideInterfaceSequence());
@@ -72,7 +71,6 @@ namespace Simmer.UI.NPC
 
         protected virtual void OnReturnCallback()
         {
-            print("OnReturnCallback");
             _npcManager.vn_sharedVariables.isReturning = 1;
             _npcManager.StartCoroutine(_npcManager
                 .HideInterfaceSequence());

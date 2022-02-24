@@ -16,3 +16,5 @@ MonoBehaviour:
   characterData: {fileID: 11400000, guid: 8a24d1fc22093412fb45f4c58474c4e5, type: 2}
   shopItemList:
   - {fileID: 11400000, guid: 3a75ceb5df29f42f283f1700f0d3d73f, type: 2}
+  questDataList:
+  - {fileID: 11400000, guid: ca7d6196459f04c45909b861d40240a3, type: 2}

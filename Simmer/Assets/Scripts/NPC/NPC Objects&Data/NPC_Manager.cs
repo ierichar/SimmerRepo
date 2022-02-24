@@ -15,7 +15,7 @@ namespace Simmer.NPC
     {
         public VN_Manager vn_manager { get; private set; }
         public VN_SharedVariables vn_sharedVariables { get; private set; }
-        private MarketCanvasManager _marketCanvasManager;
+        public MarketCanvasManager marketCanvasManager { get; private set; }
         private CanvasGroupManager _playCanvasGroupManager;
 
         [SerializeField] private float _playCanvasFadeDuration;
@@ -27,10 +27,12 @@ namespace Simmer.NPC
         private List<NPC_Behaviour> _allNPCList =
             new List<NPC_Behaviour>();
 
-        public UnityEvent<NPC_Data> OnNPCInteract
+        public UnityEvent<NPC_Data> onNPCInteract
             = new UnityEvent<NPC_Data>();
-        public UnityEvent OnCloseInterfaceCompleted
+        public UnityEvent onCloseInterfaceCompleted
             = new UnityEvent();
+        public UnityEvent<bool> onTryGift
+            = new UnityEvent<bool>();
 
         public NPC_InterfaceWindow targetInterfaceWindow;
         private bool _isInteracting;
@@ -42,7 +44,7 @@ namespace Simmer.NPC
             vn_sharedVariables = VN_Util.manager.sharedVariables;
 
             vn_manager = VNmanager;
-            _marketCanvasManager = marketCanvasManager;
+            this.marketCanvasManager = marketCanvasManager;
             _playCanvasGroupManager = marketCanvasManager.canvasGroupManager;
 
             _npcShop = FindObjectOfType<NPC_Shop>(true);
@@ -58,18 +60,19 @@ namespace Simmer.NPC
                 npc.Construct(this);
             }
 
-            OnNPCInteract.AddListener(OnNPCInteractCallback);
+            onNPCInteract.AddListener(OnNPCInteractCallback);
             vn_manager.OnEndStory.AddListener(OnStopNPCInteract);
+            onTryGift.AddListener(OnTryGiftCallback);
 
             VN_EventData closeInterfaceData =
-                new VN_EventData(OnCloseInterfaceCompleted, "CloseComplete");
+                new VN_EventData(onCloseInterfaceCompleted, "CloseComplete");
             vn_sharedVariables.AddEventData(closeInterfaceData);
         }
 
         public IEnumerator ShowInterfaceSequence()
         {
             targetInterfaceWindow.OnOpen.Invoke(currentNPC_Data);
-            _marketCanvasManager.gameObject.SetActive(true);
+            marketCanvasManager.gameObject.SetActive(true);
 
             Tween fadeTween = _playCanvasGroupManager.Fade(1,
                 _playCanvasFadeDuration, _playCanvasFadeEase);
@@ -85,10 +88,16 @@ namespace Simmer.NPC
             yield return fadeTween.WaitForCompletion();
 
             targetInterfaceWindow.gameObject.SetActive(false);
-            _marketCanvasManager.gameObject.SetActive(false);
+            marketCanvasManager.gameObject.SetActive(false);
             
             targetInterfaceWindow = null;
-            OnCloseInterfaceCompleted.Invoke();
+            onCloseInterfaceCompleted.Invoke();
+        }
+
+        private void OnTryGiftCallback(bool isCorrect)
+        {
+            if(isCorrect) vn_sharedVariables.isCorrectGift = 1;
+            else vn_sharedVariables.isCorrectGift = 0;
         }
 
         private void OnNPCInteractCallback(NPC_Data npcData)
@@ -110,7 +119,7 @@ namespace Simmer.NPC
                 _playCanvasFadeDuration, _playCanvasFadeEase);
             yield return fadeTween.WaitForCompletion();
 
-            _marketCanvasManager.gameObject.SetActive(false);
+            marketCanvasManager.gameObject.SetActive(false);
 
             vn_manager.inkJSONAsset = npcData.npcInkAsset;
             vn_manager.StartStory();
@@ -123,7 +132,7 @@ namespace Simmer.NPC
 
         private IEnumerator StopInteractSequence()
         {
-            _marketCanvasManager.gameObject.SetActive(true);
+            marketCanvasManager.gameObject.SetActive(true);
 
             Tween fadeTween = _playCanvasGroupManager.Fade(1,
                 _playCanvasFadeDuration, _playCanvasFadeEase);

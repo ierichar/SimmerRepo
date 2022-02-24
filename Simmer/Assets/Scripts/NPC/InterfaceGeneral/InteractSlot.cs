@@ -5,7 +5,7 @@ using Simmer.Items;
 
 public class InteractSlot : MonoBehaviour
 {
-    public ItemSlotManager itemSlot;
+    public ItemSlotManager itemSlot { get; private set; }
     // Start is called before the first frame update
     public void Construct()
     {

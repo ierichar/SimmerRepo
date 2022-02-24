@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Simmer.UI.NPC
+namespace Simmer.NPC
 {
     public class NPC_InterfaceExit : MonoBehaviour
     {
