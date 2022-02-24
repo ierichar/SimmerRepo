@@ -15,9 +15,4 @@ MonoBehaviour:
   npcInkAsset: {fileID: 4900000, guid: 2d34931073a154b9794f006a7516c300, type: 3}
   characterData: {fileID: 11400000, guid: 8a24d1fc22093412fb45f4c58474c4e5, type: 2}
   shopItemList:
-  - {fileID: 11400000, guid: 6183ea7ebcbc84bff853e5eed138897f, type: 2}
   - {fileID: 11400000, guid: 3a75ceb5df29f42f283f1700f0d3d73f, type: 2}
-  - {fileID: 11400000, guid: 4de779f5ee8fac74894466672bb25b46, type: 2}
-  - {fileID: 11400000, guid: 4484146648c7d4384a459681d258b86e, type: 2}
-  - {fileID: 11400000, guid: 9fd94f1c136b0ac4f85f790745393e4d, type: 2}
-  - {fileID: 11400000, guid: 52a4c6e4c3349bf46bba908e928e7740, type: 2}

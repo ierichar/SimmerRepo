@@ -1597,6 +1597,9 @@ MonoBehaviour:
   AllCharacterData:
   - {fileID: 11400000, guid: afbc7ae5e26e1405b8928e3c571c6050, type: 2}
   - {fileID: 11400000, guid: 8a24d1fc22093412fb45f4c58474c4e5, type: 2}
+  - {fileID: 11400000, guid: 6be5eef09642147e890a45f1a7126d64, type: 2}
+  - {fileID: 11400000, guid: 0285217b2b797490db8ee0a3003b6a29, type: 2}
+  - {fileID: 11400000, guid: 0e45dcf5dd7394a82a378905e0998db9, type: 2}
   speakingColor: {r: 1, g: 1, b: 1, a: 1}
   nonSpeakingColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   speakerLightDuration: 0.25
@@ -1681,8 +1684,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4f1e04494dc44d61b9c9267386fbd32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testString: Bob
-  testInt: 42
+  isReturning: 0
 --- !u!114 &9029017032059937155
 MonoBehaviour:
   m_ObjectHideFlags: 0

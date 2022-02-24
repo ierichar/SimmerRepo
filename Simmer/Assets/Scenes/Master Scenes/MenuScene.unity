@@ -1916,7 +1916,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: afbc7ae5e26e1405b8928e3c571c6050, type: 2}
     - target: {fileID: 442092617823953456, guid: c28b88fb2c8fc41528eddda7d39cc2ac, type: 3}
       propertyPath: AllCharacterData.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 442092617823953456, guid: c28b88fb2c8fc41528eddda7d39cc2ac, type: 3}
       propertyPath: AllCharacterData.Array.data[1]
@@ -1926,6 +1926,10 @@ PrefabInstance:
       propertyPath: AllCharacterData.Array.data[2]
       value: 
       objectReference: {fileID: 11400000, guid: 8a24d1fc22093412fb45f4c58474c4e5, type: 2}
+    - target: {fileID: 442092617823953456, guid: c28b88fb2c8fc41528eddda7d39cc2ac, type: 3}
+      propertyPath: AllCharacterData.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 6be5eef09642147e890a45f1a7126d64, type: 2}
     - target: {fileID: 652212847494750857, guid: c28b88fb2c8fc41528eddda7d39cc2ac, type: 3}
       propertyPath: testString
       value: Bob

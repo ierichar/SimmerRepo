@@ -1,6 +1,6 @@
 VAR IS_RETURNING = 0
 
-VAR CHARACTER_NAME = "Bob"
+VAR CHARACTER_NAME = "James"
 
 >>> !CharEnter({CHARACTER_NAME})
 >>> TextboxEnter(Default)

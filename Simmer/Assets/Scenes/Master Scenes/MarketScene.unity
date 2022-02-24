@@ -170,6 +170,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MarketCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 948184398447186776, guid: 1a2ac35bc43854011aa71ba5b6b5c518, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 948184398447186783, guid: 1a2ac35bc43854011aa71ba5b6b5c518, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -521,22 +525,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 948184397769532321, guid: 1a2ac35bc43854011aa71ba5b6b5c518, type: 3}
   m_PrefabInstance: {fileID: 142156000}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &142156002 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1526653094670176713, guid: 1a2ac35bc43854011aa71ba5b6b5c518, type: 3}
-  m_PrefabInstance: {fileID: 142156000}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &270728357 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5117507416437622223, guid: 1a2ac35bc43854011aa71ba5b6b5c518, type: 3}
-  m_PrefabInstance: {fileID: 142156000}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fe6cb8ac6a24084b851695b8da366e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &557305322 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8042035493373524654, guid: 13fddecaeb8294b5b9585d0eb31b7d63, type: 3}
@@ -601,6 +589,10 @@ PrefabInstance:
     - target: {fileID: 7788690952332685024, guid: c28b88fb2c8fc41528eddda7d39cc2ac, type: 3}
       propertyPath: m_Name
       value: VN_ManagerObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 7788690952332685024, guid: c28b88fb2c8fc41528eddda7d39cc2ac, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7788690952332685027, guid: c28b88fb2c8fc41528eddda7d39cc2ac, type: 3}
       propertyPath: m_RootOrder
@@ -765,6 +757,10 @@ PrefabInstance:
     - target: {fileID: 5460004446136714955, guid: 3f8e6ac1c190f41c380d4cc364b2b55d, type: 3}
       propertyPath: m_Name
       value: TooltipCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5460004446136714955, guid: 3f8e6ac1c190f41c380d4cc364b2b55d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5460004446136714959, guid: 3f8e6ac1c190f41c380d4cc364b2b55d, type: 3}
       propertyPath: m_Pivot.x
@@ -1180,11 +1176,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e37c2e54965b14383a9daea3942df943, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &2047404832 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5992120207757829117, guid: 1a2ac35bc43854011aa71ba5b6b5c518, type: 3}
-  m_PrefabInstance: {fileID: 142156000}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6984349728978572947
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1877,17 +1868,5 @@ PrefabInstance:
       propertyPath: pauseMenu
       value: 
       objectReference: {fileID: 142156001}
-    - target: {fileID: 738760592557760572, guid: 33063ccb1673948b89e3030ae8a279a7, type: 3}
-      propertyPath: shop
-      value: 
-      objectReference: {fileID: 270728357}
-    - target: {fileID: 738760592557760572, guid: 33063ccb1673948b89e3030ae8a279a7, type: 3}
-      propertyPath: _npcGift
-      value: 
-      objectReference: {fileID: 142156002}
-    - target: {fileID: 738760592557760572, guid: 33063ccb1673948b89e3030ae8a279a7, type: 3}
-      propertyPath: _npcShop
-      value: 
-      objectReference: {fileID: 2047404832}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33063ccb1673948b89e3030ae8a279a7, type: 3}

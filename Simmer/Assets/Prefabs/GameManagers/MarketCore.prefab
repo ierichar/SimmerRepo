@@ -344,8 +344,8 @@ MonoBehaviour:
   OnSceneLoad:
     m_PersistentCalls:
       m_Calls: []
-  _fadeTime: 2
-  _loadDelay: 1
+  _fadeTime: 1
+  _loadDelay: 0.5
   _fadeEase: 3
   _fadeInOnLoad: 1
 --- !u!114 &738760592557760572
@@ -362,18 +362,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playCanvasFadeDuration: 1
   _playCanvasFadeEase: 3
-  _npcShop: {fileID: 0}
-  _npcGift: {fileID: 0}
-  shop: {fileID: 0}
   OnNPCInteract:
     m_PersistentCalls:
       m_Calls: []
-  OnChooseShop:
+  OnCloseInterfaceCompleted:
     m_PersistentCalls:
       m_Calls: []
-  OnChooseGift:
-    m_PersistentCalls:
-      m_Calls: []
+  targetInterfaceWindow: {fileID: 0}
 --- !u!1 &738760592613326927
 GameObject:
   m_ObjectHideFlags: 0
