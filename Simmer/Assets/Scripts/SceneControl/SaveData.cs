@@ -9,6 +9,8 @@ using Simmer.FoodData;
 
 public class SaveData : ScriptableObject
 {
+    public int startingMoney;
+
     public List<IngredientData> startKnownList
         = new List<IngredientData>();
 

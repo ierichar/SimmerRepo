@@ -42,7 +42,9 @@ public static class GlobalPlayerData
             return;
         }
 
-        for(int k=0; k<startingSaveData.startingPantry.Count; ++k){
+        playerMoney = startingSaveData.startingMoney;
+
+        for (int k=0; k<startingSaveData.startingPantry.Count; ++k){
             FoodItem item = new FoodItem(startingSaveData.startingPantry[k], null);
             PantryInventory.Add(item);
         }

@@ -344,7 +344,7 @@ MonoBehaviour:
   OnSceneLoad:
     m_PersistentCalls:
       m_Calls: []
-  _fadeTime: 1
+  _fadeTime: 0.5
   _loadDelay: 0.5
   _fadeEase: 3
   _fadeInOnLoad: 1
