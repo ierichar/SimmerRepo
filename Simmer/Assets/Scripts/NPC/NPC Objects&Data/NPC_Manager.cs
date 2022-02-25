@@ -95,7 +95,6 @@ namespace Simmer.NPC
             
             targetInterfaceWindow = null;
             onCloseInterfaceCompleted.Invoke();
-            _gameEventManager.OnCloseUIWindow.Invoke();
         }
 
         private void OnTryGiftCallback(bool isCorrect)
@@ -145,8 +144,6 @@ namespace Simmer.NPC
             currentNPC_Data = null;
 
             _isInteracting = false;
-
-            _gameEventManager.OnCloseUIWindow.Invoke();
         }
     }
 }

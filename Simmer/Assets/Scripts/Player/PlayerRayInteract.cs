@@ -14,26 +14,15 @@ namespace Simmer.Player
         private PlayerManager _playerManager;
         private PlayerInventory _playerInventory;
 
-        private bool _isInvOpen;
-
-        public UnityEvent OnCloseUIWindow;
-
         [SerializeField] private float _interactDistance;
 
-        private InteractableBehaviour _previousSelected;
+        private InteractableBehaviour _previousInteracted;
         private InteractableBehaviour _currentSelected;
 
         public void Construct(PlayerManager playerManager)
         {
             _playerManager = playerManager;
             _playerInventory = playerManager.playerInventory;
-
-            OnCloseUIWindow = playerManager.gameEventManager
-                .OnCloseUIWindow;
-
-            OnCloseUIWindow.AddListener(CloseInv);
-
-            _isInvOpen = false;
         }
 
         public void Update()
@@ -51,18 +40,6 @@ namespace Simmer.Player
                 , transform.right, _interactDistance, 64);
 
             Collider2D obj = hit.collider;
-            //if (obj != null)
-            //{
-            //    //store gameObject of collider that was hit with raycast
-            //    _currentlyOpen = hit.transform.gameObject;
-            //    // TESTING INTERABLEBEHAVIOUR
-            //    if (_currentlyOpen.TryGetComponent(
-            //        out InteractableBehaviour interactable))
-            //    {
-            //        interactable.StartHighlight();
-            //        _currentSelected = interactable;
-            //    }
-            //}
 
             if (obj != null && hit.transform.gameObject.TryGetComponent(
                 out InteractableBehaviour interactable))
@@ -78,22 +55,19 @@ namespace Simmer.Player
                 _currentSelected = null;
             }
 
-            if (Input.GetMouseButtonDown(1) && !_isInvOpen)
+            if (Input.GetMouseButtonDown(1))
             {
-                if (_currentSelected != null)
+                // Stop interact
+                if (_previousInteracted != null)
                 {
-                    _previousSelected = _currentSelected;
-                    _isInvOpen = true;
-                    _previousSelected.Interact();
+                    _previousInteracted.Interact();
+                    _previousInteracted = null;
                 }
-            }
-            else if (Input.GetMouseButtonDown(1) && _isInvOpen)
-            {
-                if (_previousSelected != null)
+                // New interact
+                else if (_currentSelected != null)
                 {
-                    _isInvOpen = false;
-                    _previousSelected.Interact();
-                    _previousSelected = null;
+                    _previousInteracted = _currentSelected;
+                    _previousInteracted.Interact();
                 }
             }
         }
@@ -104,13 +78,6 @@ namespace Simmer.Player
             Camera.main.WorldToScreenPoint(transform.position);
             var angle = Mathf.Atan2(mouseDir.y, mouseDir.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        }
-
-        public void CloseInv(){
-            //if(!_isInvOpen) return false;
-
-            _isInvOpen = false;
-            //return true;
         }
     }
 }
