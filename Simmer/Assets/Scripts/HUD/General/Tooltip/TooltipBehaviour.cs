@@ -25,6 +25,9 @@ namespace Simmer.UI.Tooltips
         [SerializeField] private float _positionOffsetY;
         [SerializeField] private float _showDelay;
 
+        [SerializeField] private float _scaleTweenDuration;
+        [SerializeField] private Ease _scaleTweenEase;
+
         private Coroutine currentDelay = null;
 
         private void Awake()
@@ -59,6 +62,11 @@ namespace Simmer.UI.Tooltips
                 SetText(bodyText, headerText);
                 UpdatePosition(rectTransform);
                 _backgroundImageManager.gameObject.SetActive(true);
+                _backgroundImageManager.rectTransform.localScale
+                    = Vector3.zero;
+                _backgroundImageManager.rectTransform
+                    .DOScale(1, _scaleTweenDuration)
+                    .SetEase(_scaleTweenEase);
             }));
         }
 
@@ -69,7 +77,10 @@ namespace Simmer.UI.Tooltips
                 StopCoroutine(currentDelay);
                 currentDelay = null;
             }
-            _backgroundImageManager.gameObject.SetActive(false);
+            _backgroundImageManager.rectTransform
+                    .DOScale(0, _scaleTweenDuration)
+                    .SetEase(_scaleTweenEase);
+            //_backgroundImageManager.gameObject.SetActive(false);
         }
 
         public void SetText(string bodyText, string headerText = "")
