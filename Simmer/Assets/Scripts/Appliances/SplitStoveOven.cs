@@ -13,6 +13,8 @@ public class SplitStoveOven : MonoBehaviour
     [SerializeField] private GenericAppliance app2;
 
     [SerializeField] private PlayerRayInteract _playerInteract;
+
+    [SerializeField] private SpriteRendererManager _highlightTarget;
     private InteractableBehaviour interactable;
 
     private int whichOpen;
@@ -22,7 +24,7 @@ public class SplitStoveOven : MonoBehaviour
         UIButtons.SetActive(false);
 
         interactable = GetComponent<InteractableBehaviour>();
-        interactable.Construct(ToggleInventory);
+        interactable.Construct(ToggleInventory, _highlightTarget);
 
         whichOpen = 0;
     }
@@ -35,12 +37,12 @@ public class SplitStoveOven : MonoBehaviour
                 break;
             case 1:
                 app1.ToggleInventory();
-                _playerInteract.OnCloseInv.Invoke();
+                _playerInteract.OnCloseUIWindow.Invoke();
                 whichOpen = 0;
                 break;
             case 2:
                 app2.ToggleInventory();
-                _playerInteract.OnCloseInv.Invoke();
+                _playerInteract.OnCloseUIWindow.Invoke();
                 whichOpen = 0;
                 break;
             default:

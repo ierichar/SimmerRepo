@@ -11,6 +11,8 @@ namespace Simmer.NPC
             , menuName = "NPC/NPC_Data")]
     public class NPC_Data : ScriptableObject
     {
+        public Sprite characterSprite;
+
         public TextAsset npcInkAsset;
 
         public CharacterData characterData;

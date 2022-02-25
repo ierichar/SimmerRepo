@@ -17,6 +17,7 @@ namespace Simmer.NPC
         public VN_SharedVariables vn_sharedVariables { get; private set; }
         public MarketCanvasManager marketCanvasManager { get; private set; }
         private CanvasGroupManager _playCanvasGroupManager;
+        private GameEventManager _gameEventManager;
 
         [SerializeField] private float _playCanvasFadeDuration;
         [SerializeField] private Ease _playCanvasFadeEase;
@@ -39,9 +40,11 @@ namespace Simmer.NPC
         public NPC_Data currentNPC_Data { get; private set; }
 
         public void Construct(VN_Manager VNmanager
-            , MarketCanvasManager marketCanvasManager)
+            , MarketCanvasManager marketCanvasManager
+            , GameEventManager gameEventManager)
         {
             vn_sharedVariables = VN_Util.manager.sharedVariables;
+            _gameEventManager = gameEventManager;
 
             vn_manager = VNmanager;
             this.marketCanvasManager = marketCanvasManager;
@@ -92,6 +95,7 @@ namespace Simmer.NPC
             
             targetInterfaceWindow = null;
             onCloseInterfaceCompleted.Invoke();
+            _gameEventManager.OnCloseUIWindow.Invoke();
         }
 
         private void OnTryGiftCallback(bool isCorrect)
@@ -141,6 +145,8 @@ namespace Simmer.NPC
             currentNPC_Data = null;
 
             _isInteracting = false;
+
+            _gameEventManager.OnCloseUIWindow.Invoke();
         }
     }
 }

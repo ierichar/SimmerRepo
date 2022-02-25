@@ -2197,7 +2197,7 @@ GameObject:
   - component: {fileID: 6561506972566446085}
   - component: {fileID: 6561506972566446086}
   m_Layer: 5
-  m_Name: RecipeMapButton
+  m_Name: RecipeBookButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2305,10 +2305,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 957366395704868767}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 7469618602477522561}
+        m_TargetAssemblyTypeName: Simmer.UI.RecipeBook.RecipeBookManager, Assembly-CSharp
+        m_MethodName: Open
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -6258,14 +6258,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e6883b306ba54e7299aa8143d1cfbb8, type: 3}
+--- !u!114 &7469618602477522561 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2713038194523566790, guid: 9e6883b306ba54e7299aa8143d1cfbb8, type: 3}
+  m_PrefabInstance: {fileID: 4760251299544857671}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d7d23efd156342728a04bf295851c5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &2101657290930723846 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6855984404628463681, guid: 9e6883b306ba54e7299aa8143d1cfbb8, type: 3}
-  m_PrefabInstance: {fileID: 4760251299544857671}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &957366395704868767 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5712518142909219800, guid: 9e6883b306ba54e7299aa8143d1cfbb8, type: 3}
   m_PrefabInstance: {fileID: 4760251299544857671}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6276271733031304609

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47e4b47f2fe904062bef40b01c6594c6, type: 3}
   m_Name: Bob
   m_EditorClassIdentifier: 
+  characterSprite: {fileID: 7284341000751922582, guid: d9cf1e27ca92e4ad7b73389798a3529d, type: 3}
   npcInkAsset: {fileID: 4900000, guid: 2d34931073a154b9794f006a7516c300, type: 3}
   characterData: {fileID: 11400000, guid: 8a24d1fc22093412fb45f4c58474c4e5, type: 2}
   shopItemList:
