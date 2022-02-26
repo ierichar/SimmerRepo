@@ -12,13 +12,18 @@ namespace  Simmer.Interactable
 
         private SpriteRendererManager _highlightTarget;
 
+        public bool isInteractToggle { get; private set; }
+
         public void Construct(UnityAction OnInteractCallback
-            , SpriteRendererManager highlightTarget)
+            , SpriteRendererManager highlightTarget
+            , bool isInteractToggle)
         {
             OnInteract.AddListener(OnInteractCallback);
 
             _highlightTarget = highlightTarget;
             StopHighlight();
+
+            this.isInteractToggle = isInteractToggle;
         }
         //public void Construct(UnityAction OnInteractCallback){
         //    OnInteract.AddListener(OnInteractCallback);

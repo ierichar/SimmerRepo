@@ -5,7 +5,9 @@ using UnityEngine.Events;
 
 public class GameEventManager : MonoBehaviour
 {
-    public UnityEvent<int> OnSelectItem = new UnityEvent<int>();
+    public UnityEvent<int> onSelectItem = new UnityEvent<int>();
+
+    public UnityEvent<bool> onInteractUI = new UnityEvent<bool>();
 
     public void Construct()
     {

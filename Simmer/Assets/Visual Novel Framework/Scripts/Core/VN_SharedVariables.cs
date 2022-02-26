@@ -81,7 +81,6 @@ namespace Simmer.VN
             Type T = this.GetType();
             FieldInfo toGet = T.GetField(varName);
 
-            print("GetVariableValue: " + toGet.GetValue(this).ToString());
             return toGet.GetValue(this).ToString();
         }
 

@@ -11,20 +11,21 @@ namespace Simmer.UI.RecipeBook
 {
     public class RecipeBookManager : MonoBehaviour
     {
-        protected RectTransform _rectTransform;
+        protected GameEventManager _gameEventManager;
 
+        protected RectTransform _rectTransform;
         protected Vector3 _offScreenPosition;
 
         public RecipeBookEventManager eventManager { get; private set; }
-
         public CatalogManager catalogManager { get; private set; }
-
         public FoodInfoManager foodInfoManager { get; private set; }
 
         protected Tween _currentOpenCloseTween;
 
-        public void Construct()
+        public void Construct(GameEventManager gameEventManager)
         {
+            _gameEventManager = gameEventManager;
+
             _rectTransform = GetComponent<RectTransform>();
 
             _offScreenPosition = new Vector3(0
@@ -41,6 +42,8 @@ namespace Simmer.UI.RecipeBook
 
         public void Open()
         {
+            _gameEventManager.onInteractUI.Invoke(true);
+
             _rectTransform.localPosition = _offScreenPosition;
             gameObject.SetActive(true);
 
@@ -55,7 +58,11 @@ namespace Simmer.UI.RecipeBook
             if (_currentOpenCloseTween != null) _currentOpenCloseTween.Kill();
             _currentOpenCloseTween = _rectTransform.DOAnchorPos(
                 _offScreenPosition, 1.0f)
-                .OnComplete(() => { gameObject.SetActive(false); });
+                .OnComplete(() =>
+                {
+                    _gameEventManager.onInteractUI.Invoke(false);
+                    gameObject.SetActive(false);
+                });
         }
 
         private void OnDestroy()

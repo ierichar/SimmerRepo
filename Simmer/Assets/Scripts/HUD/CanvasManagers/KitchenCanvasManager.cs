@@ -13,9 +13,11 @@ namespace Simmer.UI
     public class KitchenCanvasManager : PlayCanvasManager
     {
         public GenericAppliance[] applianceManager{ get; protected set;}
-        public override void Construct(UnityEvent<int> OnSelectItem, UISoundManager soundManager)
+        public override void Construct(
+            GameEventManager gameEventManager
+            , UISoundManager soundManager)
         {
-            base.Construct(OnSelectItem, soundManager);
+            base.Construct(gameEventManager, soundManager);
 
             // TEMP TO TEST ITEMSLOTMANAGER
             PantryUI pantryUI

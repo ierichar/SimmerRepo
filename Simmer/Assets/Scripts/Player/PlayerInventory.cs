@@ -80,7 +80,7 @@ namespace Simmer.Inventory
             //    AddFoodItem(newFoodItem);
             //}
 
-            playerManager.gameEventManager.OnSelectItem
+            playerManager.gameEventManager.onSelectItem
                 .AddListener(OnSelectItemCallback);
 
             playerManager.playerEventManager.OnDropItem

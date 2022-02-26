@@ -19,7 +19,7 @@ public class PantryUI : MonoBehaviour
         SpriteRendererManager highlightTarget
             = GetComponentInChildren<SpriteRendererManager>();
         highlightTarget.Construct();
-        interactable.Construct(ToggleInventory, highlightTarget);
+        interactable.Construct(ToggleInventory, highlightTarget, true);
 
         PantrySlotGroupManager pantrySlots
             = FindObjectOfType<PantrySlotGroupManager>();

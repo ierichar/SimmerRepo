@@ -22,7 +22,8 @@ namespace Simmer.SceneManagement
             _highlightSprite.Construct();
 
             _interactableBehaviour = GetComponent<InteractableBehaviour>();
-            _interactableBehaviour.Construct(OnInteractCallback, _highlightSprite);
+            _interactableBehaviour.Construct(
+                OnInteractCallback, _highlightSprite, false);
         }
 
         private void OnInteractCallback()

@@ -22,7 +22,7 @@ public class SplitStoveOven : MonoBehaviour
         UIButtons.SetActive(false);
 
         interactable = GetComponent<InteractableBehaviour>();
-        interactable.Construct(ToggleInventory, _highlightTarget);
+        interactable.Construct(ToggleInventory, _highlightTarget, true);
 
         whichOpen = 0;
     }

@@ -33,11 +33,9 @@ public class KitchenGameManager : MonoBehaviour
         soundManager = FindObjectOfType<UISoundManager>();
 
         _gameEventManager.Construct();
-        _kitchenCanvasManager.Construct(_gameEventManager.OnSelectItem, soundManager);
+        _kitchenCanvasManager.Construct(_gameEventManager, soundManager);
         _playerManager.Construct(_gameEventManager, _kitchenCanvasManager);
         _sceneLoader.Construct(_playerManager, _kitchenCanvasManager);
         _pauseMenu.Construct(_sceneLoader);
-
-
     }
 }

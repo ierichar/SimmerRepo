@@ -62,7 +62,7 @@ public abstract class GenericAppliance : MonoBehaviour
         SpriteRendererManager highlightTarget
             = GetComponentInChildren<SpriteRendererManager>();
         highlightTarget.Construct();
-        _interactable.Construct(ToggleInventory, highlightTarget);
+        _interactable.Construct(ToggleInventory, highlightTarget, true);
 
         OnValidate.AddListener(OnValidateCallback);
 

@@ -27,9 +27,11 @@ namespace Simmer.UI
         public UISoundManager soundManager {get; private set; }
         //public GenericAppliance[] applianceManager{ get; protected set;}
 
-        public virtual void Construct(UnityEvent<int> OnSelectItem, UISoundManager soundManager)
+        public virtual void Construct(
+            GameEventManager gameEventManager
+            , UISoundManager soundManager)
         {
-            this.OnSelectItem = OnSelectItem;
+            this.OnSelectItem = gameEventManager.onSelectItem;
             playCanvas = GetComponent<Canvas>();
 
             itemFactory = GetComponent<ItemFactory>();
@@ -44,7 +46,7 @@ namespace Simmer.UI
             itemFactory.Construct(this);
             inventoryUIManager.Construct(itemFactory);
             recipeMapWindow.Construct();
-            recipeBookManager.Construct();
+            recipeBookManager.Construct(gameEventManager);
             screenBlockManager.Construct();
             moneyUI.Construct();
         }

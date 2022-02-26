@@ -27,7 +27,8 @@ namespace Simmer.NPC
             _highlightSprite.Construct();
 
             _interactableBehaviour = GetComponent<InteractableBehaviour>();
-            _interactableBehaviour.Construct(OnInteractCallback, _highlightSprite);
+            _interactableBehaviour.Construct(
+                OnInteractCallback, _highlightSprite, false);
 
             _npcSprite = GetComponentInChildren<NPC_Sprite>();
             _npcSprite.Construct();

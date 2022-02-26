@@ -15,9 +15,11 @@ namespace Simmer.UI
         public CanvasGroupManager canvasGroupManager { get; private set; }
         public Shop _shop;
 
-        public override void Construct(UnityEvent<int> OnSelectItem, UISoundManager soundManager)
+        public override void Construct(
+            GameEventManager gameEventManager
+            , UISoundManager soundManager)
         {
-            base.Construct(OnSelectItem, soundManager);
+            base.Construct(gameEventManager, soundManager);
 
             canvasGroupManager = GetComponent<CanvasGroupManager>();
             canvasGroupManager.Construct();

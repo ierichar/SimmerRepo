@@ -37,7 +37,7 @@ public class MarketGameManager : MonoBehaviour
         _pauseMenu = FindObjectOfType<PauseMenu>();
 
         _gameEventManager.Construct();
-        _marketCanvasManager.Construct(_gameEventManager.OnSelectItem, _soundManager);
+        _marketCanvasManager.Construct(_gameEventManager, _soundManager);
         _playerManager.Construct(_gameEventManager, _marketCanvasManager);
         _sceneLoader.Construct(_playerManager, _marketCanvasManager);
         _pauseMenu.Construct(_sceneLoader);

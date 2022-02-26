@@ -115,7 +115,6 @@ namespace Simmer.NPC
         private IEnumerator InteractSequence(NPC_Data npcData)
         {
             _isInteracting = true;
-
             currentNPC_Data = npcData;
 
             Tween fadeTween = _playCanvasGroupManager.Fade(0,
@@ -140,9 +139,9 @@ namespace Simmer.NPC
             Tween fadeTween = _playCanvasGroupManager.Fade(1,
                 _playCanvasFadeDuration, _playCanvasFadeEase);
             yield return fadeTween.WaitForCompletion();
-            
-            currentNPC_Data = null;
 
+            _gameEventManager.onInteractUI.Invoke(false);
+            currentNPC_Data = null;
             _isInteracting = false;
         }
     }
