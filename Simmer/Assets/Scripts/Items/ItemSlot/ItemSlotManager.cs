@@ -35,7 +35,7 @@ namespace Simmer.Items
 
         public void EmptySlot()
         {
-            Destroy(currentItem.gameObject);
+            if(currentItem != null) Destroy(currentItem.gameObject);
         }
 
         void IDropHandler.OnDrop(PointerEventData eventData)

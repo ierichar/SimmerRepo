@@ -12,13 +12,17 @@ namespace Simmer.SceneManagement
     {
         [SerializeField] private SceneData sceneToLoad;
         private InteractableBehaviour _interactableBehaviour;
+        private SpriteRendererManager _highlightSprite;
 
         public UnityEvent<SceneData> OnSceneLoad = new UnityEvent<SceneData>();
 
         public void Construct()
         {
+            _highlightSprite = GetComponentInChildren<SpriteRendererManager>();
+            _highlightSprite.Construct();
+
             _interactableBehaviour = GetComponent<InteractableBehaviour>();
-            _interactableBehaviour.Construct(OnInteractCallback, null);
+            _interactableBehaviour.Construct(OnInteractCallback, _highlightSprite);
         }
 
         private void OnInteractCallback()

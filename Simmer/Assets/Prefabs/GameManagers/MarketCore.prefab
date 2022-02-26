@@ -360,12 +360,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 728d3a2fcdd9d471f97fa28034f4d5ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playCanvasFadeDuration: 1
-  _playCanvasFadeEase: 3
-  OnNPCInteract:
+  _playCanvasFadeDuration: 0.5
+  _playCanvasFadeEase: 4
+  onNPCInteract:
     m_PersistentCalls:
       m_Calls: []
-  OnCloseInterfaceCompleted:
+  onCloseInterfaceCompleted:
+    m_PersistentCalls:
+      m_Calls: []
+  onTryGift:
     m_PersistentCalls:
       m_Calls: []
   targetInterfaceWindow: {fileID: 0}

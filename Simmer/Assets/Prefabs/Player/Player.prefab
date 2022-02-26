@@ -306,9 +306,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e37c2e54965b14383a9daea3942df943, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnCloseInv:
+  OnCloseUIWindow:
     m_PersistentCalls:
       m_Calls: []
+  _interactDistance: 0.5
 --- !u!1 &8042035494538912234
 GameObject:
   m_ObjectHideFlags: 0

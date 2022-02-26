@@ -13,6 +13,7 @@ namespace Simmer.VN
     {
         [Header("Ink/Unity shared variables")]
         public int isReturning = 0;
+        public int isCorrectGift = 0;
 
         private List<VN_EventData> _eventDataList
             = new List<VN_EventData>();

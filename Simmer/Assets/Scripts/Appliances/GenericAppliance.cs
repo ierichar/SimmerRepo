@@ -18,7 +18,7 @@ public abstract class GenericAppliance : MonoBehaviour
     [SerializeField]  protected ApplianceUIManager _UIManager;
     protected ProgressBar _progressBar;
 
-    protected InteractableBehaviour interactable;
+    protected InteractableBehaviour _interactable;
 
     protected static bool UI_OPEN = false;
     public ApplianceData applianceData
@@ -58,9 +58,11 @@ public abstract class GenericAppliance : MonoBehaviour
     public virtual void Construct(ItemFactory itemFactory, UISoundManager soundManager){
         _soundManager = soundManager;
 
-        interactable = GetComponent<InteractableBehaviour>();
-        SpriteRenderer highlightTarget = GetComponentInChildren<SpriteRenderer>();
-        interactable.Construct(ToggleInventory, highlightTarget);
+        _interactable = GetComponent<InteractableBehaviour>();
+        SpriteRendererManager highlightTarget
+            = GetComponentInChildren<SpriteRendererManager>();
+        highlightTarget.Construct();
+        _interactable.Construct(ToggleInventory, highlightTarget);
 
         OnValidate.AddListener(OnValidateCallback);
 

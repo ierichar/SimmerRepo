@@ -1216,7 +1216,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aefce9c84868d849ac070a602ba669a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemSlot: {fileID: 0}
 --- !u!1 &5332362167260886784
 GameObject:
   m_ObjectHideFlags: 0
@@ -1899,7 +1898,6 @@ GameObject:
   - component: {fileID: 418189267196825161}
   - component: {fileID: 8385749934347488578}
   - component: {fileID: 2284466147506642239}
-  - component: {fileID: 6979265487678039565}
   - component: {fileID: 6850982816983461906}
   m_Layer: 5
   m_Name: ShopSlots
@@ -1973,30 +1971,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8111463168521040119}
   m_CullTransparentMesh: 1
---- !u!114 &6979265487678039565
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8111463168521040119}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 1
-  m_StartCorner: 0
-  m_StartAxis: 0
-  m_CellSize: {x: 100, y: 100}
-  m_Spacing: {x: 64, y: 100}
-  m_Constraint: 0
-  m_ConstraintCount: 2
 --- !u!114 &6850982816983461906
 MonoBehaviour:
   m_ObjectHideFlags: 0

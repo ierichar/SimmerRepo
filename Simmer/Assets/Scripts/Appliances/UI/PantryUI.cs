@@ -16,7 +16,9 @@ public class PantryUI : MonoBehaviour
 
     public void Construct(ItemFactory itemFactory){
         interactable = GetComponent<InteractableBehaviour>();
-        SpriteRenderer highlightTarget = GetComponentInChildren<SpriteRenderer>();
+        SpriteRendererManager highlightTarget
+            = GetComponentInChildren<SpriteRendererManager>();
+        highlightTarget.Construct();
         interactable.Construct(ToggleInventory, highlightTarget);
 
         PantrySlotGroupManager pantrySlots
