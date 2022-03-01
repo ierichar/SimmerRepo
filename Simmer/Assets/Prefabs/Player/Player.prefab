@@ -197,7 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 641bbb659bd2d4cee8ff73fd41c506e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 1286444663}
+  _animator: {fileID: 1934187522}
   _renderer: {fileID: 8042035494538912232}
   accelRate: 0.5
   deccelRate: 0.3
@@ -306,9 +306,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e37c2e54965b14383a9daea3942df943, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnCloseUIWindow:
-    m_PersistentCalls:
-      m_Calls: []
   _interactDistance: 0.5
 --- !u!1 &8042035494538912234
 GameObject:
@@ -320,7 +317,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8042035494538912233}
   - component: {fileID: 8042035494538912232}
-  - component: {fileID: 1286444663}
+  - component: {fileID: 1934187522}
   m_Layer: 0
   m_Name: PlayerSprite
   m_TagString: Untagged
@@ -393,7 +390,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &1286444663
+--- !u!95 &1934187522
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
