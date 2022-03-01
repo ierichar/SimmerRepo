@@ -27,6 +27,8 @@ public static class GlobalPlayerData
     public static int playerMoney { get; private set; }
 
     private static bool isConstructed = false;
+    public static List<JournalEntryData> journalEntries = new List<JournalEntryData>();
+    
 
     public static void Construct(SaveData startingSaveData)
     {

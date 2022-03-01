@@ -15,6 +15,11 @@ namespace Simmer.Items
 
         public int index { get; protected set; }
         public ItemBehaviour currentItem { get; protected set; }
+        //For potential locking of item slots during recipe cooking, action duration time
+        //create lockSlot bool
+        // initiallize in construct
+        // write public function lock(bool lockActive) to change internal bool lockSlot
+        //Go to GenericAppliance and call new function when start button is pressed
 
         public UnityEvent<ItemBehaviour> onItemDrop
             = new UnityEvent<ItemBehaviour>();
