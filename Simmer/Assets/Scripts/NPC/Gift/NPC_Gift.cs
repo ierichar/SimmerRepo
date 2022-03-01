@@ -13,6 +13,7 @@ namespace Simmer.NPC
     {
         public GiftSlotGroupManager giftSlotGroupManager { get; private set; }
         public GiftButton giftButton { get; private set; }
+        public GiftReactionImage giftReactionImage { get; private set; }
 
         public UnityEvent<List<FoodItem>> onClickGift
             = new UnityEvent<List<FoodItem>>();
@@ -31,6 +32,9 @@ namespace Simmer.NPC
 
             giftButton = gameObject.FindChildObject<GiftButton>();
             giftButton.Construct(this);
+
+            giftReactionImage = gameObject.FindChildObject<GiftReactionImage>();
+            giftReactionImage.Construct();
 
             onClickGift.AddListener(OnClickGiftCallback);
         }
@@ -56,11 +60,22 @@ namespace Simmer.NPC
                 }
             }
 
+            StartCoroutine(QuestCheckSequeunce(questCompleted));
+        }
+
+        private IEnumerator QuestCheckSequeunce(bool questCompleted)
+        {
             _npcManager.onTryGift.Invoke(questCompleted);
 
-            giftSlotGroupManager.ClearAll();
+            yield return StartCoroutine(giftReactionImage
+                .ReactionSequence(questCompleted));
 
-            OnClose.Invoke();
+            if (questCompleted)
+            {
+                giftSlotGroupManager.ClearAll();
+
+                OnClose.Invoke();
+            }
         }
 
     }
