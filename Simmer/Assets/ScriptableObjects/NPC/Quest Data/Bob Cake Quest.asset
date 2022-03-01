@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82f9a8b14de1c4bbb8b1f9e79e91cff1, type: 3}
   m_Name: Bob Cake Quest
   m_EditorClassIdentifier: 
-  questIngredient: {fileID: 11400000, guid: 3a75ceb5df29f42f283f1700f0d3d73f, type: 2}
+  questIngredient: {fileID: 11400000, guid: 7fe9c2db8c0af44ea9b48448929217dd, type: 2}
   knowledgeReward: {fileID: 11400000, guid: 65780dfcb24cbee4480c5c53e1d55710, type: 2}
