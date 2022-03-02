@@ -14,13 +14,15 @@ public class SplitStoveOven : MonoBehaviour
 
     [SerializeField] private SpriteRendererManager _highlightTarget;
     private InteractableBehaviour interactable;
+    protected GameEventManager _gameEventManager;
 
     private int whichOpen;
     //0 then all closed, 1 then app1 open, 2 then app2 open 
 
-    public void Construct(){
+    public void Construct(GameEventManager gameEventManager){
         UIButtons.SetActive(false);
 
+        _gameEventManager = gameEventManager;
         interactable = GetComponent<InteractableBehaviour>();
         interactable.Construct(ToggleInventory, _highlightTarget, true);
 
@@ -59,6 +61,11 @@ public class SplitStoveOven : MonoBehaviour
         app2.ToggleInventory();
         UIButtons.SetActive(false);
         whichOpen = 2;
-    }   
+    } 
+
+    public void closeUI(){
+        UIButtons.SetActive(false);
+        _gameEventManager.onInteractUI.Invoke(false);
+    }  
 
 }

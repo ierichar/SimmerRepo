@@ -19,6 +19,7 @@ public abstract class GenericAppliance : MonoBehaviour
     protected ProgressBar _progressBar;
 
     protected InteractableBehaviour _interactable;
+    protected GameEventManager _gameEventManager;
 
     protected static bool UI_OPEN = false;
     public ApplianceData applianceData
@@ -55,9 +56,10 @@ public abstract class GenericAppliance : MonoBehaviour
 
     //-----------------------------------------------------------
     //inherited methods
-    public virtual void Construct(ItemFactory itemFactory, UISoundManager soundManager){
+    public virtual void Construct(ItemFactory itemFactory, UISoundManager soundManager, 
+    GameEventManager gameEventManager){
         _soundManager = soundManager;
-
+        _gameEventManager = gameEventManager;
         _interactable = GetComponent<InteractableBehaviour>();
         SpriteRendererManager highlightTarget
             = GetComponentInChildren<SpriteRendererManager>();
@@ -110,11 +112,13 @@ public abstract class GenericAppliance : MonoBehaviour
             _blackout.SetActive(true);
             invOpen = true;
             UI_OPEN = true;
+            _gameEventManager.onInteractUI.Invoke(true);
         }else if(invOpen && UI_OPEN){
             _UIGameObject.SetActive(false);
             _blackout.SetActive(false);
             invOpen = false;
             UI_OPEN = false;
+            _gameEventManager.onInteractUI.Invoke(false);
         }
     }
     protected virtual void Finished(){

@@ -29,10 +29,10 @@ namespace Simmer.UI
 
             applianceManager = FindObjectsOfType<GenericAppliance>();
             foreach(GenericAppliance appliance in applianceManager){
-                appliance.Construct(itemFactory, soundManager);
+                appliance.Construct(itemFactory, soundManager, gameEventManager);
             }
             SplitStoveOven spliter = FindObjectOfType<SplitStoveOven>();
-            spliter.Construct();
+            spliter.Construct(gameEventManager);
         }
     }
 }

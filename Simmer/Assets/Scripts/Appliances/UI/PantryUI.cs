@@ -10,6 +10,7 @@ using Simmer.Items;
 public class PantryUI : MonoBehaviour
 {
     private InteractableBehaviour interactable;
+    protected static bool UI_OPEN = false;
     private bool invOpen;
     [SerializeField] private GameObject UIGameObject;
     //[SerializeField] public ItemFactory itemFactory;
@@ -24,18 +25,24 @@ public class PantryUI : MonoBehaviour
         PantrySlotGroupManager pantrySlots
             = FindObjectOfType<PantrySlotGroupManager>();
         pantrySlots.Construct(itemFactory);
-
         UIGameObject.SetActive(false);
         invOpen = false;
+        UI_OPEN = false;
     }
 
-    private void ToggleInventory(){
+    public void ToggleInventory(){
+        Debug.Log("Toggle Inv Pantry");
         if(!invOpen){
             UIGameObject.SetActive(true);
             invOpen = true;
+            UI_OPEN = true;
+            Debug.Log("Open Pantry");
         }else if(invOpen){
             UIGameObject.SetActive(false);
             invOpen = false;
+            UI_OPEN = false;
+            Debug.Log("Close Pantry");
         }
     }
+
 }
