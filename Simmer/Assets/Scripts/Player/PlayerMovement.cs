@@ -55,10 +55,6 @@ namespace Simmer.Player
             playerManager.gameEventManager
                 .onInteractUI.AddListener(OnInteractUICallback);
         }
-        private void Start()
-        {
-            footstep = GetComponent<AudioSource>();
-        }
 
         private void Update()
         {
@@ -67,7 +63,6 @@ namespace Simmer.Player
                 StopMovement();
                 return;
             }
-
 
             GetMoveInput();
             CheckAnimation();
