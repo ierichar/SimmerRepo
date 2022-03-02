@@ -14,23 +14,35 @@ public class QuestFactory : MonoBehaviour
 
     List<GameObject> children = new List<GameObject>();
 
-    public void Awake(){
-        foreach(GameObject obj in children){
+    public void Construct()
+    {
+        GlobalPlayerData.ActiveQuestsUpdated.AddListener(UpdateJournal);
+        UpdateJournal();
+    }
+
+    private void OnDestroy()
+    {
+        GlobalPlayerData.ActiveQuestsUpdated.RemoveListener(UpdateJournal);
+    }
+
+    public void UpdateJournal()
+    {
+        foreach (GameObject obj in children)
+        {
             Destroy(obj);
         }
-        GlobalPlayerData.journalEntries.Add(new JournalEntryData(npcData, questData));
-        GlobalPlayerData.journalEntries.Add(new JournalEntryData(npcData, questData));
 
-        foreach(JournalEntryData entry in GlobalPlayerData.journalEntries){
+        foreach (var pair in GlobalPlayerData.activeQuestDictionary)
+        {
             GameObject newItem = Instantiate(questPrefab, this.transform);
             children.Add(newItem);
 
             string finalQuest = "";
-            finalQuest += entry.npc.name + ": Wants " + entry.quest.questIngredient.name;
+            finalQuest += pair.Key.name + ": Wants "
+                + pair.Value.questItem.name;
             newItem.GetComponentInChildren<UITextManager>().Construct();
             newItem.GetComponentInChildren<UITextManager>().SetText(finalQuest);
         }
-        
     }
     
 }

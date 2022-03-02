@@ -1,58 +1,28 @@
-VAR IS_RETURNING = 0
+INCLUDE InteractBase_Ink.ink
 
 VAR CHARACTER_NAME = "James"
 
->>> !CharEnter({CHARACTER_NAME})
->>> TextboxEnter(Default)
+=== GreetingsGeneric ===
+{CHARACTER_NAME}: Hello there.
+->->
 
-{CHARACTER_NAME}: Hi! I'm {CHARACTER_NAME}.
--> InterfaceChoices
-
-=== InterfaceChoices ===
+=== InteractOptions ===
 {CHARACTER_NAME}: What can I do for you?
-+ Shop
-    -> ChooseShop
-+ Give gift
-    -> ChooseGift
-+ Leave
-    -> EndGeneric
+->->
 
-=== ChooseShop ===
-{CHARACTER_NAME}: Sure thing!
--> OpenInterface("ChooseShop", -> EndShop)
+=== QuestOngoing ===
+{CHARACTER_NAME}: I wish I could have some {QUEST_ITEM}. 
+->->
 
-=== ChooseGift ===
-{CHARACTER_NAME}: What a surprise!
--> OpenInterface("ChooseGift", -> EndGift)
+=== QuestCompleted ===
+{CHARACTER_NAME}: I really like this {QUEST_ITEM}!
+->->
 
-=== OpenInterface(ChooseEvent, -> EndKnot)  ===
->>> TextboxExit();
->>> InvokeUnityEvent({ChooseEvent});
->>> WaitUntilEvent(CloseComplete);
->>> UpdateInkVar(IS_RETURNING, isReturning);
->>> TextboxEnter(Default);
--> Returning(EndKnot)
-
-=== Returning(-> EndKnot)  ===
-{ IS_RETURNING:
-- 0:
-    -> EndKnot
-- 1:
-    ->InterfaceChoices
-}
-
-=== EndShop ===
-{CHARACTER_NAME}: Pleasure doing business!
--> EndFunction
-
-=== EndGift ===
-{CHARACTER_NAME}: Thanks!
--> EndFunction
+=== PositiveGift ===
+{CHARACTER_NAME}: I really wanted this! Thanks!
+{CHARACTER_NAME}: Please take this {QUEST_REWARD} recipe as a reward.
+->->
 
 === EndGeneric ===
 {CHARACTER_NAME}: Have a nice day!
 -> EndFunction
-
-=== EndFunction ===
->>> !CharExit({CHARACTER_NAME});
--> END

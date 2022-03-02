@@ -10,8 +10,10 @@ namespace Simmer.NPC
             , menuName = "NPC/NPC_QuestData")]
     public class NPC_QuestData : ScriptableObject
     {
-        public IngredientData questIngredient;
+        public IngredientData questItem;
 
-        public IngredientData knowledgeReward;
+        public List<IngredientData> initialKnowledge;
+
+        public IngredientData questReward;
     }
 }
