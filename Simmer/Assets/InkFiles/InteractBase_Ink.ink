@@ -1,34 +1,55 @@
 VAR IS_RETURNING = 0
-VAR IS_CORRECT_GIFT = 1
+// VAR IS_CORRECT_GIFT = 0
 VAR IS_QUEST_COMPLETE = 0
+VAR QUEST_ITEM = "QuestItem"
+VAR QUEST_REWARD = "QuestReward"
+
+>>> UpdateInkVar(IS_QUEST_COMPLETE, isQuestComplete);
+>>> UpdateInkVar(QUEST_ITEM, questItem);
+>>> UpdateInkVar(QUEST_REWARD, questReward);
 
 >>> !CharEnter({CHARACTER_NAME})
 >>> TextboxEnter(Default)
+
 -> GreetingsGeneric ->
 -> QuestText ->
 -> InterfaceChoices
 
+=== QuestText ===
+{ IS_QUEST_COMPLETE:
+- 0:
+    -> QuestOngoing
+- 1:
+    -> QuestCompleted
+}
+->->
+
 === InterfaceChoices ===
-{CHARACTER_NAME}: What can I do for you?
-+ Shop
-    -> ChooseShop
-+ Give gift
-    -> ChooseGift
-+ Leave
-    -> EndGeneric
+->InteractOptions->
+{ IS_QUEST_COMPLETE:
+- 0:
+    + [Give gift]
+        -> ChooseGift
+}
+    + [Shop]
+        -> ChooseShop
+    
+    + [Leave]
+        -> EndGeneric
+
 
 === ChooseShop ===
--> OpenInterface("ChooseShop", -> EndShop, -> Continue)
+-> OpenInterface("ChooseShop", -> EndGeneric, -> Continue)
 
 === ChooseGift ===
--> OpenInterface("ChooseGift", -> EndGift, -> PositiveGift)
+-> OpenInterface("ChooseGift", -> EndGeneric, -> PositiveGift)
 
 === OpenInterface(ChooseEvent, -> EndKnot, -> AdditionalKnot)  ===
 >>> TextboxExit();
 >>> InvokeUnityEvent({ChooseEvent});
 >>> WaitUntilEvent(CloseComplete);
 >>> UpdateInkVar(IS_RETURNING, isReturning);
->>> UpdateInkVar(IS_CORRECT_GIFT, isCorrectGift);
+// >>> UpdateInkVar(IS_CORRECT_GIFT, isCorrectGift);
 >>> TextboxEnter(Default);
 -> AdditionalKnot ->
 -> Returning(EndKnot)

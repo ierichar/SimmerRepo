@@ -43,24 +43,33 @@ namespace Simmer.NPC
         {
             bool questCompleted = false;
 
-            foreach(FoodItem foodItem in itemList)
+            if (_npcManager.currentNPC_Quest != null)
             {
-                IngredientData thisIngredient = foodItem.ingredientData;
-
-                if (currentNPC_Data.questDictionary
-                    .ContainsKey(thisIngredient))
-                {
-                    GlobalPlayerData.AddIngredientKnowledge(
-                        currentNPC_Data.questDictionary[thisIngredient]);
-                    questCompleted = true;
-                }
-                else
-                {
-                    print("Not quest item: " + thisIngredient.name);
-                }
+                questCompleted = TryCompleteQuest(itemList);
             }
 
             StartCoroutine(QuestCheckSequeunce(questCompleted));
+        }
+
+        private bool TryCompleteQuest(List<FoodItem> itemList)
+        {
+            bool result = false;
+            foreach (FoodItem foodItem in itemList)
+            {
+                IngredientData thisIngredient = foodItem.ingredientData;
+
+                if (thisIngredient == _npcManager.currentNPC_Quest
+                    .questItem)
+                {
+                    GlobalPlayerData.AddIngredientKnowledge(
+                        currentNPC_Data.questDictionary[thisIngredient]);
+                    GlobalPlayerData.CompleteQuest(_npcManager.currentNPC_Data
+                        , _npcManager.currentNPC_Quest);
+
+                    result = true;
+                }
+            }
+            return result;
         }
 
         private IEnumerator QuestCheckSequeunce(bool questCompleted)

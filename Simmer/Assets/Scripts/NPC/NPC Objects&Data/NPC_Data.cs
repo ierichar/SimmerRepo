@@ -48,8 +48,8 @@ namespace Simmer.NPC
 
             foreach (NPC_QuestData questData in questDataList)
             {
-                questDictionary.Add(questData.questIngredient
-                    , questData.knowledgeReward);
+                questDictionary.Add(questData.questItem
+                    , questData.questReward);
             }
         }
     }

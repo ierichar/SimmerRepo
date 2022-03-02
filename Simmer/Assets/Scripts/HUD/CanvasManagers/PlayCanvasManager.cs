@@ -20,6 +20,7 @@ namespace Simmer.UI
         public RecipeMapWindow recipeMapWindow { get; private set; }
         public RecipeBookManager recipeBookManager { get; private set; }
         public MoneyUI moneyUI { get; private set; }
+        public QuestFactory questFactory { get; private set; }
 
         public UnityEvent<int> OnSelectItem { get; private set; }
 
@@ -40,6 +41,7 @@ namespace Simmer.UI
             recipeBookManager = GetComponentInChildren<RecipeBookManager>(true);
             screenBlockManager = GetComponentInChildren<ScreenBlockManager>();
             moneyUI = GetComponentInChildren<MoneyUI>(true);
+            questFactory = GetComponentInChildren<QuestFactory>(true);
 
             this.soundManager = soundManager;
 
@@ -49,6 +51,7 @@ namespace Simmer.UI
             recipeBookManager.Construct(gameEventManager);
             screenBlockManager.Construct();
             moneyUI.Construct();
+            questFactory.Construct();
         }
     }
 }

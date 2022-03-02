@@ -12,6 +12,7 @@ VAR CHARACTER_NAME = "James"
 
 === QuestOngoing ===
 {CHARACTER_NAME}: I wish I could have some {QUEST_ITEM}. 
+{CHARACTER_NAME}: Here's what I know about the recipe.
 ->->
 
 === QuestCompleted ===
