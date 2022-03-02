@@ -55,7 +55,7 @@ namespace Simmer.Player
             playerManager.gameEventManager
                 .onInteractUI.AddListener(OnInteractUICallback);
         }
-
+        
         private void Update()
         {
             if (!_movementEnabled)
