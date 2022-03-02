@@ -2,24 +2,30 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Simmer.FoodData;
+using Simmer.UI.Tooltips;
 
 namespace Simmer.UI 
 {
     public class ShopButton : MonoBehaviour 
     {
-        private Image shopImage;
-        private TextMeshProUGUI costText;
+        public Shop shop;
         public IngredientData currentIngredient;
         public int cost;
+
+        private Image shopImage;
+        private TextMeshProUGUI costText;
         private Button button;
-        public Shop shop;
+        private TooltipTrigger _tooltipTrigger;
 
         //get the right components
         public void makeButton(IngredientData ingredient, Shop s) {
             currentIngredient = ingredient;
             shopImage = gameObject.transform.Find("ItemSprite").GetComponent<Image>();
             costText = gameObject.transform.Find("Cost").GetComponent<TextMeshProUGUI>();
+            _tooltipTrigger = GetComponent<TooltipTrigger>();
+            _tooltipTrigger.Construct(currentIngredient.name, "");
             shop = s;
+
             button = GetComponent<Button>();
             button.onClick.AddListener(() => {
                 clicked();

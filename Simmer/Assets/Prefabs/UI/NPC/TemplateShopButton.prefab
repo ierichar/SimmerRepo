@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8044190972502784562}
   - component: {fileID: 2030828610759959925}
   - component: {fileID: 386497524865340813}
+  - component: {fileID: 830730908810237926}
   m_Layer: 5
   m_Name: TemplateShopButton
   m_TagString: Untagged
@@ -53,6 +54,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentIngredient: {fileID: 0}
+  cost: 0
+  shop: {fileID: 0}
 --- !u!114 &386497524865340813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,6 +100,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &830730908810237926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4548021556617186143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95892550f6ebd4721885561759af1bb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6594426704587103125
 GameObject:
   m_ObjectHideFlags: 0

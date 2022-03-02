@@ -22,7 +22,6 @@ namespace Simmer.UI.NPC
 
         protected override void OnOpenCallback(NPC_Data npc_data)
         {
-            print(this + " OnOpenCallback in npc shop script" + npc_data.name);
             base.OnOpenCallback(npc_data);
             shop.ConstructShopButtons(currentNPC_Data);
         }
