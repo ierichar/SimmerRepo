@@ -56,7 +56,6 @@ namespace Simmer.Player
                 .onInteractUI.AddListener(OnInteractUICallback);
         }
         
-
         private void Update()
         {
             if (!_movementEnabled)
@@ -64,7 +63,6 @@ namespace Simmer.Player
                 StopMovement();
                 return;
             }
-
 
             GetMoveInput();
             CheckAnimation();
@@ -189,36 +187,36 @@ namespace Simmer.Player
             }
         }
         private void CheckAnimation(){
-            //const float lowestSpeed = 0.1f;
-            //if(_inputVector.magnitude <= lowestSpeed)
-            //{
-            //    UpdateAnimator(4);
-            //}
-            //if (_inputVector.x > lowestSpeed)
-            //{
-            //    UpdateAnimator(3);
-            //}
-            //else if (_inputVector.x <= -lowestSpeed)
-            //{
-            //    UpdateAnimator(1);
-            //}
-            //else if (_inputVector.y <= -lowestSpeed)
-            //{
-            //    UpdateAnimator(2);
-            //}
-            //else if (_inputVector.y > lowestSpeed)
-            //{
-            //    UpdateAnimator(0);
-            //}
+            const float lowestSpeed = 0.1f;
+            if(_inputVector.magnitude <= lowestSpeed)
+            {
+                UpdateAnimator(4);
+            }
+            if (_inputVector.x > lowestSpeed)
+            {
+                UpdateAnimator(3);
+            }
+            else if (_inputVector.x <= -lowestSpeed)
+            {
+                UpdateAnimator(1);
+            }
+            else if (_inputVector.y <= -lowestSpeed)
+            {
+                UpdateAnimator(2);
+            }
+            else if (_inputVector.y > lowestSpeed)
+            {
+                UpdateAnimator(0);
+            }
         }
 
         private void makeStep()
         {
-            //footstep.Play();
+            footstep.Play();
         }
         private void stopWalking()
         {
-            //footstep.Stop();
+            footstep.Stop();
         }
 
     }
