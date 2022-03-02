@@ -1,10 +1,13 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using Ink.Runtime;
+using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Events;
+
+using TMPro;
+
+using Ink.Runtime;
 
 namespace Simmer.VN
 {
@@ -63,9 +66,9 @@ namespace Simmer.VN
 		public Canvas ButtonCanvas;
 		public Canvas NameCanvas;
 		// Text object that displays text content
-		public Text contentTextObj;
+		public TextMeshProUGUI contentTextObj;
 		// Text object that displays speaker name
-		public Text nameTextObj;
+		public TextMeshProUGUI nameTextObj;
 
 		public Canvas Decor_RTCanvas;
 		public Canvas Decor_LBCanvas;
@@ -250,6 +253,12 @@ namespace Simmer.VN
 		// Initializes a story based on the imported JSON file
 		public void StartStory()
 		{
+			//var compiler = new Ink.Compiler(inkJSONAsset.text, new Ink.Compiler.Options
+			//{
+			//	countAllVisits = true,
+			//	fileHandler = new UnityInkFileHandler(System.IO.Path.GetDirectoryName(inkJSONAsset.file))
+			//});
+			//Ink.Runtime.Story story = compiler.Compile();
 			Story = new Story(inkJSONAsset.text);
 			if (OnCreateStory != null) OnCreateStory(Story);
 			RefreshView();
@@ -339,7 +348,7 @@ namespace Simmer.VN
 		}
 
 		// Displays the current text on screen, one char at a time, then creates the choice buttons when it's done
-		private IEnumerator Co_SlowText(Text storyText)
+		private IEnumerator Co_SlowText(TextMeshProUGUI storyText)
 		{
 			state = VN_State.typing;
 			float TextSpeed;

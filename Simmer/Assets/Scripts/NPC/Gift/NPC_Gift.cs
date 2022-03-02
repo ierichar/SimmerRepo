@@ -13,6 +13,7 @@ namespace Simmer.NPC
     {
         public GiftSlotGroupManager giftSlotGroupManager { get; private set; }
         public GiftButton giftButton { get; private set; }
+        public GiftReactionImage giftReactionImage { get; private set; }
 
         public UnityEvent<List<FoodItem>> onClickGift
             = new UnityEvent<List<FoodItem>>();
@@ -32,6 +33,9 @@ namespace Simmer.NPC
             giftButton = gameObject.FindChildObject<GiftButton>();
             giftButton.Construct(this);
 
+            giftReactionImage = gameObject.FindChildObject<GiftReactionImage>();
+            giftReactionImage.Construct();
+
             onClickGift.AddListener(OnClickGiftCallback);
         }
 
@@ -39,28 +43,48 @@ namespace Simmer.NPC
         {
             bool questCompleted = false;
 
-            foreach(FoodItem foodItem in itemList)
+            if (_npcManager.currentNPC_Quest != null)
+            {
+                questCompleted = TryCompleteQuest(itemList);
+            }
+
+            StartCoroutine(QuestCheckSequeunce(questCompleted));
+        }
+
+        private bool TryCompleteQuest(List<FoodItem> itemList)
+        {
+            bool result = false;
+            foreach (FoodItem foodItem in itemList)
             {
                 IngredientData thisIngredient = foodItem.ingredientData;
 
-                if (currentNPC_Data.questDictionary
-                    .ContainsKey(thisIngredient))
+                if (thisIngredient == _npcManager.currentNPC_Quest
+                    .questItem)
                 {
                     GlobalPlayerData.AddIngredientKnowledge(
                         currentNPC_Data.questDictionary[thisIngredient]);
-                    questCompleted = true;
-                }
-                else
-                {
-                    print("Not quest item: " + thisIngredient.name);
+                    GlobalPlayerData.CompleteQuest(_npcManager.currentNPC_Data
+                        , _npcManager.currentNPC_Quest);
+
+                    result = true;
                 }
             }
+            return result;
+        }
 
+        private IEnumerator QuestCheckSequeunce(bool questCompleted)
+        {
             _npcManager.onTryGift.Invoke(questCompleted);
 
-            giftSlotGroupManager.ClearAll();
+            yield return StartCoroutine(giftReactionImage
+                .ReactionSequence(questCompleted));
 
-            OnClose.Invoke();
+            if (questCompleted)
+            {
+                giftSlotGroupManager.ClearAll();
+
+                OnClose.Invoke();
+            }
         }
 
     }

@@ -38,6 +38,7 @@ namespace Simmer.NPC
         public NPC_InterfaceWindow targetInterfaceWindow;
         private bool _isInteracting;
         public NPC_Data currentNPC_Data { get; private set; }
+        public NPC_QuestData currentNPC_Quest { get; private set; }
 
         public void Construct(VN_Manager VNmanager
             , MarketCanvasManager marketCanvasManager
@@ -84,8 +85,6 @@ namespace Simmer.NPC
 
         public IEnumerator HideInterfaceSequence()
         {
-            print("isReturning: " + vn_sharedVariables.isReturning);
-
             Tween fadeTween = _playCanvasGroupManager.Fade(0,
                 _playCanvasFadeDuration, _playCanvasFadeEase);
             yield return fadeTween.WaitForCompletion();
@@ -117,6 +116,36 @@ namespace Simmer.NPC
             _isInteracting = true;
             currentNPC_Data = npcData;
 
+            if (GlobalPlayerData.activeQuestDictionary
+                .ContainsKey(currentNPC_Data))
+            {
+                // Store active quest for this NPC
+                currentNPC_Quest = GlobalPlayerData
+                    .activeQuestDictionary[currentNPC_Data];
+            }
+            else currentNPC_Quest = null;
+
+            if (currentNPC_Quest == null)
+            {
+                // If player already completed, don't get new quest
+                if(GlobalPlayerData.completedQuestDictionary
+                    .ContainsKey(currentNPC_Data))
+                {
+                    UpdateQuestSharedVariables(false);
+                }
+                else
+                {
+                    currentNPC_Quest = npcData.questDataList[0];
+                    GlobalPlayerData.AddNewQuest(npcData
+                        , npcData.questDataList[0]);
+                    UpdateQuestSharedVariables(true);
+                }
+            }
+            else
+            {
+                UpdateQuestSharedVariables(true);
+            }
+
             Tween fadeTween = _playCanvasGroupManager.Fade(0,
                 _playCanvasFadeDuration, _playCanvasFadeEase);
             yield return fadeTween.WaitForCompletion();
@@ -125,6 +154,7 @@ namespace Simmer.NPC
 
             vn_manager.inkJSONAsset = npcData.npcInkAsset;
             vn_manager.StartStory();
+            yield return null;
         }
 
         private void OnStopNPCInteract()
@@ -143,6 +173,29 @@ namespace Simmer.NPC
             _gameEventManager.onInteractUI.Invoke(false);
             currentNPC_Data = null;
             _isInteracting = false;
+        }
+
+        private void UpdateQuestSharedVariables(bool isQuestOngoing)
+        {
+            if(isQuestOngoing)
+            {
+                vn_sharedVariables.isQuestComplete = 0;
+                vn_sharedVariables.questItem = currentNPC_Quest
+                    .questItem.name;
+                vn_sharedVariables.questReward = currentNPC_Quest
+                    .questReward.name;
+            }
+            else
+            {
+                vn_sharedVariables.isQuestComplete = 1;
+                vn_sharedVariables.questItem = GlobalPlayerData
+                    .completedQuestDictionary[currentNPC_Data]
+                    .questItem.name;
+                vn_sharedVariables.questReward = GlobalPlayerData
+                    .completedQuestDictionary[currentNPC_Data]
+                    .questReward.name; ;
+            }
+            
         }
     }
 }

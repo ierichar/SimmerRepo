@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 using Simmer.Inventory;
 using Simmer.FoodData;
 using Simmer.Items;
 using Simmer.Appliance;
-using Simmer.UI;
+using Simmer.NPC;
 
 public static class GlobalPlayerData
 {
@@ -27,8 +28,13 @@ public static class GlobalPlayerData
     public static int playerMoney { get; private set; }
 
     private static bool isConstructed = false;
-    public static List<JournalEntryData> journalEntries = new List<JournalEntryData>();
-    
+    public static Dictionary<NPC_Data, NPC_QuestData> activeQuestDictionary
+        = new Dictionary<NPC_Data, NPC_QuestData>();
+
+    public static Dictionary<NPC_Data, NPC_QuestData> completedQuestDictionary
+        = new Dictionary<NPC_Data, NPC_QuestData>();
+
+    public static UnityEvent ActiveQuestsUpdated = new UnityEvent();
 
     public static void Construct(SaveData startingSaveData)
     {
@@ -97,13 +103,47 @@ public static class GlobalPlayerData
         playerMoney = amount;
     }
 
-/*
-    public static void SaveApplianceInv(){
-        if(_playCanvasManager.GetType() != typeof(KitchenCanvasManager)) return;
+    public static bool AddNewQuest(NPC_Data npcData
+        , NPC_QuestData questData)
+    {
+        if (!activeQuestDictionary.ContainsKey(npcData))
+        {
+            activeQuestDictionary.Add(npcData, questData);
 
-        foreach(GenericAppliance appliance in _playCanvasManager.applianceManager){
-            AppInvSaveStruct.Add(appliance.GetInventoryItems());
+            foreach(IngredientData item in questData.initialKnowledge)
+            {
+                AddIngredientKnowledge(item);
+            }
+
+            ActiveQuestsUpdated.Invoke();
+            return true;
         }
+
+        return false;
     }
-    */
+
+    public static bool CompleteQuest(NPC_Data npcData
+        , NPC_QuestData questData)
+    {
+        if (activeQuestDictionary.ContainsKey(npcData))
+        {
+            activeQuestDictionary.Remove(npcData);
+            completedQuestDictionary.Add(npcData, questData);
+
+            ActiveQuestsUpdated.Invoke();
+            return true;
+        }
+
+        return false;
+    }
+
+    /*
+        public static void SaveApplianceInv(){
+            if(_playCanvasManager.GetType() != typeof(KitchenCanvasManager)) return;
+
+            foreach(GenericAppliance appliance in _playCanvasManager.applianceManager){
+                AppInvSaveStruct.Add(appliance.GetInventoryItems());
+            }
+        }
+        */
 }

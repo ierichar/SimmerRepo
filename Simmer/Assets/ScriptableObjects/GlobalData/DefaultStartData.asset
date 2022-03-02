@@ -16,7 +16,6 @@ MonoBehaviour:
   startKnownList:
   - {fileID: 11400000, guid: 10062244df47e49868d8fa686cad5b65, type: 2}
   - {fileID: 11400000, guid: 7e07ba1a8f3d747eca4d4e4684d50e6e, type: 2}
-  - {fileID: 11400000, guid: 7fe9c2db8c0af44ea9b48448929217dd, type: 2}
   - {fileID: 11400000, guid: 9fd94f1c136b0ac4f85f790745393e4d, type: 2}
   - {fileID: 11400000, guid: d03dbba14ea5a424d85434ec61ed8063, type: 2}
   startInventoryList:
