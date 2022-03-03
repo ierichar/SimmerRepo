@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 using Simmer.Items;
 using Simmer.Inventory;
@@ -10,83 +11,97 @@ namespace Simmer.Player
 {
     public class PlayerRayInteract : MonoBehaviour
     {
+        private GameEventManager _gameEventManager;
         private PlayerManager _playerManager;
         private PlayerInventory _playerInventory;
 
-        private GameObject _currentlyOpen;
-        private bool _isInvOpen;
+        [SerializeField] private float _interactDistance;
+
+        private InteractableBehaviour _previousInteracted;
+        private InteractableBehaviour _currentSelected;
+
+        private bool _isSelectEnabled = true;
 
         public void Construct(PlayerManager playerManager)
         {
             _playerManager = playerManager;
             _playerInventory = playerManager.playerInventory;
-            _isInvOpen = false;
+
+            _gameEventManager = playerManager.gameEventManager;
+
+            _gameEventManager.onInteractUI
+                .AddListener(OnInteractUICallback);
+        }
+
+        private void OnInteractUICallback(bool result)
+        {
+            _isSelectEnabled = !result;
         }
 
         public void Update()
         {
             primaryAction();
-            //secondaryAction();
             faceMouse();
         }
 
         private void primaryAction()
         {
-            Debug.DrawRay(transform.position, transform.right, Color.blue, 0, false);
+            //Debug.DrawRay(transform.position, transform.right
+            //    , Color.blue, 0, false);
 
-            
-            if (Input.GetMouseButtonDown(1) && !_isInvOpen)
-            {
-                RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, 1.5f, 64);
-                Collider2D obj = hit.collider;
-                if (obj != null)
-                {
-                    //store gameObject of collider that was hit with raycast
-                    _currentlyOpen = hit.transform.gameObject;
-                    // TESTING INTERABLEBEHAVIOUR
-                    if (_currentlyOpen.TryGetComponent(
-                        out InteractableBehaviour interactable))
-                    {
-                        _isInvOpen = true;
-                        //if (Input.GetKeyDown(KeyCode.F))
-                        //{
-                        //interactable.Highlight();
-                        interactable.Interact();
-                        //}
-                    }
-                }
-            }
-            else if (Input.GetMouseButtonDown(1) && _isInvOpen)
-            {
-                if (_currentlyOpen.TryGetComponent(
-                    out InteractableBehaviour interactable))
-                {
-                    _isInvOpen = false;
-                    interactable.Interact();
-                }
-            }
+            RaycastHit2D hit = Physics2D.Raycast(transform.position
+                , transform.right, _interactDistance, 64);
 
+            HighlightInteractable(hit);
+
+            CheckInteract();
         }
 
-        private void secondaryAction()
+        private void HighlightInteractable(RaycastHit2D hit)
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (!_isSelectEnabled)
             {
-                //Debug.Log("Player pressed E");
-                RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, 1.5f, 64);
-                Collider2D obj = hit.collider;
-                //Debug.Log("Testing");
-                if (obj != null)
+                _currentSelected.StopHighlight();
+                return;
+            }
+
+            Collider2D obj = hit.collider;
+
+            if (obj != null && hit.transform.gameObject.TryGetComponent(
+            out InteractableBehaviour interactable))
+            {
+                if (_currentSelected != null)
+                    _currentSelected.StopHighlight();
+                interactable.StartHighlight();
+                _currentSelected = interactable;
+
+            }
+            else
+            {
+                if (_currentSelected != null)
+                    _currentSelected.StopHighlight();
+                _currentSelected = null;
+            }
+        }
+
+        private void CheckInteract()
+        {
+            if (Input.GetMouseButtonDown(1))
+            {
+                // Stop interact
+                if (_previousInteracted != null
+                    && _previousInteracted.isInteractToggle)
                 {
-                    //Debug.Log("Got an object:" + obj);
-                    if (hit.transform.gameObject.TryGetComponent(out GenericAppliance app))
-                    {
-                        app.ToggleInventory();
-                    }
-                    else
-                    {
-                        Debug.Log("get Component failed");
-                    }
+                    _gameEventManager.onInteractUI.Invoke(false);
+                    _previousInteracted.Interact();
+                    _previousInteracted = null;
+                }
+                // New interact
+                else if (_currentSelected != null)
+                {
+                    _gameEventManager.onInteractUI.Invoke(true);
+                    _previousInteracted = _currentSelected;
+                    _previousInteracted.Interact();
                 }
             }
         }

@@ -10,24 +10,39 @@ namespace  Simmer.Interactable
     {
         public UnityEvent OnInteract = new UnityEvent();
 
-        private SpriteRenderer _highlightTarget;
+        private SpriteRendererManager _highlightTarget;
+
+        public bool isInteractToggle { get; private set; }
 
         public void Construct(UnityAction OnInteractCallback
-            , SpriteRenderer highlightTarget)
+            , SpriteRendererManager highlightTarget
+            , bool isInteractToggle)
         {
             OnInteract.AddListener(OnInteractCallback);
 
             _highlightTarget = highlightTarget;
+            StopHighlight();
+
+            this.isInteractToggle = isInteractToggle;
         }
+        //public void Construct(UnityAction OnInteractCallback){
+        //    OnInteract.AddListener(OnInteractCallback);
+        //    _highlightTarget = null;
+        //}
 
         public void Interact()
         {
             OnInteract.Invoke();
         }
 
-        public void Highlight()
+        public void StartHighlight()
         {
-            _highlightTarget.color = Color.yellow;
+            _highlightTarget.SetColor(Color.yellow);
+        }
+
+        public void StopHighlight()
+        {
+            _highlightTarget.SetColor(Color.clear);
         }
     }
 }

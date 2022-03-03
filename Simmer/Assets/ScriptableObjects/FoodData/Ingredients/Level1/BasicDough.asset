@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 100bfe8cc201b417887646b2755fd998, type: 3}
   m_Name: BasicDough
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  baseValue: 0
+  sprite: {fileID: 21300000, guid: 980720ea349fac544916596590ce11d5, type: 3}
+  baseValue: 2
   isFinalProduct: 0
   _recipeEdgeList:
   - {fileID: 11400000, guid: 181bc5731408d4d4da2d484e535f3fab, type: 2}

@@ -11,7 +11,7 @@ public class CuttingBoardManager : GenericAppliance
     private bool cuttingStarted;
     private int numCuts;
 
-    private ProgressBar _progressBar;
+    //private ProgressBar _progressBar;
 
     [SerializeField] private int numCutsMultiplier;
 
@@ -20,13 +20,15 @@ public class CuttingBoardManager : GenericAppliance
         base.Construct(itemFactory, soundManager);
 
         //derived class variable init
-        _progressBar = FindObjectOfType<ProgressBar>(true);
-        _progressBar.Construct(numCutsMultiplier);
-        print("Progress bar: " + _progressBar);
+        //_progressBar = FindObjectOfType<ProgressBar>(true);
 
         cuttingStarted = false;
         numCuts = 0;
     }
+
+     public override void FixedUpdate(){
+         return;
+     }
 
     public void chopping(){
         tryChop();
@@ -37,7 +39,6 @@ public class CuttingBoardManager : GenericAppliance
                 if(slot.currentItem != null) slot.EmptySlot();
             }
             Finished();
-            _progressBar.reset();
             cuttingStarted = false;
             numCuts = 0;
         }else{
@@ -46,8 +47,6 @@ public class CuttingBoardManager : GenericAppliance
             _progressBar.incrementFill();
             ++numCuts;
         }
-        
-        
     }
 
     private void tryChop(){

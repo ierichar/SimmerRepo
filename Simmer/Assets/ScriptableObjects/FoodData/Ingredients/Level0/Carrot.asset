@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 100bfe8cc201b417887646b2755fd998, type: 3}
   m_Name: Carrot
   m_EditorClassIdentifier: 
-  sprite: {fileID: 7284341000751922582, guid: d9cf1e27ca92e4ad7b73389798a3529d, type: 3}
+  sprite: {fileID: 21300000, guid: 2c8b2352908363143807487908b76371, type: 3}
   baseValue: 1
   isFinalProduct: 0
   _recipeEdgeList:
   - {fileID: 11400000, guid: c0fc9af7a49faa24f88e748e3be5a29d, type: 2}
-  combineMode: 0
+  variantMode: 0
+  minVariants: 0
+  maxVariants: 0
   ingredientLayerList: []
-  maxPerRecipe: 0

@@ -16,8 +16,9 @@ public abstract class GenericAppliance : MonoBehaviour
     [SerializeField] protected ApplianceData _applianceData;
 
     [SerializeField]  protected ApplianceUIManager _UIManager;
+    protected ProgressBar _progressBar;
 
-    protected InteractableBehaviour interactable;
+    protected InteractableBehaviour _interactable;
 
     protected static bool UI_OPEN = false;
     public ApplianceData applianceData
@@ -57,9 +58,11 @@ public abstract class GenericAppliance : MonoBehaviour
     public virtual void Construct(ItemFactory itemFactory, UISoundManager soundManager){
         _soundManager = soundManager;
 
-        interactable = GetComponent<InteractableBehaviour>();
-        SpriteRenderer highlightTarget = GetComponentInChildren<SpriteRenderer>();
-        interactable.Construct(ToggleInventory, highlightTarget);
+        _interactable = GetComponent<InteractableBehaviour>();
+        SpriteRendererManager highlightTarget
+            = GetComponentInChildren<SpriteRendererManager>();
+        highlightTarget.Construct();
+        _interactable.Construct(ToggleInventory, highlightTarget, true);
 
         OnValidate.AddListener(OnValidateCallback);
 
@@ -68,6 +71,10 @@ public abstract class GenericAppliance : MonoBehaviour
 
         _UIManager.Construct(itemFactory);
         _UIGameObject = _UIManager.gameObject;
+
+        _progressBar = _UIManager.GetComponentInChildren<ProgressBar>();
+        _progressBar.Construct(10);
+
         if(_blackout==null)
             _blackout = GameObject.Find("Blackout");
 
@@ -79,6 +86,23 @@ public abstract class GenericAppliance : MonoBehaviour
         _timeRunning = 0.0f;
 
         _applianceSlotManager = _UIManager.slots.slots;
+
+        if(GlobalPlayerData.AppInvSaveStruct.ContainsKey(applianceData)){
+            List<FoodItem> temp = GlobalPlayerData.AppInvSaveStruct[applianceData];
+
+            for(int k=0; k < temp.Count; ++k){
+                SpawningSlotManager slot = _applianceSlotManager[k];
+                slot.SpawnFoodItem(temp[k]);
+            }
+        }
+        
+    }
+
+    public virtual void FixedUpdate(){
+        if(_pendingTargetRecipe==null) return;
+
+        _progressBar.setMaxAmount(_pendingTargetRecipe.baseActionTime*50);
+        _progressBar.incrementFill();
     }
     public virtual void ToggleInventory(){
         if(!invOpen && !UI_OPEN){
@@ -98,10 +122,9 @@ public abstract class GenericAppliance : MonoBehaviour
         FoodItem resultItem = new FoodItem(_pendingTargetRecipe.resultIngredient
             , null);
         _applianceSlotManager[0].SpawnFoodItem(resultItem);
-        _finished = true;
-        //_running may need to stay true for burning of item
-        _running = false;
+        _pendingTargetRecipe = null;
         _timer.HideClock();
+        _progressBar.reset();
     }
 
     protected virtual void UpdateCurrentIngredientList(){
@@ -130,20 +153,6 @@ public abstract class GenericAppliance : MonoBehaviour
         List<RecipeData> firstList = currentIngredientList[0]
             .applianceRecipeListDict[this._applianceData];
 
-/*
-        firstList.Sort(delegate(RecipeData x, RecipeData y){
-            int xCount = x.ingredientDataList.Count;
-            int yCount = y.ingredientDataList.Count;
-            if(xCount == yCount){
-                return 0;
-            }
-            if(xCount>yCount){
-                return -1;
-            }else{
-                return 1;
-            }
-        });
-*/
         foreach(RecipeData recipe in firstList){
             int recipeCount = recipe.ingredientDataList.Count;
             bool[] RecipeCheckArray = new bool[recipe.ingredientDataList.Count];
@@ -156,15 +165,11 @@ public abstract class GenericAppliance : MonoBehaviour
             for(int k=0; k<recipeCount; ++k){
                 IngredientData item = currentIngredientList[k];
                 RecipeCheckArray[k] = recipe.ingredientDataList.Contains(item);
-                //print(RecipeCheckArray[k]);
             }
-            //print(RecipeCheckArray.ToString() + " ______________");
 
             bool allTrue = Array.TrueForAll(RecipeCheckArray, (bool x)=>{
                 return x;
             });
-
-            //print("AllTrue is: " + allTrue);
 
             if(allTrue){
                 OnValidate.Invoke(recipe);
@@ -199,4 +204,21 @@ public abstract class GenericAppliance : MonoBehaviour
         _timer.ShowClock();
         StartCoroutine(_timer.SetTimer(duration, Finished));
     }
+
+    public virtual List<FoodItem> GetInventoryItems(){
+        List<FoodItem> result = new List<FoodItem>();
+        
+        foreach(SpawningSlotManager inv in _applianceSlotManager){
+            if(inv != null && inv.currentItem !=null)
+                result.Add(inv.currentItem.foodItem);
+        }
+        return result;
+    }
+
+    public void SaveInventory(){
+        if(GlobalPlayerData.AppInvSaveStruct.ContainsKey(applianceData))
+            GlobalPlayerData.AppInvSaveStruct.Remove(applianceData);
+        GlobalPlayerData.AppInvSaveStruct.Add(applianceData, GetInventoryItems());
+    }
+    
 }

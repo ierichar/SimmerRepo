@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using Ink.Runtime;
 
+using DG.Tweening;
 
 namespace Simmer.VN
 {
@@ -74,8 +75,16 @@ namespace Simmer.VN
 		public Button CreateChoiceView(string text)
 		{
 			// Creates the button from a prefab
-			Button choice = Instantiate(buttonPrefab) as Button;
+			Button choice = Instantiate(buttonPrefab);
 			choice.transform.SetParent(manager.ButtonCanvas.transform, false);
+
+			CanvasGroup buttonCanvasGroup =
+				choice.gameObject.GetComponent<CanvasGroup>();
+			buttonCanvasGroup.interactable = false;
+
+			choice.transform.localScale = Vector3.zero;
+			choice.transform.DOScale(1, 0.5f).SetEase(Ease.OutSine)
+				.OnComplete(() => { buttonCanvasGroup.interactable = true; });
 
 			// Gets the text from the button prefab
 			Text choiceText = choice.GetComponentInChildren<Text>();
@@ -91,7 +100,7 @@ namespace Simmer.VN
 			choice.onClick.AddListener(delegate
 			{
 				//audioManager.PlayAudio(audioManager.buttonClick);
-
+				manager.OnEndStory.Invoke();
 				if (manager.transitionSceneOnEnd)
 				{
 					Debug.LogError(this + " Error:" +
@@ -101,7 +110,6 @@ namespace Simmer.VN
 				{
 					manager.ForceExitVN();
 				}
-				manager.OnEndStory.Invoke();
 			});
 		}
 

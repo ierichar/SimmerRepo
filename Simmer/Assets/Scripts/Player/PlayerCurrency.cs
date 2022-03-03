@@ -3,17 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+using Simmer.SceneManagement;
+using Simmer.UI;
+
 namespace Simmer.Player
 {
     public class PlayerCurrency : MonoBehaviour
     {
-        public TextMeshProUGUI moneyText;
+        private MoneyUI _moneyUI;
         private int currencyAmt = 0;
+
+        public void Construct(MoneyUI moneyUI)
+        {
+            _moneyUI = moneyUI;
+            currencyAmt = GlobalPlayerData.playerMoney;
+            UpdateDisplay();
+        }
 
         public void addMoney(int amt) 
         {
             currencyAmt += amt;
-            moneyText.text = "Money: " + currencyAmt;
+            UpdateDisplay();
+            GlobalPlayerData.SetMoney(currencyAmt);
+        }
+
+        private void UpdateDisplay()
+        {
+            _moneyUI.textManager.SetText("Money: " + currencyAmt);
         }
 
         public int getAmt() 
