@@ -1637,10 +1637,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9b5a728fd464401486d9da58f2f83bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onSelectItem:
-    m_PersistentCalls:
-      m_Calls: []
-  onInteractUI:
+  OnSelectItem:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &1334378520
@@ -2451,8 +2448,8 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 21300000, guid: f0158fad2486742dca4ecf414c231c1f, type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: 308c3905382de4f028f4085382240b20, type: 3}
-    m_SelectedSprite: {fileID: 21300000, guid: 308c3905382de4f028f4085382240b20, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: 81e0823b4c992441a8a573e5594c24da, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: 81e0823b4c992441a8a573e5594c24da, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
