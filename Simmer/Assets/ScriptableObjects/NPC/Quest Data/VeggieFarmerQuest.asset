@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: VeggieFarmerQuest
   m_EditorClassIdentifier: 
   questItem: {fileID: 11400000, guid: 7fe9c2db8c0af44ea9b48448929217dd, type: 2}
-  initialKnowledge: []
+  initialKnowledge:
+  - {fileID: 11400000, guid: 7fe9c2db8c0af44ea9b48448929217dd, type: 2}
   questReward: {fileID: 11400000, guid: 73d7df3f7d80b6b4d9fda4724d3e9ea6, type: 2}
