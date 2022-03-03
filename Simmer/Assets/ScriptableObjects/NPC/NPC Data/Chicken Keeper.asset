@@ -19,5 +19,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3a75ceb5df29f42f283f1700f0d3d73f, type: 2}
   - {fileID: 11400000, guid: 10062244df47e49868d8fa686cad5b65, type: 2}
   - {fileID: 11400000, guid: eeabe57d10fbe464296cf625b3fcf090, type: 2}
+  - {fileID: 11400000, guid: 659c2de493a0f48beaf2a77495faa19b, type: 2}
   questDataList:
   - {fileID: 11400000, guid: ca7d6196459f04c45909b861d40240a3, type: 2}
