@@ -100,10 +100,9 @@ public static class GlobalPlayerData
         if (!knownIngredientList.Contains(ingredient))
         {
             knownIngredientList.Add(ingredient);
-            OnNewKnowledgeAdded.Invoke(ingredient);
+            //OnNewKnowledgeAdded.Invoke(ingredient);
             return true;
         }
-
         return false;
     }
 
