@@ -16,13 +16,13 @@ public class QuestFactory : MonoBehaviour
 
     public void Construct()
     {
-        GlobalPlayerData.ActiveQuestsUpdated.AddListener(UpdateJournal);
+        GlobalPlayerData.OnActiveQuestsUpdated.AddListener(UpdateJournal);
         UpdateJournal();
     }
 
     private void OnDestroy()
     {
-        GlobalPlayerData.ActiveQuestsUpdated.RemoveListener(UpdateJournal);
+        GlobalPlayerData.OnActiveQuestsUpdated.RemoveListener(UpdateJournal);
     }
 
     public void UpdateJournal()

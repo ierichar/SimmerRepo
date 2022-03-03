@@ -6,7 +6,7 @@ using UnityEngine.Events;
 using Simmer.Player;
 using Simmer.Items;
 using Simmer.FoodData;
-using Simmer.SceneManagement;
+using Simmer.UI.ImageQueue;
 
 namespace Simmer.Inventory
 {
@@ -19,6 +19,7 @@ namespace Simmer.Inventory
     {
         private InventoryUIManager _inventoryUIManager;
         private PlayerHeldItem _playerHeldItem;
+
         [SerializeField] private AllFoodData _allFoodData;
 
         //[Tooltip("Player will have these ingredients in their hotbar on start")]
@@ -188,6 +189,11 @@ namespace Simmer.Inventory
             InventorySlotManager inventorySlot = _inventoryUIManager
                 .inventorySlotsManager.GetInventorySlot(index);
             inventorySlot.SpawnFoodItem(item);
+
+            bool isNew = GlobalPlayerData.AddIngredientKnowledge
+                (item.ingredientData);
+
+            inventorySlot.queueTrigger.SpawnQueueItem(item.ingredientData);
         }
 
         public void AddFoodItem(FoodItem item)

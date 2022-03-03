@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 8042035493373524641}
   - component: {fileID: 8042035493373524642}
   - component: {fileID: 8042035493373524643}
+  - component: {fileID: 6967030423157783577}
   - component: {fileID: 8042035493373524652}
   - component: {fileID: 8042035493373524653}
   - component: {fileID: 8042035493373524654}
@@ -222,6 +223,18 @@ MonoBehaviour:
   baseCake: {fileID: 11400000, guid: cb52c8d08c91d4c9ab15a324bbe2b7a0, type: 2}
   variantTopping1: {fileID: 11400000, guid: 7e07ba1a8f3d747eca4d4e4684d50e6e, type: 2}
   variantTopping2: {fileID: 11400000, guid: 57e649900f9914ede86ccf0979a675bc, type: 2}
+--- !u!114 &6967030423157783577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8042035493373524655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fcac8dea1efc4579ae23fd85e16a8f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8042035493373524652
 MonoBehaviour:
   m_ObjectHideFlags: 0
