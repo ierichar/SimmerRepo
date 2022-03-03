@@ -70,8 +70,8 @@ namespace Simmer.Items
 
             if (foodItem == null || foodItem.sprite == null)
             {
-                Debug.LogError(this + "Error: Cannot have null foodItem" +
-                    " or foodItem.sprite on Construct");
+                //Debug.LogError(this + "Error: Cannot have null foodItem" +
+                //    " or foodItem.sprite on Construct");
             }
             else
             {

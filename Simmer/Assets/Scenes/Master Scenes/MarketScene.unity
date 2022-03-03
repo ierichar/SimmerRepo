@@ -595,6 +595,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2714008842235280036, guid: c28b88fb2c8fc41528eddda7d39cc2ac, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2714008842235280036, guid: c28b88fb2c8fc41528eddda7d39cc2ac, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2714008842235280036, guid: c28b88fb2c8fc41528eddda7d39cc2ac, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2714008842235280036, guid: c28b88fb2c8fc41528eddda7d39cc2ac, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6619274070827975067, guid: c28b88fb2c8fc41528eddda7d39cc2ac, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -625,11 +641,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7788690952332685027, guid: c28b88fb2c8fc41528eddda7d39cc2ac, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 7788690952332685027, guid: c28b88fb2c8fc41528eddda7d39cc2ac, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 7788690952332685027, guid: c28b88fb2c8fc41528eddda7d39cc2ac, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1074,7 +1090,7 @@ GameObject:
   - component: {fileID: 1607698615}
   - component: {fileID: 1607698614}
   m_Layer: 6
-  m_Name: Bob
+  m_Name: Butcher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1396,7 +1412,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1995352548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1636,10 +1652,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MarketCore
       objectReference: {fileID: 0}
-    - target: {fileID: 738760591959274364, guid: 33063ccb1673948b89e3030ae8a279a7, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 738760591959274365, guid: 33063ccb1673948b89e3030ae8a279a7, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1688,9 +1700,5 @@ PrefabInstance:
       propertyPath: pauseMenu
       value: 
       objectReference: {fileID: 142156001}
-    - target: {fileID: 8721177019945546569, guid: 33063ccb1673948b89e3030ae8a279a7, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: d97f62f34799a48a8bfcf848e5a01cb8, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33063ccb1673948b89e3030ae8a279a7, type: 3}

@@ -1,21 +1,22 @@
 INCLUDE InteractBase_Ink.ink
 
-VAR CHARACTER_NAME = "James"
+VAR CHARACTER_NAME = "Chicken Keeper"
 
 === GreetingsGeneric ===
 {CHARACTER_NAME}: Hello there.
 ->->
 
-=== InteractOptions ===
-{CHARACTER_NAME}: What can I do for you?
-->->
-
 === QuestOngoing ===
 {CHARACTER_NAME}: I wish I could have some {QUEST_ITEM}. 
+{CHARACTER_NAME}: Here's what I know about the recipe.
 ->->
 
 === QuestCompleted ===
 {CHARACTER_NAME}: I really like this {QUEST_ITEM}!
+->->
+
+=== InteractOptions ===
+{CHARACTER_NAME}: What can I do for you?
 ->->
 
 === PositiveGift ===

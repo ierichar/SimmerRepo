@@ -1,5 +1,5 @@
 VAR IS_RETURNING = 0
-// VAR IS_CORRECT_GIFT = 0
+VAR IS_CORRECT_GIFT = 0
 VAR IS_QUEST_COMPLETE = 0
 VAR QUEST_ITEM = "QuestItem"
 VAR QUEST_REWARD = "QuestReward"
@@ -42,14 +42,14 @@ VAR QUEST_REWARD = "QuestReward"
 -> OpenInterface("ChooseShop", -> EndGeneric, -> Continue)
 
 === ChooseGift ===
--> OpenInterface("ChooseGift", -> EndGeneric, -> PositiveGift)
+-> OpenInterface("ChooseGift", -> EndGeneric, -> CheckGift)
 
 === OpenInterface(ChooseEvent, -> EndKnot, -> AdditionalKnot)  ===
 >>> TextboxExit();
 >>> InvokeUnityEvent({ChooseEvent});
 >>> WaitUntilEvent(CloseComplete);
 >>> UpdateInkVar(IS_RETURNING, isReturning);
-// >>> UpdateInkVar(IS_CORRECT_GIFT, isCorrectGift);
+>>> UpdateInkVar(IS_CORRECT_GIFT, isCorrectGift);
 >>> TextboxEnter(Default);
 -> AdditionalKnot ->
 -> Returning(EndKnot)
@@ -63,16 +63,13 @@ VAR QUEST_REWARD = "QuestReward"
 }
 
 // Not checking gift anymore since there is only dialogue response for positive
-// === CheckGift ===
-// >>> UpdateInkVar(IS_CORRECT_GIFT, isCorrectGift);
-// { IS_CORRECT_GIFT:
-// - 0:
-//     {CHARACTER_NAME}: This isn't what I wanted.
-// - 1:
-//     {CHARACTER_NAME}: I really wanted this! Thanks!
-//     {CHARACTER_NAME}: Please take this baked chicken recipe as a reward.
-// }
-// ->EndFunction
+=== CheckGift ===
+>>> UpdateInkVar(IS_CORRECT_GIFT, isCorrectGift);
+{ IS_CORRECT_GIFT:
+- 1:
+    -> PositiveGift
+}
+->->
 
 === Continue ===
 ->->
