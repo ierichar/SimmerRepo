@@ -5,6 +5,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 using Simmer.UI;
+using Simmer.Inventory;
 
 namespace Simmer.Items
 {
@@ -15,11 +16,12 @@ namespace Simmer.Items
 
         public int index { get; protected set; }
         public ItemBehaviour currentItem { get; protected set; }
-        //For potential locking of item slots during recipe cooking, action duration time
-        //create lockSlot bool
+        private LockSprite lockImage;
+        // For potential locking of item slots during recipe cooking, action duration time
+        // create lockSlot bool
         // initiallize in construct
         // write public function lock(bool lockActive) to change internal bool lockSlot
-        //Go to GenericAppliance and call new function when start button is pressed
+        // Go to GenericAppliance and call new function when start button is pressed
 
         public UnityEvent<ItemBehaviour> onItemDrop
             = new UnityEvent<ItemBehaviour>();
@@ -28,9 +30,12 @@ namespace Simmer.Items
         {
             rectTransform = GetComponent<RectTransform>();
             this.index = index;
+            lockImage = GetComponentInChildren<LockSprite>();
 
             itemBackgroundManager = GetComponentInChildren<ImageManager>(true);
             itemBackgroundManager.Construct();
+
+            locking(false);
         }
 
         public virtual void SetItem(ItemBehaviour item)
@@ -87,6 +92,10 @@ namespace Simmer.Items
 
             tempItem.SetCurrentSlot(thisItem.currentSlot);
             thisItem.SetCurrentSlot(this);
+        }
+
+        public void locking(bool setActive){
+            lockImage.gameObject.SetActive(setActive);
         }
     }
 }
