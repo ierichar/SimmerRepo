@@ -69,5 +69,10 @@ namespace Simmer.UI.ImageQueue
 
             Destroy(gameObject);
         }
+
+        private void OnDisable()
+        {
+            Destroy(gameObject);
+        }
     }
 }
