@@ -51,9 +51,7 @@ namespace Simmer.UI.RecipeBook.FoodInfo
         private void UpdateInfoText()
         {
             string newInfoText =
-                "• Base value: " + ingredientData.baseValue + "\n" +
-                "• Utility count: " + ingredientData
-                    .applianceRecipeListDict.Count + "\n";
+                "• Sell price: " + ingredientData.baseValue + "\n";
 
             _infoText.SetText(newInfoText);
         }

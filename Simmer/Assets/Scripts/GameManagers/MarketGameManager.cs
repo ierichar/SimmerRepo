@@ -27,8 +27,8 @@ public class MarketGameManager : MonoBehaviour
     {
         GlobalPlayerData.Construct(_startSaveData);
 
-        _playerManager = FindObjectOfType<PlayerManager>();
         _marketCanvasManager = FindObjectOfType<MarketCanvasManager>();
+        _playerManager = FindObjectOfType<PlayerManager>();
         _NPC_Manager = FindObjectOfType<NPC_Manager>();
         _VN_Manager = FindObjectOfType<VN_Manager>();
         _gameEventManager = GetComponent<GameEventManager>();

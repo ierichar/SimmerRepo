@@ -125,6 +125,13 @@ public abstract class GenericAppliance : MonoBehaviour
         Debug.Log("finished waiting for action time");
         FoodItem resultItem = new FoodItem(_pendingTargetRecipe.resultIngredient
             , null);
+
+        foreach(ItemSlotManager slot in _applianceSlotManager){
+            if(slot.currentItem != null) slot.EmptySlot();
+        }
+        for(int i=0; i<_applianceSlotManager.Count; i++){
+            _applianceSlotManager[i].locking(false);
+        }
         _applianceSlotManager[0].SpawnFoodItem(resultItem);
         _pendingTargetRecipe = null;
         _timer.HideClock();
@@ -189,6 +196,11 @@ public abstract class GenericAppliance : MonoBehaviour
     private void OnValidateCallback(RecipeData recipe){
         print("INVOKED RECIPE: " + recipe);
         _pendingTargetRecipe = recipe;
+        if(_pendingTargetRecipe != null){
+            for(int i=0; i<_applianceSlotManager.Count; i++){
+                _applianceSlotManager[i].locking(true);
+            }
+        }
     }
 
     public virtual void ToggleOn()
@@ -199,9 +211,9 @@ public abstract class GenericAppliance : MonoBehaviour
         
         //if we get here the ingredients are valid for the recipe
         Debug.Log("THE RECIPE WAS VALID AND WE ARE CLEARING THE MIXER_SLOTS_LIST");
-        foreach(ItemSlotManager slot in _applianceSlotManager){
-            if(slot.currentItem != null) slot.EmptySlot();
-        }
+        //foreach(ItemSlotManager slot in _applianceSlotManager){
+        //    if(slot.currentItem != null) slot.EmptySlot();
+        //}
 
         float duration = _pendingTargetRecipe.baseActionTime;
 

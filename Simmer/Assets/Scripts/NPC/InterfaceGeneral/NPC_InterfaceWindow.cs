@@ -29,7 +29,7 @@ namespace Simmer.NPC
             _npcManager = npcManager;
 
             _interfaceExit = GetComponentInChildren
-                <NPC_InterfaceExit>();
+                <NPC_InterfaceExit>(true);
             _interfaceExit.Construct(this);
 
             _interfaceReturn = gameObject.FindChildObject

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using Simmer.Items;
+using Simmer.UI.ImageQueue;
 
 namespace Simmer.Inventory
 {
@@ -14,7 +15,8 @@ namespace Simmer.Inventory
         public int maxInventorySize { get; private set; }
 
         public void Construct(ItemFactory itemFactory
-            , InventoryEventManager inventoryEventManager)
+            , InventoryEventManager inventoryEventManager
+            , ImageQueueManager recipeBookQueueManager)
         {
             // Will get them in order of Scene Hierarchy from top to bottom
             InventorySlotManager[] inventorySlotManagerArray
@@ -27,7 +29,11 @@ namespace Simmer.Inventory
                 InventorySlotManager thisSlot = inventorySlotManagerArray[i];
 
                 _inventorySlotManagerList.Add(thisSlot);
-                thisSlot.Construct(inventoryEventManager.OnInventoryChange, itemFactory, i);
+                thisSlot.Construct(
+                    inventoryEventManager.OnInventoryChange
+                    , itemFactory
+                    , i
+                    , recipeBookQueueManager);
             }
         }
 

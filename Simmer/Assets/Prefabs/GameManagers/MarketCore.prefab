@@ -312,7 +312,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9b5a728fd464401486d9da58f2f83bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnSelectItem:
+  onSelectItem:
+    m_PersistentCalls:
+      m_Calls: []
+  onInteractUI:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &738760592557760551
@@ -719,7 +722,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: b86bb01cf59665f4d87ddf228a322566, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 1532c7e67c2d60c4c8780da14b7e8fcf, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d97f62f34799a48a8bfcf848e5a01cb8, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.1
   m_Pitch: 1
