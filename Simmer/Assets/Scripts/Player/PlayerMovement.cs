@@ -212,11 +212,11 @@ namespace Simmer.Player
 
         private void makeStep()
         {
-            footstep.Play();
+            //footstep.Play();
         }
         private void stopWalking()
         {
-            footstep.Stop();
+            //footstep.Stop();
         }
 
     }

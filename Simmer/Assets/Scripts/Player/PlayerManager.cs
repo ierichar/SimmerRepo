@@ -4,6 +4,7 @@ using UnityEngine;
 
 using Simmer.UI;
 using Simmer.Inventory;
+using Simmer.UI.ImageQueue;
 
 namespace Simmer.Player
 {
@@ -15,6 +16,7 @@ namespace Simmer.Player
     {
         public GameEventManager gameEventManager { get; private set; }
         public InventoryUIManager inventoryUIManager { get; private set; }
+        public ImageQueueManager recipeBookQueueManager { get; private set; }
 
         public PlayerEventManager playerEventManager { get; private set; }
         public PlayerMovement playerMovement { get; private set; }
@@ -38,6 +40,7 @@ namespace Simmer.Player
         {
             this.gameEventManager = gameEventManager;
             inventoryUIManager = playCanvasManager.inventoryUIManager;
+            recipeBookQueueManager = playCanvasManager.recipeBookQueueManager;
 
             playerEventManager = GetComponent<PlayerEventManager>();
             playerMovement = GetComponent<PlayerMovement>();
