@@ -59,7 +59,7 @@ namespace Simmer.Player
 
         private void HighlightInteractable(RaycastHit2D hit)
         {
-            if (!_isSelectEnabled)
+            if (!_isSelectEnabled && _currentSelected != null)
             {
                 _currentSelected.StopHighlight();
                 return;

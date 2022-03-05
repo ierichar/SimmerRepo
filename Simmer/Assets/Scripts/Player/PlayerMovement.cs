@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Simmer.Items;
 using Simmer.Inventory;
 
@@ -14,6 +15,7 @@ namespace Simmer.Player
     {
         private PlayerManager _playerManager;
         private Rigidbody2D _rigidbody2D;
+        private AudioSource footstep;
 
         [SerializeField] private Animator _animator;
         [SerializeField] private SpriteRenderer _renderer;
@@ -46,13 +48,14 @@ namespace Simmer.Player
         {
             _playerManager = playerManager;
             _rigidbody2D = GetComponent<Rigidbody2D>();
+            footstep = GetComponent<AudioSource>();
             SetMovementEnabled(true);
             _cases = 0;
 
             playerManager.gameEventManager
                 .onInteractUI.AddListener(OnInteractUICallback);
         }
-
+        
         private void Update()
         {
             if (!_movementEnabled)
@@ -63,6 +66,7 @@ namespace Simmer.Player
 
             GetMoveInput();
             CheckAnimation();
+
         }
 
         private void FixedUpdate()
@@ -85,7 +89,7 @@ namespace Simmer.Player
 
             _currentVelocity = Vector2.ClampMagnitude(_currentVelocity, maxSpeed);
             _rigidbody2D.velocity = _currentVelocity;
-            
+
         }
 
         private void OnInteractUICallback(bool isInteract)
@@ -147,6 +151,7 @@ namespace Simmer.Player
                     _animator.SetBool("A", false);
                     _animator.SetBool("S", false);
                     _animator.SetBool("D", false);
+                    makeStep();
                     break;
                 case 1:
                     _renderer.flipX = true;
@@ -154,6 +159,7 @@ namespace Simmer.Player
                     _animator.SetBool("A", true);
                     _animator.SetBool("S", false);
                     _animator.SetBool("D", false);
+                    makeStep();
                     break;
                 case 2:
                     //_renderer.flipX = false;
@@ -161,6 +167,7 @@ namespace Simmer.Player
                     _animator.SetBool("A", false);
                     _animator.SetBool("S", true);
                     _animator.SetBool("D", false);
+                    makeStep();
                     break;
                 case 3:
                     _renderer.flipX = false;
@@ -168,29 +175,49 @@ namespace Simmer.Player
                     _animator.SetBool("A", false);
                     _animator.SetBool("S", false);
                     _animator.SetBool("D", true);
+                    makeStep();
                     break;
                 case 4:
                     _animator.SetBool("W", false);
                     _animator.SetBool("A", false);
                     _animator.SetBool("S", false);
                     _animator.SetBool("D", false);
+                    stopWalking();
                     break;
             }
         }
         private void CheckAnimation(){
             const float lowestSpeed = 0.1f;
-            if(_inputVector.magnitude <= lowestSpeed){
+            if(_inputVector.magnitude <= lowestSpeed)
+            {
                 UpdateAnimator(4);
             }
-            if(_inputVector.x > lowestSpeed){
+            if (_inputVector.x > lowestSpeed)
+            {
                 UpdateAnimator(3);
-            }else if(_inputVector.x <= -lowestSpeed){
+            }
+            else if (_inputVector.x <= -lowestSpeed)
+            {
                 UpdateAnimator(1);
-            }else if(_inputVector.y <= -lowestSpeed){
+            }
+            else if (_inputVector.y <= -lowestSpeed)
+            {
                 UpdateAnimator(2);
-            }else if(_inputVector.y > lowestSpeed){
+            }
+            else if (_inputVector.y > lowestSpeed)
+            {
                 UpdateAnimator(0);
             }
         }
+
+        private void makeStep()
+        {
+            //footstep.Play();
+        }
+        private void stopWalking()
+        {
+            //footstep.Stop();
+        }
+
     }
 }

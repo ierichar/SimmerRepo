@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using Simmer.Items;
+using Simmer.UI;
 
 namespace Simmer.Inventory
 {
@@ -12,13 +13,16 @@ namespace Simmer.Inventory
 
         public InventoryEventManager inventoryEventManager { get; private set; }
 
-        public void Construct(ItemFactory itemFactory)
+        public void Construct(PlayCanvasManager playCanvasManager)
         {
             inventoryEventManager = GetComponent<InventoryEventManager>();
             inventoryEventManager.Construct();
 
             inventorySlotsManager = GetComponentInChildren<InventorySlotGroupManager>();
-            inventorySlotsManager.Construct(itemFactory, inventoryEventManager);
+            inventorySlotsManager.Construct(
+                playCanvasManager.itemFactory
+                , inventoryEventManager
+                , playCanvasManager.recipeBookQueueManager);
         }
 
     }

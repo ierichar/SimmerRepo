@@ -2,6 +2,8 @@
 using UnityEngine.UI;
 using Ink.Runtime;
 
+using TMPro;
+
 using DG.Tweening;
 
 namespace Simmer.VN
@@ -11,10 +13,10 @@ namespace Simmer.VN
 		// UI Prefabs
 		[SerializeField]
 		[Tooltip("Used for VN name text")]
-		private Text nameTextPrefab = null;
+		private TextMeshProUGUI nameTextPrefab = null;
 		[SerializeField]
 		[Tooltip("Used for VN content text")]
-		private Text contentTextPrefab = null;
+		private TextMeshProUGUI contentTextPrefab = null;
 		[SerializeField]
 		[Tooltip("Used for VN choice buttons")]
 		private Button buttonPrefab = null;
@@ -34,9 +36,9 @@ namespace Simmer.VN
 		 * @param text: the content of the story
 		 * @return: the Text object of the content
 		 */
-		public Text CreateContentView(string text)
+		public TextMeshProUGUI CreateContentView(string text)
 		{
-			Text contentText = Instantiate(contentTextPrefab);
+			TextMeshProUGUI contentText = Instantiate(contentTextPrefab);
 			contentText.text = text;
 			contentText.transform.SetParent(manager.TextCanvas.transform, false);
 			return contentText;
@@ -48,15 +50,15 @@ namespace Simmer.VN
 		 * @param name: the name of the character
 		 * @return: the Text object of the the character's name
 		 */
-		public Text CreateNameTextView(string name)
+		public TextMeshProUGUI CreateNameTextView(string name)
 		{
-			Text nameText = Instantiate(nameTextPrefab);
+			TextMeshProUGUI nameText = Instantiate(nameTextPrefab);
 			nameText.transform.SetParent(manager.NameCanvas.transform, false);
 			// Update NameText
 			if (name == "Narrator")
 			{
 				nameText.text = "";
-				manager.contentTextObj.fontStyle = FontStyle.Italic;
+				manager.contentTextObj.fontStyle = FontStyles.Italic;
 			}
 			else
 			{

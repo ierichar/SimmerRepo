@@ -12,7 +12,7 @@
 // Tutorial: Before buying an ingredient, make sure you check your pantry first!
 // -Tutorial: Now you're ready to start cookin'!
 
-Tutorial: Hi, welcome to Simmer! Are you ready to bake a cake?
+Tutorial: Hi, welcome to Simmer! Are you ready to cook?
 
 * [Yes!]
 
@@ -22,5 +22,5 @@ Tutorial: LEFT-CLICK to select, drag, and drop food items.
 Tutorial: You may access your recipe book in the top right of the screen by left clicking on it. 
 Tutorial: Here, you'll find all your discovered ingredients. For each item, the Recipe Map shows you how to make it and the Utility Map shows you how to use it.
 Tutorial: To buy and sell ingredients, you can visit the farmer's market by interacting with the kitchen door. 
-Tutorial: Before buying an ingredient, make sure you check your pantry!
+Tutorial: Before buying an ingredient, make sure you check your fridge!
 Tutorial: Now you're ready to start cookin'!

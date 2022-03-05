@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 100bfe8cc201b417887646b2755fd998, type: 3}
   m_Name: Yeast
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 96718cd63cee5854a9ce99f8239bd644, type: 3}
+  sprite: {fileID: 21300000, guid: 61b1723f0b7a8c74781bf2d68cbe0bb5, type: 3}
   baseValue: 1
   isFinalProduct: 0
   _recipeEdgeList:

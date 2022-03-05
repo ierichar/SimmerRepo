@@ -14,6 +14,9 @@ namespace Simmer.VN
         [Header("Ink/Unity shared variables")]
         public int isReturning = 0;
         public int isCorrectGift = 0;
+        public int isQuestComplete = 0;
+        public string questItem = "null";
+        public string questReward = "null";
 
         private List<VN_EventData> _eventDataList
             = new List<VN_EventData>();

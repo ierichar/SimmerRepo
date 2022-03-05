@@ -10,7 +10,7 @@ public class SoundManager : MonoBehaviour
     {
       if(!PlayerPrefs.HasKey("musicVolume"))
       {
-        PlayerPrefs.SetFloat("musicVolume", 0.2f);
+        PlayerPrefs.SetFloat("musicVolume", 0.5f);
         Load();
       }
     }

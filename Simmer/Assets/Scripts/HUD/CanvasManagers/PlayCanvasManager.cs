@@ -8,6 +8,7 @@ using Simmer.Items;
 using Simmer.UI.Tooltips;
 using Simmer.UI.RecipeMap;
 using Simmer.UI.RecipeBook;
+using Simmer.UI.ImageQueue;
 
 namespace Simmer.UI
 {
@@ -20,6 +21,9 @@ namespace Simmer.UI
         public RecipeMapWindow recipeMapWindow { get; private set; }
         public RecipeBookManager recipeBookManager { get; private set; }
         public MoneyUI moneyUI { get; private set; }
+        public QuestFactory questFactory { get; private set; }
+
+        public ImageQueueManager recipeBookQueueManager { get; private set; }
 
         public UnityEvent<int> OnSelectItem { get; private set; }
 
@@ -38,17 +42,21 @@ namespace Simmer.UI
             inventoryUIManager = GetComponentInChildren<InventoryUIManager>(true);
             recipeMapWindow = GetComponentInChildren<RecipeMapWindow>(true);
             recipeBookManager = GetComponentInChildren<RecipeBookManager>(true);
-            screenBlockManager = GetComponentInChildren<ScreenBlockManager>();
+            screenBlockManager = GetComponentInChildren<ScreenBlockManager>(true);
             moneyUI = GetComponentInChildren<MoneyUI>(true);
+            questFactory = GetComponentInChildren<QuestFactory>(true);
+            recipeBookQueueManager = gameObject.FindChildObject<ImageQueueManager>();
 
             this.soundManager = soundManager;
 
             itemFactory.Construct(this);
-            inventoryUIManager.Construct(itemFactory);
+            inventoryUIManager.Construct(this);
             recipeMapWindow.Construct();
             recipeBookManager.Construct(gameEventManager);
             screenBlockManager.Construct();
             moneyUI.Construct();
+            questFactory.Construct();
+            recipeBookQueueManager.Construct();
         }
     }
 }
