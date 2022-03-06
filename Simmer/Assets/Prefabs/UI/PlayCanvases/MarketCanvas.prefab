@@ -2122,6 +2122,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 948184398447186783}
     m_Modifications:
+    - target: {fileID: 1666146840065520695, guid: e4505eb2fefef444a8345a89a3e54d0f, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5481004350248974570, guid: e4505eb2fefef444a8345a89a3e54d0f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2210,7 +2214,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauseMenu
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1666146840065520694, guid: e4505eb2fefef444a8345a89a3e54d0f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e4505eb2fefef444a8345a89a3e54d0f, type: 3}
 --- !u!224 &8015327652126249231 stripped
 RectTransform:
@@ -3541,6 +3546,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e6883b306ba54e7299aa8143d1cfbb8, type: 3}
+--- !u!224 &3440737586638105650 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6855984404628463681, guid: 9e6883b306ba54e7299aa8143d1cfbb8, type: 3}
+  m_PrefabInstance: {fileID: 8113988887377431667}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6141793037719551669 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2713038194523566790, guid: 9e6883b306ba54e7299aa8143d1cfbb8, type: 3}
@@ -3552,8 +3562,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d7d23efd156342728a04bf295851c5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &3440737586638105650 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 6855984404628463681, guid: 9e6883b306ba54e7299aa8143d1cfbb8, type: 3}
-  m_PrefabInstance: {fileID: 8113988887377431667}
-  m_PrefabAsset: {fileID: 0}
