@@ -16,7 +16,7 @@ public class CuttingBoardManager : GenericAppliance
     [SerializeField] private int numCutsMultiplier;
 
     public override void Construct(ItemFactory itemFactory, UISoundManager soundManager){
-        print("Calling derived class constructor from cutting board");
+        //print("Calling derived class constructor from cutting board");
         base.Construct(itemFactory, soundManager);
 
         //derived class variable init
@@ -42,7 +42,7 @@ public class CuttingBoardManager : GenericAppliance
             cuttingStarted = false;
             numCuts = 0;
         }else{
-            print("numCuts: " + numCuts);
+            //print("numCuts: " + numCuts);
             
             _progressBar.incrementFill();
             ++numCuts;
@@ -52,8 +52,11 @@ public class CuttingBoardManager : GenericAppliance
     private void tryChop(){
         if(!cuttingStarted){
             Validation();
-            if(_pendingTargetRecipe == null) 
+            if(_pendingTargetRecipe == null){
+                _UIManager.GetNegFeedbackObjRef().SetActive(true);
+                StartCoroutine(disableFeedbackObjAfter(3.0f));
                 return;
+            }
             else{
                 _progressBar.reset();
                 _progressBar.setMaxAmount(_pendingTargetRecipe.baseActionTime * numCutsMultiplier);

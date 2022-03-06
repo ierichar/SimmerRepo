@@ -95,7 +95,6 @@ public abstract class GenericAppliance : MonoBehaviour
                 slot.SpawnFoodItem(temp[k]);
             }
         }
-        
     }
 
     public virtual void FixedUpdate(){
@@ -154,7 +153,7 @@ public abstract class GenericAppliance : MonoBehaviour
         bool keyExists = currentIngredientList[0].applianceRecipeListDict
             .ContainsKey(this._applianceData);
         if(!keyExists){
-            Debug.Log("No bueno item in appliance");
+            //Debug.Log("No bueno item in appliance");
             OnValidate.Invoke(null); return;
         }
         List<RecipeData> firstList = currentIngredientList[0]
@@ -165,7 +164,7 @@ public abstract class GenericAppliance : MonoBehaviour
             bool[] RecipeCheckArray = new bool[recipe.ingredientDataList.Count];
 
             if(currentIngredientList.Count != recipe.ingredientDataList.Count){
-                print("NOT THE CORRECT NUM ITEMS FOR: " + recipe.name);
+                //print("NOT THE CORRECT NUM ITEMS FOR: " + recipe.name);
                 continue;
             }
 
@@ -185,12 +184,12 @@ public abstract class GenericAppliance : MonoBehaviour
                 continue;
             }
         }
-        print("NO RECIPES FOUND");
+        //print("NO RECIPES FOUND");
         OnValidate.Invoke(null);
     }
     
     private void OnValidateCallback(RecipeData recipe){
-        print("INVOKED RECIPE: " + recipe);
+        //print("INVOKED RECIPE: " + recipe);
         _pendingTargetRecipe = recipe;
         if(_pendingTargetRecipe != null){
             for(int i=0; i<_applianceSlotManager.Count; i++){
@@ -203,10 +202,15 @@ public abstract class GenericAppliance : MonoBehaviour
     {
         _soundManager.PlayButtonSound();
         Validation();
-        if(_pendingTargetRecipe == null) return;
+
+        if(_pendingTargetRecipe == null){
+            _UIManager.GetNegFeedbackObjRef().SetActive(true);
+            StartCoroutine(disableFeedbackObjAfter(3.0f));
+            return;
+        }
         
         //if we get here the ingredients are valid for the recipe
-        Debug.Log("THE RECIPE WAS VALID AND WE ARE CLEARING THE MIXER_SLOTS_LIST");
+        //Debug.Log("THE RECIPE WAS VALID AND WE ARE CLEARING THE MIXER_SLOTS_LIST");
         //foreach(ItemSlotManager slot in _applianceSlotManager){
         //    if(slot.currentItem != null) slot.EmptySlot();
         //}
@@ -231,6 +235,11 @@ public abstract class GenericAppliance : MonoBehaviour
         if(GlobalPlayerData.AppInvSaveStruct.ContainsKey(applianceData))
             GlobalPlayerData.AppInvSaveStruct.Remove(applianceData);
         GlobalPlayerData.AppInvSaveStruct.Add(applianceData, GetInventoryItems());
+    }
+
+    protected IEnumerator disableFeedbackObjAfter(float time){
+        yield return new WaitForSeconds(time);
+        _UIManager.GetNegFeedbackObjRef().SetActive(false);
     }
     
 }
