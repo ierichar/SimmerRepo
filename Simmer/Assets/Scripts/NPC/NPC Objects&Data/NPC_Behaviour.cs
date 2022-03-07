@@ -5,7 +5,7 @@ using UnityEngine;
 using Ink.Runtime;
 
 using Simmer.Interactable;
-using Simmer.VN;
+using Simmer.UI.ImageQueue;
 
 namespace Simmer.NPC
 {
@@ -16,6 +16,7 @@ namespace Simmer.NPC
         private InteractableBehaviour _interactableBehaviour;
         private NPC_Sprite _npcSprite;
         private SpriteRendererManager _highlightSprite;
+        private QueueTrigger _queueTrigger;
 
         [SerializeField] private NPC_Data _npcData;
 
@@ -32,8 +33,12 @@ namespace Simmer.NPC
 
             _npcSprite = GetComponentInChildren<NPC_Sprite>();
             _npcSprite.Construct();
-
             _npcSprite.SetSprite(_npcData.characterSprite);
+
+            _queueTrigger = GetComponent<QueueTrigger>();
+            _queueTrigger.Construct(npcManager.marketCanvasManager
+                .recipeBookQueueManager);
+
         }
 
         private void OnInteractCallback()

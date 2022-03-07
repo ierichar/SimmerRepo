@@ -13,12 +13,17 @@ namespace Simmer.UI.ImageQueue
 
         public void Construct()
         {
+            queueItem = null;
             rectTransform = GetComponent<RectTransform>();
         }
 
-        public void SetQueueItem(QueueItem queueItem)
+        public void SetQueueItem(QueueItem toSet)
         {
-            this.queueItem = queueItem;
+            if(toSet != null && queueItem != null )
+            {
+                queueItem.ForceDestroy();
+            }
+            queueItem = toSet;
         }
     }
 }
