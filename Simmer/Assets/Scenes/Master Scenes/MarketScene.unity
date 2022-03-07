@@ -675,6 +675,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2718531132864962460, guid: c28b88fb2c8fc41528eddda7d39cc2ac, type: 3}
+      propertyPath: m_Color.b
+      value: 0.21176472
+      objectReference: {fileID: 0}
+    - target: {fileID: 2718531132864962460, guid: c28b88fb2c8fc41528eddda7d39cc2ac, type: 3}
+      propertyPath: m_Color.g
+      value: 0.27058825
+      objectReference: {fileID: 0}
+    - target: {fileID: 2718531132864962460, guid: c28b88fb2c8fc41528eddda7d39cc2ac, type: 3}
+      propertyPath: m_Color.r
+      value: 0.85098046
+      objectReference: {fileID: 0}
+    - target: {fileID: 2940347580296406637, guid: c28b88fb2c8fc41528eddda7d39cc2ac, type: 3}
+      propertyPath: m_UseSpriteMesh
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2940347580296406637, guid: c28b88fb2c8fc41528eddda7d39cc2ac, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6619274070827975067, guid: c28b88fb2c8fc41528eddda7d39cc2ac, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -691,6 +711,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7462475300080702003, guid: c28b88fb2c8fc41528eddda7d39cc2ac, type: 3}
+      propertyPath: m_Color.b
+      value: 0.21176472
+      objectReference: {fileID: 0}
+    - target: {fileID: 7462475300080702003, guid: c28b88fb2c8fc41528eddda7d39cc2ac, type: 3}
+      propertyPath: m_Color.g
+      value: 0.27058825
+      objectReference: {fileID: 0}
+    - target: {fileID: 7462475300080702003, guid: c28b88fb2c8fc41528eddda7d39cc2ac, type: 3}
+      propertyPath: m_Color.r
+      value: 0.85098046
+      objectReference: {fileID: 0}
+    - target: {fileID: 7788690952007004721, guid: c28b88fb2c8fc41528eddda7d39cc2ac, type: 3}
+      propertyPath: m_CullTransparentMesh
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7788690952007004722, guid: c28b88fb2c8fc41528eddda7d39cc2ac, type: 3}
+      propertyPath: m_OverrideSorting
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7788690952332685024, guid: c28b88fb2c8fc41528eddda7d39cc2ac, type: 3}
       propertyPath: m_Name
       value: VN_ManagerObject
@@ -698,6 +738,10 @@ PrefabInstance:
     - target: {fileID: 7788690952332685024, guid: c28b88fb2c8fc41528eddda7d39cc2ac, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7788690952332685026, guid: c28b88fb2c8fc41528eddda7d39cc2ac, type: 3}
+      propertyPath: beginOnStart
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7788690952332685027, guid: c28b88fb2c8fc41528eddda7d39cc2ac, type: 3}
       propertyPath: m_RootOrder
