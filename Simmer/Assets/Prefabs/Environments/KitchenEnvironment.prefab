@@ -592,7 +592,9 @@ MonoBehaviour:
   m_text: 'You go to rest
 
 
-    You wake up to 20 more gold in your wallet'
+    You wake up to 20 more gold in your wallet
+
+    (RMB)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
