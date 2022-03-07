@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1885aeedd2eb44ea1885c6967f4a5757, type: 3}
   m_Name: Default
   m_EditorClassIdentifier: 
-  textboxSprite: {fileID: 0}
-  nameboxSprite: {fileID: 0}
+  textboxSprite: {fileID: 21300000, guid: 5d5e6e78387f24f83b2b1200022d7c47, type: 3}
+  nameboxSprite: {fileID: 21300000, guid: f93a651ed1cf042c2a92cec0eff9ead7, type: 3}
   settingsSprite: {fileID: 0}
   skipSprite: {fileID: 0}
   activeOffset: 0
