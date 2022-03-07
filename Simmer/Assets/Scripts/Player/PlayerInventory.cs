@@ -148,11 +148,17 @@ namespace Simmer.Inventory
             }
             else
             {
-                // TODO Add visual feedback for adding
-                // ingredientKnowledge successfully 
-                GlobalPlayerData.AddIngredientKnowledge(
-                    itemBehaviour.foodItem.ingredientData);
                 _foodItemDictionary.Add(index, itemBehaviour.foodItem);
+
+                IngredientData thisIngredient =
+                    foodItemDictionary[index].ingredientData;
+                bool isNew = GlobalPlayerData.AddIngredientKnowledge
+                           (thisIngredient);
+                InventorySlotManager inventorySlot = _inventoryUIManager
+                    .inventorySlotsManager.GetInventorySlot(index);
+
+                if (isNew) inventorySlot.queueTrigger
+                        .SpawnQueueItem(thisIngredient);
             }
 
             UpdateHeldItem();
@@ -189,11 +195,6 @@ namespace Simmer.Inventory
             InventorySlotManager inventorySlot = _inventoryUIManager
                 .inventorySlotsManager.GetInventorySlot(index);
             inventorySlot.SpawnFoodItem(item);
-
-            bool isNew = GlobalPlayerData.AddIngredientKnowledge
-                (item.ingredientData);
-
-            inventorySlot.queueTrigger.SpawnQueueItem(item.ingredientData);
         }
 
         public void AddFoodItem(FoodItem item)

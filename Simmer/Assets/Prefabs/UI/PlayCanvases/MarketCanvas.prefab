@@ -2123,6 +2123,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 948184398447186783}
     m_Modifications:
+    - target: {fileID: 1666146840065520695, guid: e4505eb2fefef444a8345a89a3e54d0f, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5481004350248974570, guid: e4505eb2fefef444a8345a89a3e54d0f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2211,7 +2215,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauseMenu
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1666146840065520694, guid: e4505eb2fefef444a8345a89a3e54d0f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e4505eb2fefef444a8345a89a3e54d0f, type: 3}
 --- !u!224 &8015327652126249231 stripped
 RectTransform:

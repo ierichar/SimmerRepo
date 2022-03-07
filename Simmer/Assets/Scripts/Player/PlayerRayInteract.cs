@@ -104,6 +104,17 @@ namespace Simmer.Player
                     _previousInteracted.Interact();
                 }
             }
+            else if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                // Stop interact
+                if (_previousInteracted != null
+                    && _previousInteracted.isInteractToggle)
+                {
+                    _gameEventManager.onInteractUI.Invoke(false);
+                    _previousInteracted.Interact();
+                    _previousInteracted = null;
+                }
+            }
         }
 
         private void faceMouse()
