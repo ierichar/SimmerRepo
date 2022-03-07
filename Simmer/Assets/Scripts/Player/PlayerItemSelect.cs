@@ -27,31 +27,31 @@ namespace Simmer.Inventory
         {
             if (!selectionEnabled) return;
 
-            if (Input.GetKeyDown(KeyCode.J))
-            {
-                _playerEventManager.OnDropItem.Invoke();
-            }
-            if (Input.GetKeyDown(KeyCode.K))
-            {
-                _playerEventManager.OnAddRandomItem.Invoke();
-            }
+            //if (Input.GetKeyDown(KeyCode.J))
+            //{
+            //    _playerEventManager.OnDropItem.Invoke();
+            //}
+            //if (Input.GetKeyDown(KeyCode.K))
+            //{
+            //    _playerEventManager.OnAddRandomItem.Invoke();
+            //}
 
-            if (Input.GetButtonDown("HotbarSelect0"))
-            {
-                _playerManager.gameEventManager.onSelectItem.Invoke(0);
-            }
-            if (Input.GetButtonDown("HotbarSelect1"))
-            {
-                _playerManager.gameEventManager.onSelectItem.Invoke(1);
-            }
-            if (Input.GetButtonDown("HotbarSelect2"))
-            {
-                _playerManager.gameEventManager.onSelectItem.Invoke(2);
-            }
-            if (Input.GetButtonDown("HotbarSelect3"))
-            {
-                _playerManager.gameEventManager.onSelectItem.Invoke(3);
-            }
+            //if (Input.GetButtonDown("HotbarSelect0"))
+            //{
+            //    _playerManager.gameEventManager.onSelectItem.Invoke(0);
+            //}
+            //if (Input.GetButtonDown("HotbarSelect1"))
+            //{
+            //    _playerManager.gameEventManager.onSelectItem.Invoke(1);
+            //}
+            //if (Input.GetButtonDown("HotbarSelect2"))
+            //{
+            //    _playerManager.gameEventManager.onSelectItem.Invoke(2);
+            //}
+            //if (Input.GetButtonDown("HotbarSelect3"))
+            //{
+            //    _playerManager.gameEventManager.onSelectItem.Invoke(3);
+            //}
         }
 
         private void OnInteractUICallback(bool result)

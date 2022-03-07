@@ -33,5 +33,10 @@ namespace Simmer.UI.Tooltips
 
             TooltipBehaviour.instance.Hide();
         }
+
+        private void OnDisable()
+        {
+            TooltipBehaviour.instance.Hide();
+        }
     }
 }
