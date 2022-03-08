@@ -36,9 +36,13 @@ namespace Simmer.Tutorial
 
         public void SpawnNextSlide()
         {
-            print("SpawnNextSlide");
             if (_currentSlide != null) Destroy(_currentSlide.gameObject);
-            if (_slideIndex >= _slidePrefabList.Count) return;
+            if (_slideIndex >= _slidePrefabList.Count)
+            {
+                Debug.LogError(this + " Error: Cannot SpawnNextSlide beyond " +
+                    "_slidePrefabList range");
+                return;
+            }
 
             print("Spawning: " + _slideIndex + _slidePrefabList[_slideIndex]);
              _currentSlide = Instantiate(
