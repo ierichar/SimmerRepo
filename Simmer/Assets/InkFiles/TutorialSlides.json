@@ -1,0 +1,1 @@
+﻿{"inkVersion":20,"root":[["^>>> !CharEnter(Tutorial);","\n","^>>> TextboxEnter(Default)","\n","^Tutorial: First slide","\n","^>>> InvokeUnityEvent(NextSlide);","\n","^Tutorial: Second slide","\n",["done",{"#f":5,"#n":"g-0"}],null],"done",{"#f":1}],"listDefs":{}}
