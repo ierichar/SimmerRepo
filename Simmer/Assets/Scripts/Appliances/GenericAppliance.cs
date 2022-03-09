@@ -189,23 +189,30 @@ public abstract class GenericAppliance : MonoBehaviour
         //print("INVOKED RECIPE: " + recipe);
         _pendingTargetRecipe = recipe;
         if(_pendingTargetRecipe != null){
-            for(int i=0; i<_applianceSlotManager.Count; i++){
-                _applianceSlotManager[i].locking(true);
-            }
+            OnValidateCallbackPositive();
         }
+        if(_pendingTargetRecipe == null){
+            OnValidateCallbackNegative();
+        }
+    }
+    protected virtual void OnValidateCallbackPositive(){
+        for(int i=0; i<_applianceSlotManager.Count; i++){
+            _applianceSlotManager[i].locking(true);
+        }
+    }
+    protected virtual void OnValidateCallbackNegative(){
+        _soundManager.PlaySound(7, false);
+        _UIManager.GetNegFeedbackObjRef().SetActive(true);
+        StartCoroutine(disableFeedbackObjAfter(2.0f));
     }
 
     public virtual void ToggleOn()
     {
         _soundManager.PlaySound(1, false);
         Validation();
-
         if(_pendingTargetRecipe == null){
-            _UIManager.GetNegFeedbackObjRef().SetActive(true);
-            StartCoroutine(disableFeedbackObjAfter(2.0f));
             return;
         }
-
         float duration = _pendingTargetRecipe.baseActionTime;
 
         _timer.ShowClock();

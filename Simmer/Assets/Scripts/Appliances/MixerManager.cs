@@ -17,8 +17,13 @@ public class MixerManager : GenericAppliance
         _soundManager.PlaySound(2, false);
     }
 
-    public override void ToggleOn(){
-        base.ToggleOn();
+    protected override void OnValidateCallbackPositive(){
+        base.OnValidateCallbackPositive();
         _soundManager.PlaySound(3, false);
     }
+    protected override void OnValidateCallbackNegative(){
+        base.OnValidateCallbackNegative();
+
+    }
+
 }

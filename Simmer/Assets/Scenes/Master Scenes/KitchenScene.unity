@@ -441,6 +441,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TooltipCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 5460004446136714955, guid: 3f8e6ac1c190f41c380d4cc364b2b55d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5460004446136714959, guid: 3f8e6ac1c190f41c380d4cc364b2b55d, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -590,50 +594,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 357430584347458434, guid: be92c397a778c46ad9bff9c770f96867, type: 3}
-      propertyPath: m_Volume
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3753244179360751903, guid: be92c397a778c46ad9bff9c770f96867, type: 3}
-      propertyPath: _buttonSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 83657ea18144c4f468e9e16086b12b16, type: 3}
-    - target: {fileID: 3753244179360751903, guid: be92c397a778c46ad9bff9c770f96867, type: 3}
-      propertyPath: soundList.Array.size
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3753244179360751903, guid: be92c397a778c46ad9bff9c770f96867, type: 3}
-      propertyPath: soundList.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: 83657ea18144c4f468e9e16086b12b16, type: 3}
-    - target: {fileID: 3753244179360751903, guid: be92c397a778c46ad9bff9c770f96867, type: 3}
-      propertyPath: soundList.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: 6f26879780d2b34468ee96ec0ef24726, type: 3}
-    - target: {fileID: 3753244179360751903, guid: be92c397a778c46ad9bff9c770f96867, type: 3}
-      propertyPath: soundList.Array.data[3]
-      value: 
-      objectReference: {fileID: 8300000, guid: 9845b1fb4dd3e4f4fabba02125141399, type: 3}
-    - target: {fileID: 3753244179360751903, guid: be92c397a778c46ad9bff9c770f96867, type: 3}
-      propertyPath: soundList.Array.data[4]
-      value: 
-      objectReference: {fileID: 8300000, guid: 31728a669e5527846b38c3570aac7e53, type: 3}
-    - target: {fileID: 3753244179360751903, guid: be92c397a778c46ad9bff9c770f96867, type: 3}
-      propertyPath: soundList.Array.data[5]
-      value: 
-      objectReference: {fileID: 8300000, guid: f2bb851af2029c54293ae51b922b185c, type: 3}
-    - target: {fileID: 3753244179360751903, guid: be92c397a778c46ad9bff9c770f96867, type: 3}
-      propertyPath: soundList.Array.data[6]
-      value: 
-      objectReference: {fileID: 8300000, guid: e4a54ad5bc2417943a7da792e467fd76, type: 3}
     - target: {fileID: 3753244179450832682, guid: be92c397a778c46ad9bff9c770f96867, type: 3}
       propertyPath: pauseMenu
       value: 
       objectReference: {fileID: 2130959398}
-    - target: {fileID: 3753244179450832692, guid: be92c397a778c46ad9bff9c770f96867, type: 3}
-      propertyPath: _startSaveData
-      value: 
-      objectReference: {fileID: 11400000, guid: 59d3a3f128ced4a028b37710ac895941, type: 2}
     - target: {fileID: 3753244180859517522, guid: be92c397a778c46ad9bff9c770f96867, type: 3}
       propertyPath: m_Name
       value: KitchenCore
@@ -1474,6 +1438,10 @@ PrefabInstance:
     - target: {fileID: 6561506972873990832, guid: 764f52048178c406c8ea7c53e215c62e, type: 3}
       propertyPath: m_Name
       value: KitchenCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6561506972873990832, guid: 764f52048178c406c8ea7c53e215c62e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6561506972873990839, guid: 764f52048178c406c8ea7c53e215c62e, type: 3}
       propertyPath: m_Pivot.x
