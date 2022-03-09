@@ -28,10 +28,7 @@ public abstract class GenericAppliance : MonoBehaviour
     }
 
     //invSize should be defined by each individual applaince
-    protected int _invSize;
     protected bool invOpen = false;
-    protected int _currentNumItems = 0;
-    protected float _cookingTimeMultiplier = 1.0f;
     protected List<SpawningSlotManager> _applianceSlotManager
         = new List<SpawningSlotManager>();
     protected List<IngredientData> currentIngredientList
@@ -49,7 +46,7 @@ public abstract class GenericAppliance : MonoBehaviour
     protected ItemFactory _itemFactory;
     protected GameObject _UIGameObject;
     private static GameObject _blackout;
-    private UISoundManager _soundManager;
+    protected UISoundManager _soundManager;
 
     public UnityEvent<RecipeData> OnValidate = new UnityEvent<RecipeData>();
 
@@ -118,8 +115,7 @@ public abstract class GenericAppliance : MonoBehaviour
     }
     protected virtual void Finished(){
         Debug.Log("finished waiting for action time");
-        FoodItem resultItem = new FoodItem(_pendingTargetRecipe.resultIngredient
-            , null);
+        FoodItem resultItem = new FoodItem(_pendingTargetRecipe.resultIngredient, null);
 
         foreach(ItemSlotManager slot in _applianceSlotManager){
             if(slot.currentItem != null) slot.EmptySlot();
@@ -127,6 +123,7 @@ public abstract class GenericAppliance : MonoBehaviour
         for(int i=0; i<_applianceSlotManager.Count; i++){
             _applianceSlotManager[i].locking(false);
         }
+
         _applianceSlotManager[0].SpawnFoodItem(resultItem);
         _pendingTargetRecipe = null;
         _timer.HideClock();
@@ -200,20 +197,14 @@ public abstract class GenericAppliance : MonoBehaviour
 
     public virtual void ToggleOn()
     {
-        _soundManager.PlayButtonSound();
+        _soundManager.PlaySound(1, false);
         Validation();
 
         if(_pendingTargetRecipe == null){
             _UIManager.GetNegFeedbackObjRef().SetActive(true);
-            StartCoroutine(disableFeedbackObjAfter(3.0f));
+            StartCoroutine(disableFeedbackObjAfter(2.0f));
             return;
         }
-        
-        //if we get here the ingredients are valid for the recipe
-        //Debug.Log("THE RECIPE WAS VALID AND WE ARE CLEARING THE MIXER_SLOTS_LIST");
-        //foreach(ItemSlotManager slot in _applianceSlotManager){
-        //    if(slot.currentItem != null) slot.EmptySlot();
-        //}
 
         float duration = _pendingTargetRecipe.baseActionTime;
 

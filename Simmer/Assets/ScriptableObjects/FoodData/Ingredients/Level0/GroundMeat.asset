@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 100bfe8cc201b417887646b2755fd998, type: 3}
   m_Name: GroundMeat
   m_EditorClassIdentifier: 
-  sprite: {fileID: -4709606558031422002, guid: d9cf1e27ca92e4ad7b73389798a3529d, type: 3}
+  sprite: {fileID: 21300000, guid: ca640b34ec8ad0b40abe10fef525287d, type: 3}
   baseValue: 1
   isFinalProduct: 0
   _recipeEdgeList:
