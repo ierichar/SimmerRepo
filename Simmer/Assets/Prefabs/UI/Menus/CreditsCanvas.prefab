@@ -424,8 +424,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1162259680252160580}
   m_HandleRect: {fileID: 1162259680252160583}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.51497006
+  m_Value: 1.0000001
+  m_Size: 0.1733871
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -464,8 +464,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -324}
-  m_SizeDelta: {x: 1368, y: 1336}
+  m_AnchoredPosition: {x: 0, y: -1640.0006}
+  m_SizeDelta: {x: 1368, y: 3968}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1162259679873492746
 CanvasRenderer:
@@ -508,35 +508,19 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Ian Richardson
-
-    Gus Kolokousis
-
-    Evan Li
-
-    Joe Carter
-
-    Moises
-    Perez
-
-    Yuhong Li
-
-    Fernanda Becerra
-
-    Charles Cenizal
-
-    Emily Ye
-
-    Rayna
-    Li
-
-    Jesus Picos
-
-    Israel Renteria
-
-    (External Audio Clip credit) Mixkit.co
-
-'
+  m_Text: "PRODUCTION\nIan Richardson \nConstantine Kolokousis\n\nGAMEPLAY DESIGN\nIan
+    Richardson\t\nEvan Li\nJoe Carter\nMoises Perez\n\nSOFTWARE DEVELOPMENT\nJoe
+    Carter\nEvan Li\nYuhong Li\nMoises Perez\n\nVISUAL DESIGN\nEmily Li\nRayna Li\nJesus
+    Picos\nIsrael Renteria\n\nLEVEL DESIGN\nJoe Carter\nEmily Li\nMoises Perez\n\nAUDIO
+    AND MUSIC\nJoe Carter\nCharles Cenizal\nMoises Perez\n\nCONCEPT ART\nEmily Li\nJesus
+    Picos\n\nWRITING\nFernanda Becerra\nConstantine Kolokousis\nEvan Li\nIsrael Renteria\nIan
+    Richardson\n\nUI/UX\nFernanda Becerra\nJoe Carter\nEvan Li\nYuhong Li\nMoises
+    Perez\n\nSPECIAL THANKS TO\nEvelyn Gill, Jessica Wake, Avery Weibel, Jake O\u2019Neil
+    and The UC Santa Cruz CSGD and AGPM Teaching Staff\n\nEXTERNAL TOOLS\nDiardini,
+    D. (2014). DOTween. Demigiant. http://dotween.demigiant.com/\n\nInk Unity Integration.
+    (2016). inkle Ltd. https://github.com/inkle/ink-unity-integration\n\nLim, R.
+    (2014, April 20). Algorithm for Drawing Trees. Rachel Lim\u2019s Blog. \nhttps://rachel53461.wordpress.com/\n\n(External
+    Audio Clip credit) Mixkit.co"
 --- !u!1 &1162259679878197424
 GameObject:
   m_ObjectHideFlags: 0
