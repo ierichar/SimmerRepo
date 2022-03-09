@@ -52,12 +52,7 @@ public class CuttingBoardManager : GenericAppliance
     private void tryChop(){
         if(!cuttingStarted){
             Validation();
-            if(_pendingTargetRecipe == null){
-                _UIManager.GetNegFeedbackObjRef().SetActive(true);
-                StartCoroutine(disableFeedbackObjAfter(3.0f));
-                return;
-            }
-            else{
+            if(_pendingTargetRecipe != null){
                 _progressBar.reset();
                 _progressBar.setMaxAmount(_pendingTargetRecipe.baseActionTime * numCutsMultiplier);
                 cuttingStarted = true;
@@ -69,8 +64,7 @@ public class CuttingBoardManager : GenericAppliance
                     }
                 }
                 */
-                _soundManager.PlaySound(5, true);
-                
+                _soundManager.PlaySound(5, true); 
             }
         }
     }
