@@ -1791,6 +1791,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1359764453741626694}
+        m_TargetAssemblyTypeName: Simmer.Tutorial.TutorialManager, Assembly-CSharp
+        m_MethodName: ResetSlides
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &953638934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2287,7 +2299,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7788690952332685026, guid: c28b88fb2c8fc41528eddda7d39cc2ac, type: 3}
       propertyPath: DebugEnabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7788690952332685026, guid: c28b88fb2c8fc41528eddda7d39cc2ac, type: 3}
       propertyPath: beginOnStart
@@ -3056,3 +3068,14 @@ PrefabInstance:
       objectReference: {fileID: 7022026146188459622, guid: 94bee176d2e6e214d950a16959063642, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2dd4622ee214849ec82ba7b690f8222b, type: 3}
+--- !u!114 &1359764453741626694 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1359764453168776947, guid: 2dd4622ee214849ec82ba7b690f8222b, type: 3}
+  m_PrefabInstance: {fileID: 1359764453741626693}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbe2b1356f0cd4d06805d1f45afe32fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

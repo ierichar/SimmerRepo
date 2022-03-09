@@ -34,6 +34,12 @@ namespace Simmer.Tutorial
             SpawnNextSlide();
         }
 
+        public void ResetSlides()
+        {
+            _slideIndex = 0;
+            SpawnNextSlide();
+        }
+
         public void SpawnNextSlide()
         {
             if (_currentSlide != null) Destroy(_currentSlide.gameObject);
@@ -44,7 +50,6 @@ namespace Simmer.Tutorial
                 return;
             }
 
-            print("Spawning: " + _slideIndex + _slidePrefabList[_slideIndex]);
              _currentSlide = Instantiate(
                 _slidePrefabList[_slideIndex], gameObject.transform);
 
