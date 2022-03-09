@@ -11,5 +11,9 @@ using Simmer.Interactable;
 
 public class PlateManager : GenericAppliance
 {
-    //Gotta love Generic classes
+    protected override void Finished()
+    {
+        base.Finished();
+        _soundManager.PlaySound(6, false);
+    }
 }

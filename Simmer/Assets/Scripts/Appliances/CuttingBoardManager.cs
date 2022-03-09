@@ -61,7 +61,24 @@ public class CuttingBoardManager : GenericAppliance
                 _progressBar.reset();
                 _progressBar.setMaxAmount(_pendingTargetRecipe.baseActionTime * numCutsMultiplier);
                 cuttingStarted = true;
+                /*
+                if(_soundManager.GetAudioSource().isPlaying){
+                    //do stuff
+                    if(_soundManager.GetAudioSource().clip == _soundManager.soundList[5]){
+                        _soundManager.PlaySound(5, true);
+                    }
+                }
+                */
+                _soundManager.PlaySound(5, true);
+                
             }
         }
     }
+
+    protected override void Finished()
+    {
+        base.Finished();
+        _soundManager.PlaySound(2, false);
+    }
+
 }

@@ -11,5 +11,14 @@ using Simmer.Interactable;
 
 public class MixerManager : GenericAppliance
 {
-    
+    protected override void Finished()
+    {
+        base.Finished();
+        _soundManager.PlaySound(2, false);
+    }
+
+    public override void ToggleOn(){
+        base.ToggleOn();
+        _soundManager.PlaySound(3, false);
+    }
 }
