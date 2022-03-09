@@ -38,3 +38,5 @@ VAR CHARACTER_NAME = "Tutorial"
 {CHARACTER_NAME}: You can still make a dish even without knowing all of the ingredients..
 
 {CHARACTER_NAME}: Have fun cooking!
+
+>>> !CharExit({CHARACTER_NAME});

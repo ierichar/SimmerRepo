@@ -311,15 +311,20 @@ namespace Simmer.VN
 			// Set currentLine to content
 			currentLine = content;
 
+			print("currentLine: \"" + currentLine + "\"");
+			print(string.IsNullOrEmpty(currentLine));
+
 			// If content is blank, skip making content
-			if (currentLine == "")
+			if (string.IsNullOrEmpty(currentLine))
 			{
 				if (Story.canContinue)
 				{
+					print("Story continue");
 					StartCoroutine(Co_DisplaySlowText());
 				}
 				else
 				{
+					print("Story end");
 					state = VN_State.end;
 					UIFactory.CreateEndStoryButton();
 				}
