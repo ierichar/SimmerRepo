@@ -1319,6 +1319,8 @@ MonoBehaviour:
 
     Israel Renteria
 
+    (External Audio Clip credit) Mixkit.co
+
 '
 --- !u!222 &637037960
 CanvasRenderer:
@@ -2840,7 +2842,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2120931211
 MonoBehaviour:
   m_ObjectHideFlags: 0
