@@ -598,6 +598,10 @@ PrefabInstance:
       propertyPath: pauseMenu
       value: 
       objectReference: {fileID: 2130959398}
+    - target: {fileID: 3753244179593884122, guid: be92c397a778c46ad9bff9c770f96867, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3753244180859517522, guid: be92c397a778c46ad9bff9c770f96867, type: 3}
       propertyPath: m_Name
       value: KitchenCore
