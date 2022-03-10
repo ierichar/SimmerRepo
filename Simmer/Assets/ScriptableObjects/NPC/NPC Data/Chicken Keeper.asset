@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47e4b47f2fe904062bef40b01c6594c6, type: 3}
   m_Name: Chicken Keeper
   m_EditorClassIdentifier: 
-  characterSprite: {fileID: -4709606558031422002, guid: d9cf1e27ca92e4ad7b73389798a3529d, type: 3}
+  characterSprite: {fileID: 21300000, guid: 66e1bdbbe45d6134aa5084c8003c622d, type: 3}
   npcInkAsset: {fileID: 4900000, guid: e0ba1371dfcbc41c3bd95e2bd2773c3a, type: 3}
   characterData: {fileID: 11400000, guid: 8a24d1fc22093412fb45f4c58474c4e5, type: 2}
   shopItemList:
