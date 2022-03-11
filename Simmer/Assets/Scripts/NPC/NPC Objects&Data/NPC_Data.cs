@@ -21,6 +21,8 @@ namespace Simmer.NPC
 
         public List<IngredientData> shopItemList = new List<IngredientData>();
 
+        public List<IngredientData> likedItems = new List<IngredientData>();
+
         public List<NPC_QuestData> questDataList = new List<NPC_QuestData>();
 
         public Dictionary<IngredientData, IngredientData>
