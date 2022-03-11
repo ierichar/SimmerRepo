@@ -13,6 +13,8 @@ namespace Simmer.NPC
     {
         public Sprite characterSprite;
 
+        public Sprite portraitSprite;
+
         public TextAsset npcInkAsset;
 
         public CharacterData characterData;
