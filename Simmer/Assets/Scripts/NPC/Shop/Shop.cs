@@ -103,7 +103,9 @@ public class Shop : MonoBehaviour
 
     public void sellItem(ItemBehaviour item) {
         Debug.Log("sold item: " + item.foodItem.ingredientData.name);
-        money.addMoney(item.foodItem.ingredientData.baseValue);
+        int value = item.foodItem.ingredientData.baseValue;
+        if(npcData.likedItems.Contains(item.foodItem.ingredientData)) value *= 2;
+        money.addMoney(value);
         sellSlot.itemSlot.EmptySlot();
     }
 }
