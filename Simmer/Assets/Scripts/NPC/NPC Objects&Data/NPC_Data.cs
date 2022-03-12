@@ -13,11 +13,15 @@ namespace Simmer.NPC
     {
         public Sprite characterSprite;
 
+        public Sprite portraitSprite;
+
         public TextAsset npcInkAsset;
 
         public CharacterData characterData;
 
         public List<IngredientData> shopItemList = new List<IngredientData>();
+
+        public List<IngredientData> likedItems = new List<IngredientData>();
 
         public List<NPC_QuestData> questDataList = new List<NPC_QuestData>();
 

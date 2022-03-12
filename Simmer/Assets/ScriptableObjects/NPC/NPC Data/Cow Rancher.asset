@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Cow Rancher
   m_EditorClassIdentifier: 
   characterSprite: {fileID: 21300000, guid: e22e0ce4ee5c2434ca87a222850c17bd, type: 3}
+  portraitSprite: {fileID: 21300000, guid: 80479eeae8ede3646be1d34c4e6fa22d, type: 3}
   npcInkAsset: {fileID: 4900000, guid: 535b76177d9d34a399eee4cf5556aca1, type: 3}
   characterData: {fileID: 11400000, guid: 0e45dcf5dd7394a82a378905e0998db9, type: 2}
   shopItemList:
