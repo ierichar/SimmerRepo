@@ -22,8 +22,8 @@ namespace Simmer.UI.ImageQueue
         private List<QueuePosition> _queuePositionList
             = new List<QueuePosition>();
 
-        private UnityEvent OnStartQueue = new UnityEvent();
-        private List<QueueItem> _itemQueue = new List<QueueItem>();
+        public UnityEvent OnStartQueue = new UnityEvent();
+        public List<QueueItem> itemQueue;
         private Coroutine _currentQueueProcess = null;
 
         private bool _isProcessing = false;
@@ -32,10 +32,12 @@ namespace Simmer.UI.ImageQueue
         {
             rectTransform = GetComponent<RectTransform>();
 
+            itemQueue = new List<QueueItem>();
+
             QueuePosition[] queuePositionArray =
                 GetComponentsInChildren<QueuePosition>();
 
-            foreach(var queuePosition in queuePositionArray)
+            foreach (var queuePosition in queuePositionArray)
             {
                 _queuePositionList.Add(queuePosition);
                 queuePosition.Construct();
@@ -50,6 +52,7 @@ namespace Simmer.UI.ImageQueue
 
         private void OnStartQueueCallback()
         {
+            print("OnStartQueueCallback");
             if (_currentQueueProcess != null) return;
             _currentQueueProcess = StartCoroutine(OnStartQueueSequence());
         }
@@ -68,28 +71,21 @@ namespace Simmer.UI.ImageQueue
         public void AddQueueItem(IngredientData ingredient
             , QueueTrigger originQueueTrigger)
         {
+            StartCoroutine(AddQueueItemSequeunce(ingredient
+                , originQueueTrigger));
+        }
+
+        private IEnumerator AddQueueItemSequeunce(IngredientData ingredient
+            , QueueTrigger originQueueTrigger)
+        {
             QueueItem newQueueItem = Instantiate(_queueItemPrefab
                 , originQueueTrigger.transform);
             newQueueItem.Construct(ingredient, originQueueTrigger, this);
 
             QueuePosition nextQueuePosition = GetNextQueuePosition();
-            nextQueuePosition.SetQueueItem(newQueueItem);
 
-            StartCoroutine(MoveToQueueSequence(
-                newQueueItem, nextQueuePosition));
-        }
-
-        private IEnumerator MoveToQueueSequence(
-            QueueItem queueItem
-            , QueuePosition queuePosition)
-        {
-            yield return new WaitForSeconds(1);
-
-            yield return StartCoroutine(queueItem
-                .MoveItem(queuePosition.rectTransform));
-
-            if (_itemQueue.Count == 0) OnStartQueue.Invoke();
-            _itemQueue.Add(queueItem);
+            yield return StartCoroutine(newQueueItem.MoveToQueueSequence(
+                nextQueuePosition));
         }
 
         private IEnumerator ProcessQueueStep()
@@ -116,17 +112,16 @@ namespace Simmer.UI.ImageQueue
             if (firstItem != null)
             {
                 StartCoroutine(firstItem.FadeDestroy());
-                _itemQueue.Remove(firstItem);
             }
 
-            if (_itemQueue.Count == 0)  _isProcessing = false;
+            if (itemQueue.Count == 0) _isProcessing = false;
         }
 
         private QueuePosition GetNextQueuePosition()
         {
             // Skip first position since that's the one
             // on the destination
-            for(int i = 1; i < _queuePositionList.Count; ++i)
+            for (int i = 1; i < _queuePositionList.Count; ++i)
             {
                 QueuePosition queuePosition = _queuePositionList[i];
 

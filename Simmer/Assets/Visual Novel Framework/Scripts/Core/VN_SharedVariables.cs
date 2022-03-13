@@ -47,14 +47,14 @@ namespace Simmer.VN
             {
                 AddEventData(eventData);
             }
+
+            eventDispactcher.AddListener(NewDispatch);
         }
 
         public void AddEventData(VN_EventData data)
         {
             _eventDictionary.Add(data.eventCode
                 , data.eventTarget);
-
-            eventDispactcher.AddListener(NewDispatch);
         }
 
         private void NewDispatch(string eventCode)

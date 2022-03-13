@@ -25,9 +25,9 @@ namespace Simmer.Items
             _OnChangeItem = OnChangeItem;
             base.Construct(itemFactory, index);
 
-            cornerTextManager = GetComponentInChildren<UITextManager>();
-            cornerTextManager.Construct();
-            cornerTextManager.SetText((index + 1).ToString());
+            //cornerTextManager = GetComponentInChildren<UITextManager>();
+            //cornerTextManager.Construct();
+            //cornerTextManager.SetText((index + 1).ToString());
 
             queueTrigger = GetComponent<QueueTrigger>();
             queueTrigger.Construct(recipeBookQueueManager);

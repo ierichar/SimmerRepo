@@ -43,7 +43,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: b86bb01cf59665f4d87ddf228a322566, type: 2}
   m_audioClip: {fileID: 8300000, guid: eeefb07950a4d4d169d7f9c1b524bcfc, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.3
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -136,9 +136,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3753244179360751901}
+  - component: {fileID: 8199582783002896741}
   - component: {fileID: 3753244179360751903}
   - component: {fileID: 3753244179360751900}
-  - component: {fileID: 8199582783002896741}
   m_Layer: 0
   m_Name: SoundManager
   m_TagString: Untagged
@@ -160,6 +160,19 @@ Transform:
   m_Father: {fileID: 3753244180859517533}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8199582783002896741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3753244179360751890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5450db45fd19b422b8936aae6008bf15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeSlider: {fileID: 0}
 --- !u!114 &3753244179360751903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,10 +187,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundList:
   - {fileID: 8300000, guid: ae2d7d97b3adb4a98853ea21d4e775f3, type: 3}
+  - {fileID: 8300000, guid: 83657ea18144c4f468e9e16086b12b16, type: 3}
+  - {fileID: 8300000, guid: 6f26879780d2b34468ee96ec0ef24726, type: 3}
+  - {fileID: 8300000, guid: 9845b1fb4dd3e4f4fabba02125141399, type: 3}
+  - {fileID: 8300000, guid: 31728a669e5527846b38c3570aac7e53, type: 3}
+  - {fileID: 8300000, guid: f2bb851af2029c54293ae51b922b185c, type: 3}
+  - {fileID: 8300000, guid: e4a54ad5bc2417943a7da792e467fd76, type: 3}
+  - {fileID: 8300000, guid: 8146580bbe4541547afb2590a3736ae8, type: 3}
   onUiSoundPlay:
     m_PersistentCalls:
       m_Calls: []
-  _buttonSound: {fileID: 8300000, guid: ae2d7d97b3adb4a98853ea21d4e775f3, type: 3}
+  _buttonSound: {fileID: 8300000, guid: 83657ea18144c4f468e9e16086b12b16, type: 3}
 --- !u!82 &3753244179360751900
 AudioSource:
   m_ObjectHideFlags: 0
@@ -190,7 +210,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: b86bb01cf59665f4d87ddf228a322566, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -274,19 +294,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &8199582783002896741
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3753244179360751890}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5450db45fd19b422b8936aae6008bf15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  volumeSlider: {fileID: 0}
 --- !u!1 &3753244179450832681
 GameObject:
   m_ObjectHideFlags: 0

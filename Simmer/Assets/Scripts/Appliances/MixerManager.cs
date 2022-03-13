@@ -11,5 +11,19 @@ using Simmer.Interactable;
 
 public class MixerManager : GenericAppliance
 {
-    
+    protected override void Finished()
+    {
+        base.Finished();
+        _soundManager.PlaySound(2, false);
+    }
+
+    protected override void OnValidateCallbackPositive(){
+        base.OnValidateCallbackPositive();
+        _soundManager.PlaySound(3, false);
+    }
+    protected override void OnValidateCallbackNegative(){
+        base.OnValidateCallbackNegative();
+
+    }
+
 }

@@ -29,7 +29,7 @@ namespace Simmer.Player
 
         private void UpdateDisplay()
         {
-            _moneyUI.textManager.SetText("Money: " + currencyAmt);
+            _moneyUI.textManager.SetText(currencyAmt.ToString());
         }
 
         public int getAmt() 

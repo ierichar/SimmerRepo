@@ -21,6 +21,8 @@ namespace Simmer.UI.ImageQueue
 
         private QueuePosition _queuePosition;
 
+        private bool _isBeingDestroyed;
+
         private Tween _currentMoveTween;
 
         public void Construct(IngredientData ingredientData
@@ -48,6 +50,21 @@ namespace Simmer.UI.ImageQueue
             _rectTransform.anchoredPosition = Vector2.zero;
         }
 
+        public IEnumerator MoveToQueueSequence(
+            QueuePosition queuePosition)
+        {
+            yield return new WaitForSeconds(1);
+
+            queuePosition.SetQueueItem(this);
+
+            yield return StartCoroutine(
+                MoveItem(queuePosition.rectTransform));
+
+            imageQueueManager.itemQueue.Add(this);
+
+            imageQueueManager.OnStartQueue.Invoke();
+        }
+
         public IEnumerator MoveItem(RectTransform newParent)
         {
             _rectTransform.SetParent(newParent);
@@ -63,16 +80,27 @@ namespace Simmer.UI.ImageQueue
 
         public IEnumerator FadeDestroy()
         {
+            _isBeingDestroyed = true;
             Tween fadeTween = _canvasGroupManager.Fade
                 (0, 1, Ease.InQuad);
             yield return fadeTween.WaitForCompletion();
 
+            ForceDestroy();
+        }
+
+        public void ForceDestroy()
+        {
+            //if (isBlocking && _isBeingDestroyed) return;
+            print(ingredientData + " ForceDestroy");
+            StopAllCoroutines();
+            imageQueueManager.itemQueue.Remove(this);
+            if (_currentMoveTween != null) _currentMoveTween.Kill();
             Destroy(gameObject);
         }
 
         private void OnDisable()
         {
-            Destroy(gameObject);
+            ForceDestroy();
         }
     }
 }

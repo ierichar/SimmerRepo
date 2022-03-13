@@ -72,6 +72,8 @@ namespace Simmer.UI.RecipeBook.Catalog
 
         private void OnSearchCallback(string newSearch)
         {
+            print("OnSearchCallback");
+
             List<IngredientData> possibleIngredientList
                  = new List<IngredientData>();
 

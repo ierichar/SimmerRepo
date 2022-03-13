@@ -22,8 +22,8 @@ namespace Simmer.UI
         public RecipeBookManager recipeBookManager { get; private set; }
         public MoneyUI moneyUI { get; private set; }
         public QuestFactory questFactory { get; private set; }
-
         public ImageQueueManager recipeBookQueueManager { get; private set; }
+        public CenterQueueTrigger centerQueueTrigger { get; private set; }
 
         public UnityEvent<int> OnSelectItem { get; private set; }
 
@@ -46,6 +46,7 @@ namespace Simmer.UI
             moneyUI = GetComponentInChildren<MoneyUI>(true);
             questFactory = GetComponentInChildren<QuestFactory>(true);
             recipeBookQueueManager = gameObject.FindChildObject<ImageQueueManager>();
+            centerQueueTrigger = GetComponentInChildren<CenterQueueTrigger>(true);
 
             this.soundManager = soundManager;
 
@@ -57,6 +58,7 @@ namespace Simmer.UI
             moneyUI.Construct();
             questFactory.Construct();
             recipeBookQueueManager.Construct();
+            centerQueueTrigger.Construct(recipeBookQueueManager);
         }
     }
 }

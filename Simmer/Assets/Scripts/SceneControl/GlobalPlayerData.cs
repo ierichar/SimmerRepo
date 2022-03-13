@@ -118,11 +118,6 @@ public static class GlobalPlayerData
         {
             activeQuestDictionary.Add(npcData, questData);
 
-            foreach(IngredientData item in questData.initialKnowledge)
-            {
-                AddIngredientKnowledge(item);
-            }
-
             OnActiveQuestsUpdated.Invoke();
             return true;
         }

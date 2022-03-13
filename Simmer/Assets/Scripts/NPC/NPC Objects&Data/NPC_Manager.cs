@@ -8,6 +8,7 @@ using DG.Tweening;
 using Simmer.VN;
 using Simmer.UI;
 using Simmer.UI.NPC;
+using Simmer.FoodData;
 
 namespace Simmer.NPC
 {
@@ -36,9 +37,12 @@ namespace Simmer.NPC
             = new UnityEvent<bool>();
 
         public NPC_InterfaceWindow targetInterfaceWindow;
-        private bool _isInteracting;
         public NPC_Data currentNPC_Data { get; private set; }
         public NPC_QuestData currentNPC_Quest { get; private set; }
+
+        private bool _isInteracting;
+        private List<IngredientData> _newKnowledgeToAdd =
+            new List<IngredientData>();
 
         public void Construct(VN_Manager VNmanager
             , MarketCanvasManager marketCanvasManager
@@ -138,6 +142,13 @@ namespace Simmer.NPC
                     currentNPC_Quest = npcData.questDataList[0];
                     GlobalPlayerData.AddNewQuest(npcData
                         , npcData.questDataList[0]);
+
+                    foreach (IngredientData item in currentNPC_Quest.initialKnowledge)
+                    {
+                        if (GlobalPlayerData.AddIngredientKnowledge(item))
+                            _newKnowledgeToAdd.Add(item);
+                    }
+
                     UpdateQuestSharedVariables(true);
                 }
             }
@@ -173,6 +184,14 @@ namespace Simmer.NPC
             _gameEventManager.onInteractUI.Invoke(false);
             currentNPC_Data = null;
             _isInteracting = false;
+
+            foreach(IngredientData ingredient in _newKnowledgeToAdd)
+            {
+                marketCanvasManager.centerQueueTrigger
+                    .npcKnowledgeTrigger.SpawnQueueItem(ingredient);
+            }
+
+            _newKnowledgeToAdd.Clear();
         }
 
         private void UpdateQuestSharedVariables(bool isQuestOngoing)
@@ -193,7 +212,7 @@ namespace Simmer.NPC
                     .questItem.name;
                 vn_sharedVariables.questReward = GlobalPlayerData
                     .completedQuestDictionary[currentNPC_Data]
-                    .questReward.name; ;
+                    .questReward.name;
             }
             
         }

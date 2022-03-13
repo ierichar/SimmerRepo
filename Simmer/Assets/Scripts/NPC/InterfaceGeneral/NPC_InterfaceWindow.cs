@@ -14,6 +14,7 @@ namespace Simmer.NPC
 
         protected NPC_InterfaceExit _interfaceExit;
         protected NPC_InterfaceReturn _interfaceReturn;
+        protected NPC_CharacterBox _characterBox;
 
         public UnityEvent OnChoose = new UnityEvent();
         public UnityEvent<NPC_Data> OnOpen = new UnityEvent<NPC_Data>();
@@ -35,6 +36,10 @@ namespace Simmer.NPC
             _interfaceReturn = gameObject.FindChildObject
                 <NPC_InterfaceReturn>();
             _interfaceReturn.Construct(this);
+
+            _characterBox = gameObject.FindChildObject
+                <NPC_CharacterBox>();
+            _characterBox.Construct();
 
             OnChoose.AddListener(OnChooseCallback);
             OnOpen.AddListener(OnOpenCallback);
@@ -59,6 +64,7 @@ namespace Simmer.NPC
         protected virtual void OnOpenCallback(NPC_Data npc_data)
         {
             currentNPC_Data = npc_data;
+            _characterBox.SetCharacter(npc_data);
             gameObject.SetActive(true);
         }
 
