@@ -22,25 +22,19 @@ namespace Simmer.Inventory
 
         [SerializeField] private AllFoodData _allFoodData;
 
-        //[Tooltip("Player will have these ingredients in their hotbar on start")]
-        //[SerializeField] private List<IngredientData> _startingIngredients
-        //    = new List<IngredientData>();
-        //[Tooltip("_startingIngredients will have their quality set to this")]
-        //[SerializeField] private int _startingQuality;
-
         /// <summary>
         /// Key: Inventory slot index, Value: FoodItem in the slot
         /// </summary>
-        private Dictionary<int, FoodItem> _foodItemDictionary
+        private Dictionary<int, FoodItem> _inventoryItemDictionary
             = new Dictionary<int, FoodItem>();
 
         /// <summary>
-        /// Public property version of _foodItemDictionary
+        /// Public property version of _inventoryItemDictionary
         /// </summary>
-        public Dictionary<int, FoodItem> foodItemDictionary
+        public Dictionary<int, FoodItem> inventoryItemDictionary
         {
-            get { return _foodItemDictionary; }
-            set { foodItemDictionary = _foodItemDictionary; }
+            get { return _inventoryItemDictionary; }
+            set { inventoryItemDictionary = _inventoryItemDictionary; }
         }    
 
         /// <summary>
@@ -74,13 +68,6 @@ namespace Simmer.Inventory
                 AddFoodItem(pair.Value, pair.Key);
             }
 
-            // Starting items old script
-            //foreach (IngredientData ingredient in _startingIngredients)
-            //{
-            //    FoodItem newFoodItem = new FoodItem(ingredient, _startingQuality);
-            //    AddFoodItem(newFoodItem);
-            //}
-
             playerManager.gameEventManager.onSelectItem
                 .AddListener(OnSelectItemCallback);
 
@@ -94,6 +81,12 @@ namespace Simmer.Inventory
                 .OnInventoryChange.AddListener(OnInventoryChangeCallback);
         }
 
+        /// <summary>
+        /// Updates highlight on selected item and held item sprite
+        /// </summary>
+        /// <param name="index">
+        /// Inventory hotbar index with 0 being the leftmost
+        /// </param>
         private void OnSelectItemCallback(int index)
         {
             ItemSlotManager inventorySlot;
@@ -135,23 +128,35 @@ namespace Simmer.Inventory
             }
         }
 
+        /// <summary>
+        /// Updates inventory visuals and data
+        /// </summary>
+        /// <param name="index">
+        /// Inventory index being modified
+        /// </param>
+        /// param name="itemBehaviour">
+        /// The new ItemBehaviour to set at the index.
+        /// Given null, removes the item at the index.
+        /// </param>
         private void OnInventoryChangeCallback(int index, ItemBehaviour itemBehaviour)
         {
             if (itemBehaviour == null)
             {
-                _foodItemDictionary.Remove(index);
+                _inventoryItemDictionary.Remove(index);
             }
-            else if (_foodItemDictionary.ContainsKey(index))
+            else if (_inventoryItemDictionary.ContainsKey(index))
             {
                 Debug.Log("Trying to change non empty inventory slot, this shouldn't happen");
                 // Happens when trying to drag and drop item back in slot it was just in
             }
+            // Inventory slot empty and non-null item being added
             else
             {
-                _foodItemDictionary.Add(index, itemBehaviour.foodItem);
+                _inventoryItemDictionary.Add(index, itemBehaviour.foodItem);
 
+                // Update ingredient knowledge
                 IngredientData thisIngredient =
-                    foodItemDictionary[index].ingredientData;
+                    inventoryItemDictionary[index].ingredientData;
                 bool isNew = GlobalPlayerData.AddIngredientKnowledge
                            (thisIngredient);
                 InventorySlotManager inventorySlot = _inventoryUIManager
@@ -188,15 +193,28 @@ namespace Simmer.Inventory
             //AddFoodItem(foodItem);
         }
 
+        /// <summary>
+        /// Spawns a new ItemBehaviour with FoodItem data at given index
+        /// </summary>
+        /// <param name="item">
+        /// FoodItem data to be spawned
+        /// </param>
+        /// <param name="index">
+        /// Inventory index location to spawn item
+        /// </param>
         public void AddFoodItem(FoodItem item, int index)
         {
-            _foodItemDictionary.Add(index, item);
+            _inventoryItemDictionary.Add(index, item);
 
             InventorySlotManager inventorySlot = _inventoryUIManager
                 .inventorySlotsManager.GetInventorySlot(index);
             inventorySlot.SpawnFoodItem(item);
         }
 
+        /// <summary>
+        /// Same as AddFoodItem(FoodItem item, int index) except
+        /// spawns item in farthest left available spot
+        /// </param>
         public void AddFoodItem(FoodItem item)
         {
             int nextToFillIndex = GetNextToFillIndex();
@@ -211,19 +229,26 @@ namespace Simmer.Inventory
             }
         }
 
+        /// <summary>
+        /// Deletes the item at the givne index
+        /// </summary>
+        /// <param name="index">
+        /// Inventory index location to remove item
+        /// </param>
         public FoodItem RemoveFoodItem(int index)
         {
             FoodItem removedFoodItem = null;
 
-            if(_foodItemDictionary.ContainsKey(index))
+            if(_inventoryItemDictionary.ContainsKey(index))
             {
-                removedFoodItem = _foodItemDictionary[index];
-                _foodItemDictionary.Remove(index);
+                removedFoodItem = _inventoryItemDictionary[index];
+                _inventoryItemDictionary.Remove(index);
 
                 ItemSlotManager inventorySlot = _inventoryUIManager
                     .inventorySlotsManager.GetInventorySlot(index);
                 inventorySlot.EmptySlot();
 
+                // Deselect item if selected and removed
                 if (selectedItemIndex == index)
                 {
                     OnSelectItemCallback(index);
@@ -232,16 +257,16 @@ namespace Simmer.Inventory
 
             if(removedFoodItem == null)
             {
-                print(this + " Error: RemoveFoodItem index has no FoodItem");
+                Debug.LogError(this + " Error: RemoveFoodItem index has no FoodItem");
             }
             return removedFoodItem;
         }
 
         public FoodItem GetSelectedItem()
         {
-            if (_foodItemDictionary.ContainsKey(selectedItemIndex))
+            if (_inventoryItemDictionary.ContainsKey(selectedItemIndex))
             {
-                return _foodItemDictionary[selectedItemIndex];
+                return _inventoryItemDictionary[selectedItemIndex];
             }
             return null;
         }
@@ -251,7 +276,7 @@ namespace Simmer.Inventory
             for (int i = 0; i < _inventoryUIManager
                 .inventorySlotsManager.maxInventorySize; ++i)
             {
-                if (!_foodItemDictionary.ContainsKey(i))
+                if (!_inventoryItemDictionary.ContainsKey(i))
                 {
                     return i;
                 }

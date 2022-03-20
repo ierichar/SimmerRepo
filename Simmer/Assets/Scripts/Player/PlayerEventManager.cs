@@ -11,8 +11,6 @@ namespace Simmer.Player
     /// </summary>
     public class PlayerEventManager : MonoBehaviour
     {
-        //public UnityEvent<int> OnSelectItem = new UnityEvent<int>();
-
         /// <summary>
         /// Event for destroying selected player item
         /// Declared in PlayerEventManager, invoked in PlayerItemSelect,
