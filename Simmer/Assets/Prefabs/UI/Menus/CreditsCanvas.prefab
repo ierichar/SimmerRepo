@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1162259678337228044
 RectTransform:
   m_ObjectHideFlags: 0
@@ -249,9 +249,9 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -17, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &1162259679333370515
 CanvasRenderer:
@@ -464,7 +464,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -1640.0006}
+  m_AnchoredPosition: {x: 0, y: -1640}
   m_SizeDelta: {x: 1368, y: 3968}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1162259679873492746
@@ -510,9 +510,9 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "PRODUCTION\nIan Richardson \nConstantine Kolokousis\n\nGAMEPLAY DESIGN\nIan
     Richardson\t\nEvan Li\nJoe Carter\nMoises Perez\n\nSOFTWARE DEVELOPMENT\nJoe
-    Carter\nEvan Li\nYuhong Li\nMoises Perez\n\nVISUAL DESIGN\nEmily Li\nRayna Li\nJesus
-    Picos\nIsrael Renteria\n\nLEVEL DESIGN\nJoe Carter\nEmily Li\nMoises Perez\n\nAUDIO
-    AND MUSIC\nJoe Carter\nCharles Cenizal\nMoises Perez\n\nCONCEPT ART\nEmily Li\nJesus
+    Carter\nEvan Li\nYuhong Li\nMoises Perez\n\nVISUAL DESIGN\nEmily Ye\nRayna Li\nJesus
+    Picos\nIsrael Renteria\n\nLEVEL DESIGN\nJoe Carter\nEmily Ye\nMoises Perez\n\nAUDIO
+    AND MUSIC\nJoe Carter\nCharles Cenizal\nMoises Perez\n\nCONCEPT ART\nEmily Ye\nJesus
     Picos\n\nWRITING\nFernanda Becerra\nConstantine Kolokousis\nEvan Li\nIsrael Renteria\nIan
     Richardson\n\nUI/UX\nFernanda Becerra\nJoe Carter\nEvan Li\nYuhong Li\nMoises
     Perez\n\nSPECIAL THANKS TO\nEvelyn Gill, Jessica Wake, Avery Weibel, Jake O\u2019Neil
@@ -777,8 +777,8 @@ RectTransform:
   m_Father: {fileID: 1162259679181654591}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0.82662904}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
