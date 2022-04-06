@@ -55,7 +55,7 @@ public class Shop : MonoBehaviour
         List<IngredientData> selection = data.selectRandom(12);
         // sellSlot.itemSlot.onItemDrop.AddListener(sellItemWrapper);
 
-        for (int i = 0; i < 12; i++)
+        for (int i = 0; i < 4; i++)
         {
             ShopButton button = Instantiate(buttonPrefab, buttonContainer);
             button.makeButton(selection[i], GetComponent<Shop>());
