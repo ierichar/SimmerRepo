@@ -9,6 +9,10 @@ using Simmer.UI.ImageQueue;
 
 namespace Simmer.NPC
 {
+    /// <summary>
+    /// Stores instance data for an NPC. Construct initializes
+    /// visuals and delegates interaction behaviour to NPC_Manager.
+    /// </summary>
     public class NPC_Behaviour : MonoBehaviour
     {
         private NPC_Manager _npcManager;
@@ -18,6 +22,9 @@ namespace Simmer.NPC
         private SpriteRendererManager _highlightSprite;
         private QueueTrigger _queueTrigger;
 
+        /// <summary>
+        /// Data for this NPC. Cannot be null.
+        /// </summary>
         [SerializeField] private NPC_Data _npcData;
 
         public void Construct(NPC_Manager npcManager)
@@ -38,7 +45,6 @@ namespace Simmer.NPC
             _queueTrigger = GetComponent<QueueTrigger>();
             _queueTrigger.Construct(npcManager.marketCanvasManager
                 .recipeBookQueueManager);
-
         }
 
         private void OnInteractCallback()

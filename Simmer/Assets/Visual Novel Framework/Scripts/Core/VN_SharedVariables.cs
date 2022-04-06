@@ -11,6 +11,8 @@ namespace Simmer.VN
     // Perhaps dangerous, needs further testing?
     public class VN_SharedVariables : MonoBehaviour
     {
+        private VN_Manager manager;
+
         [Header("Ink/Unity shared variables")]
         public int isReturning = 0;
         public int isCorrectGift = 0;
@@ -18,46 +20,43 @@ namespace Simmer.VN
         public string questItem = "null";
         public string questReward = "null";
 
-        private List<VN_EventData> _eventDataList
-            = new List<VN_EventData>();
-
         private Dictionary<string, UnityEvent>
             _eventDictionary = new Dictionary<string, UnityEvent>();
 
         private UnityEvent<string> eventDispactcher
             = new UnityEvent<string>();
 
-        private FieldInfo[] FieldInfoArray;
-        private VN_Manager manager;
-
         public void Construct(VN_Manager manager)
         {
             this.manager = manager;
-            FieldInfoArray = GetType().GetFields();
 
-            UnityEvent testEvent = new UnityEvent();
-            testEvent.AddListener(() => Debug.Log("Hi"));
-
-            VN_EventData testEventData = new VN_EventData(testEvent
-                , "testEvent");
-
-            _eventDataList.Add(testEventData);
-
-            foreach(VN_EventData eventData in _eventDataList)
-            {
-                AddEventData(eventData);
-            }
-
-            eventDispactcher.AddListener(NewDispatch);
+            eventDispactcher.AddListener(EventDispactcherCallback);
         }
 
         public void AddEventData(VN_EventData data)
         {
+            if (_eventDictionary.ContainsKey(data.eventCode))
+            {
+                Debug.LogError(this + " Error: Cannot AddEventData " +
+                    "on eventCode that already exists in _eventDictionary");
+                return;
+            }
             _eventDictionary.Add(data.eventCode
                 , data.eventTarget);
         }
 
-        private void NewDispatch(string eventCode)
+        public void RemoveEventData(VN_EventData data)
+        {
+            if(!_eventDictionary.ContainsKey(data.eventCode))
+            {
+                Debug.LogError(this + " Error: Cannot RemoveEventData " +
+                    "on eventCode that doesn't exist in _eventDictionary");
+                return;
+            }
+            _eventDictionary.Remove(data.eventCode);
+        }
+
+        private void EventDispactcherCallback(string eventCode)
         {
             if(!_eventDictionary.ContainsKey(eventCode))
             {
