@@ -4,6 +4,7 @@ using UnityEngine;
 
 using Simmer.VN;
 using Simmer.FoodData;
+using Simmer.CustomTime;
 
 namespace Simmer.NPC
 {
@@ -68,6 +69,31 @@ namespace Simmer.NPC
             }
             return selectedItem;
         }
+
+        public List<IngredientData> selectItemsBasedOnTime(int Hour, bool AM) {
+            List<IngredientData> selectedItems = new List<IngredientData>();
+            
+            //Add code here to select a certain set of items based on how many should be shown at 1 time
+            //The specific items  that show should be based on the current time from TimeManger
+            int index = 0;
+            if(Hour >= 6 && Hour<=9 && AM){
+                index = 0;
+            }else if(Hour > 9 && Hour<=11 && AM){
+                index = shopItemList.Count/3;
+            }else{
+                index = shopItemList.Count/3 * 2;
+                Debug.Log("Index: " + index);
+            }
+            Debug.Log("shopList count: " + shopItemList.Count);
+            for(int i=0; i < 3; i++){
+                Debug.Log("i: " + (index+i));
+                selectedItems.Add(shopItemList[(index+i)%(shopItemList.Count)]);
+            }
+
+            return selectedItems;
+        }
+
+
 
         public void Awake()
         {

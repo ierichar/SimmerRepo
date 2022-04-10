@@ -9,6 +9,7 @@ using Simmer.Items;
 using Simmer.Inventory;
 using Simmer.UI;
 using Simmer.NPC;
+using Simmer.CustomTime;
 
 public class Shop : MonoBehaviour
 {
@@ -52,10 +53,11 @@ public class Shop : MonoBehaviour
 
         foreach (var button in allButtons) Destroy(button.gameObject);
         allButtons.Clear();
-        List<IngredientData> selection = data.selectRandom(12);
+        //List<IngredientData> selection = data.selectRandom(4);
+        List<IngredientData> selection = data.selectItemsBasedOnTime(TimeManager.Hour, TimeManager.AM);
         // sellSlot.itemSlot.onItemDrop.AddListener(sellItemWrapper);
 
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 3; i++)
         {
             ShopButton button = Instantiate(buttonPrefab, buttonContainer);
             button.makeButton(selection[i], GetComponent<Shop>());

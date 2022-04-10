@@ -16,7 +16,7 @@ namespace Simmer.CustomTime{
         public static bool AM { get; private set;}
 
 
-        private float minuteToRealTime = 1f;
+        private float minuteToRealTime = 0.07f;
         private float timer;
         
         
