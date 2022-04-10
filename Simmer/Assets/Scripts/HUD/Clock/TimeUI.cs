@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-
+using Simmer.CustomTime;
 public class TimeUI : MonoBehaviour
 {
     public TextMeshProUGUI timeText;
@@ -21,6 +21,12 @@ public class TimeUI : MonoBehaviour
 
     private void UpdateTime()
     {
-        timeText.text = $"{TimeManager.Hour:00}:{TimeManager.Minute:00}";
+        string halfDay;
+        if(TimeManager.AM){
+            halfDay = "AM";
+        }else{
+            halfDay = "PM";
+        }
+        timeText.text = $"{TimeManager.Hour:00}:{TimeManager.Minute:00} {halfDay}";
     }
 }

@@ -40,6 +40,8 @@ public static class GlobalPlayerData
         OnNewKnowledgeAdded
         = new UnityEvent<IngredientData>();
 
+    public static int[] currentTime = new int[3];
+
     //// 1. item to queue, 2. Origin location, 3. Desitination queue
     //public static UnityEvent<IngredientData, RectTransform, ImageQueueManager>
     //       OnNewQueueDispatch = new UnityEvent<IngredientData, RectTransform, ImageQueueManager>();
@@ -79,6 +81,10 @@ public static class GlobalPlayerData
             AddIngredientKnowledge(ingredient);
         }
 
+        //load startingTime
+        currentTime[0] = startingSaveData.startingTime[0];
+        currentTime[1] = startingSaveData.startingTime[1];
+        currentTime[2] = startingSaveData.startingTime[2];
     }
 
     public static void SaveInventoryDictionary(
@@ -138,5 +144,14 @@ public static class GlobalPlayerData
         }
 
         return false;
+    }
+
+    public static void SaveCurrentTime(int hour, int minute, int AM){
+        if(AM != 0 && AM!=1){
+            Debug.LogError("AM must be 0 or 1 for true of false respectivly");
+        }
+        currentTime[0] = hour;
+        currentTime[1] = minute;
+        currentTime[2] = AM;
     }
 }

@@ -727,9 +727,25 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1264990229}
+    - target: {fileID: 1151557453, guid: 764f52048178c406c8ea7c53e215c62e, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 333
+      objectReference: {fileID: 0}
     - target: {fileID: 1151557454, guid: 764f52048178c406c8ea7c53e215c62e, type: 3}
       propertyPath: m_text
-      value: 06:00
+      value: 06:00 AM
+      objectReference: {fileID: 0}
+    - target: {fileID: 2071259179, guid: 764f52048178c406c8ea7c53e215c62e, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 333
+      objectReference: {fileID: 0}
+    - target: {fileID: 2071259179, guid: 764f52048178c406c8ea7c53e215c62e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -793.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2071259179, guid: 764f52048178c406c8ea7c53e215c62e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 490
       objectReference: {fileID: 0}
     - target: {fileID: 2041215325566022176, guid: 764f52048178c406c8ea7c53e215c62e, type: 3}
       propertyPath: m_AnchorMax.y

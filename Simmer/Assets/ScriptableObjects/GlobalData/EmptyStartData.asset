@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: EmptyStartData
   m_EditorClassIdentifier: 
   startingMoney: 20
+  startingTime: 060000000000000000000000
   startKnownList: []
   startInventoryList: []
   startingPantry: []

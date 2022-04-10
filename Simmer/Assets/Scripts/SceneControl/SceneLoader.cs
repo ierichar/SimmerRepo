@@ -8,6 +8,7 @@ using DG.Tweening;
 using Simmer.UI;
 using Simmer.Player;
 using Simmer.Inventory;
+using Simmer.CustomTime;
 
 namespace Simmer.SceneManagement
 {
@@ -48,6 +49,7 @@ namespace Simmer.SceneManagement
                 _screenBlockManager.SetColor(Color.black);
                 _screenBlockManager.Fade(0, _fadeTime, _fadeEase);
             }
+            
         }
 
         private void OnSceneLoadCallback(SceneData sceneData)
@@ -61,6 +63,7 @@ namespace Simmer.SceneManagement
         private IEnumerator LoadSceneSequence(SceneData sceneData)
         {
             isSceneLoading = true;
+            GlobalPlayerData.SaveCurrentTime(TimeManager.Hour, TimeManager.Minute, TimeManager.AM ? 0 : 1);
 
             GlobalPlayerData.SaveInventoryDictionary
                 (_playerInventory.inventoryItemDictionary);
