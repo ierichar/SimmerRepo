@@ -62,7 +62,6 @@ VAR QUEST_REWARD = "QuestReward"
     -> InterfaceChoices
 }
 
-// Not checking gift anymore since there is only dialogue response for positive
 === CheckGift ===
 >>> UpdateInkVar(IS_CORRECT_GIFT, isCorrectGift);
 { IS_CORRECT_GIFT:

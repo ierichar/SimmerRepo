@@ -8,21 +8,39 @@ using Simmer.VN;
 
 namespace Simmer.NPC
 {
+    /// <summary>
+	/// Defines base functionality of NPC interface windows including
+    /// exit, return, open, and VN interaction.
+	/// </summary>
     public abstract class NPC_InterfaceWindow : MonoBehaviour
     {
+        // Dependency references
         protected NPC_Manager _npcManager;
 
+        // Internal references
         protected NPC_InterfaceExit _interfaceExit;
         protected NPC_InterfaceReturn _interfaceReturn;
         protected NPC_CharacterBox _characterBox;
 
+        // Class UnityEvents
         public UnityEvent OnChoose = new UnityEvent();
         public UnityEvent<NPC_Data> OnOpen = new UnityEvent<NPC_Data>();
         public UnityEvent OnClose = new UnityEvent();
         public UnityEvent OnReturn = new UnityEvent();
 
+        // Inheriting class VN string codes
+        /// <summary>
+        /// String event code for choosing this interface window
+        /// in dialogue choices
+        /// </summary>
         protected string _onChooseString;
+        /// <summary>
+        /// String event code for choosing this interface window
+        /// in dialogue choices
+        /// </summary>
         protected string _onCloseString;
+
+        // State variables
         public NPC_Data currentNPC_Data { get; private set; }
 
         public virtual void Construct(NPC_Manager npcManager)

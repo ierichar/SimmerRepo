@@ -12,34 +12,71 @@ using Simmer.FoodData;
 
 namespace Simmer.NPC
 {
+    /// <summary>
+    /// Defines and controls all NPC interaction
+    /// , VN_Manager interaction , UI function calls, and updating
+    /// of NPC related GlobalPlayerData.
+    /// </summary>
+    /// TODO This class does too many different things;
+    /// Maybe move quest related to subordinate class
     public class NPC_Manager : MonoBehaviour
     {
+        // Dependency references
+        /// <summary>
+        /// VN_Manager controlling the NPC dialogue in this scene.
+        /// </summary>
         public VN_Manager vn_manager { get; private set; }
+        /// <summary>
+        /// Reference to vn_manager.sharedVariables.
+        /// </summary>
         public VN_SharedVariables vn_sharedVariables { get; private set; }
+        /// <summary>
+        /// Canvas manager for the market scene which includes
+        /// the NPC interface windows.
+        /// </summary>
         public MarketCanvasManager marketCanvasManager { get; private set; }
         private CanvasGroupManager _playCanvasGroupManager;
         private GameEventManager _gameEventManager;
 
+        // Serailized variables
+        /// <summary>
+        /// Duration of fade in and out of play UI
+        /// </summary>
         [SerializeField] private float _playCanvasFadeDuration;
+        /// <summary>
+        /// Easing of fade in and out of play UI
+        /// </summary>
         [SerializeField] private Ease _playCanvasFadeEase;
 
+        // Internal references
         private NPC_Shop _npcShop;
         private NPC_Gift _npcGift;
-
         private List<NPC_Behaviour> _allNPCList =
             new List<NPC_Behaviour>();
 
+        // Class UnityEvents
+        /// <summary>
+        /// Invoked on player raycast interact by the associated
+        /// NPC_Behaviour which passes its NPC_Data.
+        /// </summary>
         public UnityEvent<NPC_Data> onNPCInteract
             = new UnityEvent<NPC_Data>();
+        /// <summary>
+        /// Invoked when the open NPC_InterfaceWindow is fully closed.
+        /// </summary>
         public UnityEvent onCloseInterfaceCompleted
             = new UnityEvent();
+        /// <summary>
+        /// Invoked when a gift is given. True for correct
+        /// , false for incorrect.
+        /// </summary>
         public UnityEvent<bool> onTryGift
             = new UnityEvent<bool>();
 
+        // State variables
         public NPC_InterfaceWindow targetInterfaceWindow;
         public NPC_Data currentNPC_Data { get; private set; }
         public NPC_QuestData currentNPC_Quest { get; private set; }
-
         private bool _isInteracting;
         private List<IngredientData> _newKnowledgeToAdd =
             new List<IngredientData>();
@@ -69,11 +106,12 @@ namespace Simmer.NPC
             }
 
             onNPCInteract.AddListener(OnNPCInteractCallback);
-            vn_manager.OnEndStory.AddListener(OnStopNPCInteract);
+            vn_manager.OnEndStory.AddListener(OnStopNPCInteractCallback);
             onTryGift.AddListener(OnTryGiftCallback);
 
             VN_EventData closeInterfaceData =
-                new VN_EventData(onCloseInterfaceCompleted, "CloseComplete");
+                new VN_EventData(onCloseInterfaceCompleted
+                , "CloseComplete");
             vn_sharedVariables.AddEventData(closeInterfaceData);
         }
 
@@ -117,45 +155,11 @@ namespace Simmer.NPC
 
         private IEnumerator InteractSequence(NPC_Data npcData)
         {
+            // Set internal state
             _isInteracting = true;
             currentNPC_Data = npcData;
 
-            if (GlobalPlayerData.activeQuestDictionary
-                .ContainsKey(currentNPC_Data))
-            {
-                // Store active quest for this NPC
-                currentNPC_Quest = GlobalPlayerData
-                    .activeQuestDictionary[currentNPC_Data];
-            }
-            else currentNPC_Quest = null;
-
-            if (currentNPC_Quest == null)
-            {
-                // If player already completed, don't get new quest
-                if(GlobalPlayerData.completedQuestDictionary
-                    .ContainsKey(currentNPC_Data))
-                {
-                    UpdateQuestSharedVariables(false);
-                }
-                else
-                {
-                    currentNPC_Quest = npcData.questDataList[0];
-                    GlobalPlayerData.AddNewQuest(npcData
-                        , npcData.questDataList[0]);
-
-                    foreach (IngredientData item in currentNPC_Quest.initialKnowledge)
-                    {
-                        if (GlobalPlayerData.AddIngredientKnowledge(item))
-                            _newKnowledgeToAdd.Add(item);
-                    }
-
-                    UpdateQuestSharedVariables(true);
-                }
-            }
-            else
-            {
-                UpdateQuestSharedVariables(true);
-            }
+            TrackQuest(npcData);
 
             Tween fadeTween = _playCanvasGroupManager.Fade(0,
                 _playCanvasFadeDuration, _playCanvasFadeEase);
@@ -168,7 +172,54 @@ namespace Simmer.NPC
             yield return null;
         }
 
-        private void OnStopNPCInteract()
+        private void TrackQuest(NPC_Data npcData)
+        {
+            if (GlobalPlayerData.activeQuestDictionary
+                .ContainsKey(currentNPC_Data))
+            {
+                // Store active quest for this NPC
+                currentNPC_Quest = GlobalPlayerData
+                    .activeQuestDictionary[currentNPC_Data];
+            }
+            else currentNPC_Quest = null;
+
+            if (currentNPC_Quest == null)
+            {
+                // If player already completed,
+                // get data on this completed quest
+                if (GlobalPlayerData.completedQuestDictionary
+                    .ContainsKey(currentNPC_Data))
+                {
+                    UpdateQuestSharedVariables(false);
+                }
+                // If player not completed quest, add new quest
+                else
+                {
+                    AddNewQuest(npcData);
+                }
+            }
+            else
+            {
+                UpdateQuestSharedVariables(true);
+            }
+        }
+
+        private void AddNewQuest(NPC_Data npcData)
+        {
+            currentNPC_Quest = npcData.questDataList[0];
+            GlobalPlayerData.AddNewQuest(npcData
+                , npcData.questDataList[0]);
+
+            foreach (IngredientData item in currentNPC_Quest.initialKnowledge)
+            {
+                if (GlobalPlayerData.AddIngredientKnowledge(item))
+                    _newKnowledgeToAdd.Add(item);
+            }
+
+            UpdateQuestSharedVariables(true);
+        }
+
+        private void OnStopNPCInteractCallback()
         {
             StartCoroutine(StopInteractSequence());
         }
@@ -194,6 +245,13 @@ namespace Simmer.NPC
             _newKnowledgeToAdd.Clear();
         }
 
+        /// <summary>
+        /// Updates vn_sharedVariables for currentNPC_Quest
+        /// depending on isQuestOngoing.
+        /// </summary>
+        /// <param name="isQuestOngoing">
+        /// True if quest already completed, false if not.
+        /// </param>
         private void UpdateQuestSharedVariables(bool isQuestOngoing)
         {
             if(isQuestOngoing)
@@ -214,7 +272,6 @@ namespace Simmer.NPC
                     .completedQuestDictionary[currentNPC_Data]
                     .questReward.name;
             }
-            
         }
     }
 }

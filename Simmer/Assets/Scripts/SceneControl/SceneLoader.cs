@@ -63,7 +63,7 @@ namespace Simmer.SceneManagement
             isSceneLoading = true;
 
             GlobalPlayerData.SaveInventoryDictionary
-                (_playerInventory.foodItemDictionary);
+                (_playerInventory.inventoryItemDictionary);
 
             foreach(GenericAppliance app in FindObjectsOfType<GenericAppliance>()){
                 app.SaveInventory();

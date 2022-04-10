@@ -35,7 +35,7 @@ namespace Simmer.Items
 
         public override void SetItem(ItemBehaviour item)
         {
-            currentItem = item;
+            base.SetItem(item);
             _OnChangeItem.Invoke(index, currentItem);
         }
     }

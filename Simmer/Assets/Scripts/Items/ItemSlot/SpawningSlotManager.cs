@@ -20,6 +20,13 @@ namespace Simmer.Items
             _itemFactory = itemFactory;
         }
 
+        /// <summary>
+        /// Spawns a new FoodItem on this slot using the
+        /// ItemFactory.ConstructItem method.
+        /// </summary>
+        /// <param name="toSet">
+        /// FoodItem data to be spawned on this item slot.
+        /// </param>
         public void SpawnFoodItem(FoodItem toSet)
         {
             SetNewSlot(_itemFactory.ConstructItem(toSet, this));
