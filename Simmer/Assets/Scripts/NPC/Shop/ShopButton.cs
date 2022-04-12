@@ -42,6 +42,11 @@ namespace Simmer.UI
         }
 
         private void clicked() {
+            /*HYPOTHETICAL WAY TO CHECK IF THE ITEM CAN BE BOUGHT
+            if(shop.npcData.shopIsReset != true){
+                return;
+            }
+            */
             shop.buyItem(currentIngredient, cost);
         }
     }

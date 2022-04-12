@@ -93,8 +93,6 @@ namespace Simmer.NPC
             return selectedItems;
         }
 
-
-
         public void Awake()
         {
             Construct();
