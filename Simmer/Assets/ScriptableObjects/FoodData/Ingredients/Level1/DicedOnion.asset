@@ -10,14 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 100bfe8cc201b417887646b2755fd998, type: 3}
-  m_Name: SearedMeat
+  m_Name: DicedOnion
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 146d9414701ec984a99f1add11c1f091, type: 3}
-  baseValue: 3
+  sprite: {fileID: 0}
+  baseValue: 4
   isFinalProduct: 0
   _recipeEdgeList:
-  - {fileID: 11400000, guid: 5b8910124a055ea43819cd1caf3b6143, type: 2}
-  - {fileID: 11400000, guid: 52aeda357af2c2647b2f24e17b4597d5, type: 2}
+  - {fileID: 11400000, guid: bfd7123b8c34ea24e87558e9a8b009dc, type: 2}
   variantMode: 0
   minVariants: 0
   maxVariants: 0
