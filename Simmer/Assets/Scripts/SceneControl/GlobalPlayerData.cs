@@ -11,6 +11,8 @@ using Simmer.NPC;
 
 public static class GlobalPlayerData
 {
+    public static string characterName;
+
     public static Dictionary<int, FoodItem>
         foodItemDictionary
     {
@@ -51,6 +53,8 @@ public static class GlobalPlayerData
         if (isConstructed) return;
 
         isConstructed = true;
+
+        characterName = "You";
 
         knownIngredientList = new List<IngredientData>();
 
