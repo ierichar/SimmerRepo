@@ -10,6 +10,7 @@ using Simmer.FoodData;
 public class SaveData : ScriptableObject
 {
     public int startingMoney;
+    public int startingStage;
     public int[] startingTime = new int[3];
 
     public List<IngredientData> startKnownList

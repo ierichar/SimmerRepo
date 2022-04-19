@@ -35,6 +35,12 @@ namespace Simmer.NPC
         /// </summary>
         public CharacterData characterData;
 
+        /// @ierichar
+        /// <summary>
+        /// Number of interactions player has with NPC
+        /// </summary>
+        public int numOfInteractions;
+
         /// <summary>
         /// List of all possible items that appear in NPC's shop
         /// </summary>
@@ -106,6 +112,9 @@ namespace Simmer.NPC
         public void Construct()
         {
             questDictionary.Clear();
+
+            // @ierichar
+            numOfInteractions = 0;
 
             foreach (NPC_QuestData questData in questDataList)
             {

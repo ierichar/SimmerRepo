@@ -63,6 +63,7 @@ namespace Simmer.SceneManagement
         private IEnumerator LoadSceneSequence(SceneData sceneData)
         {
             isSceneLoading = true;
+
             GlobalPlayerData.SaveCurrentTime(TimeManager.Hour, TimeManager.Minute, TimeManager.AM ? 0 : 1);
 
             GlobalPlayerData.SaveInventoryDictionary
