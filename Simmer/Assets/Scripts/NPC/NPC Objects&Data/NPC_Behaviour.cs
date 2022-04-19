@@ -15,7 +15,7 @@ namespace Simmer.NPC
     /// </summary>
     public class NPC_Behaviour : MonoBehaviour
     {
-        private NPC_Manager _npcManager;
+        public NPC_Manager _npcManager { get; private set; }
 
         private InteractableBehaviour _interactableBehaviour;
         private NPC_Sprite _npcSprite;
@@ -50,6 +50,11 @@ namespace Simmer.NPC
         private void OnInteractCallback()
         {
             _npcManager.onNPCInteract.Invoke(_npcData);
+        }
+
+        public NPC_Data GetNPC_Data() 
+        {
+            return _npcData;
         }
     }
 }

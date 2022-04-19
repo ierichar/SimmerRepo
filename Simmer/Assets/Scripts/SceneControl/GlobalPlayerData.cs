@@ -11,8 +11,6 @@ using Simmer.NPC;
 
 public static class GlobalPlayerData
 {
-    public static string characterName;
-
     public static Dictionary<int, FoodItem>
         foodItemDictionary
     {
@@ -30,6 +28,9 @@ public static class GlobalPlayerData
     public static int playerMoney { get; private set; }
 
     private static bool isConstructed = false;
+    //@ierichar--------------------------------------------------------
+    public static int stageValue = 0;
+    //-----------------------------------------------------------------
     public static Dictionary<NPC_Data, NPC_QuestData> activeQuestDictionary
         = new Dictionary<NPC_Data, NPC_QuestData>();
 
@@ -54,7 +55,9 @@ public static class GlobalPlayerData
 
         isConstructed = true;
 
-        characterName = "You";
+        // @ierichar
+        // Loading starting save data of stage : 0
+        stageValue = startingSaveData.startingStage;
 
         knownIngredientList = new List<IngredientData>();
 

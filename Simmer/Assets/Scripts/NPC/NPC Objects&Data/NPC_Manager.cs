@@ -158,6 +158,10 @@ namespace Simmer.NPC
             // Set internal state
             _isInteracting = true;
             currentNPC_Data = npcData;
+            
+            //@ierichar 04/18/2022
+            currentNPC_Data.numOfInteractions++;
+            Debug.Log("NPC # of interactions: " + currentNPC_Data.numOfInteractions);
 
             TrackQuest(npcData);
 
@@ -243,6 +247,11 @@ namespace Simmer.NPC
             }
 
             _newKnowledgeToAdd.Clear();
+
+            // @ierichar
+            // Automatic check after interacting with an NPC to check
+            // if the stage needs to progress
+            UpdateStageSharedVariables();
         }
 
         /// <summary>
@@ -272,6 +281,39 @@ namespace Simmer.NPC
                     .completedQuestDictionary[currentNPC_Data]
                     .questReward.name;
             }
+        }
+
+        /// @ierichar
+        /// <summary>
+        /// Updates vn_sharedVariables based on currentStage
+        /// </summary>
+        private void UpdateStageSharedVariables() 
+        {
+            // Stage 0 to 1 Condition:
+            //  - Stage 0
+            //  - Meet all NPCs (numOfInteraction > 0)
+            if(GlobalPlayerData.stageValue == 0)
+            {
+                bool metAll = true;
+                foreach(NPC_Behaviour data in _allNPCList)
+                {
+                    if(data.GetNPC_Data().numOfInteractions == 0) 
+                    {
+                        metAll = false;
+                        break;
+                    }
+                }
+                if(metAll) 
+                {
+                    GlobalPlayerData.stageValue++;      // Update Global stage
+                    foreach(NPC_Behaviour data in _allNPCList)
+                    {
+                        // Update each NPC's stage variable
+                        data._npcManager.vn_sharedVariables.currentStage = 1;
+                    }
+                }
+            }
+            Debug.Log("Current Stage: " + GlobalPlayerData.stageValue);
         }
     }
 }
