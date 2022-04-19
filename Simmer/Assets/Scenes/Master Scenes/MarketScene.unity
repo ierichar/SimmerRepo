@@ -313,6 +313,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1847557095930597520, guid: 1a2ac35bc43854011aa71ba5b6b5c518, type: 3}
+      propertyPath: m_text
+      value: '06:00 AM
+
+        Day 1'
+      objectReference: {fileID: 0}
     - target: {fileID: 2935806903672320885, guid: 1a2ac35bc43854011aa71ba5b6b5c518, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -349,6 +355,10 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2008698213}
+    - target: {fileID: 4678810480369770486, guid: 1a2ac35bc43854011aa71ba5b6b5c518, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 120
+      objectReference: {fileID: 0}
     - target: {fileID: 5117507416437622223, guid: 1a2ac35bc43854011aa71ba5b6b5c518, type: 3}
       propertyPath: money
       value: 
@@ -388,6 +398,10 @@ PrefabInstance:
     - target: {fileID: 7148486346526736401, guid: 1a2ac35bc43854011aa71ba5b6b5c518, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7330997045980002766, guid: 1a2ac35bc43854011aa71ba5b6b5c518, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 110
       objectReference: {fileID: 0}
     - target: {fileID: 8015327652396382548, guid: 1a2ac35bc43854011aa71ba5b6b5c518, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

@@ -27,6 +27,6 @@ public class TimeUI : MonoBehaviour
         }else{
             halfDay = "PM";
         }
-        timeText.text = $"{TimeManager.Hour:00}:{TimeManager.Minute:00} {halfDay}";
+        timeText.text = $"{TimeManager.Hour:00}:{TimeManager.Minute:00} {halfDay} \nDay {TimeManager.Day}";
     }
 }

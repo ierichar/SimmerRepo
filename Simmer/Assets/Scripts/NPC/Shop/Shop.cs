@@ -54,7 +54,7 @@ public class Shop : MonoBehaviour
         foreach (var button in allButtons) Destroy(button.gameObject);
         allButtons.Clear();
         //List<IngredientData> selection = data.selectRandom(4);
-        List<IngredientData> selection = data.selectItemsBasedOnTime(TimeManager.Hour, TimeManager.AM);
+        List<IngredientData> selection = data.selectItemsBasedOnTime(TimeManager.Day);
         // sellSlot.itemSlot.onItemDrop.AddListener(sellItemWrapper);
 
         for (int i = 0; i < 3; i++)

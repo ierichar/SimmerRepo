@@ -13,7 +13,8 @@ namespace Simmer.CustomTime{
 
         public static int Minute { get; private set; }
         public static int Hour { get; private set; }
-        public static bool AM { get; private set;}
+        public static bool AM { get; private set; }
+        public static int Day { get; private set; }
 
 
         private float minuteToRealTime = 0.07f;
@@ -25,6 +26,7 @@ namespace Simmer.CustomTime{
         {
             Hour = GlobalPlayerData.currentTime[0];
             Minute = GlobalPlayerData.currentTime[1];
+            Day = GlobalPlayerData.currentTime[3];
             if(GlobalPlayerData.currentTime[2]==0){
                 AM = true;
             }else if(GlobalPlayerData.currentTime[2]==1){
@@ -50,6 +52,9 @@ namespace Simmer.CustomTime{
                     OnHourChanged?.Invoke();
                     if(Hour == 12){
                         AM = !AM;
+                        if(AM){
+                            Day++;
+                        }
                     }
                     if(Hour > 12) {
                         Hour = 1;

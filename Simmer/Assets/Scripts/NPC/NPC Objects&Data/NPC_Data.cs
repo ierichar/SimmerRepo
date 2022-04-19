@@ -76,11 +76,12 @@ namespace Simmer.NPC
             return selectedItem;
         }
 
-        public List<IngredientData> selectItemsBasedOnTime(int Hour, bool AM) {
+        public List<IngredientData> selectItemsBasedOnTime(int Day) {
             List<IngredientData> selectedItems = new List<IngredientData>();
             
             //Add code here to select a certain set of items based on how many should be shown at 1 time
             //The specific items  that show should be based on the current time from TimeManger
+            /*
             int index = 0;
             if(Hour >= 6 && Hour<=9 && AM){
                 index = 0;
@@ -95,7 +96,14 @@ namespace Simmer.NPC
                 Debug.Log("i: " + (index+i));
                 selectedItems.Add(shopItemList[(index+i)%(shopItemList.Count)]);
             }
+            return selectedItems;
+            */
 
+            int initial = (Day-1) % shopItemList.Count;
+            for(int i=0; i < 3; i++){
+                //Debug.Log("i: " + (initial+i));
+                selectedItems.Add(shopItemList[(initial+i)%(shopItemList.Count)]);
+            }
             return selectedItems;
         }
 
