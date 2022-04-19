@@ -17,6 +17,9 @@ namespace Simmer.VN
         public int isReturning = 0;
         public int isCorrectGift = 0;
         public int isQuestComplete = 0;
+        //@ierichar----------------------------------------------------
+        public int currentStage;
+        //-------------------------------------------------------------
         public string questItem = "null";
         public string questReward = "null";
 
@@ -29,6 +32,10 @@ namespace Simmer.VN
         public void Construct(VN_Manager manager)
         {
             this.manager = manager;
+
+            // @ierichar
+            // Load in current stage variable
+            currentStage = GlobalPlayerData.stageValue;
 
             eventDispactcher.AddListener(EventDispactcherCallback);
         }
