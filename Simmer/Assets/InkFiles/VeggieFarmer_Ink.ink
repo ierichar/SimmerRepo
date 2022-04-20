@@ -1,9 +1,12 @@
 INCLUDE InteractBase_Ink.ink
 
-VAR CHARACTER_NAME = "Veggie Farmer"
+VAR CHARACTER_NAME = "Taylor"
 
 === GreetingsGeneric ===
-//{CHARACTER_NAME}: Hey how are you doing!
+{CHARACTER_NAME}: Hey, good to see you!
+->->
+
+=== FirstGreeting ===
 {CHARACTER_NAME}: Hey there! You’re new to the market, right? I recognize all of the regulars and you ain’t one of em!
 I just moved here. I'm hoping to get into the local culinary school.
 {CHARACTER_NAME}: So you’re like a chef then huh! 
@@ -28,7 +31,11 @@ I just moved here. I'm hoping to get into the local culinary school.
 ->->
 
 === PositiveGift ===
-{CHARACTER_NAME}: This looks amazing! Thank you so much!
+{CHARACTER_NAME}: Thanks, these look great! Let me try one… 
+{CHARACTER_NAME}: *nom*
+{CHARACTER_NAME}: WOW! These are amazing. Where did you learn to make them?
+...
+{CHARACTER_NAME}: Your mom’s recipe you say? She has a great recipe and you have a chef’s intuition.
 {CHARACTER_NAME}: I bet you'd be able to make this {QUEST_REWARD} no problem.
 ->->
 

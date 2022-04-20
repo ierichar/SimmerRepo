@@ -19,6 +19,7 @@ namespace Simmer.VN
         public int isQuestComplete = 0;
         //@ierichar----------------------------------------------------
         public int currentStage;
+        public int interactionCount;    // seperate test from numOfInteractions in NPC_Data
         //-------------------------------------------------------------
         public string questItem = "null";
         public string questReward = "null";
