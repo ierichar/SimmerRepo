@@ -1,6 +1,12 @@
 INCLUDE InteractBase_Ink.ink
 
-VAR CHARACTER_NAME = "Butcher"
+VAR CHARACTER_NAME = "Missak"
+
+=== FirstGreeting ===
+{CHARACTER_NAME}: ...
+{CHARACTER_NAME}: ...
+{CHARACTER_NAME}: Hi.
+->->
 
 === GreetingsGeneric ===
 {CHARACTER_NAME}: Hey.

@@ -1,19 +1,29 @@
 VAR IS_RETURNING = 0
 VAR IS_CORRECT_GIFT = 0
 VAR IS_QUEST_COMPLETE = 0
+VAR CURRENT_STAGE = "CurrentStage"
 VAR QUEST_ITEM = "QuestItem"
 VAR QUEST_REWARD = "QuestReward"
 
 >>> UpdateInkVar(IS_QUEST_COMPLETE, isQuestComplete);
+>>> UpdateInkVar(CURRENT_STAGE, currentStage);
 >>> UpdateInkVar(QUEST_ITEM, questItem);
 >>> UpdateInkVar(QUEST_REWARD, questReward);
 
 >>> !CharEnter({CHARACTER_NAME})
 >>> TextboxEnter(Default)
 
--> GreetingsGeneric ->
+-> GreetingText ->
 -> QuestText ->
 -> InterfaceChoices
+
+=== GreetingText ===
+{ CURRENT_STAGE:
+- 0:
+    -> FirstGreeting
+- 1:
+    -> GreetingsGeneric
+}
 
 === QuestText ===
 { IS_QUEST_COMPLETE:
