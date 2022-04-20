@@ -160,8 +160,8 @@ namespace Simmer.NPC
             currentNPC_Data = npcData;
             
             //@ierichar 04/18/2022
-            currentNPC_Data.numOfInteractions++;
-            Debug.Log("NPC # of interactions: " + currentNPC_Data.numOfInteractions);
+            //currentNPC_Data.numOfInteractions++;
+            vn_sharedVariables.interactionCount = currentNPC_Data.numOfInteractions;
 
             TrackQuest(npcData);
 
@@ -230,6 +230,14 @@ namespace Simmer.NPC
 
         private IEnumerator StopInteractSequence()
         {
+            // @ierichar
+            // Automatic check after interacting with an NPC to check
+            // if the stage needs to progress
+            UpdateInteractionSharedVariables();
+            Debug.Log("NPC_Data - numOfInteractions: " + currentNPC_Data.numOfInteractions);
+            Debug.Log("VN_SharedVariables - interactionCount: " + vn_sharedVariables.interactionCount);
+            UpdateStageSharedVariables();
+
             marketCanvasManager.gameObject.SetActive(true);
 
             Tween fadeTween = _playCanvasGroupManager.Fade(1,
@@ -247,11 +255,6 @@ namespace Simmer.NPC
             }
 
             _newKnowledgeToAdd.Clear();
-
-            // @ierichar
-            // Automatic check after interacting with an NPC to check
-            // if the stage needs to progress
-            UpdateStageSharedVariables();
         }
 
         /// <summary>
@@ -281,6 +284,16 @@ namespace Simmer.NPC
                     .completedQuestDictionary[currentNPC_Data]
                     .questReward.name;
             }
+        }
+
+        /// @ierichar
+        /// <summary>
+        /// Update vn_sharedVariables interactionCount
+        /// </summary>
+        private void UpdateInteractionSharedVariables() 
+        {
+            currentNPC_Data.numOfInteractions = ++vn_sharedVariables.interactionCount;
+            vn_sharedVariables.interactionCount = 0;
         }
 
         /// @ierichar
