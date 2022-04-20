@@ -37,7 +37,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -842, y: 503}
-  m_SizeDelta: {x: 333, y: 100}
+  m_SizeDelta: {x: 333, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9195269487567266648
 CanvasRenderer:
@@ -1377,7 +1377,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -1.533, y: 0}
-  m_SizeDelta: {x: 333, y: 50}
+  m_SizeDelta: {x: 333, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &479423175812850136
 CanvasRenderer:
@@ -1407,7 +1407,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 06:00 AM
+  m_text: '06:00 AM
+
+    Day 1'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2866,11 +2868,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7130518701421804967, guid: e9aa6330d316f437a94d22457338618a, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.7
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7130518701421804967, guid: e9aa6330d316f437a94d22457338618a, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.7
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7130518701421804967, guid: e9aa6330d316f437a94d22457338618a, type: 3}
       propertyPath: m_LocalPosition.x

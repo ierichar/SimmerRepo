@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 100bfe8cc201b417887646b2755fd998, type: 3}
   m_Name: ChocolateChipCookies&Cream
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: a205b67659bdbbb4495c82ec69275e2e, type: 3}
   baseValue: 0
   isFinalProduct: 1
   _recipeEdgeList: []
