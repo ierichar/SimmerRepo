@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 100bfe8cc201b417887646b2755fd998, type: 3}
   m_Name: DicedOnion
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 3d35c23edad83ae459a7918ce0fe7fb9, type: 3}
   baseValue: 4
   isFinalProduct: 0
   _recipeEdgeList:

@@ -1633,6 +1633,7 @@ MonoBehaviour:
   isCorrectGift: 0
   isQuestComplete: 0
   currentStage: 0
+  interactionCount: 0
   questItem: null
   questReward: null
 --- !u!114 &9029017032059937155

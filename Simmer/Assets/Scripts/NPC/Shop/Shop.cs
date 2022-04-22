@@ -54,10 +54,11 @@ public class Shop : MonoBehaviour
         foreach (var button in allButtons) Destroy(button.gameObject);
         allButtons.Clear();
         //List<IngredientData> selection = data.selectRandom(4);
-        List<IngredientData> selection = data.selectItemsBasedOnTime(TimeManager.Day);
+        //List<IngredientData> selection = data.selectItemsBasedOnTime(TimeManager.Day);
         // sellSlot.itemSlot.onItemDrop.AddListener(sellItemWrapper);
+        List<IngredientData> selection = data.selectItemFromShopIndex();
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < npcData.shopItemList.Count; i++)
         {
             ShopButton button = Instantiate(buttonPrefab, buttonContainer);
             button.makeButton(selection[i], GetComponent<Shop>());
