@@ -19,5 +19,9 @@ namespace Simmer.UI
         {
             textMeshPro.text = text;
         }
+
+        public void setMargin() {
+            
+        }
     }
 }

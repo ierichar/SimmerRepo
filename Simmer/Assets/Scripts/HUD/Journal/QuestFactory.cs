@@ -42,6 +42,7 @@ public class QuestFactory : MonoBehaviour
                 + pair.Value.questItem.name;
             newItem.GetComponentInChildren<UITextManager>().Construct();
             newItem.GetComponentInChildren<UITextManager>().SetText(finalQuest);
+            newItem.GetComponentInChildren<UITextManager>().setMargin();
         }
     }
     

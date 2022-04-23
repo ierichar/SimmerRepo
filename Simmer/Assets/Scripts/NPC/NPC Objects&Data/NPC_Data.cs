@@ -112,6 +112,14 @@ namespace Simmer.NPC
             }
             return selectedItems;
         }
+        public List<IngredientData> selectItemFromShopIndex() {
+            List<IngredientData> selectedItems = new List<IngredientData>();
+
+            for(int i=0; i < shopItemList.Count; i++){
+                selectedItems.Add(shopItemList[i]);
+            }
+            return selectedItems;
+        }
 
         public void Awake()
         {

@@ -17,7 +17,7 @@ namespace Simmer.CustomTime{
         public static int Day { get; private set; }
 
 
-        private float minuteToRealTime = 0.01f;
+        private float minuteToRealTime = 0.07f;
         private float timer;
         
         
