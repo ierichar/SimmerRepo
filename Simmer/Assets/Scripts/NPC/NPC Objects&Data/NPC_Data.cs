@@ -41,6 +41,12 @@ namespace Simmer.NPC
         /// </summary>
         public int numOfInteractions;
 
+        /// @ierichar
+        /// <summary>
+        /// Flag if NPC has started quest or not
+        /// </summary>
+        public int isQuestStarted;
+
         /// <summary>
         /// List of all possible items that appear in NPC's shop
         /// </summary>
@@ -122,7 +128,9 @@ namespace Simmer.NPC
             questDictionary.Clear();
 
             // @ierichar
+            // initialize values for NPCs
             numOfInteractions = 0;
+            isQuestStarted = 0;
 
             foreach (NPC_QuestData questData in questDataList)
             {

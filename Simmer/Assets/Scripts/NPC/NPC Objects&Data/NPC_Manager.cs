@@ -162,6 +162,7 @@ namespace Simmer.NPC
             //@ierichar 04/18/2022
             //currentNPC_Data.numOfInteractions++;
             vn_sharedVariables.interactionCount = currentNPC_Data.numOfInteractions;
+            vn_sharedVariables.isQuestStarted = currentNPC_Data.isQuestStarted;
 
             TrackQuest(npcData);
 
@@ -234,9 +235,11 @@ namespace Simmer.NPC
             // Automatic check after interacting with an NPC to check
             // if the stage needs to progress
             UpdateInteractionSharedVariables();
-            Debug.Log("NPC_Data - numOfInteractions: " + currentNPC_Data.numOfInteractions);
-            Debug.Log("VN_SharedVariables - interactionCount: " + vn_sharedVariables.interactionCount);
             UpdateStageSharedVariables();
+            if (currentNPC_Data.characterData.name == "Taylor") UpdateVeggieFarmerQuest();
+            if (currentNPC_Data.characterData.name == "Missak") UpdateButcherQuest();
+            if (currentNPC_Data.characterData.name == "Bonnie") UpdateCowRancherQuest();
+            if (currentNPC_Data.characterData.name == "Mary") UpdateChickenKeeperQuest();
 
             marketCanvasManager.gameObject.SetActive(true);
 
@@ -268,6 +271,7 @@ namespace Simmer.NPC
         {
             if(isQuestOngoing)
             {
+
                 vn_sharedVariables.isQuestComplete = 0;
                 vn_sharedVariables.questItem = currentNPC_Quest
                     .questItem.name;
@@ -288,12 +292,64 @@ namespace Simmer.NPC
 
         /// @ierichar
         /// <summary>
+        /// Update vn_sharedVariables isQuestStarted flag
+        /// </summary>
+        private void UpdateQuestStartedSharedVariables(bool isQuestStarted) 
+        {
+            currentNPC_Data.isQuestStarted = vn_sharedVariables.isQuestStarted;
+            vn_sharedVariables.isQuestStarted = 0;
+        }
+
+        /// @ierichar
+        /// <summary>
         /// Update vn_sharedVariables interactionCount
         /// </summary>
         private void UpdateInteractionSharedVariables() 
         {
             currentNPC_Data.numOfInteractions = ++vn_sharedVariables.interactionCount;
             vn_sharedVariables.interactionCount = 0;
+        }
+
+        /// @ierichar
+        /// <summary>
+        /// Update Taylor (Veggie Farmer) quest progress
+        /// </summary>
+        private void UpdateVeggieFarmerQuest()
+        {
+            // Stage 0
+            // If quest is done, add yeast to shop
+            
+            // Stage 1
+        }
+
+        /// @ierichar
+        /// <summary>
+        /// Update Missak (Butcher) quest progress
+        /// </summary>
+        private void UpdateButcherQuest()
+        {
+            // Stage 0
+            // Stage 1
+        }
+
+        /// @ierichar
+        /// <summary>
+        /// Update Bonnie (Cow Rancher) quest progress
+        /// </summary>
+        private void UpdateCowRancherQuest()
+        {
+            // Stage 0
+            // Stage 1
+        }
+
+        /// @ierichar
+        /// <summary>
+        /// Update Mary (Chicken Keeper) quest progress
+        /// </summary>
+        private void UpdateChickenKeeperQuest()
+        {
+            // Stage 0
+            // Stage 1
         }
 
         /// @ierichar

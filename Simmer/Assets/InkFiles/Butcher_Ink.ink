@@ -3,9 +3,12 @@ INCLUDE InteractBase_Ink.ink
 VAR CHARACTER_NAME = "Missak"
 
 === FirstGreeting ===
-{CHARACTER_NAME}: ...
-{CHARACTER_NAME}: ...
-{CHARACTER_NAME}: Hi.
+{CHARACTER_NAME}: Hmmmm? Oh, are you new here?
+Haha... I guess you could say that.
+{CHARACTER_NAME}: Another cook looking to be more, eh?
+How'd you-
+{CHARACTER_NAME}: Well take it from me, I learned everything I
+{CHARACTER_NAME}
 ->->
 
 === GreetingsGeneric ===
@@ -19,6 +22,10 @@ VAR CHARACTER_NAME = "Missak"
 
 === QuestCompleted ===
 {CHARACTER_NAME}: Thank you for the {QUEST_ITEM}.
+->->
+
+=== Rumor ===
+{CHARACTER_NAME}: If you need the best eggs in town, talk to Mary.
 ->->
 
 === InteractOptions ===

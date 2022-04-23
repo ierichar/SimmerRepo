@@ -26,8 +26,12 @@ I just moved here. I'm hoping to get into the local culinary school.
 {CHARACTER_NAME}: Thanks for this {QUEST_ITEM}!
 ->->
 
+=== Rumor ===
+{CHARACTER_NAME}: I heard Missak mumbling about something earlier. I wonder what's bothering him.
+->->
+
 === InteractOptions ===
-{CHARACTER_NAME}: So what do you need?
+{CHARACTER_NAME}: Anyways, what do you need?
 ->->
 
 === PositiveGift ===
@@ -36,7 +40,10 @@ I just moved here. I'm hoping to get into the local culinary school.
 {CHARACTER_NAME}: WOW! These are amazing. Where did you learn to make them?
 ...
 {CHARACTER_NAME}: Your mom’s recipe you say? She has a great recipe and you have a chef’s intuition.
-{CHARACTER_NAME}: I bet you'd be able to make this {QUEST_REWARD} no problem.
+{CHARACTER_NAME}: Here, I bet you'd be able to make this {QUEST_REWARD} no problem.
+Thanks!
+{CHARACTER_NAME}: Y’know, I just got our latest yeast culture going, come back tomorrow and
+{CHARACTER_NAME}: I should have some in stock and you can start baking your own bread!
 ->->
 
 === EndGeneric ===

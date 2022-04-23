@@ -1,11 +1,14 @@
 VAR IS_RETURNING = 0
 VAR IS_CORRECT_GIFT = 0
+VAR IS_QUEST_STARTED = 0
 VAR IS_QUEST_COMPLETE = 0
 VAR CURRENT_STAGE = "CurrentStage"
 VAR INTERACTIONS = 0
+VAR QUEST_STARTED = 0
 VAR QUEST_ITEM = "QuestItem"
 VAR QUEST_REWARD = "QuestReward"
 
+>>> UpdateInkVar(IS_QUEST_STARTED, isQuestComplete);
 >>> UpdateInkVar(IS_QUEST_COMPLETE, isQuestComplete);
 >>> UpdateInkVar(CURRENT_STAGE, currentStage);
 >>> UpdateInkVar(INTERACTIONS, interactionCount);
@@ -28,11 +31,16 @@ VAR QUEST_REWARD = "QuestReward"
 }
 
 === QuestText ===
-{ IS_QUEST_COMPLETE:
-- 0:
-    -> QuestOngoing
+{ IS_QUEST_STARTED:
 - 1:
-    -> QuestCompleted
+    { IS_QUEST_COMPLETE:
+    - 0:
+        -> QuestOngoing
+    - 1:
+        -> QuestCompleted
+    }
+- else:
+    -> Rumor
 }
 ->->
 
