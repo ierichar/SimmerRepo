@@ -18,7 +18,7 @@ namespace Simmer.VN
         public int isCorrectGift = 0;
         public int isQuestComplete = 0;
         //@ierichar----------------------------------------------------
-        public int currentStage;
+        public int currentStage = 0;
         public int interactionCount = 0;    // connected to NPC_Data : numOfInteractions
         public int isQuestStarted = 0;      // connected to NPC_Data : isQuestStarted
         //-------------------------------------------------------------

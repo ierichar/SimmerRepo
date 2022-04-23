@@ -16,13 +16,23 @@ I'm looking for some ingredients to inspire me.
 {CHARACTER_NAME}: Hello young chef. What would you like today?
 ->->
 
-=== QuestOngoing ===
+== QuestStarted ===
 {CHARACTER_NAME}: I wish I could have some {QUEST_ITEM}. 
 {CHARACTER_NAME}: Here's what I know about the recipe.
 ->->
 
+=== QuestOngoing ===
+{CHARACTER_NAME}: I wish I could have some {QUEST_ITEM}. 
+->->
+
 === QuestCompleted ===
 {CHARACTER_NAME}: I really like this {QUEST_ITEM}!
+->->
+
+=== Rumor ===
+{CHARACTER_NAME}: Some people aren't friendly right off the bat.
+{CHARACTER_NAME}: Take the time to get know someone if you want to build a relationship.
+{CHARACTER_NAME}: *whispers* or give them some brownies <3
 ->->
 
 === InteractOptions ===

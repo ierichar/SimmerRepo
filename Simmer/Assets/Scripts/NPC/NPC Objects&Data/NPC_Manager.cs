@@ -161,10 +161,13 @@ namespace Simmer.NPC
             
             //@ierichar 04/18/2022
             //currentNPC_Data.numOfInteractions++;
-            vn_sharedVariables.interactionCount = currentNPC_Data.numOfInteractions;
-            vn_sharedVariables.isQuestStarted = currentNPC_Data.isQuestStarted;
+            vn_sharedVariables.interactionCount = npcData.numOfInteractions;
+            vn_sharedVariables.isQuestStarted = npcData.isQuestStarted;
 
-            TrackQuest(npcData);
+            if (npcData.characterData.name == "Taylor") UpdateVeggieFarmerQuest();
+            if (npcData.characterData.name == "Missak") UpdateButcherQuest();
+            if (npcData.characterData.name == "Bonnie") UpdateCowRancherQuest();
+            if (npcData.characterData.name == "Mary") UpdateChickenKeeperQuest();
 
             Tween fadeTween = _playCanvasGroupManager.Fade(0,
                 _playCanvasFadeDuration, _playCanvasFadeEase);
@@ -234,12 +237,14 @@ namespace Simmer.NPC
             // @ierichar
             // Automatic check after interacting with an NPC to check
             // if the stage needs to progress
-            UpdateInteractionSharedVariables();
-            UpdateStageSharedVariables();
+            Debug.Log("Talking to: " + currentNPC_Data.characterData.name);
             if (currentNPC_Data.characterData.name == "Taylor") UpdateVeggieFarmerQuest();
             if (currentNPC_Data.characterData.name == "Missak") UpdateButcherQuest();
             if (currentNPC_Data.characterData.name == "Bonnie") UpdateCowRancherQuest();
             if (currentNPC_Data.characterData.name == "Mary") UpdateChickenKeeperQuest();
+
+            UpdateInteractionSharedVariables();
+            UpdateStageSharedVariables();
 
             marketCanvasManager.gameObject.SetActive(true);
 
@@ -317,6 +322,13 @@ namespace Simmer.NPC
         private void UpdateVeggieFarmerQuest()
         {
             // Stage 0
+            // Start quest with first interaction
+            if (vn_sharedVariables.currentStage == 0 && vn_sharedVariables.isQuestStarted != 1) 
+            {
+                vn_sharedVariables.isQuestStarted = 1;
+                currentNPC_Data.isQuestStarted = vn_sharedVariables.isQuestStarted;
+                TrackQuest(currentNPC_Data);
+            }
             // If quest is done, add yeast to shop
             
             // Stage 1
@@ -329,7 +341,17 @@ namespace Simmer.NPC
         private void UpdateButcherQuest()
         {
             // Stage 0
+            // Character needs to introduce themselves to everyone before talking
             // Stage 1
+            if (vn_sharedVariables.currentStage == 1 && vn_sharedVariables.isQuestStarted != 1)
+            {
+                // Talk with him at least 2 times
+                if (currentNPC_Data.numOfInteractions > 2) {
+                    vn_sharedVariables.isQuestStarted = 1;
+                    currentNPC_Data.isQuestStarted = vn_sharedVariables.isQuestStarted;
+                    TrackQuest(currentNPC_Data);
+                }
+            }
         }
 
         /// @ierichar
@@ -340,6 +362,11 @@ namespace Simmer.NPC
         {
             // Stage 0
             // Stage 1
+            if (vn_sharedVariables.currentStage == 1 && vn_sharedVariables.isQuestStarted != 1) 
+            {
+                vn_sharedVariables.isQuestStarted = 1;
+                TrackQuest(currentNPC_Data);
+            }
         }
 
         /// @ierichar
@@ -350,6 +377,11 @@ namespace Simmer.NPC
         {
             // Stage 0
             // Stage 1
+            if (vn_sharedVariables.currentStage == 1 && vn_sharedVariables.isQuestStarted != 1) 
+            {
+                vn_sharedVariables.isQuestStarted = 1;
+                TrackQuest(currentNPC_Data);
+            }
         }
 
         /// @ierichar

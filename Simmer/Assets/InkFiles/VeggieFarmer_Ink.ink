@@ -12,14 +12,16 @@ I just moved here. I'm hoping to get into the local culinary school.
 {CHARACTER_NAME}: So you’re like a chef then huh! 
 {CHARACTER_NAME}: That’s so much fun! 
 {CHARACTER_NAME}: I’ve eaten nothing but carrot and beet salad for three days! I want something *sweet*.
-{CHARACTER_NAME}: Do you think you could make me some sugar cookies?
+->->
+
+=== QuestStarted ===
+{CHARACTER_NAME}: Do you think you could make me some {QUEST_ITEM}?
 ...
 {CHARACTER_NAME}: Great! I’m so excited! You can definitely find everything you need right here at the market. Buying locally is always best!
 ->->
 
 === QuestOngoing ===
-{CHARACTER_NAME}: I’m no good at baking, think you could make me a {QUEST_ITEM}?
-{CHARACTER_NAME}: Here's what I know about the recipe.
+{CHARACTER_NAME}: I'm super excited for {QUEST_ITEM}!
 ->->
 
 === QuestCompleted ===
