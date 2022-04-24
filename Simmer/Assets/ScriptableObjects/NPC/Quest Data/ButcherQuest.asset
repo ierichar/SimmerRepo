@@ -15,4 +15,4 @@ MonoBehaviour:
   questItem: {fileID: 11400000, guid: da66be970462f7c46a7f8f147c8ddf3f, type: 2}
   initialKnowledge:
   - {fileID: 11400000, guid: da66be970462f7c46a7f8f147c8ddf3f, type: 2}
-  questReward: {fileID: 11400000, guid: f000eed0758fbec48b4a9c297bfeaefa, type: 2}
+  questReward: {fileID: 11400000, guid: 611739ff97698ca4da84bd49356845b3, type: 2}

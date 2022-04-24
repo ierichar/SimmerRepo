@@ -33,16 +33,16 @@ VAR QUEST_REWARD = "QuestReward"
 === QuestText ===
 { IS_QUEST_STARTED:
 - 0:
-    -> QuestStarted
+    -> Rumor
 - 1:
+    -> QuestStarted
+- 2:
     { IS_QUEST_COMPLETE:
     - 0:
         -> QuestOngoing
     - 1:
         -> QuestCompleted
     }
-- else:
-    -> Rumor
 }
 ->->
 
@@ -50,6 +50,12 @@ VAR QUEST_REWARD = "QuestReward"
 ->InteractOptions->
 { IS_QUEST_STARTED:
 - 1:
+    { IS_QUEST_COMPLETE:
+    - 0:
+        + [Give gift]
+            -> ChooseGift
+    }
+- 2:
     { IS_QUEST_COMPLETE:
     - 0:
         + [Give gift]

@@ -17,22 +17,25 @@ I'm looking for some ingredients to inspire me.
 ->->
 
 == QuestStarted ===
-{CHARACTER_NAME}: I wish I could have some {QUEST_ITEM}. 
-{CHARACTER_NAME}: Here's what I know about the recipe.
+{CHARACTER_NAME}: You know I haven't been able to make a good {QUEST_ITEM} before. 
+{CHARACTER_NAME}: If you could help make me a really nice one, I'd be glad to share some of my family recipes.
+That sounds great, I can do that!
+{CHARACTER_NAME}: Fantastic! I can't wait!
 ->->
 
 === QuestOngoing ===
-{CHARACTER_NAME}: I wish I could have some {QUEST_ITEM}. 
+{CHARACTER_NAME}: I used to make {QUEST_ITEM} with my grandkids all the time.
+{CHARACTER_NAME}: If you need to make a quick buck, most of the folks here are always willing to buy your homemade goods.
 ->->
 
 === QuestCompleted ===
-{CHARACTER_NAME}: I really like this {QUEST_ITEM}!
+{CHARACTER_NAME}: Thank you for this {QUEST_ITEM}, dearie!
 ->->
 
 === Rumor ===
 {CHARACTER_NAME}: Some people aren't friendly right off the bat.
 {CHARACTER_NAME}: Take the time to get know someone if you want to build a relationship.
-{CHARACTER_NAME}: *whispers* or give them some brownies <3
+{CHARACTER_NAME}: *whispers* Or give them some brownies!
 ->->
 
 === InteractOptions ===

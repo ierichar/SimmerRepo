@@ -21,6 +21,7 @@ How'd you...?
 ->->
 
 === QuestOngoing ===
+{CHARACTER_NAME}: Don't rush on making the {QUEST_ITEM}.
 {CHARACTER_NAME}: There's no shame checking your recipe book for reminders.
 {CHARACTER_NAME}: A good chef uses all of the tools at their disposal... and salt.
 ->->
@@ -40,10 +41,10 @@ How'd you...?
 ->->
 
 === PositiveGift ===
-{CHARACTER_NAME}:  Thanks. I appreciate this.
+{CHARACTER_NAME}: Thanks. I appreciate this.
 {CHARACTER_NAME}: Take this {QUEST_REWARD} recipe. It’s pretty good if you haven’t tried it.
 ->->
 
 === EndGeneric ===
-{CHARACTER_NAME}: Bye
+{CHARACTER_NAME}: Bye.
 -> EndFunction

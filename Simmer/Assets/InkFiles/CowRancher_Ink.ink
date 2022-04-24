@@ -4,10 +4,9 @@ VAR CHARACTER_NAME = "Bonnie"
 
 === FirstGreeting ===
 {CHARACTER_NAME}: Howdy newcomer! I’ve been watchin’ you kick around the market and you’ve got the looks of a chef!
-How did you -
-{CHARACTER_NAME}: I spend a lot of time gazin’ out from under my brim and the comin’ and goin’ of 
-{CHARACTER_NAME}: our market, you just start to see it after a while, and I see that you’ve got a
-{CHARACTER_NAME}: discernin’ gaze. I’m {CHARACTER_NAME}, I bring the fruit of my family’s labor to the market here. 
+How did you...
+{CHARACTER_NAME}: I spend a lot of time gazin’ out from under my brim and the comin’ and goin’ of our market, you just start to see it after a while...
+{CHARACTER_NAME}: And I see that you’ve got a discernin’ gaze. I’m {CHARACTER_NAME}, I bring the fruit of my family’s labor to the market here. 
 ->->
 
 === GreetingsGeneric ===

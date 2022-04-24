@@ -7,10 +7,9 @@ VAR CHARACTER_NAME = "Taylor"
 ->->
 
 === FirstGreeting ===
-{CHARACTER_NAME}: Hey there! You’re new to the market, right? I recognize all of the regulars and you ain’t one of em!
+{CHARACTER_NAME}: Hey there! You’re new to the market, right? I'm {CHARACTER_NAME}. I recognize all of the regulars and you ain’t one of 'em!
 I just moved here. I'm hoping to get into the local culinary school.
-{CHARACTER_NAME}: So you’re like a chef then huh! 
-{CHARACTER_NAME}: That’s so much fun! 
+{CHARACTER_NAME}: So you’re like a chef then huh? That’s so much fun! 
 {CHARACTER_NAME}: I’ve eaten nothing but carrot and beet salad for three days! I want something *sweet*.
 ->->
 
@@ -22,6 +21,7 @@ I just moved here. I'm hoping to get into the local culinary school.
 
 === QuestOngoing ===
 {CHARACTER_NAME}: I'm super excited for {QUEST_ITEM}!
+{CHARACTER_NAME}: Don't forget to sleep if it gets too late.
 ->->
 
 === QuestCompleted ===
@@ -44,8 +44,7 @@ I just moved here. I'm hoping to get into the local culinary school.
 {CHARACTER_NAME}: Your mom’s recipe you say? She has a great recipe and you have a chef’s intuition.
 {CHARACTER_NAME}: Here, I bet you'd be able to make this {QUEST_REWARD} no problem.
 Thanks!
-{CHARACTER_NAME}: Y’know, I just got our latest yeast culture going, come back tomorrow and
-{CHARACTER_NAME}: I should have some in stock and you can start baking your own bread!
+{CHARACTER_NAME}: Y’know, I just got our latest yeast culture going, come back tomorrow and I should have some in stock and you can start baking your own bread!
 ->->
 
 === EndGeneric ===

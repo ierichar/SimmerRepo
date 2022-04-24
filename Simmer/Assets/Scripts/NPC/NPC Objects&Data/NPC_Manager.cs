@@ -9,6 +9,7 @@ using Simmer.VN;
 using Simmer.UI;
 using Simmer.UI.NPC;
 using Simmer.FoodData;
+using Simmer.CustomTime;
 
 namespace Simmer.NPC
 {
@@ -161,13 +162,19 @@ namespace Simmer.NPC
             
             //@ierichar 04/18/2022
             //currentNPC_Data.numOfInteractions++;
-            vn_sharedVariables.interactionCount = npcData.numOfInteractions;
-            vn_sharedVariables.isQuestStarted = npcData.isQuestStarted;
+            vn_sharedVariables.interactionCount = currentNPC_Data.numOfInteractions;
+            vn_sharedVariables.isQuestStarted = currentNPC_Data.isQuestStarted;
+            if (currentNPC_Data.isQuestStarted > 0) 
+            {
+                TrackQuest(currentNPC_Data);
+            }
 
-            if (npcData.characterData.name == "Taylor") UpdateVeggieFarmerQuest();
-            if (npcData.characterData.name == "Missak") UpdateButcherQuest();
-            if (npcData.characterData.name == "Bonnie") UpdateCowRancherQuest();
-            if (npcData.characterData.name == "Mary") UpdateChickenKeeperQuest();
+            Debug.Log("Start talking to: " + currentNPC_Data.characterData.name);
+            if (currentNPC_Data.characterData.name == "Taylor") UpdateVeggieFarmerQuest(currentNPC_Data);
+            if (currentNPC_Data.characterData.name == "Missak") UpdateButcherQuest(currentNPC_Data);
+            if (currentNPC_Data.characterData.name == "Bonnie") UpdateCowRancherQuest(currentNPC_Data);
+            if (currentNPC_Data.characterData.name == "Mary") UpdateChickenKeeperQuest(currentNPC_Data);
+            //Debug.Log("Current Quest is " + currentNPC_Quest);
 
             Tween fadeTween = _playCanvasGroupManager.Fade(0,
                 _playCanvasFadeDuration, _playCanvasFadeEase);
@@ -237,14 +244,11 @@ namespace Simmer.NPC
             // @ierichar
             // Automatic check after interacting with an NPC to check
             // if the stage needs to progress
-            Debug.Log("Talking to: " + currentNPC_Data.characterData.name);
-            if (currentNPC_Data.characterData.name == "Taylor") UpdateVeggieFarmerQuest();
-            if (currentNPC_Data.characterData.name == "Missak") UpdateButcherQuest();
-            if (currentNPC_Data.characterData.name == "Bonnie") UpdateCowRancherQuest();
-            if (currentNPC_Data.characterData.name == "Mary") UpdateChickenKeeperQuest();
+            Debug.Log("Done talking to: " + currentNPC_Data.characterData.name);
 
             UpdateInteractionSharedVariables();
             UpdateStageSharedVariables();
+            UpdateQuestStartedSharedVariables();
 
             marketCanvasManager.gameObject.SetActive(true);
 
@@ -299,7 +303,7 @@ namespace Simmer.NPC
         /// <summary>
         /// Update vn_sharedVariables isQuestStarted flag
         /// </summary>
-        private void UpdateQuestStartedSharedVariables(bool isQuestStarted) 
+        private void UpdateQuestStartedSharedVariables() 
         {
             currentNPC_Data.isQuestStarted = vn_sharedVariables.isQuestStarted;
             vn_sharedVariables.isQuestStarted = 0;
@@ -319,37 +323,66 @@ namespace Simmer.NPC
         /// <summary>
         /// Update Taylor (Veggie Farmer) quest progress
         /// </summary>
-        private void UpdateVeggieFarmerQuest()
+        /// <param name="currentNPC_Data">
+        /// Passing current npc being interacted with.
+        /// </param>
+        private void UpdateVeggieFarmerQuest(NPC_Data currentNPC_Data)
         {
+            Debug.Log("Update Veggie Farmer...");
             // Stage 0
             // Start quest with first interaction
-            if (vn_sharedVariables.currentStage == 0 && vn_sharedVariables.isQuestStarted != 1) 
+            if (vn_sharedVariables.currentStage >= 0 && vn_sharedVariables.isQuestStarted < 2) 
             {
-                vn_sharedVariables.isQuestStarted = 1;
+                vn_sharedVariables.isQuestStarted = ++vn_sharedVariables.isQuestStarted;
                 currentNPC_Data.isQuestStarted = vn_sharedVariables.isQuestStarted;
+                Debug.Log("isQuestStarted: " + vn_sharedVariables.isQuestStarted);
+                // Prevent duplicate calls to track quest
+                if (vn_sharedVariables.isQuestStarted <= 1)
+                {
+                    Debug.Log("Current NPC quest is " + currentNPC_Quest);
+                    //TrackQuest(currentNPC_Data);
+                }
                 TrackQuest(currentNPC_Data);
             }
             // If quest is done, add yeast to shop
             
             // Stage 1
+            // No questline yet
         }
 
         /// @ierichar
         /// <summary>
         /// Update Missak (Butcher) quest progress
         /// </summary>
-        private void UpdateButcherQuest()
+        /// <param name="currentNPC_Data">
+        /// Passing current npc being interacted with.
+        /// </param>
+        private void UpdateButcherQuest(NPC_Data currentNPC_Data)
         {
             // Stage 0
-            // Character needs to introduce themselves to everyone before talking
+            // Character needs to introduce themselves to everyone before recieving quest
+
             // Stage 1
-            if (vn_sharedVariables.currentStage == 1 && vn_sharedVariables.isQuestStarted != 1)
+            if (vn_sharedVariables.currentStage >= 1 && vn_sharedVariables.isQuestStarted < 2)
             {
-                // Talk with him at least 2 times
-                if (currentNPC_Data.numOfInteractions > 2) {
-                    vn_sharedVariables.isQuestStarted = 1;
-                    currentNPC_Data.isQuestStarted = vn_sharedVariables.isQuestStarted;
-                    TrackQuest(currentNPC_Data);
+                // Check if the cow rancher's quest is done
+                foreach (NPC_Behaviour data in _allNPCList)
+                {
+                    if (data.GetNPC_Data().characterData.name == "Bonnie")
+                    {
+                        // isQuestComplete check
+                        data.GetNPC_Data().isQuestStarted = 1;
+
+                        // Update NPCs shared variable for isQuestStarted
+                        vn_sharedVariables.isQuestStarted = ++vn_sharedVariables.isQuestStarted;
+                        currentNPC_Data.isQuestStarted = vn_sharedVariables.isQuestStarted;
+
+                        // Prevent duplicate calls to track quest
+                        if (vn_sharedVariables.isQuestStarted <= 1)
+                        {
+                            TrackQuest(currentNPC_Data);
+                        }
+                    }
                 }
             }
         }
@@ -358,14 +391,28 @@ namespace Simmer.NPC
         /// <summary>
         /// Update Bonnie (Cow Rancher) quest progress
         /// </summary>
-        private void UpdateCowRancherQuest()
+        /// <param name="currentNPC_Data">
+        /// Passing current npc being interacted with.
+        /// </param>
+        private void UpdateCowRancherQuest(NPC_Data currentNPC_Data)
         {
             // Stage 0
+            // Character needs to introduce themselves to everyone before recieving quest
+
             // Stage 1
-            if (vn_sharedVariables.currentStage == 1 && vn_sharedVariables.isQuestStarted != 1) 
+            if (vn_sharedVariables.currentStage >= 1 && vn_sharedVariables.isQuestStarted < 2) 
             {
-                vn_sharedVariables.isQuestStarted = 1;
-                TrackQuest(currentNPC_Data);
+                // Talk with her at least 2 times
+                if (currentNPC_Data.numOfInteractions > 2) {
+                    vn_sharedVariables.isQuestStarted = ++vn_sharedVariables.isQuestStarted;
+                    currentNPC_Data.isQuestStarted = vn_sharedVariables.isQuestStarted;
+
+                    // Prevent duplicate calls to track quest
+                    if (vn_sharedVariables.isQuestStarted <= 1)
+                    {
+                        TrackQuest(currentNPC_Data);
+                    }
+                }
             }
         }
 
@@ -373,14 +420,30 @@ namespace Simmer.NPC
         /// <summary>
         /// Update Mary (Chicken Keeper) quest progress
         /// </summary>
-        private void UpdateChickenKeeperQuest()
+        /// <param name="currentNPC_Data">
+        /// Passing current npc being interacted with.
+        /// </param>
+        private void UpdateChickenKeeperQuest(NPC_Data currentNPC_Data)
         {
+            Debug.Log("Update Chicken Keeper...");
             // Stage 0
+            // Character needs to introduce themselves to everyone before recieving quest
+
             // Stage 1
-            if (vn_sharedVariables.currentStage == 1 && vn_sharedVariables.isQuestStarted != 1) 
+            if (vn_sharedVariables.currentStage >= 1 && vn_sharedVariables.isQuestStarted < 2) 
             {
-                vn_sharedVariables.isQuestStarted = 1;
-                TrackQuest(currentNPC_Data);
+                // Give it up for day 43!
+                if (TimeManager.Day >= 2) {
+                    vn_sharedVariables.isQuestStarted = ++vn_sharedVariables.isQuestStarted;
+                    currentNPC_Data.isQuestStarted = vn_sharedVariables.isQuestStarted;
+
+                    // Prevent duplicate calls to track quest
+                    if (vn_sharedVariables.isQuestStarted <= 1)
+                    {
+                        //TrackQuest(currentNPC_Data);
+                    }
+                    TrackQuest(currentNPC_Data);
+                }
             }
         }
 
@@ -393,24 +456,48 @@ namespace Simmer.NPC
             // Stage 0 to 1 Condition:
             //  - Stage 0
             //  - Meet all NPCs (numOfInteraction > 0)
-            if(GlobalPlayerData.stageValue == 0)
+            if (GlobalPlayerData.stageValue == 0)
             {
                 bool metAll = true;
-                foreach(NPC_Behaviour data in _allNPCList)
+                foreach (NPC_Behaviour data in _allNPCList)
                 {
-                    if(data.GetNPC_Data().numOfInteractions == 0) 
+                    // Check if all NPCs have been interacted with
+                    if (data.GetNPC_Data().numOfInteractions == 0) 
                     {
                         metAll = false;
                         break;
                     }
                 }
-                if(metAll) 
+                if (metAll) 
                 {
                     GlobalPlayerData.stageValue++;      // Update Global stage
                     foreach(NPC_Behaviour data in _allNPCList)
                     {
                         // Update each NPC's stage variable
                         data._npcManager.vn_sharedVariables.currentStage = 1;
+                    }
+                }
+            }
+            // Stage 1 to 2 Condition:
+            //  - Stage 1
+            //  - Complete all quests for NPCs
+            if (GlobalPlayerData.stageValue == 1) {
+                bool allQuestsComplete = true;
+                foreach (NPC_Behaviour data in _allNPCList) 
+                {
+                    // Check if all NPCs quests have been completed
+                    // NOTE: for new added quests, may need different solution
+                    if (data._npcManager.vn_sharedVariables.isQuestComplete == 0) 
+                    {
+                        allQuestsComplete = false;
+                    }
+                }
+                if (allQuestsComplete) {
+                    GlobalPlayerData.stageValue++;      // Update Global stage
+                    foreach (NPC_Behaviour data in _allNPCList)
+                    {
+                        // Update each NPC's stage variable
+                        data._npcManager.vn_sharedVariables.currentStage++;
                     }
                 }
             }
