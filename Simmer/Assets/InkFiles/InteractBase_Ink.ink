@@ -1,11 +1,14 @@
 VAR IS_RETURNING = 0
 VAR IS_CORRECT_GIFT = 0
+VAR IS_QUEST_STARTED = 0
 VAR IS_QUEST_COMPLETE = 0
 VAR CURRENT_STAGE = "CurrentStage"
 VAR INTERACTIONS = 0
+VAR QUEST_STARTED = 0
 VAR QUEST_ITEM = "QuestItem"
 VAR QUEST_REWARD = "QuestReward"
 
+>>> UpdateInkVar(IS_QUEST_STARTED, isQuestStarted);
 >>> UpdateInkVar(IS_QUEST_COMPLETE, isQuestComplete);
 >>> UpdateInkVar(CURRENT_STAGE, currentStage);
 >>> UpdateInkVar(INTERACTIONS, interactionCount);
@@ -28,20 +31,36 @@ VAR QUEST_REWARD = "QuestReward"
 }
 
 === QuestText ===
-{ IS_QUEST_COMPLETE:
+{ IS_QUEST_STARTED:
 - 0:
-    -> QuestOngoing
+    -> Rumor
 - 1:
-    -> QuestCompleted
+    -> QuestStarted
+- 2:
+    { IS_QUEST_COMPLETE:
+    - 0:
+        -> QuestOngoing
+    - 1:
+        -> QuestCompleted
+    }
 }
 ->->
 
 === InterfaceChoices ===
 ->InteractOptions->
-{ IS_QUEST_COMPLETE:
-- 0:
-    + [Give gift]
-        -> ChooseGift
+{ IS_QUEST_STARTED:
+- 1:
+    { IS_QUEST_COMPLETE:
+    - 0:
+        + [Give gift]
+            -> ChooseGift
+    }
+- 2:
+    { IS_QUEST_COMPLETE:
+    - 0:
+        + [Give gift]
+            -> ChooseGift
+    }
 }
     + [Shop]
         -> ChooseShop
