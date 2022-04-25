@@ -10,15 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 100bfe8cc201b417887646b2755fd998, type: 3}
-  m_Name: Sugar
+  m_Name: SugarCookieDough
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 768afd6f86618554ea22eb81e11e63cd, type: 3}
+  sprite: {fileID: -4709606558031422002, guid: d9cf1e27ca92e4ad7b73389798a3529d, type: 3}
   baseValue: 1
   isFinalProduct: 0
   _recipeEdgeList:
-  - {fileID: 11400000, guid: e1d0faecbce5d4d6ea549b13c68ba768, type: 2}
-  - {fileID: 11400000, guid: ba1e6d26aaa386b4cb4afc0a5876ea9c, type: 2}
-  - {fileID: 11400000, guid: 950d0165dd28e19409ed3f8edcec980c, type: 2}
+  - {fileID: 11400000, guid: d8a412fc69d189d4fb40ffe6987eb2b1, type: 2}
   variantMode: 0
   minVariants: 0
   maxVariants: 0

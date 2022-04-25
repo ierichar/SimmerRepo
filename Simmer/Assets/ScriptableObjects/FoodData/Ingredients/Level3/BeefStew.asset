@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 100bfe8cc201b417887646b2755fd998, type: 3}
   m_Name: BeefStew
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: d1dc126f8a0fa1945875f35fd0a1b1fb, type: 3}
   baseValue: 21
   isFinalProduct: 1
   _recipeEdgeList: []

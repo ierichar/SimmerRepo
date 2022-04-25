@@ -273,6 +273,10 @@ PrefabInstance:
       propertyPath: UIGameObject
       value: 
       objectReference: {fileID: 2130959400}
+    - target: {fileID: 2460396720825004032, guid: b76813dd9e9d54c6e87ea7833b711e8c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2908600335904018086, guid: b76813dd9e9d54c6e87ea7833b711e8c, type: 3}
       propertyPath: _UIManager
       value: 
