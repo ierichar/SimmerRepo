@@ -15,6 +15,7 @@ namespace Simmer.FoodData
         [Header("Base Variables")]
         public Sprite sprite;
         public int baseValue;
+        public int timeProcessed;
         public bool isFinalProduct;
 
         [SerializeField]
@@ -58,7 +59,7 @@ namespace Simmer.FoodData
         private void Construct()
         {
             layerDictDebug = "";
-
+            
             applianceRecipeListDict.Clear();
             foreach (RecipeData recipe in _recipeEdgeList)
             {
