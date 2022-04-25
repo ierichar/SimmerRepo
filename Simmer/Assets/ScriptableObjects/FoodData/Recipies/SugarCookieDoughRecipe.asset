@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c9d50a780c2640c886552fca5bbac3d, type: 3}
-  m_Name: SugarCookieRecipe
+  m_Name: SugarCookieDoughRecipe
   m_EditorClassIdentifier: 
   ingredientDataList:
-  - {fileID: 11400000, guid: 2134a598351364748946cad20b1bcaa5, type: 2}
-  applianceData: {fileID: 11400000, guid: a0d4b5c0cfd7f4ec0a17eeda94c8db22, type: 2}
-  difficultyLevel: 2
-  baseActionTime: 6
-  resultIngredient: {fileID: 11400000, guid: f766829a4e655a54db85843adadbcaaf, type: 2}
+  - {fileID: 11400000, guid: 73d7df3f7d80b6b4d9fda4724d3e9ea6, type: 2}
+  - {fileID: 11400000, guid: 659c2de493a0f48beaf2a77495faa19b, type: 2}
+  applianceData: {fileID: 11400000, guid: 98e362c19770a4422b5cefea2629900f, type: 2}
+  difficultyLevel: 1
+  baseActionTime: 3
+  resultIngredient: {fileID: 11400000, guid: 2134a598351364748946cad20b1bcaa5, type: 2}

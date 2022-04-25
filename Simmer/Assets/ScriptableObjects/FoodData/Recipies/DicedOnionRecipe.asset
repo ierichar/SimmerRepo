@@ -16,5 +16,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bddc166fe97e0214f8eed52a4c552feb, type: 2}
   applianceData: {fileID: 11400000, guid: b8d33f9ac604d4f488e92997635d4a73, type: 2}
   difficultyLevel: 2
-  baseActionTime: 2
+  baseActionTime: 1
   resultIngredient: {fileID: 11400000, guid: e44a32b3f5ee01846ab340cacc6d0c2d, type: 2}
