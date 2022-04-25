@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: CookieDough
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: d02f06048d516594ea130758a625267c, type: 3}
-  baseValue: 1
+  baseValue: 3
+  timeProcessed: 0
   isFinalProduct: 0
   _recipeEdgeList:
   - {fileID: 11400000, guid: 950d0165dd28e19409ed3f8edcec980c, type: 2}
