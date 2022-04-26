@@ -15,7 +15,6 @@ namespace Simmer.FoodData
         [Header("Base Variables")]
         public Sprite sprite;
         public int baseValue;
-        public int timeProcessed;
         public bool isFinalProduct;
 
         [SerializeField]
