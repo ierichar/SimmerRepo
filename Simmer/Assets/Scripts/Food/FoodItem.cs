@@ -13,7 +13,6 @@ namespace Simmer.Items
         public Sprite sprite { get; private set; }
         public int value { get; private set; } 
         public int quality { get; private set; }
-        public float timeProcessed;
         public Dictionary<IngredientData, int> ingredientCompDict
             = new Dictionary<IngredientData, int>();
 
