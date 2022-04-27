@@ -81,6 +81,7 @@ namespace Simmer.Items
             _itemImageManager.Construct();
 
             _tooltipTrigger = GetComponentInChildren<TooltipTrigger>();
+            //use this line to change what is displayed by tooltips when hovering food items in any inventory slots
             _tooltipTrigger.Construct(foodItem.itemName, "");
 
             _itemCanvas = GetComponent<Canvas>();

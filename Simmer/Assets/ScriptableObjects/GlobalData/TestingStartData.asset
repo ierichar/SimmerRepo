@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingMoney: 20
   startingStage: 0
-  startingTime: 00000000000000000000000000000000
+  startingTime: 08000000000000000000000002000000
   startKnownList:
   - {fileID: 11400000, guid: eeabe57d10fbe464296cf625b3fcf090, type: 2}
   - {fileID: 11400000, guid: 4484146648c7d4384a459681d258b86e, type: 2}
@@ -52,10 +52,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0dbe0adf865a64740954489fcf47326d, type: 2}
   - {fileID: 11400000, guid: 37acdbe44d9358e42a4a8ec247771f6c, type: 2}
   startInventoryList:
-  - {fileID: 11400000, guid: 6183ea7ebcbc84bff853e5eed138897f, type: 2}
-  - {fileID: 11400000, guid: 2565475710af2e449b9967c976e06689, type: 2}
-  startingPantry:
-  - {fileID: 11400000, guid: 10062244df47e49868d8fa686cad5b65, type: 2}
-  - {fileID: 11400000, guid: 7e07ba1a8f3d747eca4d4e4684d50e6e, type: 2}
-  - {fileID: 11400000, guid: 9fd94f1c136b0ac4f85f790745393e4d, type: 2}
+  - {fileID: 11400000, guid: f2d64ff20b51169478c43d68964ce2f7, type: 2}
+  - {fileID: 11400000, guid: bddc166fe97e0214f8eed52a4c552feb, type: 2}
+  - {fileID: 11400000, guid: 52a4c6e4c3349bf46bba908e928e7740, type: 2}
   - {fileID: 11400000, guid: d03dbba14ea5a424d85434ec61ed8063, type: 2}
+  startingPantry: []

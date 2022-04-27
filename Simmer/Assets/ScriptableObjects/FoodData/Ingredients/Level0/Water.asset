@@ -17,6 +17,7 @@ MonoBehaviour:
   isFinalProduct: 0
   _recipeEdgeList:
   - {fileID: 11400000, guid: 3ed2629cd81aa8a4c8d8b7a4d6a1b3da, type: 2}
+  - {fileID: 11400000, guid: bfd7123b8c34ea24e87558e9a8b009dc, type: 2}
   variantMode: 0
   minVariants: 0
   maxVariants: 0

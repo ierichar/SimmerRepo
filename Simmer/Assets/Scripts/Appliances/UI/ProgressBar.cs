@@ -36,4 +36,14 @@ public class ProgressBar : MonoBehaviour
         currAmount = 0;
         setFill();
     }
+    public void changeColor(bool start){
+        if(start){
+            fillImage.color = new Color32(29, 214, 39, 180);
+        }else{
+            fillImage.color = new Color32(255, 0, 0, 255);
+        }
+        
+        //green: 1DD623
+        //red: FF0000
+    }
 }
