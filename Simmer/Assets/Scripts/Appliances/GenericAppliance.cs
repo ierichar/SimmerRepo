@@ -14,6 +14,7 @@ using Simmer.Interactable;
 public abstract class GenericAppliance : MonoBehaviour
 {
     [SerializeField] protected ApplianceData _applianceData;
+    [SerializeField] protected IngredientData _burntFood;
 
     [SerializeField]  protected ApplianceUIManager _UIManager;
     protected ProgressBar _progressBar;

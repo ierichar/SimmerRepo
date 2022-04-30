@@ -58,6 +58,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 03a24db5b1975ca438e3b88f1a5e7bd2, type: 2}
   - {fileID: 11400000, guid: c6fb9e9cc18f0554dbe9b0cdbcb4cb70, type: 2}
   - {fileID: 11400000, guid: 570a4bd104f73d943a73574325946089, type: 2}
+  - {fileID: 11400000, guid: c77ee3eeae4686f48ab85963ecc95d1e, type: 2}
   rawIngredientList:
   - {fileID: 11400000, guid: eeabe57d10fbe464296cf625b3fcf090, type: 2}
   - {fileID: 11400000, guid: 4484146648c7d4384a459681d258b86e, type: 2}

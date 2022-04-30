@@ -4397,6 +4397,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 692946499699463523, guid: f4d93251c0ca94c3bbaf983e64a797af, type: 3}
+      propertyPath: _burntFood
+      value: 
+      objectReference: {fileID: 11400000, guid: c77ee3eeae4686f48ab85963ecc95d1e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4d93251c0ca94c3bbaf983e64a797af, type: 3}
 --- !u!114 &6483919332197180054 stripped
@@ -4481,6 +4485,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StoveHitbox
       objectReference: {fileID: 0}
+    - target: {fileID: 7797157766737771009, guid: e0674f78ea967fe44a50753cab470396, type: 3}
+      propertyPath: _burntFood
+      value: 
+      objectReference: {fileID: 11400000, guid: c77ee3eeae4686f48ab85963ecc95d1e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0674f78ea967fe44a50753cab470396, type: 3}
 --- !u!114 &2908600335904018086 stripped
