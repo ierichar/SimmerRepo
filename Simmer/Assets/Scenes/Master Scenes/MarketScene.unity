@@ -1293,6 +1293,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5450db45fd19b422b8936aae6008bf15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2018902270 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4716030594482698112, guid: a4a2ca1564ca740d28e2ffcc704ea011, type: 3}
+  m_PrefabInstance: {fileID: 6984349728978572947}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2018902272
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018902270}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a1ce3b21670e4344c8bd5b61678a8db5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &6984349728978572947
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1300,6 +1324,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6568718441770113284, guid: a4a2ca1564ca740d28e2ffcc704ea011, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2484281541012904206, guid: 2fbc003430e2c384db2b7e1a7d516be8, type: 3}
     - target: {fileID: 6984349727695694033, guid: a4a2ca1564ca740d28e2ffcc704ea011, type: 3}
       propertyPath: m_Name
       value: MarketEnvironment
