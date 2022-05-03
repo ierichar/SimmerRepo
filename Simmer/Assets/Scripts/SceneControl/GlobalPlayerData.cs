@@ -95,7 +95,7 @@ public static class GlobalPlayerData
         currentTime[1] = startingSaveData.startingTime[1];
         currentTime[2] = startingSaveData.startingTime[2];
         currentTime[3] = startingSaveData.startingTime[3];
-        currentTime[4] = 0;
+        currentTime[4] = 1;
     }
 
     public static void SaveInventoryDictionary(
