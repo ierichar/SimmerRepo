@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 using Ink.Runtime;
 
@@ -21,6 +22,8 @@ namespace Simmer.NPC
         private NPC_Sprite _npcSprite;
         private SpriteRendererManager _highlightSprite;
         private QueueTrigger _queueTrigger;
+        private Animator _animator;
+        //private UnityAction stopInteractListenerAction;
 
         /// <summary>
         /// Data for this NPC. Cannot be null.
@@ -33,6 +36,13 @@ namespace Simmer.NPC
 
             _highlightSprite = GetComponentsInChildren<SpriteRendererManager>()[1];
             _highlightSprite.Construct();
+
+            //@@TheUnaverageJoe @@MPerez132 5/3/2022
+            //---------------------------------------------------------------------
+            _animator = GetComponentInChildren<Animator>();
+            //stopInteractListenerAction += stopInteractionAnim;
+
+            //---------------------------------------------------------------------
 
             _interactableBehaviour = GetComponent<InteractableBehaviour>();
             _interactableBehaviour.Construct(
@@ -47,10 +57,20 @@ namespace Simmer.NPC
                 .recipeBookQueueManager);
         }
 
+        //@@TheUnaverageJoe @@MPerez132 5/3/2022
+            //---------------------------------------------------------------------
         private void OnInteractCallback()
         {
             _npcManager.onNPCInteract.Invoke(_npcData);
+            _animator.SetBool("Interacting", true);
+            _npcManager.vn_manager.OnEndStory.AddListener(stopInteractionAnim);
         }
+        private void stopInteractionAnim(){
+            //Debug.Log("STOPPPING INTERACTGS");
+            _animator.SetBool("Interacting", false);
+        }
+        //---------------------------------------------------------------------
+        
 
         public NPC_Data GetNPC_Data() 
         {
