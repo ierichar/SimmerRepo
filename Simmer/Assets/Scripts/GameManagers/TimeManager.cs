@@ -7,16 +7,17 @@ namespace Simmer.CustomTime{
     public class TimeManager : MonoBehaviour
     {
         
+        [SerializeField] private Light sceneLight;
         public static Action OnMinuteChanged;
         public static Action OnHourChanged;
-        
-
         public static int Minute { get; private set; }
         public static int Hour { get; private set; }
         public static bool AM { get; private set; }
         public static int Day { get; private set; }
         public static bool Paused { get; private set; }
 
+        Color32 nightColor = new Color32(34, 93, 154, 255);
+        Color32 dayColor = new Color32(0, 0, 0, 255);
         private float minuteToRealTime = 0.07f;
         private float timer;
         
@@ -104,5 +105,37 @@ namespace Simmer.CustomTime{
         }
         //-------------------------------------------
 
+        //@@MPerez132 @@TheUnaverageJoe 5/4/2022
+        //-------------------------------------------
+        private void startLightingTransition(bool night, float scaleValue){
+
+            if(night){
+                sceneLight.color = Color32.Lerp(dayColor, nightColor, scaleValue);
+            }else{
+                sceneLight.color = Color32.Lerp(nightColor, dayColor, scaleValue);
+            }
+            
+
+            // byte RedChangePerSec = (nightColor.r - dayColor.r) / timeToLerp;
+            // byte GreenChangePerSec = (nightColor.g - dayColor.g) / timeToLerp;
+            // byte BlueChangePerSec = (nightColor.b - dayColor.b) / timeToLerp;
+            // Color32 currColor;
+            // Color32 targetColor;
+            // if(night){
+            //     currColor = dayColor;
+            //     targetColor = nightColor;
+            // }else{
+            //     currColor = nightColor;
+            //     targetColor = dayColor;
+            // }
+            // while(currColor.r != targetColor.r && currColor.g != targetColor.g && currColor.b != targetColor.b){
+            //     currColor.r = currColor.r + ToByte(RedChangePerSec);
+                
+            //     yield return new WaitForSeconds(1);
+            // }
+            
+        }
+        
+        //-------------------------------------------
     }
 }

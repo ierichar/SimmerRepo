@@ -1533,6 +1533,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8042035494538912232, guid: 13fddecaeb8294b5b9585d0eb31b7d63, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e90dce36f4d4016449d986fdea3a4dd1, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13fddecaeb8294b5b9585d0eb31b7d63, type: 3}
 --- !u!114 &8306681235868230566 stripped
@@ -1613,5 +1617,9 @@ PrefabInstance:
       propertyPath: volumeSlider
       value: 
       objectReference: {fileID: 1530186720}
+    - target: {fileID: 8319426941518180298, guid: 33063ccb1673948b89e3030ae8a279a7, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33063ccb1673948b89e3030ae8a279a7, type: 3}
