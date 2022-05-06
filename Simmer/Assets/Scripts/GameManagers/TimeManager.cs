@@ -17,10 +17,20 @@ namespace Simmer.CustomTime{
         public static bool Paused { get; private set; }
 
         Color32 nightColor = new Color32(34, 93, 154, 255);
-        Color32 dayColor = new Color32(0, 0, 0, 255);
+        Color32 dayColor = new Color32(255, 255, 255, 255);
         private float minuteToRealTime = 0.07f;
         private float timer;
         
+
+        private void OnEnable() 
+        {
+            TimeManager.OnMinuteChanged += changeLightingCallback;
+        }
+
+        private void OnDisable() 
+        {
+            TimeManager.OnMinuteChanged -= changeLightingCallback;
+        }
         
         // Start is called before the first frame update
         void Start()
@@ -45,11 +55,45 @@ namespace Simmer.CustomTime{
                 Debug.LogError("AM was not equal to 0 or 1");
             }
             // -------------------------------------------------
-            //Minute = 0;
-            //Hour = 6;
             timer = minuteToRealTime;
-            
-            //AM = true;
+            if(sceneLight==null){
+                return;
+            }else{
+                /*
+                if(AM){
+                    if(Hour == 6){
+                        if(Minute > 30){
+
+                        }
+
+                    }else if(Hour > 6){
+                        if(Minute > 30){
+                            
+                        }
+                    }
+                }
+                */
+                if(((Hour==6 && Minute>=30 && AM) || ((Hour>6 && Hour!=12) && AM)) || ((Hour<7 || Hour==12) && AM==false))
+                {
+                    sceneLight.color = dayColor;
+                }else{
+                    Debug.Log(Hour + ":"+ Minute + "AM?: " + AM);
+                    sceneLight.color = nightColor;
+                }
+
+                /*
+                FEAST YOUR EYES ON THIS BROKEN LOGIC
+                if((((Hour==6 && Minute>=30 && AM) || (Hour>6 && AM))&& (Hour<=11 && Minute<=59 && AM)) || 
+                (Hour==12 && Minute>=0 && AM==false) || 
+                ((Hour>=1 && Minute>=0 && AM==false) && (Hour<=6 && Minute<=59 && AM==false)))
+                {
+                    sceneLight.color = dayColor;
+                }else{
+                    Debug.Log(Hour + ":"+ Minute + "AM?: " + AM);
+                    sceneLight.color = nightColor;
+                }
+                */
+            }
         }
 
         // Update is called once per frame
@@ -105,35 +149,31 @@ namespace Simmer.CustomTime{
         }
         //-------------------------------------------
 
-        //@@MPerez132 @@TheUnaverageJoe 5/4/2022
+        //@@MPerez132 @@TheUnaverageJoe 5/6/2022
         //-------------------------------------------
-        private void startLightingTransition(bool night, float scaleValue){
+        private IEnumerator startLightingTransition(bool night, float timeToLerp){
+            //float scaleLerp = 1/timeToLerp;
+            float currTimer = 0;
 
-            if(night){
-                sceneLight.color = Color32.Lerp(dayColor, nightColor, scaleValue);
-            }else{
-                sceneLight.color = Color32.Lerp(nightColor, dayColor, scaleValue);
+            while(currTimer<timeToLerp){
+                currTimer += 0.1f;
+
+                if(night)
+                    sceneLight.color = Color32.Lerp(dayColor, nightColor, Mathf.Clamp(currTimer/timeToLerp, 0, 1));
+                else
+                    sceneLight.color = Color32.Lerp(nightColor, dayColor, Mathf.Clamp(currTimer/timeToLerp, 0, 1));
+                yield return new WaitForSeconds(0.1f);
             }
-            
+        }
 
-            // byte RedChangePerSec = (nightColor.r - dayColor.r) / timeToLerp;
-            // byte GreenChangePerSec = (nightColor.g - dayColor.g) / timeToLerp;
-            // byte BlueChangePerSec = (nightColor.b - dayColor.b) / timeToLerp;
-            // Color32 currColor;
-            // Color32 targetColor;
-            // if(night){
-            //     currColor = dayColor;
-            //     targetColor = nightColor;
-            // }else{
-            //     currColor = nightColor;
-            //     targetColor = dayColor;
-            // }
-            // while(currColor.r != targetColor.r && currColor.g != targetColor.g && currColor.b != targetColor.b){
-            //     currColor.r = currColor.r + ToByte(RedChangePerSec);
-                
-            //     yield return new WaitForSeconds(1);
-            // }
-            
+        private void changeLightingCallback(){
+            if(sceneLight==null) return;
+
+            if(Hour==7 && Minute==0 && AM == false){
+                StartCoroutine(startLightingTransition(true, 10.0f));
+            }else if(Hour==6 && Minute==30 && AM==true){
+                StartCoroutine(startLightingTransition(false, 10.0f));
+            }
         }
         
         //-------------------------------------------
