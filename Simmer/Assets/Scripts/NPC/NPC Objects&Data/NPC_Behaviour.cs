@@ -58,7 +58,7 @@ namespace Simmer.NPC
         }
 
         //@@TheUnaverageJoe @@MPerez132 5/3/2022
-            //---------------------------------------------------------------------
+        //---------------------------------------------------------------------
         private void OnInteractCallback()
         {
             _npcManager.onNPCInteract.Invoke(_npcData);
