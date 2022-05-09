@@ -64,7 +64,7 @@ namespace Simmer.SceneManagement
         {
             isSceneLoading = true;
 
-            GlobalPlayerData.SaveCurrentTime(TimeManager.Hour, TimeManager.Minute, TimeManager.AM ? 0 : 1, TimeManager.Day);
+            GlobalPlayerData.SaveCurrentTime(TimeManager.Hour, TimeManager.Minute, TimeManager.AM ? 0 : 1, TimeManager.Day, TimeManager.Paused ? 0 : 1);
 
             GlobalPlayerData.SaveInventoryDictionary
                 (_playerInventory.inventoryItemDictionary);

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingMoney: 20
   startingStage: 0
-  startingTime: 00000000000000000000000000000000
+  startingTime: 08000000000000000000000002000000
   startKnownList:
   - {fileID: 11400000, guid: eeabe57d10fbe464296cf625b3fcf090, type: 2}
   - {fileID: 11400000, guid: 4484146648c7d4384a459681d258b86e, type: 2}

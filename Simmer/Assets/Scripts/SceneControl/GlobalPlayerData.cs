@@ -49,7 +49,9 @@ public static class GlobalPlayerData
         OnNewKnowledgeAdded
         = new UnityEvent<IngredientData>();
 
-    public static int[] currentTime = new int[4];
+    //current time indices explained:
+    //[0] = Hour   ,    [1] = minute   ,   [2] = AM/PM   ,   [3] = day   ,   [4] = paused?
+    public static int[] currentTime = new int[5];
 
     //// 1. item to queue, 2. Origin location, 3. Desitination queue
     //public static UnityEvent<IngredientData, RectTransform, ImageQueueManager>
@@ -99,6 +101,7 @@ public static class GlobalPlayerData
         currentTime[1] = startingSaveData.startingTime[1];
         currentTime[2] = startingSaveData.startingTime[2];
         currentTime[3] = startingSaveData.startingTime[3];
+        currentTime[4] = 1;
     }
 
     public static void SaveInventoryDictionary(
@@ -168,13 +171,17 @@ public static class GlobalPlayerData
         return false;
     }
 
-    public static void SaveCurrentTime(int hour, int minute, int AM, int Day){
-        if(AM != 0 && AM!=1){
+    public static void SaveCurrentTime(int hour, int minute, int AM, int Day, int paused){
+        if(AM != 0 && AM != 1){
             Debug.LogError("AM must be 0 or 1 for true of false respectivly");
+        }
+        if(paused != 0 && paused != 1){
+            Debug.LogError("Pause must be 0 or 1 for true of false respectivly");
         }
         currentTime[0] = hour;
         currentTime[1] = minute;
         currentTime[2] = AM;
         currentTime[3] = Day;
+        currentTime[4] = paused;
     }
 }

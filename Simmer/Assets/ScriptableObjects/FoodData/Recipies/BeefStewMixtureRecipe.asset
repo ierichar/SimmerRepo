@@ -17,6 +17,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d03dbba14ea5a424d85434ec61ed8063, type: 2}
   - {fileID: 11400000, guid: 855ed4e5b19d9e64f8a15fc2baaf9c89, type: 2}
   - {fileID: 11400000, guid: e44a32b3f5ee01846ab340cacc6d0c2d, type: 2}
+  - {fileID: 11400000, guid: 5613b700ac8bbfc44b44971b1dab8f02, type: 2}
   applianceData: {fileID: 11400000, guid: 98e362c19770a4422b5cefea2629900f, type: 2}
   difficultyLevel: 1
   baseActionTime: 8

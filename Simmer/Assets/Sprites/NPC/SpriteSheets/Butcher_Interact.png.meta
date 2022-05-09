@@ -1,0 +1,720 @@
+fileFormatVersion: 2
+guid: 6fa273e8690b33345b045d42054054bd
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1732724539979767310
+    second: Butcher_Interact_0
+  - first:
+      213: 7830071086045558618
+    second: Butcher_Interact_1
+  - first:
+      213: -4336450441101996052
+    second: Butcher_Interact_2
+  - first:
+      213: -5985636514713529315
+    second: Butcher_Interact_3
+  - first:
+      213: -929414169976924623
+    second: Butcher_Interact_4
+  - first:
+      213: -4432102931423960256
+    second: Butcher_Interact_5
+  - first:
+      213: 723670803120488669
+    second: Butcher_Interact_6
+  - first:
+      213: 5487259644610158255
+    second: Butcher_Interact_7
+  - first:
+      213: 1866761932558533311
+    second: Butcher_Interact_8
+  - first:
+      213: -2249474455647680341
+    second: Butcher_Interact_9
+  - first:
+      213: 1691123004462134363
+    second: Butcher_Interact_10
+  - first:
+      213: -6439057115494230641
+    second: Butcher_Interact_11
+  - first:
+      213: -924262200802799863
+    second: Butcher_Interact_12
+  - first:
+      213: 6372666884563993028
+    second: Butcher_Interact_13
+  - first:
+      213: -211603219340977477
+    second: Butcher_Interact_14
+  - first:
+      213: 3980206097859781414
+    second: Butcher_Interact_15
+  - first:
+      213: -4114573411007665578
+    second: Butcher_Interact_16
+  - first:
+      213: 3509742859465364554
+    second: Butcher_Interact_17
+  - first:
+      213: 1250242963995506072
+    second: Butcher_Interact_18
+  - first:
+      213: -8317406751605511540
+    second: Butcher_Interact_19
+  - first:
+      213: 6692564354500809762
+    second: Butcher_Interact_20
+  - first:
+      213: -6806099394524090886
+    second: Butcher_Interact_21
+  - first:
+      213: 4858975422794508710
+    second: Butcher_Interact_22
+  - first:
+      213: 7363991238597348714
+    second: Butcher_Interact_23
+  - first:
+      213: -7550246320782229402
+    second: Butcher_Interact_24
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Butcher_Interact_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 680
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f167e4163024f7e0800000000000000
+      internalID: -1732724539979767310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Butcher_Interact_1
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 680
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a577dc1da200aac60800000000000000
+      internalID: 7830071086045558618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Butcher_Interact_2
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 680
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cef8700ac45d1d3c0800000000000000
+      internalID: -4336450441101996052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Butcher_Interact_3
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 680
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1494e99d4fbeeca0800000000000000
+      internalID: -5985636514713529315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Butcher_Interact_4
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 680
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1369f459cbe0a13f0800000000000000
+      internalID: -929414169976924623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Butcher_Interact_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 510
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 043e18cbdd10e72c0800000000000000
+      internalID: -4432102931423960256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Butcher_Interact_6
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 510
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd08152e2cefa0a00800000000000000
+      internalID: 723670803120488669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Butcher_Interact_7
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 510
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fae1353f299a62c40800000000000000
+      internalID: 5487259644610158255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Butcher_Interact_8
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 510
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb28f5e461218e910800000000000000
+      internalID: 1866761932558533311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Butcher_Interact_9
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 510
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba80ecb96e248c0e0800000000000000
+      internalID: -2249474455647680341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Butcher_Interact_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 340
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b54f470a963187710800000000000000
+      internalID: 1691123004462134363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Butcher_Interact_11
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 340
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f85d3864bafd3a6a0800000000000000
+      internalID: -6439057115494230641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Butcher_Interact_12
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 340
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90f04d1ec6c5c23f0800000000000000
+      internalID: -924262200802799863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Butcher_Interact_13
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 340
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c1055684c2407850800000000000000
+      internalID: 6372666884563993028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Butcher_Interact_14
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 340
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bba1add3efb301df0800000000000000
+      internalID: -211603219340977477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Butcher_Interact_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 170
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 623a6c3ab588c3730800000000000000
+      internalID: 3980206097859781414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Butcher_Interact_16
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 170
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65aee9a584916e6c0800000000000000
+      internalID: -4114573411007665578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Butcher_Interact_17
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 170
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a449567098c15b030800000000000000
+      internalID: 3509742859465364554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Butcher_Interact_18
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 170
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89532e70a51c95110800000000000000
+      internalID: 1250242963995506072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Butcher_Interact_19
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 170
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8a2e1e70a2a29c80800000000000000
+      internalID: -8317406751605511540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Butcher_Interact_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 224567a52d3c0ec50800000000000000
+      internalID: 6692564354500809762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Butcher_Interact_21
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 0
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afde36339a0eb81a0800000000000000
+      internalID: -6806099394524090886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Butcher_Interact_22
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 0
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a92500376c8e6340800000000000000
+      internalID: 4858975422794508710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Butcher_Interact_23
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 0
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6d0fa1f307223660800000000000000
+      internalID: 7363991238597348714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Butcher_Interact_24
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 0
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 660431369f2283790800000000000000
+      internalID: -7550246320782229402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
