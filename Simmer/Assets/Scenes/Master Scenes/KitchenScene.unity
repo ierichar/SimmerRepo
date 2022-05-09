@@ -601,7 +601,7 @@ PrefabInstance:
     - target: {fileID: 3753244179450832692, guid: be92c397a778c46ad9bff9c770f96867, type: 3}
       propertyPath: _startSaveData
       value: 
-      objectReference: {fileID: 11400000, guid: 1d460c58f568a41159fb5411548268c4, type: 2}
+      objectReference: {fileID: 11400000, guid: 59d3a3f128ced4a028b37710ac895941, type: 2}
     - target: {fileID: 3753244180859517522, guid: be92c397a778c46ad9bff9c770f96867, type: 3}
       propertyPath: m_Name
       value: KitchenCore
