@@ -24,12 +24,14 @@ namespace Simmer.CustomTime{
 
         private void OnEnable() 
         {
-            TimeManager.OnMinuteChanged += changeLightingCallback;
+            TimeManager.OnMinuteChanged += ChangeLightingCallback;
+            TimeManager.OnMinuteChanged += PauseTimeAt;
         }
 
         private void OnDisable() 
         {
-            TimeManager.OnMinuteChanged -= changeLightingCallback;
+            TimeManager.OnMinuteChanged -= ChangeLightingCallback;
+            TimeManager.OnMinuteChanged -= PauseTimeAt;
         }
         
         // Start is called before the first frame update
@@ -135,7 +137,7 @@ namespace Simmer.CustomTime{
 
         //optional parameters are those which have an "=" following the variable
         // Design choice, dont pass in day as it is implied we only ever would want to go to the next day
-        public void SetTime(int hour=8, int minute=0, bool am=true, bool paused=false){
+        public static void SetTime(int hour=8, int minute=0, bool am=true, bool paused=false){
             //following if statements enable the ability to implicitly increment 
             //  the day under the assumtion we cant go back in time
             if(hour < Hour){
@@ -166,7 +168,7 @@ namespace Simmer.CustomTime{
             }
         }
 
-        private void changeLightingCallback(){
+        private void ChangeLightingCallback(){
             if(sceneLight==null) return;
 
             if(Hour==7 && Minute==0 && AM == false){
@@ -175,7 +177,12 @@ namespace Simmer.CustomTime{
                 StartCoroutine(startLightingTransition(false, 10.0f));
             }
         }
-        
         //-------------------------------------------
+        //
+        private void PauseTimeAt(){
+            if(Hour==11 && Minute==59 && AM==false){
+                Paused=true;
+            }
+        }
     }
 }

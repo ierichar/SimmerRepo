@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using TMPro;
 using Simmer.Interactable;
 using Simmer.Player;
+using Simmer.CustomTime;
 
 public class Couch : MonoBehaviour
 {
@@ -50,6 +51,7 @@ public class Couch : MonoBehaviour
             temp.a += 0.075f;
             fadeOutImg.color = temp;
             yield return new WaitForSeconds(0.075f);
+
         }
 
         //give money
@@ -62,11 +64,17 @@ public class Couch : MonoBehaviour
     public IEnumerator fadeIn() {
         fadeOutText.enabled = false;
         interacted = false;
+        bool timeSet = false;
         while(fadeOutImg.color.a > 0 && !interacted) {
             var temp = fadeOutImg.color;
             temp.a -= 0.075f;
             fadeOutImg.color = temp;
             yield return new WaitForSeconds(0.075f);
+            if(temp.a >= 0.5f && !timeSet){
+                TimeManager.SetTime();
+                timeSet = true;
+            }
         }
+        
     }
 }
