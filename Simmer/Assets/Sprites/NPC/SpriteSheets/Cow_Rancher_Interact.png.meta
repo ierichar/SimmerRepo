@@ -1,148 +1,67 @@
 fileFormatVersion: 2
-guid: 9b23aec5d8cba8f44802cc56dfeaea1b
+guid: 3be2782704e87eb45b617dc5de2d8c80
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6832714417099849088
-    second: Veggie_Interact_0
+      213: 1475168071487510669
+    second: Cow_Rancher_Interact_0
   - first:
-      213: -6219897872756700652
-    second: Veggie_Interact_1
+      213: 2264060272172493673
+    second: Cow_Rancher_Interact_1
   - first:
-      213: -7647817300845034203
-    second: Veggie_Interact_2
+      213: 4934284726254953434
+    second: Cow_Rancher_Interact_2
   - first:
-      213: -8321629070523362179
-    second: Veggie_Interact_3
+      213: -2891928118991097948
+    second: Cow_Rancher_Interact_3
   - first:
-      213: 1751946088108673823
-    second: Veggie_Interact_4
+      213: 3529495313227804558
+    second: Cow_Rancher_Interact_4
   - first:
-      213: 8589097222651786041
-    second: Veggie_Interact_5
+      213: 7748192932125355297
+    second: Cow_Rancher_Interact_5
   - first:
-      213: -7694774868520781838
-    second: Veggie_Interact_6
+      213: -1199937230579249707
+    second: Cow_Rancher_Interact_6
   - first:
-      213: -5557074380216718482
-    second: Veggie_Interact_7
+      213: -6328726981973395979
+    second: Cow_Rancher_Interact_7
   - first:
-      213: 5747062547577906558
-    second: Veggie_Interact_8
+      213: -4424299743275286175
+    second: Cow_Rancher_Interact_8
   - first:
-      213: 2725784593787574721
-    second: Veggie_Interact_9
+      213: 5353482759310065139
+    second: Cow_Rancher_Interact_9
   - first:
-      213: 3255935937270902387
-    second: Veggie_Interact_10
+      213: -131547970677225376
+    second: Cow_Rancher_Interact_10
   - first:
-      213: -4441001232471396528
-    second: Veggie_Interact_11
+      213: -4370030772314346391
+    second: Cow_Rancher_Interact_11
   - first:
-      213: 8102451095952645571
-    second: Veggie_Interact_12
+      213: 3933867265247930642
+    second: Cow_Rancher_Interact_12
   - first:
-      213: -6721144014319228497
-    second: Veggie_Interact_13
+      213: -3068252155631610315
+    second: Cow_Rancher_Interact_13
   - first:
-      213: 7232805716187832087
-    second: Veggie_Interact_14
+      213: 4055497863680734108
+    second: Cow_Rancher_Interact_14
   - first:
-      213: 7550225141028515503
-    second: Veggie_Interact_15
+      213: 2576934417814310276
+    second: Cow_Rancher_Interact_15
   - first:
-      213: 4169145383927713867
-    second: Veggie_Interact_16
+      213: -53678883681654070
+    second: Cow_Rancher_Interact_16
   - first:
-      213: 8133650684866565793
-    second: Veggie_Interact_17
+      213: 3061488827644103641
+    second: Cow_Rancher_Interact_17
   - first:
-      213: -9020288354518683965
-    second: Veggie_Interact_18
+      213: -3841232982094623993
+    second: Cow_Rancher_Interact_18
   - first:
-      213: -6277408591257173568
-    second: Veggie_Interact_19
-  - first:
-      213: 3594172200884365622
-    second: Veggie_Interact_20
-  - first:
-      213: -60937233479688418
-    second: Veggie_Interact_21
-  - first:
-      213: -8357111599324840886
-    second: Veggie_Interact_22
-  - first:
-      213: -1067906698556081257
-    second: Veggie_Interact_23
-  - first:
-      213: 446415064422422046
-    second: Veggie_Interact_24
-  - first:
-      213: -7560475475174947164
-    second: Veggie_Interact_25
-  - first:
-      213: -2902347095906200278
-    second: Veggie_Interact_26
-  - first:
-      213: -3221058297854475316
-    second: Veggie_Interact_27
-  - first:
-      213: -549337783160042251
-    second: Veggie_Interact_28
-  - first:
-      213: 6254384949549800104
-    second: Veggie_Interact_29
-  - first:
-      213: -3768539618265419326
-    second: Veggie_Interact_30
-  - first:
-      213: 4287961176043585752
-    second: Veggie_Interact_31
-  - first:
-      213: 814988786022140347
-    second: Veggie_Interact_32
-  - first:
-      213: -614534723973183776
-    second: Veggie_Interact_33
-  - first:
-      213: -7887208393739081683
-    second: Veggie_Interact_34
-  - first:
-      213: -1391945813787109537
-    second: Veggie_Interact_35
-  - first:
-      213: -8006249626677400417
-    second: Veggie_Interact_36
-  - first:
-      213: -1306387376239661893
-    second: Veggie_Interact_37
-  - first:
-      213: 6897771382127914243
-    second: Veggie_Interact_38
-  - first:
-      213: -5880731369390735574
-    second: Veggie_Interact_39
-  - first:
-      213: 2953686134667590734
-    second: Veggie_Interact_40
-  - first:
-      213: -8270385724313996976
-    second: Veggie_Interact_41
-  - first:
-      213: 1333333103514467917
-    second: Veggie_Interact_42
-  - first:
-      213: -7011570563899513386
-    second: Veggie_Interact_43
-  - first:
-      213: -8587997436512131053
-    second: Veggie_Interact_44
-  - first:
-      213: 334080101618278753
-    second: Veggie_Interact_45
-  - first:
-      213: 3526702010599197642
-    second: Veggie_Interact_46
+      213: 8805721858509840987
+    second: Cow_Rancher_Interact_19
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -244,112 +163,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Veggie_Interact_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 800
-        width: 160
-        height: 160
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 08d3de2af8da2de50800000000000000
-      internalID: 6832714417099849088
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Veggie_Interact_1
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 800
-        width: 160
-        height: 160
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 41a0123d6db7ea9a0800000000000000
-      internalID: -6219897872756700652
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Veggie_Interact_2
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 800
-        width: 160
-        height: 160
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5258b0c4fae7dd590800000000000000
-      internalID: -7647817300845034203
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Veggie_Interact_3
-      rect:
-        serializedVersion: 2
-        x: 480
-        y: 800
-        width: 160
-        height: 160
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d7414e24372a38c80800000000000000
-      internalID: -8321629070523362179
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Veggie_Interact_4
-      rect:
-        serializedVersion: 2
-        x: 640
-        y: 800
-        width: 160
-        height: 160
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f1b4a575fa9205810800000000000000
-      internalID: 1751946088108673823
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Veggie_Interact_5
+      name: Cow_Rancher_Interact_0
       rect:
         serializedVersion: 2
         x: 0
@@ -363,14 +177,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9333471ca6a923770800000000000000
-      internalID: 8589097222651786041
+      spriteID: d88d2059b89d87410800000000000000
+      internalID: 1475168071487510669
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Veggie_Interact_6
+      name: Cow_Rancher_Interact_1
       rect:
         serializedVersion: 2
         x: 160
@@ -384,14 +198,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f73737960ba63590800000000000000
-      internalID: -7694774868520781838
+      spriteID: 96b6ae072de8b6f10800000000000000
+      internalID: 2264060272172493673
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Veggie_Interact_7
+      name: Cow_Rancher_Interact_2
       rect:
         serializedVersion: 2
         x: 320
@@ -405,14 +219,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e6b22c83b4e41e2b0800000000000000
-      internalID: -5557074380216718482
+      spriteID: ad3ef09c0d91a7440800000000000000
+      internalID: 4934284726254953434
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Veggie_Interact_8
+      name: Cow_Rancher_Interact_3
       rect:
         serializedVersion: 2
         x: 480
@@ -426,35 +240,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e75255210faa1cf40800000000000000
-      internalID: 5747062547577906558
+      spriteID: 4af6297a2becdd7d0800000000000000
+      internalID: -2891928118991097948
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Veggie_Interact_9
-      rect:
-        serializedVersion: 2
-        x: 640
-        y: 640
-        width: 160
-        height: 160
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1c9d0fe65aee3d520800000000000000
-      internalID: 2725784593787574721
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Veggie_Interact_10
+      name: Cow_Rancher_Interact_4
       rect:
         serializedVersion: 2
         x: 0
@@ -468,14 +261,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 37ee578fb786f2d20800000000000000
-      internalID: 3255935937270902387
+      spriteID: e8f695d89494bf030800000000000000
+      internalID: 3529495313227804558
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Veggie_Interact_11
+      name: Cow_Rancher_Interact_5
       rect:
         serializedVersion: 2
         x: 160
@@ -489,14 +282,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 05f687398e46e52c0800000000000000
-      internalID: -4441001232471396528
+      spriteID: 12d268a8b6c178b60800000000000000
+      internalID: 7748192932125355297
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Veggie_Interact_12
+      name: Cow_Rancher_Interact_6
       rect:
         serializedVersion: 2
         x: 320
@@ -510,14 +303,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3cd5b38d750b17070800000000000000
-      internalID: 8102451095952645571
+      spriteID: 5ddce824277f85fe0800000000000000
+      internalID: -1199937230579249707
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Veggie_Interact_13
+      name: Cow_Rancher_Interact_7
       rect:
         serializedVersion: 2
         x: 480
@@ -531,35 +324,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa9624e0123b9b2a0800000000000000
-      internalID: -6721144014319228497
+      spriteID: 5f5bb074758db28a0800000000000000
+      internalID: -6328726981973395979
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Veggie_Interact_14
-      rect:
-        serializedVersion: 2
-        x: 640
-        y: 480
-        width: 160
-        height: 160
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 71f5ac25a76106460800000000000000
-      internalID: 7232805716187832087
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Veggie_Interact_15
+      name: Cow_Rancher_Interact_8
       rect:
         serializedVersion: 2
         x: 0
@@ -573,14 +345,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fae6a3153c9c7c860800000000000000
-      internalID: 7550225141028515503
+      spriteID: 161893e03dab992c0800000000000000
+      internalID: -4424299743275286175
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Veggie_Interact_16
+      name: Cow_Rancher_Interact_9
       rect:
         serializedVersion: 2
         x: 160
@@ -594,14 +366,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b4098f933a7cbd930800000000000000
-      internalID: 4169145383927713867
+      spriteID: 3fdbad3a4346b4a40800000000000000
+      internalID: 5353482759310065139
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Veggie_Interact_17
+      name: Cow_Rancher_Interact_10
       rect:
         serializedVersion: 2
         x: 320
@@ -615,14 +387,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1a69596343880e070800000000000000
-      internalID: 8133650684866565793
+      spriteID: 0684cd051d5ac2ef0800000000000000
+      internalID: -131547970677225376
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Veggie_Interact_18
+      name: Cow_Rancher_Interact_11
       rect:
         serializedVersion: 2
         x: 480
@@ -636,35 +408,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3ce2259788f71d280800000000000000
-      internalID: -9020288354518683965
+      spriteID: 96c6dae7a288a53c0800000000000000
+      internalID: -4370030772314346391
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Veggie_Interact_19
-      rect:
-        serializedVersion: 2
-        x: 640
-        y: 320
-        width: 160
-        height: 160
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0c18128352a22e8a0800000000000000
-      internalID: -6277408591257173568
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Veggie_Interact_20
+      name: Cow_Rancher_Interact_12
       rect:
         serializedVersion: 2
         x: 0
@@ -678,14 +429,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 639eb4fe29011e130800000000000000
-      internalID: 3594172200884365622
+      spriteID: 219e3aa6f67e79630800000000000000
+      internalID: 3933867265247930642
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Veggie_Interact_21
+      name: Cow_Rancher_Interact_13
       rect:
         serializedVersion: 2
         x: 160
@@ -699,14 +450,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e1f19d4b8e1872ff0800000000000000
-      internalID: -60937233479688418
+      spriteID: 5365046bbe06b65d0800000000000000
+      internalID: -3068252155631610315
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Veggie_Interact_22
+      name: Cow_Rancher_Interact_14
       rect:
         serializedVersion: 2
         x: 320
@@ -720,14 +471,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a4c32fd3743950c80800000000000000
-      internalID: -8357111599324840886
+      spriteID: c93bb00f1d5084830800000000000000
+      internalID: 4055497863680734108
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Veggie_Interact_23
+      name: Cow_Rancher_Interact_15
       rect:
         serializedVersion: 2
         x: 480
@@ -741,35 +492,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 79bfd4304880e21f0800000000000000
-      internalID: -1067906698556081257
+      spriteID: 48dcc47233c13c320800000000000000
+      internalID: 2576934417814310276
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Veggie_Interact_24
-      rect:
-        serializedVersion: 2
-        x: 640
-        y: 160
-        width: 160
-        height: 160
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e161849c22cf13600800000000000000
-      internalID: 446415064422422046
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Veggie_Interact_25
+      name: Cow_Rancher_Interact_16
       rect:
         serializedVersion: 2
         x: 0
@@ -783,14 +513,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4a60529cc9bc31790800000000000000
-      internalID: -7560475475174947164
+      spriteID: aca2736f65b414ff0800000000000000
+      internalID: -53678883681654070
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Veggie_Interact_26
+      name: Cow_Rancher_Interact_17
       rect:
         serializedVersion: 2
         x: 160
@@ -804,14 +534,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a25df9d81bac8b7d0800000000000000
-      internalID: -2902347095906200278
+      spriteID: 9dbcd874ed79c7a20800000000000000
+      internalID: 3061488827644103641
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Veggie_Interact_27
+      name: Cow_Rancher_Interact_18
       rect:
         serializedVersion: 2
         x: 320
@@ -825,14 +555,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cc34f834b808c43d0800000000000000
-      internalID: -3221058297854475316
+      spriteID: 70b4cba54f231bac0800000000000000
+      internalID: -3841232982094623993
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Veggie_Interact_28
+      name: Cow_Rancher_Interact_19
       rect:
         serializedVersion: 2
         x: 480
@@ -846,8 +576,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5fc8b0d523c5068f0800000000000000
-      internalID: -549337783160042251
+      spriteID: b522f572065343a70800000000000000
+      internalID: 8805721858509840987
       vertices: []
       indices: 
       edges: []
