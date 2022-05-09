@@ -15,5 +15,10 @@ namespace Simmer.NPC
         public List<IngredientData> initialKnowledge;
 
         public IngredientData questReward;
+
+        // @ierichar
+        public bool isQuestStarted;
+
+        public bool isQuestComplete;
     }
 }
