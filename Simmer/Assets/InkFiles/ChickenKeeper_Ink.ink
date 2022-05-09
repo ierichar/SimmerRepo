@@ -16,21 +16,43 @@ I'm looking for some ingredients to inspire me.
 {CHARACTER_NAME}: Hello young chef. What would you like today?
 ->->
 
-== QuestStarted ===
+// --------------------------------------------------------------------
+// Stage 1 Quest Line
+// --------------------------------------------------------------------
+
+== QuestStarted_1 ===
 {CHARACTER_NAME}: You know I haven't been able to make a good {QUEST_ITEM} before. 
 {CHARACTER_NAME}: If you could help make me a really nice one, I'd be glad to share some of my family recipes.
 That sounds great, I can do that!
 {CHARACTER_NAME}: Fantastic! I can't wait!
 ->->
 
-=== QuestOngoing ===
+=== QuestOngoing_1 ===
 {CHARACTER_NAME}: I used to make {QUEST_ITEM} with my grandkids all the time.
 {CHARACTER_NAME}: If you need to make a quick buck, most of the folks here are always willing to buy your homemade goods.
 ->->
 
-=== QuestCompleted ===
+=== QuestCompleted_1 ===
 {CHARACTER_NAME}: Thank you for this {QUEST_ITEM}, dearie!
 ->->
+
+// --------------------------------------------------------------------
+// Stage 2 Quest Line
+// --------------------------------------------------------------------
+
+== QuestStarted_2 ===
+{CHARACTER_NAME}: ...
+->->
+
+=== QuestOngoing_2 ===
+{CHARACTER_NAME}: ...
+->->
+
+=== QuestCompleted_2 ===
+{CHARACTER_NAME}: Thank you for this {QUEST_ITEM}, dearie!
+->->
+
+// --------------------------------------------------------------------
 
 === Rumor ===
 {CHARACTER_NAME}: Some people aren't friendly right off the bat.

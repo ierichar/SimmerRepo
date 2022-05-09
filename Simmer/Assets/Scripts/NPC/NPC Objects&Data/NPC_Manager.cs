@@ -284,6 +284,7 @@ namespace Simmer.NPC
                 // Store active quest for this NPC
                 currentNPC_Quest = GlobalPlayerData
                     .activeQuestDictionary[currentNPC_Data];
+
             }
             else currentNPC_Quest = null;
 
@@ -291,9 +292,8 @@ namespace Simmer.NPC
             if (currentNPC_Quest != null && currentNPC_Quest.isQuestComplete)
             {
                 GlobalPlayerData.completedQuestList.Add(currentNPC_Quest);
-                GlobalPlayerData.activeQuestDictionary.Remove(currentNPC_Data);
+                currentNPC_Quest = null;
             }
-            currentNPC_Quest = null;
         }
 
         // @ierichar
@@ -451,7 +451,7 @@ namespace Simmer.NPC
             // Start quest with first interaction
             if (vn_sharedVariables.currentStage >= 0 && vn_sharedVariables.isQuestStarted < 2) 
             {
-                Debug.Log("v2 : starting Taylor quest with sharedvariables: " + vn_sharedVariables);
+                // Update isQuestStarted tracking for dialogue
                 vn_sharedVariables.isQuestStarted = ++vn_sharedVariables.isQuestStarted;
                 currentNPC_Data.isQuestStarted = vn_sharedVariables.isQuestStarted;
 
@@ -459,6 +459,8 @@ namespace Simmer.NPC
                 if (vn_sharedVariables.isQuestStarted == 1)
                 {
                     AddNewQuest_v2(currentNPC_Data, 0);
+                    Debug.Log("QuestItem is " + vn_sharedVariables.questItem);
+                    Debug.Log("QuestItem" + vn_sharedVariables.questReward);
                 }
             }
             // FUTURE IMPLEMENTATION:

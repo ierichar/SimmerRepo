@@ -16,3 +16,5 @@ MonoBehaviour:
   initialKnowledge:
   - {fileID: 11400000, guid: 7fe9c2db8c0af44ea9b48448929217dd, type: 2}
   questReward: {fileID: 11400000, guid: cc96013a1269da543ae302e2fd2fbdbf, type: 2}
+  isQuestStarted: 0
+  isQuestComplete: 0

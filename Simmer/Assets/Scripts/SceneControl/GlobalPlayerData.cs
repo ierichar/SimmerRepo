@@ -156,7 +156,11 @@ public static class GlobalPlayerData
         {
             activeQuestDictionary.Remove(npcData);
             completedQuestDictionary.Add(npcData, questData);
-
+            // @ierichar
+            // Added list functionality
+            completedQuestList.Add(questData);
+            questData.isQuestComplete = true;
+            
             OnActiveQuestsUpdated.Invoke();
             return true;
         }

@@ -13,20 +13,42 @@ How did you...
 {CHARACTER_NAME}: Howdy!
 ->->
 
-=== QuestStarted ===
+// --------------------------------------------------------------------
+// Stage 1 Quest Line
+// --------------------------------------------------------------------
+
+=== QuestStarted_1 ===
 {CHARACTER_NAME}: I have a real hankering for some {QUEST_ITEM}. Do you think you could make me some?
 It might take some time but...
 {CHARACTER_NAME}: Great! Here's what I know about the recipe.
 ->->
 
-=== QuestOngoing ===
+=== QuestOngoing_1 ===
 {CHARACTER_NAME}: If you need help making {QUEST_ITEM}, keep checking with the other clerks and see what people have in stock.
 {CHARACTER_NAME}: You may find the ingredient you need or something to experiment with.
 ->->
 
-=== QuestCompleted ===
+=== QuestCompleted_1 ===
 {CHARACTER_NAME}: I can’t wait to eat this {QUEST_ITEM}!
 ->->
+
+// --------------------------------------------------------------------
+// Stage 2 Quest Line
+// --------------------------------------------------------------------
+
+== QuestStarted_2 ===
+{CHARACTER_NAME}: ...
+->->
+
+=== QuestOngoing_2 ===
+{CHARACTER_NAME}: ...
+->->
+
+=== QuestCompleted_2 ===
+{CHARACTER_NAME}: Thank you for this {QUEST_ITEM}, dearie!
+->->
+
+// --------------------------------------------------------------------
 
 === Rumor ===
 {CHARACTER_NAME}: *mumble* Did Missak put oil in his beard...?

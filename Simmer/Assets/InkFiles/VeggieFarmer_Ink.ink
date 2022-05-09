@@ -13,20 +13,42 @@ I just moved here. I'm hoping to get into the local culinary school.
 {CHARACTER_NAME}: I’ve eaten nothing but carrot and beet salad for three days! I want something *sweet*.
 ->->
 
-=== QuestStarted ===
+// --------------------------------------------------------------------
+// Stage 1 Quest Line
+// --------------------------------------------------------------------
+
+=== QuestStarted_1 ===
 {CHARACTER_NAME}: Do you think you could make me some {QUEST_ITEM}?
 ...
 {CHARACTER_NAME}: Great! I’m so excited! You can definitely find everything you need right here at the market. Buying locally is always best!
 ->->
 
-=== QuestOngoing ===
+=== QuestOngoing_1 ===
 {CHARACTER_NAME}: I'm super excited for {QUEST_ITEM}!
 {CHARACTER_NAME}: Don't forget to sleep if it gets too late.
 ->->
 
-=== QuestCompleted ===
+=== QuestCompleted_1 ===
 {CHARACTER_NAME}: Thanks for this {QUEST_ITEM}!
 ->->
+
+// --------------------------------------------------------------------
+// Stage 2 Quest Line
+// --------------------------------------------------------------------
+
+== QuestStarted_2 ===
+{CHARACTER_NAME}: ...
+->->
+
+=== QuestOngoing_2 ===
+{CHARACTER_NAME}: ...
+->->
+
+=== QuestCompleted_2 ===
+{CHARACTER_NAME}: Thank you for this {QUEST_ITEM}, dearie!
+->->
+
+// --------------------------------------------------------------------
 
 === Rumor ===
 {CHARACTER_NAME}: I heard Missak mumbling about something earlier. I wonder what's bothering him.
