@@ -96,6 +96,11 @@ namespace Simmer.Player
         {
             // If true (beginning to interact) then stop movement
             SetMovementEnabled(!isInteract);
+            if(!isInteract){
+                _animator.SetBool("Interacting", false);
+            }else{
+                _animator.SetBool("Interacting", true);
+            }
         }
 
         private void SetMovementEnabled(bool result)

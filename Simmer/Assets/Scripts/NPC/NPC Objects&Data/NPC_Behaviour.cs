@@ -62,12 +62,17 @@ namespace Simmer.NPC
         private void OnInteractCallback()
         {
             _npcManager.onNPCInteract.Invoke(_npcData);
-            _animator.SetBool("Interacting", true);
-            _npcManager.vn_manager.OnEndStory.AddListener(stopInteractionAnim);
+            if(_animator.HasState(0, Animator.StringToHash("Interaction"))){
+                //Debug.Log("HAS INTERACTION STATE");
+                _animator.SetBool("Interacting", true);
+                _npcManager.vn_manager.OnEndStory.AddListener(stopInteractionAnim);
+            }
+            
         }
         private void stopInteractionAnim(){
             //Debug.Log("STOPPPING INTERACTGS");
             _animator.SetBool("Interacting", false);
+            _npcManager.vn_manager.OnEndStory.RemoveListener(stopInteractionAnim);
         }
         //---------------------------------------------------------------------
         

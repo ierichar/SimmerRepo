@@ -460,6 +460,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8015327652126249230, guid: 1a2ac35bc43854011aa71ba5b6b5c518, type: 3}
   m_PrefabInstance: {fileID: 142156000}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &247292150 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1934187522, guid: 13fddecaeb8294b5b9585d0eb31b7d63, type: 3}
+  m_PrefabInstance: {fileID: 8042035493220020907}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &510922438
 GameObject:
   m_ObjectHideFlags: 0
@@ -1533,6 +1538,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8042035494384768043, guid: 13fddecaeb8294b5b9585d0eb31b7d63, type: 3}
+      propertyPath: _animator
+      value: 
+      objectReference: {fileID: 247292150}
     - target: {fileID: 8042035494538912232, guid: 13fddecaeb8294b5b9585d0eb31b7d63, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -1617,5 +1626,17 @@ PrefabInstance:
       propertyPath: volumeSlider
       value: 
       objectReference: {fileID: 1530186720}
+    - target: {fileID: 8319426941518180298, guid: 33063ccb1673948b89e3030ae8a279a7, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8319426941518180298, guid: 33063ccb1673948b89e3030ae8a279a7, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8319426941518180298, guid: 33063ccb1673948b89e3030ae8a279a7, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33063ccb1673948b89e3030ae8a279a7, type: 3}

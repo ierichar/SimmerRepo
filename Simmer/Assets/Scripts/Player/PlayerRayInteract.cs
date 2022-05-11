@@ -15,6 +15,7 @@ namespace Simmer.Player
         private PlayerManager _playerManager;
         private PlayerInventory _playerInventory;
 
+        [SerializeField] private Animator _animator;
         [SerializeField] private float _interactDistance;
 
         private InteractableBehaviour _previousInteracted;
@@ -36,6 +37,7 @@ namespace Simmer.Player
         private void OnInteractUICallback(bool result)
         {
             _isSelectEnabled = !result;
+            //_animator.SetBool("Interacting", true);
         }
 
         public void Update()
