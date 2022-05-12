@@ -31,17 +31,48 @@ VAR QUEST_REWARD = "QuestReward"
 }
 
 === QuestText ===
-{ IS_QUEST_STARTED:
+{ CURRENT_STAGE:
 - 0:
-    -> Rumor
-- 1:
-    -> QuestStarted
-- 2:
-    { IS_QUEST_COMPLETE:
+    { IS_QUEST_STARTED:
     - 0:
-        -> QuestOngoing
+        -> Rumor
     - 1:
-        -> QuestCompleted
+        -> QuestStarted_1
+    - 2:
+        { IS_QUEST_COMPLETE:
+        - 0:
+            -> QuestOngoing
+        - 1:
+            -> QuestCompleted
+        }
+    }
+- 1:
+    { IS_QUEST_STARTED:
+    - 0:
+        -> Rumor
+    - 1:
+        -> QuestStarted_1
+    - 2:
+        { IS_QUEST_COMPLETE:
+        - 0:
+            -> QuestOngoing_1
+        - 1:
+            -> QuestCompleted_1
+        }
+    }
+- 2:
+    { IS_QUEST_STARTED:
+    - 0:
+        -> Rumor
+    - 1:
+        -> QuestStarted_2
+    - 2:
+        { IS_QUEST_COMPLETE:
+        - 0:
+            -> QuestOngoing_2
+        - 1:
+            -> QuestCompleted_2
+        }
     }
 }
 ->->

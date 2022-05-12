@@ -37,6 +37,12 @@ public static class GlobalPlayerData
     public static Dictionary<NPC_Data, NPC_QuestData> completedQuestDictionary
         = new Dictionary<NPC_Data, NPC_QuestData>();
 
+    //@ierichar--------------------------------------------------------
+    // Testing Add and Track v2 in NPC_Manager.cs
+    public static List<NPC_QuestData> completedQuestList
+        = new List<NPC_QuestData>();
+    //-----------------------------------------------------------------
+
     public static UnityEvent OnActiveQuestsUpdated = new UnityEvent();
 
     public static UnityEvent<IngredientData>
@@ -135,6 +141,10 @@ public static class GlobalPlayerData
         {
             activeQuestDictionary.Add(npcData, questData);
 
+            // @ierichar
+            questData.isQuestComplete = false;
+            questData.isQuestStarted = true;
+
             OnActiveQuestsUpdated.Invoke();
             return true;
         }
@@ -149,7 +159,11 @@ public static class GlobalPlayerData
         {
             activeQuestDictionary.Remove(npcData);
             completedQuestDictionary.Add(npcData, questData);
-
+            // @ierichar
+            // Added list functionality
+            completedQuestList.Add(questData);
+            questData.isQuestComplete = true;
+            
             OnActiveQuestsUpdated.Invoke();
             return true;
         }

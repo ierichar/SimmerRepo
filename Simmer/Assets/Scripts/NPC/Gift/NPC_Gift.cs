@@ -41,6 +41,7 @@ namespace Simmer.NPC
 
         private void OnClickGiftCallback(List<FoodItem> itemList)
         {
+            Debug.Log("calling OnClickGiftCallback with " + itemList);
             bool questCompleted = false;
 
             if (_npcManager.currentNPC_Quest != null)
@@ -53,11 +54,15 @@ namespace Simmer.NPC
 
         private bool TryCompleteQuest(List<FoodItem> itemList)
         {
+            Debug.Log("calling TryCompleteQuest with " + itemList);
             bool result = false;
             foreach (FoodItem foodItem in itemList)
             {
                 IngredientData thisIngredient = foodItem.ingredientData;
 
+
+                Debug.Log("Tried to complete quest with " + thisIngredient);
+                Debug.Log("Compared to " + _npcManager.currentNPC_Quest.questItem);
                 if (thisIngredient == _npcManager.currentNPC_Quest
                     .questItem)
                 {
