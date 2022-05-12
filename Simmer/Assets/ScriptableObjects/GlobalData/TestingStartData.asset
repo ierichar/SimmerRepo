@@ -52,10 +52,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0dbe0adf865a64740954489fcf47326d, type: 2}
   - {fileID: 11400000, guid: 37acdbe44d9358e42a4a8ec247771f6c, type: 2}
   startInventoryList:
-  - {fileID: 11400000, guid: 6183ea7ebcbc84bff853e5eed138897f, type: 2}
-  - {fileID: 11400000, guid: 2565475710af2e449b9967c976e06689, type: 2}
-  startingPantry:
   - {fileID: 11400000, guid: f766829a4e655a54db85843adadbcaaf, type: 2}
   - {fileID: 11400000, guid: 7fe9c2db8c0af44ea9b48448929217dd, type: 2}
+  - {fileID: 11400000, guid: 611739ff97698ca4da84bd49356845b3, type: 2}
   - {fileID: 11400000, guid: da66be970462f7c46a7f8f147c8ddf3f, type: 2}
-  - {fileID: 11400000, guid: 65780dfcb24cbee4480c5c53e1d55710, type: 2}
+  startingPantry: []

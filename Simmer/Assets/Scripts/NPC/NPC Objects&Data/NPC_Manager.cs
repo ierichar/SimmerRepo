@@ -277,22 +277,25 @@ namespace Simmer.NPC
                     break;
             }
 
+
             // If the quest has not been initialized or added beforehand
             if (GlobalPlayerData.activeQuestDictionary
                 .ContainsKey(currentNPC_Data))
             {
+                Debug.Log("TrackQuest_v2 : AQD trigger");
                 // Store active quest for this NPC
                 currentNPC_Quest = GlobalPlayerData
                     .activeQuestDictionary[currentNPC_Data];
 
             }
-            else currentNPC_Quest = null;
 
             // Add to complete quest list is
             if (currentNPC_Quest != null && currentNPC_Quest.isQuestComplete)
             {
+                Debug.Log("TrackQuest_v2 : CQL trigger");
+                vn_sharedVariables.isQuestComplete = 1;
                 GlobalPlayerData.completedQuestList.Add(currentNPC_Quest);
-                currentNPC_Quest = null;
+                vn_sharedVariables.isQuestStarted = 0;
             }
         }
 
@@ -344,6 +347,7 @@ namespace Simmer.NPC
                 .characterData.name);
 
             // UpdateSharedVariables(false);
+            TrackQuest_v2(currentNPC_Data);
             StoreSharedVariables_to_NPC_Data(currentNPC_Data);
             UpdateStageSharedVariables();
             // --------------------------------------------------------
@@ -375,36 +379,36 @@ namespace Simmer.NPC
         /// <param name="isQuestOngoing">
         /// True if quest already completed, false if not.
         /// </param>
-        private void UpdateSharedVariables(bool isQuestOngoing)
-        {
-            if (isQuestOngoing)
-            {
+        // private void UpdateSharedVariables(bool isQuestOngoing)
+        // {
+        //     if (isQuestOngoing)
+        //     {
 
-                vn_sharedVariables.isQuestComplete = 0;
-                vn_sharedVariables.questItem = currentNPC_Quest
-                    .questItem.name;
-                vn_sharedVariables.questReward = currentNPC_Quest
-                    .questReward.name;
-            }
-            else
-            {
-                vn_sharedVariables.isQuestComplete = 1;
-                vn_sharedVariables.questItem = GlobalPlayerData
-                    .completedQuestDictionary[currentNPC_Data]
-                    .questItem.name;
-                vn_sharedVariables.questReward = GlobalPlayerData
-                    .completedQuestDictionary[currentNPC_Data]
-                    .questReward.name;
-            }
+        //         vn_sharedVariables.isQuestComplete = 0;
+        //         vn_sharedVariables.questItem = currentNPC_Quest
+        //             .questItem.name;
+        //         vn_sharedVariables.questReward = currentNPC_Quest
+        //             .questReward.name;
+        //     }
+        //     else
+        //     {
+        //         vn_sharedVariables.isQuestComplete = 1;
+        //         vn_sharedVariables.questItem = GlobalPlayerData
+        //             .completedQuestDictionary[currentNPC_Data]
+        //             .questItem.name;
+        //         vn_sharedVariables.questReward = GlobalPlayerData
+        //             .completedQuestDictionary[currentNPC_Data]
+        //             .questReward.name;
+        //     }
 
-            // Update vn_sharedVariables isQuestStarted flag
-            currentNPC_Data.isQuestStarted = vn_sharedVariables.isQuestStarted;
-            vn_sharedVariables.isQuestStarted = 0;
+        //     // Update vn_sharedVariables isQuestStarted flag
+        //     currentNPC_Data.isQuestStarted = vn_sharedVariables.isQuestStarted;
+        //     vn_sharedVariables.isQuestStarted = 0;
 
-            // Update vn_sharedVariables interactionCount
-            currentNPC_Data.numOfInteractions = ++vn_sharedVariables.interactionCount;
-            vn_sharedVariables.interactionCount = 0;
-        }
+        //     // Update vn_sharedVariables interactionCount
+        //     currentNPC_Data.numOfInteractions = ++vn_sharedVariables.interactionCount;
+        //     vn_sharedVariables.interactionCount = 0;
+        // }
 
         /// @ierichar
         /// <summary>
@@ -447,7 +451,7 @@ namespace Simmer.NPC
         {
             Debug.Log("v2 : calling UpdateVeggieFarmerQuest...");
 
-            // Stage 0
+            // Stage 0 / 1
             // Start quest with first interaction
             if (vn_sharedVariables.currentStage >= 0 && vn_sharedVariables.isQuestStarted < 2) 
             {
@@ -463,11 +467,22 @@ namespace Simmer.NPC
                     Debug.Log("QuestItem" + vn_sharedVariables.questReward);
                 }
             }
-            // FUTURE IMPLEMENTATION:
-            // If quest is done, add yeast to shop
             
-            // Stage 1
-            // No questline yet
+            // Stage 2
+            // Uncomment once quest added to VeggieFarmer scriptable object
+            // if (vn_sharedVariables.currentStage == 2 && vn_sharedVariables.isQuestStarted < 2) {
+            //     // Update isQuestStarted tracking for dialogue
+            //     vn_sharedVariables.isQuestStarted = ++vn_sharedVariables.isQuestStarted;
+            //     currentNPC_Data.isQuestStarted = vn_sharedVariables.isQuestStarted;
+
+            //     // Prevent duplicate calls to track quest
+            //     if (vn_sharedVariables.isQuestStarted == 1)
+            //     {
+            //         AddNewQuest_v2(currentNPC_Data, 1);
+            //         Debug.Log("QuestItem is " + vn_sharedVariables.questItem);
+            //         Debug.Log("QuestItem" + vn_sharedVariables.questReward);
+            //     }
+            // }
         }
 
         /// @ierichar
@@ -509,6 +524,22 @@ namespace Simmer.NPC
                     }
                 }
             }
+
+            // Stage 2
+            // Uncomment once quest added to VeggieFarmer scriptable object
+            // if (vn_sharedVariables.currentStage == 2 && vn_sharedVariables.isQuestStarted < 2) {
+            //     // Update isQuestStarted tracking for dialogue
+            //     vn_sharedVariables.isQuestStarted = ++vn_sharedVariables.isQuestStarted;
+            //     currentNPC_Data.isQuestStarted = vn_sharedVariables.isQuestStarted;
+
+            //     // Prevent duplicate calls to track quest
+            //     if (vn_sharedVariables.isQuestStarted == 1)
+            //     {
+            //         AddNewQuest_v2(currentNPC_Data, 1);
+            //         Debug.Log("QuestItem is " + vn_sharedVariables.questItem);
+            //         Debug.Log("QuestItem" + vn_sharedVariables.questReward);
+            //     }
+            // }
         }
 
         /// @ierichar
@@ -541,6 +572,22 @@ namespace Simmer.NPC
                     }
                 }
             }
+
+            // Stage 2
+            // Uncomment once quest added to VeggieFarmer scriptable object
+            // if (vn_sharedVariables.currentStage == 2 && vn_sharedVariables.isQuestStarted < 2) {
+            //     // Update isQuestStarted tracking for dialogue
+            //     vn_sharedVariables.isQuestStarted = ++vn_sharedVariables.isQuestStarted;
+            //     currentNPC_Data.isQuestStarted = vn_sharedVariables.isQuestStarted;
+
+            //     // Prevent duplicate calls to track quest
+            //     if (vn_sharedVariables.isQuestStarted == 1)
+            //     {
+            //         AddNewQuest_v2(currentNPC_Data, 1);
+            //         Debug.Log("QuestItem is " + vn_sharedVariables.questItem);
+            //         Debug.Log("QuestItem" + vn_sharedVariables.questReward);
+            //     }
+            // }
         }
 
         /// @ierichar
@@ -560,7 +607,7 @@ namespace Simmer.NPC
             if (vn_sharedVariables.currentStage >= 1 && vn_sharedVariables.isQuestStarted < 2) 
             {
                 // Give it up for day 43!
-                if (TimeManager.Day >= 2)
+                if (TimeManager.Day >= 1)
                 {
                     vn_sharedVariables.isQuestStarted = ++vn_sharedVariables.isQuestStarted;
                     currentNPC_Data.isQuestStarted = vn_sharedVariables.isQuestStarted;
@@ -572,6 +619,22 @@ namespace Simmer.NPC
                     }
                 }
             }
+
+            // Stage 2
+            // Uncomment once quest added to VeggieFarmer scriptable object
+            // if (vn_sharedVariables.currentStage == 2 && vn_sharedVariables.isQuestStarted < 2) {
+            //     // Update isQuestStarted tracking for dialogue
+            //     vn_sharedVariables.isQuestStarted = ++vn_sharedVariables.isQuestStarted;
+            //     currentNPC_Data.isQuestStarted = vn_sharedVariables.isQuestStarted;
+
+            //     // Prevent duplicate calls to track quest
+            //     if (vn_sharedVariables.isQuestStarted == 1)
+            //     {
+            //         AddNewQuest_v2(currentNPC_Data, 1);
+            //         Debug.Log("QuestItem is " + vn_sharedVariables.questItem);
+            //         Debug.Log("QuestItem" + vn_sharedVariables.questReward);
+            //     }
+            // }
         }
 
         /// @ierichar

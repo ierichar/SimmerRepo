@@ -17,8 +17,8 @@ namespace Simmer.NPC
         public IngredientData questReward;
 
         // @ierichar
-        public bool isQuestStarted;
+        public bool isQuestStarted = false;
 
-        public bool isQuestComplete;
+        public bool isQuestComplete = false;
     }
 }
