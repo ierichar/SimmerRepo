@@ -286,7 +286,11 @@ namespace Simmer.NPC
                 // Store active quest for this NPC
                 currentNPC_Quest = GlobalPlayerData
                     .activeQuestDictionary[currentNPC_Data];
-
+                
+                // Reset sharedvariables with existing questItem and questReward
+                vn_sharedVariables.isQuestComplete = 0;
+                vn_sharedVariables.questItem = currentNPC_Quest.questItem.name;
+                vn_sharedVariables.questReward = currentNPC_Quest.questReward.name;
             }
 
             // Add to complete quest list is
@@ -453,7 +457,9 @@ namespace Simmer.NPC
 
             // Stage 0 / 1
             // Start quest with first interaction
-            if (vn_sharedVariables.currentStage >= 0 && vn_sharedVariables.isQuestStarted < 2) 
+            if (vn_sharedVariables.currentStage >= 0 
+                && vn_sharedVariables.isQuestStarted < 2
+                && !currentNPC_Data.questDataList[0].isQuestComplete) 
             {
                 // Update isQuestStarted tracking for dialogue
                 vn_sharedVariables.isQuestStarted = ++vn_sharedVariables.isQuestStarted;
@@ -501,7 +507,8 @@ namespace Simmer.NPC
 
             // Stage 1
             if (vn_sharedVariables.currentStage >= 1 
-                && vn_sharedVariables.isQuestStarted < 1)
+                && vn_sharedVariables.isQuestStarted < 1
+                && !currentNPC_Data.questDataList[0].isQuestComplete)
             {
                 // Check all npcs to find Bonnie
                 foreach (NPC_Behaviour data in _allNPCList)
@@ -527,7 +534,9 @@ namespace Simmer.NPC
 
             // Stage 2
             // Uncomment once quest added to VeggieFarmer scriptable object
-            // if (vn_sharedVariables.currentStage == 2 && vn_sharedVariables.isQuestStarted < 2) {
+            // if (vn_sharedVariables.currentStage == 2 
+            //     && vn_sharedVariables.isQuestStarted < 2
+            //     && !currentNPC_Data.questDataList[1].isQuestComplete) {
             //     // Update isQuestStarted tracking for dialogue
             //     vn_sharedVariables.isQuestStarted = ++vn_sharedVariables.isQuestStarted;
             //     currentNPC_Data.isQuestStarted = vn_sharedVariables.isQuestStarted;
@@ -557,7 +566,9 @@ namespace Simmer.NPC
             // Character needs to introduce themselves to everyone before recieving quest
 
             // Stage 1
-            if (vn_sharedVariables.currentStage >= 1 && vn_sharedVariables.isQuestStarted < 2) 
+            if (vn_sharedVariables.currentStage >= 1 
+                && vn_sharedVariables.isQuestStarted < 2
+                && !currentNPC_Data.questDataList[0].isQuestComplete) 
             {
                 // Talk with her at least 2 times
                 if (currentNPC_Data.numOfInteractions > 2)
@@ -604,7 +615,9 @@ namespace Simmer.NPC
             // Character needs to introduce themselves to everyone before recieving quest
 
             // Stage 1
-            if (vn_sharedVariables.currentStage >= 1 && vn_sharedVariables.isQuestStarted < 2) 
+            if (vn_sharedVariables.currentStage >= 1 
+                && vn_sharedVariables.isQuestStarted < 2
+                && !currentNPC_Data.questDataList[0].isQuestComplete) 
             {
                 // Give it up for day 43!
                 if (TimeManager.Day >= 1)

@@ -18,7 +18,7 @@ namespace Simmer.CustomTime{
 
         Color32 nightColor = new Color32(34, 93, 154, 255);
         Color32 dayColor = new Color32(255, 255, 255, 255);
-        private float minuteToRealTime = 0.07f;
+        private float minuteToRealTime = 0.25f;
         private float timer;
         
 
