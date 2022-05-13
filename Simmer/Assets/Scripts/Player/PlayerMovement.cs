@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Simmer.Items;
 using Simmer.Inventory;
+using Simmer.Appliance;
 
 namespace Simmer.Player
 {
@@ -54,6 +55,7 @@ namespace Simmer.Player
 
             playerManager.gameEventManager
                 .onInteractUI.AddListener(OnInteractUICallback);
+            GenericAppliance.onApplianceInteract.AddListener(onApplianceInteractCallback);
         }
         
         private void Update()
@@ -92,15 +94,20 @@ namespace Simmer.Player
 
         }
 
-        private void OnInteractUICallback(bool isInteract)
-        {
-            // If true (beginning to interact) then stop movement
-            SetMovementEnabled(!isInteract);
-            if(!isInteract){
+        private void onApplianceInteractCallback(bool isOpen){
+            SetMovementEnabled(!isOpen);
+            if(!isOpen){
                 _animator.SetBool("Interacting", false);
             }else{
                 _animator.SetBool("Interacting", true);
             }
+        }
+
+        private void OnInteractUICallback(bool isInteract)
+        {
+            // If true (beginning to interact) then stop movement
+            SetMovementEnabled(!isInteract);
+            
         }
 
         private void SetMovementEnabled(bool result)

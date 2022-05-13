@@ -7,16 +7,18 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 100bfe8cc201b417887646b2755fd998, type: 3}
-  m_Name: GroundMeat
+  m_Name: Cookie Dough
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: ca640b34ec8ad0b40abe10fef525287d, type: 3}
-  baseValue: 1
+  sprite: {fileID: 21300000, guid: d02f06048d516594ea130758a625267c, type: 3}
+  baseValue: 3
+  timeProcessed: 0
   isFinalProduct: 0
   _recipeEdgeList:
-  - {fileID: 11400000, guid: faf583f260f73ba4d8480df2a09c7a75, type: 2}
+  - {fileID: 11400000, guid: 950d0165dd28e19409ed3f8edcec980c, type: 2}
+  - {fileID: 11400000, guid: b9fb591c93e2e21419c8612e46af005a, type: 2}
   variantMode: 0
   minVariants: 0
   maxVariants: 0

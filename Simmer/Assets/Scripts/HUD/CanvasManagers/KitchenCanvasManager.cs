@@ -7,7 +7,7 @@ using Simmer.Inventory;
 using Simmer.Items;
 using Simmer.UI.Tooltips;
 using Simmer.UI.RecipeMap;
-
+using Simmer.Appliance;
 namespace Simmer.UI
 {
     public class KitchenCanvasManager : PlayCanvasManager

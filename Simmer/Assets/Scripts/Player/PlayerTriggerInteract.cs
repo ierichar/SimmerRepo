@@ -36,7 +36,7 @@ namespace Simmer.Player
                 if (Input.GetKeyDown(KeyCode.F))
                 {
                     print("F");
-                    if (other.gameObject.TryGetComponent(out GenericAppliance app))
+                    if (other.gameObject.TryGetComponent(out Simmer.Appliance.GenericAppliance app))
                     {
                         FoodItem selected = _playerManager.playerInventory.GetSelectedItem();
 

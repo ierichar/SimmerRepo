@@ -253,6 +253,10 @@ PrefabInstance:
       propertyPath: _UIManager
       value: 
       objectReference: {fileID: 2130959403}
+    - target: {fileID: 536173345013475931, guid: b76813dd9e9d54c6e87ea7833b711e8c, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 555483832662816760, guid: b76813dd9e9d54c6e87ea7833b711e8c, type: 3}
       propertyPath: UIButtons
       value: 
@@ -269,10 +273,26 @@ PrefabInstance:
       propertyPath: money
       value: 
       objectReference: {fileID: 977162457}
+    - target: {fileID: 2585359361064361225, guid: b76813dd9e9d54c6e87ea7833b711e8c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.2
+      objectReference: {fileID: 0}
     - target: {fileID: 2908600335904018086, guid: b76813dd9e9d54c6e87ea7833b711e8c, type: 3}
       propertyPath: _UIManager
       value: 
       objectReference: {fileID: 2130959404}
+    - target: {fileID: 3599805126488103142, guid: b76813dd9e9d54c6e87ea7833b711e8c, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645680362559905811, guid: b76813dd9e9d54c6e87ea7833b711e8c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645680362559905811, guid: b76813dd9e9d54c6e87ea7833b711e8c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3645680362625124922, guid: b76813dd9e9d54c6e87ea7833b711e8c, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -321,14 +341,58 @@ PrefabInstance:
       propertyPath: m_Name
       value: KitchenEnvironment
       objectReference: {fileID: 0}
+    - target: {fileID: 3797620427638214573, guid: b76813dd9e9d54c6e87ea7833b711e8c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 3797620427638214573, guid: b76813dd9e9d54c6e87ea7833b711e8c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 3797620427638214573, guid: b76813dd9e9d54c6e87ea7833b711e8c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.23
+      objectReference: {fileID: 0}
     - target: {fileID: 4253044922159566195, guid: b76813dd9e9d54c6e87ea7833b711e8c, type: 3}
       propertyPath: _UIManager
       value: 
       objectReference: {fileID: 2130959399}
+    - target: {fileID: 4253044922213928321, guid: b76813dd9e9d54c6e87ea7833b711e8c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253044922213928321, guid: b76813dd9e9d54c6e87ea7833b711e8c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253044922213928322, guid: b76813dd9e9d54c6e87ea7833b711e8c, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4743510611373495267, guid: b76813dd9e9d54c6e87ea7833b711e8c, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5506072120449951869, guid: b76813dd9e9d54c6e87ea7833b711e8c, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7093079627070399811, guid: b76813dd9e9d54c6e87ea7833b711e8c, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8494456023629282896, guid: b76813dd9e9d54c6e87ea7833b711e8c, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8551219021865297905, guid: b76813dd9e9d54c6e87ea7833b711e8c, type: 3}
       propertyPath: _UIManager
       value: 
       objectReference: {fileID: 2130959401}
+    - target: {fileID: 8551219022079108868, guid: b76813dd9e9d54c6e87ea7833b711e8c, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b76813dd9e9d54c6e87ea7833b711e8c, type: 3}
 --- !u!114 &105700225 stripped

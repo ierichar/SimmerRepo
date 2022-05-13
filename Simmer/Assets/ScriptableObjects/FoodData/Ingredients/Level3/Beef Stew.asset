@@ -10,13 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 100bfe8cc201b417887646b2755fd998, type: 3}
-  m_Name: ChocolateChips
+  m_Name: Beef Stew
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: a0bdb0f8e8395cf48b4ed07e1ef70b54, type: 3}
-  baseValue: 1
-  isFinalProduct: 0
-  _recipeEdgeList:
-  - {fileID: 11400000, guid: b9fb591c93e2e21419c8612e46af005a, type: 2}
+  sprite: {fileID: 21300000, guid: d1dc126f8a0fa1945875f35fd0a1b1fb, type: 3}
+  baseValue: 21
+  isFinalProduct: 1
+  _recipeEdgeList: []
   variantMode: 0
   minVariants: 0
   maxVariants: 0

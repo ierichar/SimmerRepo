@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using Simmer.Items;
 using Simmer.Interactable;
 
-public class CuttingBoardManager : GenericAppliance
+public class CuttingBoardManager : Simmer.Appliance.GenericAppliance
 {
     private bool cuttingStarted;
     private int numCuts;

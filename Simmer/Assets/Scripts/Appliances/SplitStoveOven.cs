@@ -9,8 +9,8 @@ using Simmer.Player;
 public class SplitStoveOven : MonoBehaviour
 {
     [SerializeField] private GameObject UIButtons;
-    [SerializeField] private GenericAppliance app1;
-    [SerializeField] private GenericAppliance app2;
+    [SerializeField] private Simmer.Appliance.GenericAppliance app1;
+    [SerializeField] private Simmer.Appliance.GenericAppliance app2;
 
     [SerializeField] private SpriteRendererManager _highlightTarget;
     private InteractableBehaviour interactable;

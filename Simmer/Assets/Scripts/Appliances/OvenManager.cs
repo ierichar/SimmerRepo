@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using Simmer.Items;
 using Simmer.FoodData;
 
-public class OvenManager : GenericAppliance
+public class OvenManager : Simmer.Appliance.GenericAppliance
 {
     const float _timeToBurn = 4.0f;
     protected override void Finished()

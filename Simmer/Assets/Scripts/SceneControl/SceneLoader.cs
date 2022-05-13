@@ -69,7 +69,7 @@ namespace Simmer.SceneManagement
             GlobalPlayerData.SaveInventoryDictionary
                 (_playerInventory.inventoryItemDictionary);
 
-            foreach(GenericAppliance app in FindObjectsOfType<GenericAppliance>()){
+            foreach(Simmer.Appliance.GenericAppliance app in FindObjectsOfType<Simmer.Appliance.GenericAppliance>()){
                 app.SaveInventory();
             }
             PantrySlotGroupManager obj = FindObjectOfType<PantrySlotGroupManager>(true);

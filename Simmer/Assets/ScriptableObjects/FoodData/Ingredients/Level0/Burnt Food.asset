@@ -10,13 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 100bfe8cc201b417887646b2755fd998, type: 3}
-  m_Name: TomatoPasta
+  m_Name: Burnt Food
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: c5dc2ebc8bc287b48acc6958b70eb8ba, type: 3}
-  baseValue: 20
+  sprite: {fileID: 21300000, guid: 7f331815573b2a549a5d31786ced23f6, type: 3}
+  baseValue: 0
   isFinalProduct: 0
-  _recipeEdgeList:
-  - {fileID: 11400000, guid: 5b8910124a055ea43819cd1caf3b6143, type: 2}
+  _recipeEdgeList: []
   variantMode: 0
   minVariants: 0
   maxVariants: 0

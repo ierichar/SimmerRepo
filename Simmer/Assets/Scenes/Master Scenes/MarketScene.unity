@@ -1433,6 +1433,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6500152791573513445, guid: a4a2ca1564ca740d28e2ffcc704ea011, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6500152791573513445, guid: a4a2ca1564ca740d28e2ffcc704ea011, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6500152791573513445, guid: a4a2ca1564ca740d28e2ffcc704ea011, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 874241457
+      objectReference: {fileID: 0}
     - target: {fileID: 6984349727695694033, guid: a4a2ca1564ca740d28e2ffcc704ea011, type: 3}
       propertyPath: m_Name
       value: MarketEnvironment

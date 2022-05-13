@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 using Simmer.Items;
 
-public class StoveManager : GenericAppliance
+public class StoveManager : Simmer.Appliance.GenericAppliance
 {
     const float _timeToBurn = 4.0f;
     protected override void Finished()

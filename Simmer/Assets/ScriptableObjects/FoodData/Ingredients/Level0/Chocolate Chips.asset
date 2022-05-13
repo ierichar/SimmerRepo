@@ -10,14 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 100bfe8cc201b417887646b2755fd998, type: 3}
-  m_Name: ChoppedCarrot
+  m_Name: Chocolate Chips
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 831ed6db353a8c34bbcb1c8cae1ff9b8, type: 3}
-  baseValue: 3
-  timeProcessed: 0
+  sprite: {fileID: 21300000, guid: a0bdb0f8e8395cf48b4ed07e1ef70b54, type: 3}
+  baseValue: 1
   isFinalProduct: 0
   _recipeEdgeList:
-  - {fileID: 11400000, guid: bfd7123b8c34ea24e87558e9a8b009dc, type: 2}
+  - {fileID: 11400000, guid: b9fb591c93e2e21419c8612e46af005a, type: 2}
   variantMode: 0
   minVariants: 0
   maxVariants: 0
