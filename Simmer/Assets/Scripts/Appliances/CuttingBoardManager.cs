@@ -69,6 +69,13 @@ public class CuttingBoardManager : Simmer.Appliance.GenericAppliance
         }
     }
 
+    public override void ToggleInventory(){
+        base.ToggleInventory();
+        if(invOpen && UI_OPEN){
+            _soundManager.PlaySound(9, false);
+        }
+    }
+
     protected override void Finished()
     {
         base.Finished();

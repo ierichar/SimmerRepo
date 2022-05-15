@@ -15,6 +15,7 @@ public class UISoundManager : MonoBehaviour
 
     public void Awake(){
         _audioSource = GetComponent<AudioSource>();
+        _audioSource.volume = 0.3f;
         onUiSoundPlay.AddListener(onUiSoundPlayCallBack);
     }
 
@@ -46,6 +47,10 @@ public class UISoundManager : MonoBehaviour
 
     public AudioSource GetAudioSource(){
         return _audioSource;
+    }
+
+    public void Stop(){
+        _audioSource.Stop();
     }
 
 }

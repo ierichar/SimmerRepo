@@ -17,6 +17,7 @@ namespace Simmer.SceneManagement
         private ScreenBlockManager _screenBlockManager;
         private PlayerInventory _playerInventory;
         public UnityEvent<SceneData> OnSceneLoad = new UnityEvent<SceneData>();
+        [SerializeField] private UISoundManager _uiSoundManager;
 
         private List<ExitDoorBehaviour> exitDoorList = new List<ExitDoorBehaviour>();
 
@@ -78,9 +79,11 @@ namespace Simmer.SceneManagement
 
             Tween fadeTween = _screenBlockManager
                 .Fade(1, _fadeTime, _fadeEase);
+            _uiSoundManager.PlaySound(8, false);
             yield return fadeTween.WaitForCompletion();
-
+            
             yield return new WaitForSeconds(_loadDelay);
+            //_uiSoundManager.Stop();
             SceneManager.LoadScene(sceneData.sceneName);
         }
     }

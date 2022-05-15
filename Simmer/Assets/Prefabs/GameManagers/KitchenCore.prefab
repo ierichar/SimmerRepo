@@ -43,6 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdec0485cf9400949823ca8b2838a985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneLight: {fileID: 0}
 --- !u!1 &357430584347458461
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,6 +238,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f2bb851af2029c54293ae51b922b185c, type: 3}
   - {fileID: 8300000, guid: e4a54ad5bc2417943a7da792e467fd76, type: 3}
   - {fileID: 8300000, guid: 8146580bbe4541547afb2590a3736ae8, type: 3}
+  - {fileID: 8300000, guid: e567b789b544581479d9b9584ad26d40, type: 3}
+  - {fileID: 8300000, guid: 0ddc57b6c904dc94391bd268dc1456e7, type: 3}
   onUiSoundPlay:
     m_PersistentCalls:
       m_Calls: []
@@ -431,6 +434,7 @@ MonoBehaviour:
   OnSceneLoad:
     m_PersistentCalls:
       m_Calls: []
+  _uiSoundManager: {fileID: 3753244179360751903}
   _fadeTime: 0.5
   _loadDelay: 0.5
   _fadeEase: 3

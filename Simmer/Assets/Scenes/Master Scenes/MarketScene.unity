@@ -599,6 +599,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 510922438}
   m_CullTransparentMesh: 1
+--- !u!114 &517836957 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9206068209063044779, guid: 33063ccb1673948b89e3030ae8a279a7, type: 3}
+  m_PrefabInstance: {fileID: 8721177017965495169}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f6f3901475f147fa90dc7edfdd832b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &557305322 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8042035493373524654, guid: 13fddecaeb8294b5b9585d0eb31b7d63, type: 3}
@@ -1630,6 +1641,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 738760592557760547, guid: 33063ccb1673948b89e3030ae8a279a7, type: 3}
+      propertyPath: _uiSoundManager
+      value: 
+      objectReference: {fileID: 517836957}
     - target: {fileID: 738760592557760551, guid: 33063ccb1673948b89e3030ae8a279a7, type: 3}
       propertyPath: pauseMenu
       value: 
@@ -1638,17 +1653,9 @@ PrefabInstance:
       propertyPath: volumeSlider
       value: 
       objectReference: {fileID: 1530186720}
-    - target: {fileID: 8319426941518180298, guid: 33063ccb1673948b89e3030ae8a279a7, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8319426941518180298, guid: 33063ccb1673948b89e3030ae8a279a7, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8319426941518180298, guid: 33063ccb1673948b89e3030ae8a279a7, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 9206068209063044779, guid: 33063ccb1673948b89e3030ae8a279a7, type: 3}
+      propertyPath: soundList.Array.data[8]
+      value: 
+      objectReference: {fileID: 8300000, guid: db40b797ed05888429100deb29bb51a1, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33063ccb1673948b89e3030ae8a279a7, type: 3}
