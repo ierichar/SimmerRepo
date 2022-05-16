@@ -41,38 +41,18 @@ That sounds great, I can do that!
 // --------------------------------------------------------------------
 
 == QuestStarted_2 ===
-{CHARACTER_NAME}: You know, if you're looking for a new challenging recipe, I have a dish that took me quite a while to master.
-{CHARACTER_NAME}: My mom and her mom both taught me how to make {QUEST_ITEM} for cold winter nights.
-{CHARACTER_NAME}: There never was a recipe, but I can give you a few ideas on the ingredients we used.
-{CHARACTER_NAME}: While I know you don't have an open fire to cook with, your modern-day oven should work just fine!
+{CHARACTER_NAME}: ...
 ->->
 
 === QuestOngoing_2 ===
-{CHARACTER_NAME}: Make sure you follow a recipe's instructions step-by-step. Don't want to lose track of something and end up with charcoal.
+{CHARACTER_NAME}: ...
 ->->
 
 === QuestCompleted_2 ===
-{CHARACTER_NAME}: Is that...?
-{CHARACTER_NAME}: Mmmm I can smell it from here, that's sure is {QUEST_ITEM}!
-{CHARACTER_NAME}: This takes me back to when I was a little girl. Please, at least let me compensate you for the ingredients.
-{CHARACTER_NAME}: And don't let me forget, I did write down the recipe for {QUEST_REWARD}. I hope you find it useful.
+{CHARACTER_NAME}: Thank you for this {QUEST_ITEM}, dearie!
 ->->
 
 // --------------------------------------------------------------------
-// Generic Voice Lines
-// --------------------------------------------------------------------
-
-=== ClosedMorning ===
-{CHARACTER_NAME}: I'm still getting my store set-up, one moment dear.
-->->
-
-=== ClosedNight ===
-{CHARACTER_NAME}: I closed up shop for today, but there's always tomorrow.
-->->
-
-=== GenericComment ===
-{CHARACTER_NAME}: Boy it sure is a hot one today, huh?
-->->
 
 === Rumor ===
 {CHARACTER_NAME}: Some people aren't friendly right off the bat.

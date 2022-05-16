@@ -7,11 +7,7 @@ VAR INTERACTIONS = 0
 VAR QUEST_STARTED = 0
 VAR QUEST_ITEM = "QuestItem"
 VAR QUEST_REWARD = "QuestReward"
-VAR IS_CLOSED_MORNING = 0
-VAR IS_CLOSED_NIGHT = 0
 
->>> UpdateInkVar(IS_CLOSED_MORNING, isClosedMorning);
->>> UpdateInkVar(IS_CLOSED_NIGHT, isClosedNight);
 >>> UpdateInkVar(IS_QUEST_STARTED, isQuestStarted);
 >>> UpdateInkVar(IS_QUEST_COMPLETE, isQuestComplete);
 >>> UpdateInkVar(CURRENT_STAGE, currentStage);
@@ -45,9 +41,9 @@ VAR IS_CLOSED_NIGHT = 0
     - 2:
         { IS_QUEST_COMPLETE:
         - 0:
-            -> QuestOngoing_1
+            -> QuestOngoing
         - 1:
-            -> QuestCompleted_1
+            -> QuestCompleted
         }
     }
 - 1:
@@ -83,20 +79,20 @@ VAR IS_CLOSED_NIGHT = 0
 
 === InterfaceChoices ===
 ->InteractOptions->
-    { IS_QUEST_STARTED:
-    - 1:
-        { IS_QUEST_COMPLETE:
-        - 0:
-            + [Give gift]
-                -> ChooseGift
-        }
-    - 2:
-        { IS_QUEST_COMPLETE:
-        - 0:
-            + [Give gift]
-                -> ChooseGift
-        }
+{ IS_QUEST_STARTED:
+- 1:
+    { IS_QUEST_COMPLETE:
+    - 0:
+        + [Give gift]
+            -> ChooseGift
     }
+- 2:
+    { IS_QUEST_COMPLETE:
+    - 0:
+        + [Give gift]
+            -> ChooseGift
+    }
+}
     + [Shop]
         -> ChooseShop
     
@@ -105,17 +101,7 @@ VAR IS_CLOSED_NIGHT = 0
 
 
 === ChooseShop ===
-{ IS_CLOSED_MORNING:
-- 0:
-    { IS_CLOSED_NIGHT:
-    - 0:
-        -> OpenInterface("ChooseShop", -> EndGeneric, -> Continue)
-    - 1:
-        -> ClosedNight -> InterfaceChoices
-    }
-- 1:
-    -> ClosedMorning -> InterfaceChoices
-}
+-> OpenInterface("ChooseShop", -> EndGeneric, -> Continue)
 
 === ChooseGift ===
 -> OpenInterface("ChooseGift", -> EndGeneric, -> CheckGift)

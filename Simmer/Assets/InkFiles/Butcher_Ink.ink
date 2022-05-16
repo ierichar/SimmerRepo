@@ -46,9 +46,6 @@ Well it wasn’t exactly cheap before…
 {CHARACTER_NAME}: It wasn’t cheap because you can’t find better prepared meat in the entire city!
 {CHARACTER_NAME}: Argh! There’s nothing for it, I can’t afford it right now. If you want that to change you’ll have to go talk to “miss poncho” over there. 
 {CHARACTER_NAME}: What’s it for? It doesn’t even rain here!
-
-// Start quest to talk to Bonnie for Missak
-
 ->->
 
 === QuestOngoing_2 ===
@@ -65,20 +62,6 @@ I was courteous and I offered to help…
 ->->
 
 // --------------------------------------------------------------------
-// Generic Voice Lines
-// --------------------------------------------------------------------
-
-=== ClosedMorning ===
-{CHARACTER_NAME}: I'm not ready yet. Please wait.
-->->
-
-=== ClosedNight ===
-{CHARACTER_NAME}: I'm all out of gas today, but I'll be open again tomorrow morning.
-->->
-
-=== GenericComment ===
-{CHARACTER_NAME}: "Honest work for honest pay" I say.
-->->
 
 === Rumor ===
 {CHARACTER_NAME}: If you want the best eggs in town, talk to Mary.

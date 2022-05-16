@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 82f9a8b14de1c4bbb8b1f9e79e91cff1, type: 3}
-  m_Name: ChickenKeeper_Q2
+  m_Name: TestQuest1
   m_EditorClassIdentifier: 
   questItem: {fileID: 11400000, guid: 611739ff97698ca4da84bd49356845b3, type: 2}
   initialKnowledge:
