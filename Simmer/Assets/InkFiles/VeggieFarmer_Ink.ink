@@ -37,18 +37,40 @@ I just moved here. I'm hoping to get into the local culinary school.
 // --------------------------------------------------------------------
 
 == QuestStarted_2 ===
-{CHARACTER_NAME}: ...
+{CHARACTER_NAME}: Listen, if you're trying to get better at baking, I have this... friend... that really likes {QUEST_ITEM}.
+Haha, no judement here. I'm sure I can try to make them, I just need the recipe.
+{CHARACTER_NAME}: Of course, but again, I don't want them... they're for my friend... Baylor...
+Of course, {QUEST_ITEM} for your friend Baylor. Got it.
 ->->
 
 === QuestOngoing_2 ===
-{CHARACTER_NAME}: ...
+{CHARACTER_NAME}: Hey, Baylor says no rush, but they told me to tell you that their sweet tooth is acting up.
 ->->
 
 === QuestCompleted_2 ===
-{CHARACTER_NAME}: Thank you for this {QUEST_ITEM}, dearie!
+{CHARACTER_NAME}: AAAAAAAAAAAAAAHHHHHHH!
+Woah, are you okay!?
+{CHARACTER_NAME}: Yes, yes, haha these {QUEST_ITEM} are going to make me- I mean...
+{CHARACTER_NAME}: Baylor...
+{CHARACTER_NAME}: So happy!
+{CHARACTER_NAME}: Thank you, thank you! Here's some information on {QUEST_REWARD} that I had in an old recipe book.
 ->->
 
 // --------------------------------------------------------------------
+// Generic Voice Lines
+// --------------------------------------------------------------------
+
+=== ClosedMorning ===
+{CHARACTER_NAME}: Sorry, I'm still getting ready. I open up shop soon.
+->->
+
+=== ClosedNight ===
+{CHARACTER_NAME}: Shoot, I just packed up shop. I'll be open tomorrow morning though!
+->->
+
+=== GenericComment ===
+{CHARACTER_NAME}: It's a beautiful day today, isn't it?
+->->
 
 === Rumor ===
 {CHARACTER_NAME}: I heard Missak mumbling about something earlier. I wonder what's bothering him.

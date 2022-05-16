@@ -16,6 +16,8 @@ MonoBehaviour:
   portraitSprite: {fileID: 21300000, guid: ad6c0940432a94447ba26aa2c2e1395d, type: 3}
   npcInkAsset: {fileID: 4900000, guid: 95bc6567d36334c389d7f93601268c1b, type: 3}
   characterData: {fileID: 11400000, guid: 0285217b2b797490db8ee0a3003b6a29, type: 2}
+  numOfInteractions: 2
+  isQuestStarted: 0
   shopItemList:
   - {fileID: 11400000, guid: f2d64ff20b51169478c43d68964ce2f7, type: 2}
   - {fileID: 11400000, guid: e48621f149cc57d469de740f86c1746e, type: 2}
@@ -27,3 +29,4 @@ MonoBehaviour:
   likedItems: []
   questDataList:
   - {fileID: 11400000, guid: d554f3138074344e6a9941da5f0841e6, type: 2}
+  - {fileID: 11400000, guid: c5d78cfeed18d2f429e110767e686d06, type: 2}
