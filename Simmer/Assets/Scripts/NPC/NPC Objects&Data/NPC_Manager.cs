@@ -132,6 +132,12 @@ namespace Simmer.NPC
                 _playCanvasFadeDuration, _playCanvasFadeEase);
             yield return fadeTween.WaitForCompletion();
 
+            //  @@TheUnaverageJoe, This code doesnt work or do anything as of now,
+            //  just a note to come back to
+            //if(targetInterfaceWindow.GetType() == typeof(NPC_Gift)){
+            //    NPC_Gift caster = targetInterfaceWindow;
+            //}
+
             targetInterfaceWindow.gameObject.SetActive(false);
             marketCanvasManager.gameObject.SetActive(false);
             
@@ -141,8 +147,14 @@ namespace Simmer.NPC
 
         private void OnTryGiftCallback(bool isCorrect)
         {
-            if(isCorrect) vn_sharedVariables.isCorrectGift = 1;
-            else vn_sharedVariables.isCorrectGift = 0;
+            //@TheUnaverageJoe  @@MPerez132 5/16/2022
+            //Added wrapped if statement to stop duplicate calls from gifting attempts
+            //    after it has been validated once, and pending screen transition
+            if(vn_sharedVariables.isCorrectGift==0){
+                if(isCorrect) vn_sharedVariables.isCorrectGift = 1;
+                else vn_sharedVariables.isCorrectGift = 0;
+            }
+            
         }
 
         private void OnNPCInteractCallback(NPC_Data npcData)

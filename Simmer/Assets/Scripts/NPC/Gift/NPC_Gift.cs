@@ -48,7 +48,6 @@ namespace Simmer.NPC
             {
                 questCompleted = TryCompleteQuest(itemList);
             }
-
             StartCoroutine(QuestCheckSequeunce(questCompleted));
         }
 
@@ -83,12 +82,15 @@ namespace Simmer.NPC
 
             yield return StartCoroutine(giftReactionImage
                 .ReactionSequence(questCompleted));
-
+            // small unplesent feeling, when spamming gift button after a successful gift
+            // the following unsuccessful gift finishes first and calls releaseLock()
+            // before the fade out is done, consider linking releaseLock()
             if (questCompleted)
             {
                 giftSlotGroupManager.ClearAll();
 
                 OnClose.Invoke();
+                giftReactionImage.ReleaseLock();
             }
         }
 
