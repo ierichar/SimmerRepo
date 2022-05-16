@@ -142,6 +142,8 @@ namespace Simmer.NPC
 
             foreach (NPC_QuestData questData in questDataList)
             {
+                questData.isQuestComplete = false;
+                questData.isQuestStarted = true;
                 questDictionary.Add(questData.questItem
                     , questData.questReward);
             }

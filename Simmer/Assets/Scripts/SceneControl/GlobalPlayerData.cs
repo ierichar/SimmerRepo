@@ -158,7 +158,7 @@ public static class GlobalPlayerData
         if (activeQuestDictionary.ContainsKey(npcData))
         {
             activeQuestDictionary.Remove(npcData);
-            completedQuestDictionary.Add(npcData, questData);
+            //completedQuestDictionary.Add(npcData, questData);
             // @ierichar
             // Added list functionality
             completedQuestList.Add(questData);

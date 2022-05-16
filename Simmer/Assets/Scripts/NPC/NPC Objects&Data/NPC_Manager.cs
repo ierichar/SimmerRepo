@@ -171,6 +171,9 @@ namespace Simmer.NPC
             // @ierichar 05/06/2022 load vn_sharedvariables from stored NPC data
             LoadSharedVariables_from_NPC_Data(currentNPC_Data);
 
+            // @ierichar 05/14/2022
+            TrackTime();
+
             // @ierichar 05/04/2022
             // New Track and Add Quest functionality
             TrackQuest_v2(currentNPC_Data);
@@ -446,6 +449,38 @@ namespace Simmer.NPC
 
         /// @ierichar
         /// <summary>
+        /// Updates whether or not store is closed if before or after opening times for NPCs
+        ///
+        /// __From Ink files__ 
+        /// Should still allow player to talk to NPCs, give gifts, and interact
+        ///
+        /// __From GlobalPlayerData__
+        /// currentTime[0] - Hour
+        /// currentTime[1] - Minute
+        /// currentTime[2] - AM = 0, PM = 1
+        /// currentTime[3] - Day #
+        /// currentTime[4] - "Paused?"
+        /// </summary>
+        private void TrackTime() {
+            if (GlobalPlayerData.currentTime[3] == 1     // is AM
+                && GlobalPlayerData.currentTime[0] < 9)  // < 9AM
+            {   
+                vn_sharedVariables.isClosedMorning = 1;
+            }
+            else if (GlobalPlayerData.currentTime[3] == 0 // is PM
+                && GlobalPlayerData.currentTime[0] >= 6)  // >= 6PM
+            {
+                vn_sharedVariables.isClosedNight = 1;
+            }
+            else 
+            {
+                vn_sharedVariables.isClosedMorning = 0;
+                vn_sharedVariables.isClosedNight = 0;
+            }
+        }
+
+        /// @ierichar
+        /// <summary>
         /// Update Taylor (Veggie Farmer) quest progress
         /// </summary>
         /// <param name="currentNPC_Data">
@@ -453,8 +488,6 @@ namespace Simmer.NPC
         /// </param>
         private void UpdateVeggieFarmerQuest(NPC_Data currentNPC_Data)
         {
-            Debug.Log("v2 : calling UpdateVeggieFarmerQuest...");
-
             // Stage 0 / 1
             // Start quest with first interaction
             if (vn_sharedVariables.currentStage >= 0 
@@ -469,26 +502,23 @@ namespace Simmer.NPC
                 if (vn_sharedVariables.isQuestStarted == 1)
                 {
                     AddNewQuest_v2(currentNPC_Data, 0);
-                    Debug.Log("QuestItem is " + vn_sharedVariables.questItem);
-                    Debug.Log("QuestItem" + vn_sharedVariables.questReward);
                 }
             }
             
             // Stage 2
-            // Uncomment once quest added to VeggieFarmer scriptable object
-            // if (vn_sharedVariables.currentStage == 2 && vn_sharedVariables.isQuestStarted < 2) {
-            //     // Update isQuestStarted tracking for dialogue
-            //     vn_sharedVariables.isQuestStarted = ++vn_sharedVariables.isQuestStarted;
-            //     currentNPC_Data.isQuestStarted = vn_sharedVariables.isQuestStarted;
+            if (vn_sharedVariables.currentStage == 2 
+                && vn_sharedVariables.isQuestStarted < 2
+                && !currentNPC_Data.questDataList[1].isQuestComplete) {
+                // Update isQuestStarted tracking for dialogue
+                vn_sharedVariables.isQuestStarted = ++vn_sharedVariables.isQuestStarted;
+                currentNPC_Data.isQuestStarted = vn_sharedVariables.isQuestStarted;
 
-            //     // Prevent duplicate calls to track quest
-            //     if (vn_sharedVariables.isQuestStarted == 1)
-            //     {
-            //         AddNewQuest_v2(currentNPC_Data, 1);
-            //         Debug.Log("QuestItem is " + vn_sharedVariables.questItem);
-            //         Debug.Log("QuestItem" + vn_sharedVariables.questReward);
-            //     }
-            // }
+                // Prevent duplicate calls to track quest
+                if (vn_sharedVariables.isQuestStarted == 1)
+                {
+                    AddNewQuest_v2(currentNPC_Data, 1);
+                }
+            }
         }
 
         /// @ierichar
@@ -500,15 +530,30 @@ namespace Simmer.NPC
         /// </param>
         private void UpdateButcherQuest(NPC_Data currentNPC_Data)
         {
-            Debug.Log("v2 : calling UpdateButcherFarmerQuest...");
-
             // Stage 0
             // Character needs to introduce themselves to everyone before recieving quest
 
             // Stage 1
-            if (vn_sharedVariables.currentStage >= 1 
+            // First ask from Missak
+            if (vn_sharedVariables.currentStage == 1 
                 && vn_sharedVariables.isQuestStarted < 1
                 && !currentNPC_Data.questDataList[0].isQuestComplete)
+            {
+                // Update NPCs shared variable for isQuestStarted
+                vn_sharedVariables.isQuestStarted = ++vn_sharedVariables.isQuestStarted;
+                currentNPC_Data.isQuestStarted = vn_sharedVariables.isQuestStarted;
+
+                // Prevent duplicate calls to track quest
+                if (vn_sharedVariables.isQuestStarted == 1)
+                {
+                    AddNewQuest_v2(currentNPC_Data, 0);
+                }
+            }
+
+            // Stage 2
+            // Part 1
+            if (vn_sharedVariables.currentStage == 2 
+                && vn_sharedVariables.isQuestStarted < 1)
             {
                 // Check all npcs to find Bonnie
                 foreach (NPC_Behaviour data in _allNPCList)
@@ -516,39 +561,32 @@ namespace Simmer.NPC
                     // Check if Bonnie's quest is completete
                     if (data.GetNPC_Data().characterData.name == "Bonnie")
                     {
-                        if (data.GetNPC_Data().questDataList[0].isQuestComplete)
+                        // If Bonnie's Stage 2 quest is done and Missak currrent quest is not started
+                        if (!data.GetNPC_Data().questDataList[1].isQuestComplete 
+                            && currentNPC_Data.isQuestStarted == 0)
                         {
+                            // Update here since no quest item or reward
+                            vn_sharedVariables.isQuestComplete = 0;
+
                             // Update NPCs shared variable for isQuestStarted
                             vn_sharedVariables.isQuestStarted = ++vn_sharedVariables.isQuestStarted;
                             currentNPC_Data.isQuestStarted = vn_sharedVariables.isQuestStarted;
-
-                            // Prevent duplicate calls to track quest
-                            if (vn_sharedVariables.isQuestStarted == 1)
-                            {
-                                AddNewQuest_v2(currentNPC_Data, 0);
-                            }
+                        }
+                        // Else if Bonnie's Stage 2 quest is not done
+                        else if (!data.GetNPC_Data().questDataList[1].isQuestComplete 
+                                 && currentNPC_Data.isQuestStarted == 1)
+                        {
+                            // Progress to dialogue where Missak is waiting
+                            vn_sharedVariables.isQuestStarted++;
+                        }
+                        else
+                        {
+                            // Final update here
+                            vn_sharedVariables.isQuestComplete = 1;
                         }
                     }
                 }
             }
-
-            // Stage 2
-            // Uncomment once quest added to VeggieFarmer scriptable object
-            // if (vn_sharedVariables.currentStage == 2 
-            //     && vn_sharedVariables.isQuestStarted < 2
-            //     && !currentNPC_Data.questDataList[1].isQuestComplete) {
-            //     // Update isQuestStarted tracking for dialogue
-            //     vn_sharedVariables.isQuestStarted = ++vn_sharedVariables.isQuestStarted;
-            //     currentNPC_Data.isQuestStarted = vn_sharedVariables.isQuestStarted;
-
-            //     // Prevent duplicate calls to track quest
-            //     if (vn_sharedVariables.isQuestStarted == 1)
-            //     {
-            //         AddNewQuest_v2(currentNPC_Data, 1);
-            //         Debug.Log("QuestItem is " + vn_sharedVariables.questItem);
-            //         Debug.Log("QuestItem" + vn_sharedVariables.questReward);
-            //     }
-            // }
         }
 
         /// @ierichar
@@ -560,17 +598,15 @@ namespace Simmer.NPC
         /// </param>
         private void UpdateCowRancherQuest(NPC_Data currentNPC_Data)
         {
-            Debug.Log("v2 : calling UpdateCowRancherQuest...");
-
             // Stage 0
             // Character needs to introduce themselves to everyone before recieving quest
 
             // Stage 1
-            if (vn_sharedVariables.currentStage >= 1 
+            if (vn_sharedVariables.currentStage == 1 
                 && vn_sharedVariables.isQuestStarted < 2
                 && !currentNPC_Data.questDataList[0].isQuestComplete) 
             {
-                // Talk with her at least 2 times
+                // Talk with her more than 2 times
                 if (currentNPC_Data.numOfInteractions > 2)
                 {
                     vn_sharedVariables.isQuestStarted = ++vn_sharedVariables.isQuestStarted;
@@ -585,20 +621,32 @@ namespace Simmer.NPC
             }
 
             // Stage 2
-            // Uncomment once quest added to VeggieFarmer scriptable object
-            // if (vn_sharedVariables.currentStage == 2 && vn_sharedVariables.isQuestStarted < 2) {
-            //     // Update isQuestStarted tracking for dialogue
-            //     vn_sharedVariables.isQuestStarted = ++vn_sharedVariables.isQuestStarted;
-            //     currentNPC_Data.isQuestStarted = vn_sharedVariables.isQuestStarted;
+            if (vn_sharedVariables.currentStage == 2 
+                && vn_sharedVariables.isQuestStarted < 2
+                && !currentNPC_Data.questDataList[1].isQuestComplete) 
+            {
+                // Check all npcs to find Bonnie
+                foreach (NPC_Behaviour data in _allNPCList)
+                {
+                    // Check if Bonnie's quest is completete
+                    if (data.GetNPC_Data().characterData.name == "Missak")
+                    {
+                        if (data.GetNPC_Data().isQuestStarted == 1)
+                        {
+                            // Update NPCs shared variable for isQuestStarted
+                            vn_sharedVariables.isQuestStarted = ++vn_sharedVariables.isQuestStarted;
+                            currentNPC_Data.isQuestStarted = vn_sharedVariables.isQuestStarted;
 
-            //     // Prevent duplicate calls to track quest
-            //     if (vn_sharedVariables.isQuestStarted == 1)
-            //     {
-            //         AddNewQuest_v2(currentNPC_Data, 1);
-            //         Debug.Log("QuestItem is " + vn_sharedVariables.questItem);
-            //         Debug.Log("QuestItem" + vn_sharedVariables.questReward);
-            //     }
-            // }
+                            // Prevent duplicate calls to track quest
+                            if (vn_sharedVariables.isQuestStarted == 1)
+                            {
+                                AddNewQuest_v2(currentNPC_Data, 1);
+                            }
+                        }
+                    }
+                }
+            }
+
         }
 
         /// @ierichar
@@ -620,7 +668,7 @@ namespace Simmer.NPC
                 && !currentNPC_Data.questDataList[0].isQuestComplete) 
             {
                 // Give it up for day 43!
-                if (TimeManager.Day >= 1)
+                if (TimeManager.Day > 1)
                 {
                     vn_sharedVariables.isQuestStarted = ++vn_sharedVariables.isQuestStarted;
                     currentNPC_Data.isQuestStarted = vn_sharedVariables.isQuestStarted;
@@ -635,19 +683,20 @@ namespace Simmer.NPC
 
             // Stage 2
             // Uncomment once quest added to VeggieFarmer scriptable object
-            // if (vn_sharedVariables.currentStage == 2 && vn_sharedVariables.isQuestStarted < 2) {
-            //     // Update isQuestStarted tracking for dialogue
-            //     vn_sharedVariables.isQuestStarted = ++vn_sharedVariables.isQuestStarted;
-            //     currentNPC_Data.isQuestStarted = vn_sharedVariables.isQuestStarted;
+            if (vn_sharedVariables.currentStage == 2 
+                && vn_sharedVariables.isQuestStarted < 2
+                && !currentNPC_Data.questDataList[1].isQuestComplete) 
+            {
+                // Update isQuestStarted tracking for dialogue
+                vn_sharedVariables.isQuestStarted = ++vn_sharedVariables.isQuestStarted;
+                currentNPC_Data.isQuestStarted = vn_sharedVariables.isQuestStarted;
 
-            //     // Prevent duplicate calls to track quest
-            //     if (vn_sharedVariables.isQuestStarted == 1)
-            //     {
-            //         AddNewQuest_v2(currentNPC_Data, 1);
-            //         Debug.Log("QuestItem is " + vn_sharedVariables.questItem);
-            //         Debug.Log("QuestItem" + vn_sharedVariables.questReward);
-            //     }
-            // }
+                // Prevent duplicate calls to track quest
+                if (vn_sharedVariables.isQuestStarted == 1)
+                {
+                    AddNewQuest_v2(currentNPC_Data, 1);
+                }
+            }
         }
 
         /// @ierichar
@@ -682,10 +731,12 @@ namespace Simmer.NPC
                     }
                 }
             }
+
             // Stage 1 to 2 Condition:
             //  - Stage 1
             //  - Complete all quests for NPCs
-            if (GlobalPlayerData.stageValue == 1) {
+            if (GlobalPlayerData.stageValue == 1) 
+            {
                 bool stage1QuestsComplete = true;
                 foreach (NPC_Behaviour data in _allNPCList) 
                 {
@@ -697,6 +748,35 @@ namespace Simmer.NPC
 
                 }
                 if (stage1QuestsComplete) {
+                    GlobalPlayerData.stageValue++;      // Update Global stage
+                    foreach (NPC_Behaviour data in _allNPCList)
+                    {
+                        // Update each NPC's stage variable
+                        data._npcManager.vn_sharedVariables.currentStage++;
+                    }
+                }
+            }
+
+            // Stage 2 to 3 Condition:
+            //  - Stage 1
+            //  - Stage 2
+            //  - Complete all quests for NPCs
+            if (GlobalPlayerData.stageValue == 2) 
+            {
+                bool stage2QuestsComplete = true;
+                foreach (NPC_Behaviour data in _allNPCList) 
+                {
+                    // Check via NPC_QuestData for each character except Missak
+                    if (data.GetNPC_Data().characterData.name != "Missak")
+                    {
+                        if (!data.GetNPC_Data().questDataList[1].isQuestComplete)
+                        {
+                            stage2QuestsComplete = false;
+                        }
+                    }
+
+                }
+                if (stage2QuestsComplete) {
                     GlobalPlayerData.stageValue++;      // Update Global stage
                     foreach (NPC_Behaviour data in _allNPCList)
                     {
