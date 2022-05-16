@@ -16,10 +16,14 @@ MonoBehaviour:
   portraitSprite: {fileID: 21300000, guid: 0164f28cb9caebe4597ab88a9243309a, type: 3}
   npcInkAsset: {fileID: 4900000, guid: e0ba1371dfcbc41c3bd95e2bd2773c3a, type: 3}
   characterData: {fileID: 11400000, guid: 8a24d1fc22093412fb45f4c58474c4e5, type: 2}
+  numOfInteractions: 0
+  isQuestStarted: 0
   shopItemList:
   - {fileID: 11400000, guid: 3a75ceb5df29f42f283f1700f0d3d73f, type: 2}
   - {fileID: 11400000, guid: 10062244df47e49868d8fa686cad5b65, type: 2}
   - {fileID: 11400000, guid: eeabe57d10fbe464296cf625b3fcf090, type: 2}
   - {fileID: 11400000, guid: 659c2de493a0f48beaf2a77495faa19b, type: 2}
+  likedItems: []
   questDataList:
   - {fileID: 11400000, guid: ca7d6196459f04c45909b861d40240a3, type: 2}
+  - {fileID: 11400000, guid: 703e1f7766724c54bb8d1aec1ce0e7c8, type: 2}

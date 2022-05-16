@@ -26,4 +26,3 @@ MonoBehaviour:
   likedItems: []
   questDataList:
   - {fileID: 11400000, guid: 781e8244d53bc4270a0a9b616733a1b4, type: 2}
-  - {fileID: 11400000, guid: 703e1f7766724c54bb8d1aec1ce0e7c8, type: 2}

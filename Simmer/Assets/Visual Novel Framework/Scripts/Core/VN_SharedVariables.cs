@@ -21,6 +21,8 @@ namespace Simmer.VN
         public int currentStage = 0;
         public int interactionCount = 0;    // connected to NPC_Data : numOfInteractions
         public int isQuestStarted = 0;      // connected to NPC_Data : isQuestStarted
+        public int isClosedMorning = 0;
+        public int isClosedNight = 0;
         //-------------------------------------------------------------
         public string questItem = "null";
         public string questReward = "null";
