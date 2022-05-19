@@ -1300,6 +1300,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 384958095, guid: a4a2ca1564ca740d28e2ffcc704ea011, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e90dce36f4d4016449d986fdea3a4dd1, type: 2}
+    - target: {fileID: 1092558423, guid: a4a2ca1564ca740d28e2ffcc704ea011, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e90dce36f4d4016449d986fdea3a4dd1, type: 2}
+    - target: {fileID: 2128956616, guid: a4a2ca1564ca740d28e2ffcc704ea011, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e90dce36f4d4016449d986fdea3a4dd1, type: 2}
     - target: {fileID: 6984349727695694033, guid: a4a2ca1564ca740d28e2ffcc704ea011, type: 3}
       propertyPath: m_Name
       value: MarketEnvironment
@@ -1477,6 +1489,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 738760592557760545, guid: 33063ccb1673948b89e3030ae8a279a7, type: 3}
+      propertyPath: _startSaveData
+      value: 
+      objectReference: {fileID: 11400000, guid: 59d3a3f128ced4a028b37710ac895941, type: 2}
     - target: {fileID: 738760592557760551, guid: 33063ccb1673948b89e3030ae8a279a7, type: 3}
       propertyPath: pauseMenu
       value: 
