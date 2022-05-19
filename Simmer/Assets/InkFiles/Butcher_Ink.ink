@@ -19,6 +19,12 @@ How'd you...?
 // Stage 1 Quest Line
 // --------------------------------------------------------------------
 
+=== Rumor_1 ===
+{CHARACTER_NAME}: If you want the best eggs in town, talk to Mary.
+{CHARACTER_NAME}: I would use Taylor's vegetables for a beef stew everyday of the week.
+{CHARACTER_NAME}: And Bonnie... she sells dairy.
+->->
+
 === QuestStarted_1 ===
 {CHARACTER_NAME}: I wouldn't normally ask for this, but can you make me some {QUEST_ITEM}?
 {CHARACTER_NAME}: I can give you a few headers about the recipe, but I'm not sure about the rest.
@@ -30,6 +36,11 @@ How'd you...?
 {CHARACTER_NAME}: A good chef uses all of the tools at their disposal... and salt.
 ->->
 
+=== PositiveGift_1 ===
+{CHARACTER_NAME}: Thanks. I appreciate this.
+{CHARACTER_NAME}: Take this {QUEST_REWARD} recipe. It’s pretty good if you haven’t tried it.
+->->
+
 === QuestCompleted_1 ===
 {CHARACTER_NAME}: Thank you for the {QUEST_ITEM}.
 ->->
@@ -37,6 +48,10 @@ How'd you...?
 // --------------------------------------------------------------------
 // Stage 2 Quest Line
 // --------------------------------------------------------------------
+
+=== Rumor_2 ===
+{CHARACTER_NAME}: "Honest work for honest pay" I say.
+->->
 
 === QuestStarted_2 ===
 {CHARACTER_NAME}: The audacity of that wannabe cowboy! Charging this much for a side of beef!
@@ -48,7 +63,9 @@ Well it wasn’t exactly cheap before…
 {CHARACTER_NAME}: What’s it for? It doesn’t even rain here!
 
 // Start quest to talk to Bonnie for Missak
-
+=== PositiveGift_2 ===
+{CHARACTER_NAME}: You shouldn't have! 
+{CHARACTER_NAME}: No... seriously...
 ->->
 
 === QuestOngoing_2 ===
@@ -76,23 +93,8 @@ I was courteous and I offered to help…
 {CHARACTER_NAME}: I'm all out of gas today, but I'll be open again tomorrow morning.
 ->->
 
-=== GenericComment ===
-{CHARACTER_NAME}: "Honest work for honest pay" I say.
-->->
-
-=== Rumor ===
-{CHARACTER_NAME}: If you want the best eggs in town, talk to Mary.
-{CHARACTER_NAME}: I would use Taylor's vegetables for a beef stew everyday of the week.
-{CHARACTER_NAME}: And Bonnie... she sells dairy.
-->->
-
 === InteractOptions ===
 {CHARACTER_NAME}: Buying anything?
-->->
-
-=== PositiveGift ===
-{CHARACTER_NAME}: Thanks. I appreciate this.
-{CHARACTER_NAME}: Take this {QUEST_REWARD} recipe. It’s pretty good if you haven’t tried it.
 ->->
 
 === EndGeneric ===
