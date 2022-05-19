@@ -466,22 +466,22 @@ namespace Simmer.NPC
         /// __From Ink files__ 
         /// Should still allow player to talk to NPCs, give gifts, and interact
         ///
-        /// __From GlobalPlayerData__
-        /// currentTime[0] - Hour
-        /// currentTime[1] - Minute
-        /// currentTime[2] - AM = 0, PM = 1
-        /// currentTime[3] - Day #
-        /// currentTime[4] - "Paused?"
+        /// __From TimeManager__
+        /// TimeManager.Hour - int : Hour
+        /// TimeManager.Minute - int : Minute
+        /// TimeManager.AM - bool : True = AM, False = PM
+        /// TimeManager.Day - int : Day #
+        /// TimeManager.Paused - bool : isPaused
         /// </summary>
         private void TrackTime() {
-            if (GlobalPlayerData.currentTime[3] == 1     // is AM
-                && GlobalPlayerData.currentTime[0] < 9)  // < 9AM
+            if (TimeManager.AM && TimeManager.Hour < 9)  // < 9AM
             {   
                 vn_sharedVariables.isClosedMorning = 1;
+                vn_sharedVariables.isClosedNight = 0;
             }
-            else if (GlobalPlayerData.currentTime[3] == 0 // is PM
-                && GlobalPlayerData.currentTime[0] >= 6)  // >= 6PM
+            else if (!TimeManager.AM && TimeManager.Hour >= 6)  // >= 6PM
             {
+                vn_sharedVariables.isClosedMorning = 0;
                 vn_sharedVariables.isClosedNight = 1;
             }
             else 
