@@ -380,7 +380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5220b1ee1cf0d4b7f8f784ffe0e29a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startSaveData: {fileID: 11400000, guid: 59d3a3f128ced4a028b37710ac895941, type: 2}
+  _startSaveData: {fileID: 11400000, guid: 1d460c58f568a41159fb5411548268c4, type: 2}
 --- !u!114 &738760592557760544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -428,7 +428,7 @@ MonoBehaviour:
   OnSceneLoad:
     m_PersistentCalls:
       m_Calls: []
-  _uiSoundManager: {fileID: 0}
+  _uiSoundManager: {fileID: 9206068209063044779}
   _fadeTime: 0.5
   _loadDelay: 0.5
   _fadeEase: 3
