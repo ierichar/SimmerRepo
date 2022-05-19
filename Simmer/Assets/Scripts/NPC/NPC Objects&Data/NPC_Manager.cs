@@ -548,7 +548,7 @@ namespace Simmer.NPC
             // Stage 1
             // First ask from Missak
             if (vn_sharedVariables.currentStage == 1 
-                && vn_sharedVariables.isQuestStarted < 1
+                && vn_sharedVariables.isQuestStarted < 2
                 && !currentNPC_Data.questDataList[0].isQuestComplete)
             {
                 // Update NPCs shared variable for isQuestStarted
@@ -565,7 +565,7 @@ namespace Simmer.NPC
             // Stage 2
             // Part 1
             if (vn_sharedVariables.currentStage == 2 
-                && vn_sharedVariables.isQuestStarted < 1)
+                && vn_sharedVariables.isQuestStarted < 2)
             {
                 // Check all npcs to find Bonnie
                 foreach (NPC_Behaviour data in _allNPCList)

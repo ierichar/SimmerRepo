@@ -17,6 +17,10 @@ How did you...
 // Stage 1 Quest Line
 // --------------------------------------------------------------------
 
+=== Rumor_1 ===
+{CHARACTER_NAME}: Boy it sure is a hot one today, huh?
+->->
+
 === QuestStarted_1 ===
 {CHARACTER_NAME}: I have a real hankering for some {QUEST_ITEM}. Do you think you could make me some?
 It might take some time but...
@@ -28,6 +32,11 @@ It might take some time but...
 {CHARACTER_NAME}: You may find the ingredient you need or something to experiment with.
 ->->
 
+=== PositiveGift_1 ===
+{CHARACTER_NAME}: This is going to taste so delicious!
+{CHARACTER_NAME}: I found this old recipe for {QUEST_REWARD}. Take it you should have more use for it than I do.
+->->
+
 === QuestCompleted_1 ===
 {CHARACTER_NAME}: I can’t wait to chow down on this {QUEST_ITEM}!
 ->->
@@ -35,6 +44,11 @@ It might take some time but...
 // --------------------------------------------------------------------
 // Stage 2 Quest Line
 // --------------------------------------------------------------------
+
+=== Rumor_2 ===
+{CHARACTER_NAME}: *mumble* Did Missak put oil in his beard...?
+{CHARACTER_NAME}: Oh! Haha... didn't see you there... I didn't say nothing... you hear!?
+->->
 
 == QuestStarted_2 ===
 {CHARACTER_NAME}: Well you’re lookin' like a chef on a mission if i’ve ever seen one. Somethin’ I can help ya with?
@@ -59,10 +73,15 @@ Look, I just need to find a way to get beef to market, can you help me out with 
 {CHARACTER_NAME}: I really do appreciate you helping me. No pressure, but the boys are really excited!
 ->->
 
+=== PositiveGift_2 ===
+{CHARACTER_NAME}: Well I'll be, this {QUEST_ITEM} smells amazing! The runts back home will be so excited for {QUEST_ITEM} night!
+{CHARACTER_NAME}: I found this old recipe for {QUEST_REWARD}. Take it you should have more use for it than I do on account of not having anytime to cook.
+{CHARACTER_NAME}: And I almost forgot, I'll talk to Missak about this "meat problem".
+->->
+
 === QuestCompleted_2 ===
 {CHARACTER_NAME}: Thank you for this {QUEST_ITEM}, hun!
 {CHARACTER_NAME}: I'll make sure you get what you need from Mr. Grouch.
-Thank you!
 ->->
 
 // --------------------------------------------------------------------
@@ -77,10 +96,6 @@ Thank you!
 {CHARACTER_NAME}: I closed up shop for today, but there's always tomorrow.
 ->->
 
-=== GenericComment ===
-{CHARACTER_NAME}: Boy it sure is a hot one today, huh?
-->->
-
 === Rumor ===
 {CHARACTER_NAME}: *mumble* Did Missak put oil in his beard...?
 {CHARACTER_NAME}: Oh! Haha... didn't see you there... I didn't say nothing... you hear!?
@@ -88,11 +103,6 @@ Thank you!
 
 === InteractOptions ===
 {CHARACTER_NAME}: What do ya need?
-->->
-
-=== PositiveGift ===
-{CHARACTER_NAME}: This is going to taste so delicious!
-{CHARACTER_NAME}: I found this old recipe for {QUEST_REWARD}. Take it you should have more use for it than I do.
 ->->
 
 === EndGeneric ===
