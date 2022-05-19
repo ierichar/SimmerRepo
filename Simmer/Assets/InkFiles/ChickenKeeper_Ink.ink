@@ -20,25 +20,40 @@ I'm looking for some ingredients to inspire me.
 // Stage 1 Quest Line
 // --------------------------------------------------------------------
 
+=== Rumor_1 ===
+{CHARACTER_NAME}: Some people aren't friendly right off the bat, you know.
+{CHARACTER_NAME}: Take the time to get know someone if you want to build a relationship.
+{CHARACTER_NAME}: *whispers* Or give them some brownies!
+->->
+
 == QuestStarted_1 ===
 {CHARACTER_NAME}: You know I haven't been able to make a good {QUEST_ITEM} before. 
 {CHARACTER_NAME}: If you could help make me a really nice one, I'd be glad to share some of my family recipes.
-That sounds great, I can do that!
+It may not come out like you remember, but I can take a shot at it!
 {CHARACTER_NAME}: Fantastic! I can't wait!
 ->->
 
 === QuestOngoing_1 ===
 {CHARACTER_NAME}: I used to make {QUEST_ITEM} with my grandkids all the time.
-{CHARACTER_NAME}: If you need to make a quick buck, most of the folks here are always willing to buy your homemade goods.
+{CHARACTER_NAME}: Oh, and remember, if you need to make a quick buck, most of the folks here are always willing to buy your homemade goods.
+->->
+
+=== PositiveGift_1 ===
+{CHARACTER_NAME}: I can't believe my nose... I bet it tastes as good as it smells. Well done!
+{CHARACTER_NAME}: Please take this {QUEST_REWARD} recipe as a reward. it's not much, but hopefully this helps you on your journey towards chefdom.
 ->->
 
 === QuestCompleted_1 ===
-{CHARACTER_NAME}: Thank you for this {QUEST_ITEM}, dearie!
+{CHARACTER_NAME}: Thank you for the {QUEST_ITEM}, dearie!
 ->->
 
 // --------------------------------------------------------------------
 // Stage 2 Quest Line
 // --------------------------------------------------------------------
+
+=== Rumor_2 ===
+{CHARACTER_NAME}: My bones are aching. Either that means a storm's coming, or I should just hydrate more often. Hehe!
+->->
 
 == QuestStarted_2 ===
 {CHARACTER_NAME}: You know, if you're looking for a new challenging recipe, I have a dish that took me quite a while to master.
@@ -51,11 +66,15 @@ That sounds great, I can do that!
 {CHARACTER_NAME}: Make sure you follow a recipe's instructions step-by-step. Don't want to lose track of something and end up with charcoal.
 ->->
 
-=== QuestCompleted_2 ===
+=== PositiveGift_2 ===
 {CHARACTER_NAME}: Is that...?
 {CHARACTER_NAME}: Mmmm I can smell it from here, that's sure is {QUEST_ITEM}!
 {CHARACTER_NAME}: This takes me back to when I was a little girl. Please, at least let me compensate you for the ingredients.
-{CHARACTER_NAME}: And don't let me forget, I did write down the recipe for {QUEST_REWARD}. I hope you find it useful.
+{CHARACTER_NAME}: And don't let me forget, I did write down the recipe for {QUEST_REWARD}. I hope you make it for your loved ones someday just as my family did.
+->->
+
+=== QuestCompleted_2 ===
+{CHARACTER_NAME}: I can tell you're becoming a better cook each time you come visit.
 ->->
 
 // --------------------------------------------------------------------
@@ -70,23 +89,8 @@ That sounds great, I can do that!
 {CHARACTER_NAME}: I closed up shop for today, but there's always tomorrow.
 ->->
 
-=== GenericComment ===
-{CHARACTER_NAME}: Boy it sure is a hot one today, huh?
-->->
-
-=== Rumor ===
-{CHARACTER_NAME}: Some people aren't friendly right off the bat.
-{CHARACTER_NAME}: Take the time to get know someone if you want to build a relationship.
-{CHARACTER_NAME}: *whispers* Or give them some brownies!
-->->
-
 === InteractOptions ===
 {CHARACTER_NAME}: What can I do for you?
-->->
-
-=== PositiveGift ===
-{CHARACTER_NAME}: I really wanted this! Thanks!
-{CHARACTER_NAME}: Please take this {QUEST_REWARD} recipe as a reward.
 ->->
 
 === EndGeneric ===

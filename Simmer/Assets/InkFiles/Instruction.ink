@@ -10,7 +10,7 @@
 // Tutorial: Here, you'll find all your discovered ingredients. For each ingredient, the Recipe Map shows you how to make it and the Utility Map shows you how to use it.
 // Tutorial: To buy and sell ingredients, you can visit the farmer's market by interacting with the kitchen door. 
 // Tutorial: Before buying an ingredient, make sure you check your pantry first!
-// -Tutorial: Now you're ready to start cookin'!
+// Tutorial: Now you're ready to start cookin'!
 
 Tutorial: Hi, welcome to Simmer! Are you ready to cook?
 

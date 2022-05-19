@@ -17,9 +17,13 @@ I just moved here. I'm hoping to get into the local culinary school.
 // Stage 1 Quest Line
 // --------------------------------------------------------------------
 
+=== Rumor_1 ===
+{CHARACTER_NAME}: It's a beautiful day today, isn't it?
+->->
+
 === QuestStarted_1 ===
-{CHARACTER_NAME}: Do you think you could make me some {QUEST_ITEM}?
-...
+{CHARACTER_NAME}: Do you think you could make me some {QUEST_ITEM}? I can tell you about a secret recipe in return.
+I haven't been able to cook much since I got here, but I can give it a try.
 {CHARACTER_NAME}: Great! I’m so excited! You can definitely find everything you need right here at the market. Buying locally is always best!
 ->->
 
@@ -29,12 +33,27 @@ I just moved here. I'm hoping to get into the local culinary school.
 ->->
 
 === QuestCompleted_1 ===
-{CHARACTER_NAME}: Thanks for this {QUEST_ITEM}!
+{CHARACTER_NAME}: Thanks for these {QUEST_ITEM}. I can't put them down!
+->->
+
+=== PositiveGift_1 ===
+{CHARACTER_NAME}: Thanks, these look great! Let me try one… 
+{CHARACTER_NAME}: *nom*
+{CHARACTER_NAME}: WOW! These are amazing. Where did you learn to make them?
+I got a little help from my mom's recipe book.
+{CHARACTER_NAME}: Your mom’s recipe you say? She has a great recipe and you have a chef’s intuition.
+{CHARACTER_NAME}: Here, I bet you'd be able to make this {QUEST_REWARD} no problem.
+Thanks!
+{CHARACTER_NAME}: Y’know, I just got our latest yeast culture going, come back tomorrow and I should have some in stock and you can start baking your own bread!
 ->->
 
 // --------------------------------------------------------------------
 // Stage 2 Quest Line
 // --------------------------------------------------------------------
+
+=== Rumor_2 ===
+{CHARACTER_NAME}: I heard Missak mumbling about something earlier. I wonder what's bothering him.
+->->
 
 == QuestStarted_2 ===
 {CHARACTER_NAME}: Listen, if you're trying to get better at baking, I have this... friend... that really likes {QUEST_ITEM}.
@@ -47,13 +66,17 @@ Of course, {QUEST_ITEM} for your friend Baylor. Got it.
 {CHARACTER_NAME}: Hey, Baylor says no rush, but they told me to tell you that their sweet tooth is acting up.
 ->->
 
-=== QuestCompleted_2 ===
+=== PositiveGift_2 ===
 {CHARACTER_NAME}: AAAAAAAAAAAAAAHHHHHHH!
 Woah, are you okay!?
 {CHARACTER_NAME}: Yes, yes, haha these {QUEST_ITEM} are going to make me- I mean...
 {CHARACTER_NAME}: Baylor...
 {CHARACTER_NAME}: So happy!
 {CHARACTER_NAME}: Thank you, thank you! Here's some information on {QUEST_REWARD} that I had in an old recipe book.
+->->
+
+=== QuestCompleted_2 ===
+{CHARACTER_NAME}: Baylor can't stop eating these cookies.
 ->->
 
 // --------------------------------------------------------------------
@@ -68,27 +91,8 @@ Woah, are you okay!?
 {CHARACTER_NAME}: Shoot, I just packed up shop. I'll be open tomorrow morning though!
 ->->
 
-=== GenericComment ===
-{CHARACTER_NAME}: It's a beautiful day today, isn't it?
-->->
-
-=== Rumor ===
-{CHARACTER_NAME}: I heard Missak mumbling about something earlier. I wonder what's bothering him.
-->->
-
 === InteractOptions ===
 {CHARACTER_NAME}: Anyways, what do you need?
-->->
-
-=== PositiveGift ===
-{CHARACTER_NAME}: Thanks, these look great! Let me try one… 
-{CHARACTER_NAME}: *nom*
-{CHARACTER_NAME}: WOW! These are amazing. Where did you learn to make them?
-...
-{CHARACTER_NAME}: Your mom’s recipe you say? She has a great recipe and you have a chef’s intuition.
-{CHARACTER_NAME}: Here, I bet you'd be able to make this {QUEST_REWARD} no problem.
-Thanks!
-{CHARACTER_NAME}: Y’know, I just got our latest yeast culture going, come back tomorrow and I should have some in stock and you can start baking your own bread!
 ->->
 
 === EndGeneric ===
