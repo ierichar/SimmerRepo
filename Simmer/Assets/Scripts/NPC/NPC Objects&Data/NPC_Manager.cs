@@ -433,7 +433,8 @@ namespace Simmer.NPC
         /// <summary>
         /// Loads the NPC_Data to vn_sharedvariables
         /// </summary>
-        private void LoadSharedVariables_from_NPC_Data(NPC_Data currentNPC_Data) {
+        private void LoadSharedVariables_from_NPC_Data(NPC_Data currentNPC_Data) 
+        {
             // Load vn_sharedVariables isQuestStarted flag
             vn_sharedVariables.isQuestStarted = currentNPC_Data.isQuestStarted;
 
@@ -448,7 +449,8 @@ namespace Simmer.NPC
         /// <summary>
         /// Stores the vn_sharedvariables to NPC_Data
         /// </summary>
-        private void StoreSharedVariables_to_NPC_Data(NPC_Data currentNPC_Data) {
+        private void StoreSharedVariables_to_NPC_Data(NPC_Data currentNPC_Data) 
+        {
             // Store vn_sharedVariables isQuestStarted flag
             currentNPC_Data.isQuestStarted = vn_sharedVariables.isQuestStarted;
             vn_sharedVariables.isQuestStarted = 0;
@@ -473,7 +475,8 @@ namespace Simmer.NPC
         /// TimeManager.Day - int : Day #
         /// TimeManager.Paused - bool : isPaused
         /// </summary>
-        private void TrackTime() {
+        private void TrackTime() 
+        {
             if (TimeManager.AM && TimeManager.Hour < 9)  // < 9AM
             {   
                 vn_sharedVariables.isClosedMorning = 1;
@@ -520,7 +523,8 @@ namespace Simmer.NPC
             // Stage 2
             if (vn_sharedVariables.currentStage == 2 
                 && vn_sharedVariables.isQuestStarted < 2
-                && !currentNPC_Data.questDataList[1].isQuestComplete) {
+                && !currentNPC_Data.questDataList[1].isQuestComplete) 
+            {
                 // Update isQuestStarted tracking for dialogue
                 vn_sharedVariables.isQuestStarted = ++vn_sharedVariables.isQuestStarted;
                 currentNPC_Data.isQuestStarted = vn_sharedVariables.isQuestStarted;
