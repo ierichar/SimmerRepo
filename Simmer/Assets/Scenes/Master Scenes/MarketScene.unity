@@ -1428,26 +1428,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1468181308205591284, guid: a4a2ca1564ca740d28e2ffcc704ea011, type: 3}
-      propertyPath: endPos
-      value: 
-      objectReference: {fileID: 6984349728978572948}
-    - target: {fileID: 1468181308205591284, guid: a4a2ca1564ca740d28e2ffcc704ea011, type: 3}
-      propertyPath: delayTime
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1468181308205591284, guid: a4a2ca1564ca740d28e2ffcc704ea011, type: 3}
-      propertyPath: lerpDuration
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6587621766825438905, guid: a4a2ca1564ca740d28e2ffcc704ea011, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -5.79
-      objectReference: {fileID: 0}
-    - target: {fileID: 6587621766825438905, guid: a4a2ca1564ca740d28e2ffcc704ea011, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.826
-      objectReference: {fileID: 0}
     - target: {fileID: 6984349727695694033, guid: a4a2ca1564ca740d28e2ffcc704ea011, type: 3}
       propertyPath: m_Name
       value: MarketEnvironment
@@ -1498,11 +1478,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4a2ca1564ca740d28e2ffcc704ea011, type: 3}
---- !u!4 &6984349728978572948 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2462786821666274179, guid: a4a2ca1564ca740d28e2ffcc704ea011, type: 3}
-  m_PrefabInstance: {fileID: 6984349728978572947}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8042035493220020907
 PrefabInstance:
   m_ObjectHideFlags: 0

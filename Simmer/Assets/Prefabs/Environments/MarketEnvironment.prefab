@@ -68,9 +68,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 874241457
-  m_SortingLayer: 2
-  m_SortingOrder: 1
+  m_SortingLayerID: -1673710601
+  m_SortingLayer: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: f01a0faf41567d148a5fff5ab146ec11, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -724,9 +724,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 874241457
-  m_SortingLayer: 2
-  m_SortingOrder: 1
+  m_SortingLayerID: -1673710601
+  m_SortingLayer: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: a3929adbc43735142a31b6ab81f2be46, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2167,9 +2167,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 874241457
-  m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingLayerID: -1673710601
+  m_SortingLayer: 1
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: f01a0faf41567d148a5fff5ab146ec11, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3609,7 +3609,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3190938848308997133}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 6, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6984349727695694039}
@@ -5168,7 +5168,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5914497511858665448}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.985, y: 2.826, z: 0}
+  m_LocalPosition: {x: -6.85, y: 2.81, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_Children: []
   m_Father: {fileID: 6984349727695694039}
@@ -5213,7 +5213,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 874241457
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: -302736133071575892, guid: bc9104630c6a1894c90076bd977a8b90, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5256,9 +5256,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2dfdc224a22dd54a834538f8f8931e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endPos: {fileID: 0}
-  lerpDuration: 0
-  delayTime: 0
+  endPos: {fileID: 2462786821666274179}
+  lerpDuration: 4
+  delayTime: 1
 --- !u!1 &6005715906712335618
 GameObject:
   m_ObjectHideFlags: 0
