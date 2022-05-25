@@ -1680,6 +1680,7 @@ GameObject:
   - component: {fileID: 1794864652}
   - component: {fileID: 1794864651}
   - component: {fileID: 1794864650}
+  - component: {fileID: 1716932351}
   m_Layer: 0
   m_Name: bird_spritesheet_0
   m_TagString: Untagged
@@ -1771,6 +1772,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1716932351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1794864649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b9d0b6ec07215c47b4ee346ef163ace, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftPoint: {x: -7, y: -1.77, z: 0}
+  rightPoint: {x: -6.4, y: -1.77, z: 0}
+  lerpDuration: 2
+  startStep: 0.6
 --- !u!1 &1888366191
 GameObject:
   m_ObjectHideFlags: 0
@@ -4200,6 +4217,7 @@ GameObject:
   - component: {fileID: 7571990395257389538}
   - component: {fileID: 3347565965576584407}
   - component: {fileID: 3593023454762016643}
+  - component: {fileID: 1378326637}
   m_Layer: 0
   m_Name: bird_spritesheet_0 (2)
   m_TagString: Untagged
@@ -4215,7 +4233,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4336033713383494536}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.243, y: -2.296, z: 0}
+  m_LocalPosition: {x: -7.15, y: -2.25, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 6984349727695694039}
@@ -4291,6 +4309,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1378326637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4336033713383494536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b9d0b6ec07215c47b4ee346ef163ace, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftPoint: {x: -7.52, y: -2.25, z: 0}
+  rightPoint: {x: -7.15, y: -2.25, z: 0}
+  lerpDuration: 6
+  startStep: 0
 --- !u!1 &4439918232535671479
 GameObject:
   m_ObjectHideFlags: 0
@@ -5168,7 +5202,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5914497511858665448}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.85, y: 2.81, z: 0}
+  m_LocalPosition: {x: -7.001, y: 2.825, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_Children: []
   m_Father: {fileID: 6984349727695694039}
@@ -12433,6 +12467,7 @@ GameObject:
   - component: {fileID: 4067557761389135723}
   - component: {fileID: 5790472371979841776}
   - component: {fileID: 4881893748407926716}
+  - component: {fileID: 1651955897}
   m_Layer: 0
   m_Name: bird_spritesheet_0 (1)
   m_TagString: Untagged
@@ -12448,7 +12483,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8152078182738773495}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.953, y: -2.239, z: 0}
+  m_LocalPosition: {x: -6.89, y: -2.25, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 6984349727695694039}
@@ -12524,6 +12559,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1651955897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8152078182738773495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b9d0b6ec07215c47b4ee346ef163ace, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftPoint: {x: -6.89, y: -2.25, z: 0}
+  rightPoint: {x: -6.45, y: -2.25, z: 0}
+  lerpDuration: 2.2
+  startStep: 1
 --- !u!1 &8339427950054861428
 GameObject:
   m_ObjectHideFlags: 0
