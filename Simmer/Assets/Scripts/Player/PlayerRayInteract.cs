@@ -90,6 +90,7 @@ namespace Simmer.Player
         {
             if (Input.GetMouseButtonDown(1))
             {
+                
                 // Stop interact
                 if (_previousInteracted != null
                     && _previousInteracted.isInteractToggle)
