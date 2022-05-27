@@ -37,7 +37,6 @@ namespace Simmer.Player
         private void OnInteractUICallback(bool result)
         {
             _isSelectEnabled = !result;
-            //_animator.SetBool("Interacting", true);
         }
 
         public void Update()

@@ -6,12 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Master Scenes/MenuScene.unity
+    path: Assets/Scenes/MenuScene.unity
     guid: a9209f14a9e9248ca9c14fad5afa2abd
   - enabled: 1
-    path: Assets/Scenes/Master Scenes/KitchenScene.unity
+    path: Assets/Scenes/KitchenScene.unity
     guid: daa108ec143204ec08a5be52d2e7d32d
   - enabled: 1
-    path: Assets/Scenes/Master Scenes/MarketScene.unity
+    path: Assets/Scenes/MarketScene.unity
     guid: ba894c4a8cc444f4f96d2ae84f0cb3be
   m_configObjects: {}

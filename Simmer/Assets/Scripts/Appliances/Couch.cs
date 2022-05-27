@@ -61,7 +61,7 @@ public class Couch : MonoBehaviour
         //give money
         if(interacted) {
             fadeOutText.enabled = true;
-            money.addMoney(20);
+            money.addMoney(2);
         }
     }
 

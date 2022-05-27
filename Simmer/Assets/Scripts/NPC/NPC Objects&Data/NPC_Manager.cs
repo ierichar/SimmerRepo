@@ -370,6 +370,9 @@ namespace Simmer.NPC
             StoreSharedVariables_to_NPC_Data(currentNPC_Data);
             UpdateStageSharedVariables();
             // --------------------------------------------------------
+            //@@TheUnaverageJoe @@MPerez132 ---------------------------
+            TimeManager.SetPause(false);
+            //---------------------------------------------------------
 
             marketCanvasManager.gameObject.SetActive(true);
 
@@ -489,6 +492,7 @@ namespace Simmer.NPC
                 vn_sharedVariables.isClosedMorning = 0;
                 vn_sharedVariables.isClosedNight = 0;
             }
+            TimeManager.SetPause(true);
         }
 
         /// @ierichar

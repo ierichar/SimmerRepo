@@ -127,7 +127,7 @@ namespace Simmer.CustomTime{
 
         //@@MPerez132 @@TheUnaverageJoe 5/2/2022
         //-------------------------------------------
-        public void SetPause(bool shouldPause){
+        public static void SetPause(bool shouldPause){
             if(shouldPause){
                 Paused = true;
             }else{
