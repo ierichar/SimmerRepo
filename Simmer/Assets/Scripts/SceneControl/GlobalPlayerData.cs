@@ -30,6 +30,10 @@ public static class GlobalPlayerData
     private static bool isConstructed = false;
     //@ierichar--------------------------------------------------------
     public static int stageValue = 0;
+
+    public static bool isFirstLoad;
+    public static string characterName;
+
     //-----------------------------------------------------------------
     public static Dictionary<NPC_Data, NPC_QuestData> activeQuestDictionary
         = new Dictionary<NPC_Data, NPC_QuestData>();
@@ -96,12 +100,16 @@ public static class GlobalPlayerData
             AddIngredientKnowledge(ingredient);
         }
 
-        //load startingTime
+        // load startingTime
         currentTime[0] = startingSaveData.startingTime[0];
         currentTime[1] = startingSaveData.startingTime[1];
         currentTime[2] = startingSaveData.startingTime[2];
         currentTime[3] = startingSaveData.startingTime[3];
         currentTime[4] = 1;
+
+        // load character name
+        isFirstLoad = startingSaveData.isFirstLoad;
+        characterName = startingSaveData.characterName;
     }
 
     public static void SaveInventoryDictionary(

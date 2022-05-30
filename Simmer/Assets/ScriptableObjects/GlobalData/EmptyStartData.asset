@@ -15,6 +15,8 @@ MonoBehaviour:
   startingMoney: 20
   startingStage: 0
   startingTime: 06000000000000000000000001000000
+  isFirstLoad: 1
+  characterName: 
   startKnownList: []
   startInventoryList: []
   startingPantry: []

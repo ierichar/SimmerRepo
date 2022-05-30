@@ -28,7 +28,6 @@ namespace Simmer.SceneManagement
         [SerializeField] private bool _fadeInOnLoad;
 
         private bool isSceneLoading = false;
-        private bool firstLoad = true;
 
         public void Construct(PlayerManager playerManager
             , PlayCanvasManager playCanvasManager)
@@ -86,10 +85,6 @@ namespace Simmer.SceneManagement
             yield return new WaitForSeconds(_loadDelay);
             //_uiSoundManager.Stop();
             SceneManager.LoadScene(sceneData.sceneName);
-
-            // @ierichar
-            // Prevent first scene trigger from repeating
-            firstLoad = false;
         }
     }
 }

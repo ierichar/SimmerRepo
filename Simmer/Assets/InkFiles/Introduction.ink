@@ -1,20 +1,27 @@
->>> !CharEnter(Tutorial);
+VAR CHARACTER_NAME = "Me"
+>>> !CharEnter({CHARACTER_NAME});
 >>> TextboxEnter(Default)
 
-*Sigh*
-It’s been a week since I’ve moved here for work and I have no idea what’s in town.
-Oh, shoot… I forgot, I got that letter from my mom yesterday… Let's see…
+{CHARACTER_NAME}: *Sigh*
+{CHARACTER_NAME}: It’s been a week since I’ve moved here for work and I have no idea what’s in town.
+{CHARACTER_NAME}: Oh, shoot… I forgot, I got that letter from my mom yesterday… Let's see…
 
 * [Open Letter]
+    -> Letter
 
-Mom: Sweety... 
-Mom: I hope you’ve been enjoying your first few days in town. 
-Mom: I sent you some cookies like when we used to bake them when you were little.
-Mom: Remember?
-Mom: Hope to hear from you soon.
-Mom: Love
-Mom: Mom
+=== Letter ===
+VAR CHARACTER_NAME_1 = "Mom"
+{CHARACTER_NAME_1}: Dear {CHARACTER_NAME},
+{CHARACTER_NAME_1}: I hope you’ve been enjoying your first few days in town. 
+{CHARACTER_NAME_1}: I sent you some cookies like when we used to bake them when you were little.
+{CHARACTER_NAME_1}: Remember?
+{CHARACTER_NAME_1}: Also, I hear there's a fantastic cooking school in the area. You always mentioned how much you wanted to be a chef.
+{CHARACTER_NAME_1}:Maybe you could take a few classes after making some
+{CHARACTER_NAME_1}: Hope to hear from you soon.
+{CHARACTER_NAME_1}: Love,
+{CHARACTER_NAME_1}: Mom
 
-She's right...
-I need to get out more
-Maybe I need
+{CHARACTER_NAME}: She's right...
+{CHARACTER_NAME}: I need to get out more...
+{CHARACTER_NAME}: Maybe I should check out the farmer's market in town. They'll probably have fresh ingredients there to start cooking.
+>>> !CharExit({CHARACTER_NAME});

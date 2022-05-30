@@ -13,6 +13,9 @@ public class SaveData : ScriptableObject
     public int startingStage;
     public int[] startingTime = new int[3];
 
+    public bool isFirstLoad = true;
+    public string characterName;
+
     public List<IngredientData> startKnownList
         = new List<IngredientData>();
 

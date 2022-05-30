@@ -61,6 +61,7 @@ Well it wasn’t exactly cheap before...
 {CHARACTER_NAME}: It wasn’t cheap because you can’t find better prepared meat in the entire city!
 {CHARACTER_NAME}: Argh! There’s nothing for it, I can’t afford it right now. If you want that to change you’ll have to go talk to “miss poncho” over there. 
 {CHARACTER_NAME}: What’s it for? It doesn’t even rain here!
+->->
 
 // Start quest to talk to Bonnie for Missak
 === PositiveGift_2 ===

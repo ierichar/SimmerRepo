@@ -17,7 +17,7 @@ public class KitchenGameManager : MonoBehaviour
 
     private SceneLoader _sceneLoader;
     private PauseMenu _pauseMenu;
-    public UISoundManager soundManager{get; private set;}
+    public UISoundManager soundManager {get; private set;}
 
     [SerializeField] private SaveData _startSaveData;
 
