@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2792543f1b0a54dccbb3910190f8b1cd, type: 3}
   m_Name: Mom
   m_EditorClassIdentifier: 
-  scenePosition: 0
+  scenePosition: 1
   screenEdgeDistance: 0
   transition: {fileID: 11400000, guid: 3b8c7edcf2ae945a48152c552d124440, type: 2}
   transitionDuration: 0

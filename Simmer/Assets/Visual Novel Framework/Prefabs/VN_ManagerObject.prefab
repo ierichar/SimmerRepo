@@ -1543,6 +1543,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ff781df954bc547dfaabe369c234a3df, type: 2}
   - {fileID: 11400000, guid: 8a24d1fc22093412fb45f4c58474c4e5, type: 2}
   - {fileID: 11400000, guid: 6be5eef09642147e890a45f1a7126d64, type: 2}
+  - {fileID: 11400000, guid: e92d4e777706eb24aa276b3008f5d5b9, type: 2}
+  - {fileID: 11400000, guid: 8de295af90a2cbc4caccac8e779fffeb, type: 2}
   speakingColor: {r: 1, g: 1, b: 1, a: 1}
   nonSpeakingColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   speakerLightDuration: 0.25
