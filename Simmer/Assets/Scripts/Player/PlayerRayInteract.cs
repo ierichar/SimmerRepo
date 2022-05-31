@@ -37,7 +37,6 @@ namespace Simmer.Player
         private void OnInteractUICallback(bool result)
         {
             _isSelectEnabled = !result;
-            //_animator.SetBool("Interacting", true);
         }
 
         public void Update()
@@ -90,6 +89,7 @@ namespace Simmer.Player
         {
             if (Input.GetMouseButtonDown(1))
             {
+                
                 // Stop interact
                 if (_previousInteracted != null
                     && _previousInteracted.isInteractToggle)

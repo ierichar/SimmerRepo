@@ -127,7 +127,7 @@ namespace Simmer.CustomTime{
 
         //@@MPerez132 @@TheUnaverageJoe 5/2/2022
         //-------------------------------------------
-        public void SetPause(bool shouldPause){
+        public static void SetPause(bool shouldPause){
             if(shouldPause){
                 Paused = true;
             }else{
@@ -140,9 +140,9 @@ namespace Simmer.CustomTime{
         public static void SetTime(int hour=8, int minute=0, bool am=true, bool paused=false){
             //following if statements enable the ability to implicitly increment 
             //  the day under the assumtion we cant go back in time
-            if(hour < Hour){
-                Day++;
-            }
+            //if(hour < Hour){
+            Day++;
+            //}
             Hour = hour;
             Minute = minute;
             AM = am;

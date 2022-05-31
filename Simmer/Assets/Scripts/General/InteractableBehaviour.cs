@@ -22,7 +22,7 @@ namespace Simmer.Interactable
         /// GameEventManager.onInteractUI.Invoke(false) like in
         /// NPC_Manager.StopInteractSequence().
         /// </summary>
-        public bool isInteractToggle { get; private set; }
+        public bool isInteractToggle;// { get; private set; }
 
         /// <summary>
         /// Constructs this to interface with the parent class

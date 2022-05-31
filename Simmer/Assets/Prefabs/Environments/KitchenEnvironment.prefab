@@ -1142,7 +1142,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.00000035762787, y: -0.24833205}
+  m_Offset: {x: -0.00000035762787, y: -0.23389539}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1153,7 +1153,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.8591692, y: 0.72199506}
+  m_Size: {x: 2.8591692, y: 0.69312173}
   m_EdgeRadius: 0
 --- !u!1 &2200281390825875025
 GameObject:
@@ -1412,13 +1412,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'You work through the remainder of the night
+  m_text: 'You are fatigued and go to sleep.
 
-
-    You recieve 20 gold
-    from your employer
-
-    (RMB)'
+    You dream of gold coins falling
+    into your hand.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0840e84d4f7da7048bcf1dfa6112df11, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 0840e84d4f7da7048bcf1dfa6112df11, type: 2}
@@ -1614,6 +1611,7 @@ MonoBehaviour:
   OnInteract:
     m_PersistentCalls:
       m_Calls: []
+  isInteractToggle: 0
 --- !u!114 &2553930018383173712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1814,7 +1812,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 20
-      m_TileSpriteIndex: 20
+      m_TileSpriteIndex: 22
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -1984,7 +1982,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 21
-      m_TileSpriteIndex: 19
+      m_TileSpriteIndex: 20
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -2024,7 +2022,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 8
-      m_TileSpriteIndex: 10
+      m_TileSpriteIndex: 19
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -2104,7 +2102,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 16
-      m_TileSpriteIndex: 5
+      m_TileSpriteIndex: 10
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -2391,8 +2389,8 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 1
-    m_Data: {fileID: -5675400335168754034, guid: aac66a946a05c6743ac1fdc6e5c911be, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 5
     m_Data: {fileID: 7317334631700292629, guid: aac66a946a05c6743ac1fdc6e5c911be, type: 3}
   - m_RefCount: 1
@@ -2402,7 +2400,7 @@ Tilemap:
   - m_RefCount: 15
     m_Data: {fileID: 21300000, guid: cf8700c2e0af2134abd9fe4af7006d72, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: 21300000, guid: 41b9582eb18825143a56509c9b5594e5, type: 3}
+    m_Data: {fileID: -5675400335168754034, guid: aac66a946a05c6743ac1fdc6e5c911be, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -3218248262026354849, guid: aac66a946a05c6743ac1fdc6e5c911be, type: 3}
   - m_RefCount: 1
@@ -2420,13 +2418,13 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: a42aafce10d079a4bb847b43ff437fca, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: -7366180687131401920, guid: aac66a946a05c6743ac1fdc6e5c911be, type: 3}
+    m_Data: {fileID: 21300000, guid: 41b9582eb18825143a56509c9b5594e5, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: 21300000, guid: 8dd5cca35beb177419143730ffe4f0a2, type: 3}
+    m_Data: {fileID: -7366180687131401920, guid: aac66a946a05c6743ac1fdc6e5c911be, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: 21300000, guid: 51a8d1da3c20fe643bca9d65f1924710, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: 8dd5cca35beb177419143730ffe4f0a2, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 66
     m_Data:
@@ -3192,7 +3190,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 3
-      m_TileSpriteIndex: 3
+      m_TileSpriteIndex: 4
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -3272,7 +3270,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 2
-      m_TileSpriteIndex: 2
+      m_TileSpriteIndex: 3
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -3373,12 +3371,12 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 6
     m_Data: {fileID: -8451365008132549104, guid: 213c7d4bc4cba254dbbf416ca92a0c7d, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: -14520863135872570, guid: aac66a946a05c6743ac1fdc6e5c911be, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -3204459600516140068, guid: 0f8f0f6d7793f45e29b8e5f3a1079979, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
   - m_RefCount: 12
     m_Data: {fileID: 6864309749229522913, guid: 0f8f0f6d7793f45e29b8e5f3a1079979, type: 3}
   - m_RefCount: 43
@@ -3660,6 +3658,7 @@ MonoBehaviour:
   OnInteract:
     m_PersistentCalls:
       m_Calls: []
+  isInteractToggle: 0
 --- !u!1 &6164021005469304022
 GameObject:
   m_ObjectHideFlags: 0
