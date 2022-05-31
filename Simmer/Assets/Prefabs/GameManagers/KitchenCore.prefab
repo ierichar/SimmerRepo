@@ -386,7 +386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0a65e14673ea492a807ee65e615c175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startSaveData: {fileID: 11400000, guid: 59d3a3f128ced4a028b37710ac895941, type: 2}
+  _startSaveData: {fileID: 11400000, guid: 1d460c58f568a41159fb5411548268c4, type: 2}
 --- !u!114 &3753244179450832693
 MonoBehaviour:
   m_ObjectHideFlags: 0
