@@ -1,5 +1,7 @@
-VAR CHARACTER_NAME = "Me"
+VAR CHARACTER_NAME = "You"
 >>> !CharEnter({CHARACTER_NAME});
+VAR CHARACTER_NAME_1 = "Mom"
+>>> !CharEnter({CHARACTER_NAME_1});
 >>> TextboxEnter(Default)
 
 {CHARACTER_NAME}: *Sigh*
@@ -10,8 +12,7 @@ VAR CHARACTER_NAME = "Me"
     -> Letter
 
 === Letter ===
-VAR CHARACTER_NAME_1 = "Mom"
-{CHARACTER_NAME_1}: Dear {CHARACTER_NAME},
+{CHARACTER_NAME_1}: Hi Darling,
 {CHARACTER_NAME_1}: I hope you’ve been enjoying your first few days in town. 
 {CHARACTER_NAME_1}: I sent you some cookies like when we used to bake them when you were little.
 {CHARACTER_NAME_1}: Remember?
@@ -25,3 +26,4 @@ VAR CHARACTER_NAME_1 = "Mom"
 {CHARACTER_NAME}: I need to get out more...
 {CHARACTER_NAME}: Maybe I should check out the farmer's market in town. They'll probably have fresh ingredients there to start cooking.
 >>> !CharExit({CHARACTER_NAME});
+-> END

@@ -35,6 +35,7 @@ public class MainMenu : MonoBehaviour
             Debug.Log("Starting ink script");
         } else 
         {
+            Debug.Log("Loading KitcheScene");
             SceneManager.LoadScene("KitchenScene");
         }
         //_sceneLoader.OnSceneLoad.Invoke(_kitchenScene);
