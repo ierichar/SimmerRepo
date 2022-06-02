@@ -937,27 +937,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 344361169}
   m_CullTransparentMesh: 1
---- !u!1 &394830062 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7788690952332685024, guid: c28b88fb2c8fc41528eddda7d39cc2ac, type: 3}
-  m_PrefabInstance: {fileID: 1786689346}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &394830063
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 394830062}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c5ba93401769403382da2fad86cb073, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  npcInkAsset: {fileID: 0}
-  npcInkAssetIntro: {fileID: 0}
-  menuCanvas: {fileID: 0}
-  playerCharacter: {fileID: 11400000, guid: e92d4e777706eb24aa276b3008f5d5b9, type: 2}
 --- !u!1 &438164319
 GameObject:
   m_ObjectHideFlags: 0
@@ -1608,10 +1587,10 @@ MonoBehaviour:
       - m_Target: {fileID: 1398670510}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: PlayTutorial
-        m_Mode: 2
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 4900000, guid: 6d200d4f3d50b42d6973f2e4285646c9, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.TextAsset, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1830,7 +1809,6 @@ MonoBehaviour:
   npcInkAsset: {fileID: 4900000, guid: 6f95f9e44dd644691899649d86aac4dc, type: 3}
   npcInkAssetIntro: {fileID: 4900000, guid: e6b8250b6e8ea874687423c348ab670f, type: 3}
   menuCanvas: {fileID: 330709470}
-  playerCharacter: {fileID: 0}
 --- !u!1 &1458542491
 GameObject:
   m_ObjectHideFlags: 0
@@ -2370,14 +2348,13 @@ GameObject:
   - component: {fileID: 1988015905}
   - component: {fileID: 1988015904}
   - component: {fileID: 1988015903}
-  - component: {fileID: 1988015902}
   m_Layer: 5
   m_Name: NameInput
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1988015901
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2398,22 +2375,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1988015902
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1988015900}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c5ba93401769403382da2fad86cb073, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  npcInkAsset: {fileID: 0}
-  npcInkAssetIntro: {fileID: 0}
-  menuCanvas: {fileID: 0}
-  playerCharacter: {fileID: 11400000, guid: e92d4e777706eb24aa276b3008f5d5b9, type: 2}
 --- !u!114 &1988015903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2580,7 +2541,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2025582650
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2781,10 +2742,10 @@ MonoBehaviour:
       - m_Target: {fileID: 1398670510}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: PlayGame
-        m_Mode: 2
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 4900000, guid: e6b8250b6e8ea874687423c348ab670f, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.TextAsset, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

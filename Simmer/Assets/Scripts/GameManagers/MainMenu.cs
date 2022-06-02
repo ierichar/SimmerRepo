@@ -23,11 +23,12 @@ public class MainMenu : MonoBehaviour
         vn_manager = VNmanager;
     }
 
-    public void PlayGame(TextAsset npcInkAssetIntro)
+    public void PlayGame()
     {
         // Introduction to game
         if (isFirstLoad)
         {
+            print(npcInkAssetIntro.name);
             vn_manager.inkJSONAsset = npcInkAssetIntro;
             vn_manager.StartStory();
             vn_manager.OnEndStory.AddListener(BackToMenu);
@@ -42,8 +43,9 @@ public class MainMenu : MonoBehaviour
         //SceneManager.LoadScene("KitchenScene");
     }
 
-    public void PlayTutorial(TextAsset npcInkAsset)
+    public void PlayTutorial()
     {
+        print(npcInkAsset.name);
         vn_manager.inkJSONAsset = npcInkAsset;
         vn_manager.StartStory();
         vn_manager.OnEndStory.AddListener(BackToMenu);
