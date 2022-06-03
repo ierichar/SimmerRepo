@@ -1412,10 +1412,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'You are fatigued and go to sleep.
-
-    You dream of gold coins falling
-    into your hand.'
+  m_text: "You are fatigued and go to sleep.\nYou dream of gold coins falling into
+    your hands. \n(RMB)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0840e84d4f7da7048bcf1dfa6112df11, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 0840e84d4f7da7048bcf1dfa6112df11, type: 2}

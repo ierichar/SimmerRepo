@@ -485,7 +485,7 @@ namespace Simmer.NPC
                 vn_sharedVariables.isClosedMorning = 1;
                 vn_sharedVariables.isClosedNight = 0;
             }
-            else if (!TimeManager.AM && TimeManager.Hour >= 6)  // >= 6PM
+            else if (!TimeManager.AM && TimeManager.Hour >= 6 && !(TimeManager.Hour==12 && !TimeManager.AM))  // >= 6PM
             {
                 vn_sharedVariables.isClosedMorning = 0;
                 vn_sharedVariables.isClosedNight = 1;
